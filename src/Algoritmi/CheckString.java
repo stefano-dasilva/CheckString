@@ -2,6 +2,7 @@ package Algoritmi;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -16,40 +17,41 @@ public abstract class CheckString {
         standards.add("Philippines");
         standards.add("Philippine");
         standards.add("The islands of Philippine");
+        
+ ArrayList<String> stringaTokenizzata=new ArrayList();
+        
+ //memorizzo l'input tokenizzato in un ArrayList da usare successivamente nel ciclo for 
+ stringaTokenizzata.addAll(getTokens(input));
 
         System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName());
         
-        ArrayList<String> stringaTokenizzata=new ArrayList();
+       
         
-        //memorizzo l'input tokenizzato in un ArrayList da usare successivamente nel ciclo for 
-        stringaTokenizzata.addAll(getTokens(input));
-         
+        
         for(String standard : standards){
-        	for(String parola:stringaTokenizzata) 
+        	for(String parola:stringaTokenizzata) {
         	
             if(check(parola,standard)){
                 System.out.println("Parola " + standard + " trovata con " + this.getClass().getSimpleName());
                 return true;
             } 
-        
-            else{
-                // passa un altro algoritmo con setNext()
-            }
         }
-    
-        
-       
+    }
         if( next != null){
             System.out.println("procedo con il successivo\n");
             next.check(input);
 
         }
+    
         else {
             return false;
         }
         
         return true;
     }
+   
+  
+    
     
     protected String getName(){
         return this.getClass().getSimpleName();
@@ -63,36 +65,42 @@ public abstract class CheckString {
     
     
     
-    // metodo Tokenizer
     public ArrayList<String> getTokens(String str) {
-    	ArrayList<String> tokens = new ArrayList<>();
+        ArrayList<String> tokens = new ArrayList<>();
         
-        // ArrayList che contine le parole che non verranno analizzate nell'algoritmo
-        ArrayList<String> paroleEliminate=new ArrayList();
-        
-        // Qua è possibile inserire le le parole da eliminare dalla Stringa con Tokenizer
+        // ArrayList che contiene le parole da eliminare dalla stringa
+        ArrayList<String> paroleEliminate = new ArrayList<>();
         paroleEliminate.add("the");
         paroleEliminate.add("of");
         paroleEliminate.add("a");
         paroleEliminate.add("an");
+        paroleEliminate.add("republic");
         
         StringTokenizer tokenizer = new StringTokenizer(str, " ");
         while (tokenizer.hasMoreElements()) {
             tokens.add(tokenizer.nextToken());
         }
-        // Elimino dalla Stringa le parole che non servono
-        for(String parola:tokens) {
-        	for(String parolaNonVoluta:paroleEliminate) {
-        		if(parola.equalsIgnoreCase(parolaNonVoluta)) {
-        			tokens.remove(parolaNonVoluta);
-        		}
-        	}
+        
+        // Utilizzo un iteratore per rimuovere le parole non volute dalla lista tokens
+        Iterator<String> iterator = tokens.iterator();
+        while (iterator.hasNext()) {
+            String parola = iterator.next();
+            if (paroleEliminate.contains(parola.toLowerCase())) {
+                iterator.remove(); // Rimuovi l'elemento non voluto
+            }
         }
+        
         return tokens;
     }
     
     
-
-
-
+    public String toString(ArrayList<String> list) {
+    	String stringaFinale=" ";
+    	for(String word:list) {
+    		stringaFinale+=word;
+    	}
+    	return stringaFinale;
+    	
+    }
+  
 }
