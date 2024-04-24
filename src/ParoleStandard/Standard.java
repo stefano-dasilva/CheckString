@@ -1,3 +1,4 @@
+package ParoleStandard;
 
 public class Standard {
    private String code;
@@ -21,7 +22,7 @@ public Standard(String code, String value) {
 }
 @Override
 public String toString() {
-	return "Standard [code=" + code + ", value=" + value + "]";
+	return "ParoleStandard.Standard [code=" + code + ", value=" + value + "]";
 }
 
 	

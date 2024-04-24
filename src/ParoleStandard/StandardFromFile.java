@@ -1,19 +1,21 @@
+package ParoleStandard;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileParoleStandard implements ParoleStandard {
+public class StandardFromFile implements ParoleStandard {
     List<Standard> paroleStandard = new ArrayList<>();
 
-    public FileParoleStandard()  {
+    public StandardFromFile()  {
         readFile();
     }
 
     private void readFile() {
         try{
-            File file = new File("src/Nazioni2.txt");
+            File file = new File("src/Assets/Nazioni2.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()){
                 String parola = scanner.nextLine();

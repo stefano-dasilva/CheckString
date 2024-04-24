@@ -1,4 +1,8 @@
 import Algoritmi.CheckString;
+import ParoleStandard.Standard;
+import ParoleStandard.StandardFromFile;
+
+import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
@@ -7,5 +11,13 @@ public class Test {
         CheckString checkStringContains = new ContainsCheckString();
         checkStringContains.setNext(checkStringContained);
         checkStringContains.check("Phili");
+
+        StandardFromFile standardFromFile = new StandardFromFile();
+
+        ArrayList<Standard> standards = (ArrayList<Standard>) standardFromFile.getStandards();
+        for(Standard standard : standards){
+            System.out.println(standard.getValue() );
+        }
     }
+
 }
