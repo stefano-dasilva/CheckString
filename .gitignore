@@ -50,3 +50,4 @@ tmp/
 *.log
 *.swp
 *.bak
+target/
