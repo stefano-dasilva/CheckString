@@ -1,3 +1,5 @@
+package Algoritmi;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,6 +35,9 @@ public abstract class CheckString {
             return false;
         }
         return true;
+    }
+    protected String getName(){
+        return this.getClass().getSimpleName();
     }
 
     public void setNext(CheckString checkString){

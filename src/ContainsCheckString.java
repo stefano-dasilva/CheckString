@@ -1,4 +1,6 @@
-public class ContainsCheckString extends CheckString{
+import Algoritmi.CheckString;
+
+public class ContainsCheckString extends CheckString {
 
 
     @Override
