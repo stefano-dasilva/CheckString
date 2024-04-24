@@ -11,7 +11,7 @@ public abstract class CheckString {
     private CheckString next;
 
 
-    public boolean check( String input){
+    public boolean check(String input){
         standards = new ArrayList<>();
         standards.add("Philippines");
         standards.add("Philippine");
@@ -19,19 +19,26 @@ public abstract class CheckString {
 
         System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName());
         
-        if(input.contains(" ")) {
-        	
-        }
-
+        ArrayList<String> stringaTokenizzata=new ArrayList();
+        
+        //memorizzo l'input tokenizzato in un ArrayList da usare successivamente nel ciclo for 
+        stringaTokenizzata.addAll(getTokens(input));
+         
         for(String standard : standards){
-            if(check(input,standard)){
+        	for(String parola:stringaTokenizzata) 
+        	
+            if(check(parola,standard)){
                 System.out.println("Parola " + standard + " trovata con " + this.getClass().getSimpleName());
                 return true;
-            }
+            } 
+        
             else{
                 // passa un altro algoritmo con setNext()
             }
         }
+    
+        
+       
         if( next != null){
             System.out.println("procedo con il successivo\n");
             next.check(input);
@@ -40,8 +47,10 @@ public abstract class CheckString {
         else {
             return false;
         }
+        
         return true;
     }
+    
     protected String getName(){
         return this.getClass().getSimpleName();
     }
@@ -55,8 +64,8 @@ public abstract class CheckString {
     
     
     // metodo Tokenizer
-    public List<String> getTokens(String str) {
-        List<String> tokens = new ArrayList<>();
+    public ArrayList<String> getTokens(String str) {
+    	ArrayList<String> tokens = new ArrayList<>();
         
         // ArrayList che contine le parole che non verranno analizzate nell'algoritmo
         ArrayList<String> paroleEliminate=new ArrayList();
