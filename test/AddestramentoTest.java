@@ -1,5 +1,9 @@
+import Addestramento.Addestramento;
 import Algoritmi.LevhensteinCheckString;
 import Algoritmi.MetaphoneCheckString;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class AddestramentoTest {
 
@@ -10,7 +14,19 @@ public class AddestramentoTest {
         levhensteinCheckString.setNext(levhensteinCheckString1);
         MetaphoneCheckString metaphoneCheckString = new MetaphoneCheckString();
         levhensteinCheckString1.setNext(metaphoneCheckString);
-        levhensteinCheckString.check("philipppppine");
+       // levhensteinCheckString.check("philipppppine");
+
+       Addestramento addestramento = new Addestramento();
+       /*
+        ArrayList<String> inputIngresso = addestramento.getInputIngresso();
+        for( String input : inputIngresso ){
+            System.out.println(input );
+        }
+        */
+
+        addestramento.addestra();
+        addestramento.statistiche();
+       // addestramento.printMap();
 
     }
     }

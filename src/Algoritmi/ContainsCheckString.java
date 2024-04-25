@@ -1,4 +1,4 @@
-import Algoritmi.CheckString;
+package Algoritmi;
 
 public class ContainsCheckString extends CheckString {
 

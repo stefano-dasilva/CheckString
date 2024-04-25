@@ -1,4 +1,5 @@
 import Algoritmi.CheckString;
+import Algoritmi.ContainsCheckString;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
 
