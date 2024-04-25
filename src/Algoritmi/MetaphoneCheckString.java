@@ -11,6 +11,9 @@ public class MetaphoneCheckString extends CheckString {
     }
 
 
+    public boolean testM (String input, String standard){
+        return  metaphone.isMetaphoneEqual(input,standard);
+    }
     @Override
     protected boolean check(String input, String standard) {
         return metaphone.isMetaphoneEqual(input,standard);

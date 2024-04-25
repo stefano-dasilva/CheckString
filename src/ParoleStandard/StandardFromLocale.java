@@ -20,9 +20,7 @@ public class StandardFromLocale implements ParoleStandard {
             }
         }
 
-        for( Standard standard : paroleStandard){
-            System.out.println(standard.getCode() + "  " +  standard.getValue());
-        }
+
     }
 
     @Override
