@@ -1,15 +1,14 @@
 package Algoritmi;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
-
 import Addestramento.Addestramento;
 import Assets.DBmock;
 import ParoleStandard.Standard;
-import ParoleStandard.StandardFromFile;
+import ParoleStandard.StandardFromLocale;
+import io.github.kju2.languagedetector.LanguageDetector;
+import io.github.kju2.languagedetector.language.Language;
 
 
 public abstract class CheckString {
@@ -19,30 +18,52 @@ public abstract class CheckString {
     private Addestramento datiAddestramento;
     private DBmock dbmock;
     private Tokenizer tokenizer;
+    private LanguageDetector languageDetector;
+    private  Language lingua;
+   
 
 
 
     public boolean check(String input){
         standards = new ArrayList<>();
         tokenizer=new Tokenizer();
+        
      
        
       ArrayList<String> stringaTokenizzata=new ArrayList();
         
        //memorizzo l'input tokenizzato in un ArrayList da usare successivamente nel ciclo for 
         stringaTokenizzata.addAll(tokenizer.getTokens(input));
-
-
-        StandardFromFile standardFromFile = new StandardFromFile();
-        this.standards = standardFromFile.getStandards();
+        
+        try {
+			languageDetector = new LanguageDetector();
+			lingua=languageDetector.detectPrimaryLanguageOf(tokenizer.toString(stringaTokenizzata));
+			if(lingua.equals(lingua.ENGLISH)) {
+				StandardFromLocale standardFromLocale = new StandardFromLocale();
+			       this.standards = standardFromLocale.getStandards();
+				
+			}else {
+				StandardFromLocale standardFromLocale = new StandardFromLocale();
+				       this.standards = standardFromLocale.getStandards();
+			}
+		
+		} catch (IOException e) {
+			System.out.println("Nessuna Lingua Rilevata");
+			e.printStackTrace();
+		}
+        
+               
+      
 
         System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + input);
-
+        // usa l'algoritmo confrontando la parola standard con ciascuna parola della stringa tokenizzata
         for(Standard standard : standards){
         	for(String parola:stringaTokenizzata)
         
             if(check(parola,standard.getValue())){
-                System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName()); }
+                System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName()); 
+                return true;
+                }
              //   System.out.println(input + " --> " + standard.getValue());
                 //if(datiAddestramento == null){
                   //  dbmock = DBmock.getIstanza();
@@ -57,7 +78,7 @@ public abstract class CheckString {
                     //break;
                 //}
             //}
-            else{
+        else{
                System.out.println("Parola " + standard.getValue() + "non trovata con " + this.getClass().getSimpleName());
                if( next != null){
                    System.out.println("procedo con il successivo\n");
@@ -71,7 +92,8 @@ public abstract class CheckString {
 		return true;
     }
         
-       
+    
+   
         
       
    

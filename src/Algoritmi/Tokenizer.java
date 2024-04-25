@@ -42,12 +42,12 @@ public class Tokenizer {
 	    }
 	 
 	 
-	 public void  toString(ArrayList<String> list) {
+	 public String  toString(ArrayList<String> list) {
 	    	String stringaFinale=" ";
 	    	for(String word:list) {
 	    		stringaFinale+=word + " ";
 	    	}
-	    	System.out.println(stringaFinale);
+	    	return stringaFinale;
 	    	
 	    }
 
