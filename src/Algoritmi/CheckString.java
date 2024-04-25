@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import Addestramento.Addestramento;
+import Assets.DBmock;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
 
@@ -12,8 +13,9 @@ public abstract class CheckString {
 
     private Collection<Standard> standards;
     private CheckString next;
-    private ArrayList<String> paroleAddestramento;
     private Addestramento datiAddestramento;
+    private DBmock dbmock;
+
 
 
     public boolean check( String input){
@@ -33,8 +35,10 @@ public abstract class CheckString {
             if(check(input,standard.getValue())){
                 System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName());
              //   System.out.println(input + " --> " + standard.getValue());
-                if(!datiAddestramento.isActive()){
-                return true;
+                if(datiAddestramento == null){
+                    dbmock = DBmock.getIstanza();
+                    dbmock.putRicorrenza(input,standard.getValue());
+                    return true;
                 }
                 else{
                     String chiave = this.getClass().getSimpleName();
