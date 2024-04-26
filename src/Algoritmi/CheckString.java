@@ -15,44 +15,50 @@ public abstract class CheckString {
     private CheckString next;
     private Addestramento datiAddestramento;
     private DBmock dbmock;
+    private Tokenizer tokenizer;
 
 
 
-    public boolean check( String input){
+
+    public boolean check( String input) {
         standards = new ArrayList<>();
-        /*
-        standards.add("Philippines");
-        standards.add("Philippine");
-        standards.add("The islands of Philippine");
+        tokenizer = new Tokenizer();
 
-         */
+        ArrayList<String> stringaTokenizzata = new ArrayList();
+
+
+
         StandardFromFile standardFromFile = new StandardFromFile();
         this.standards = standardFromFile.getStandards();
+        stringaTokenizzata.addAll(tokenizer.getTokens(input));
 
-        System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + input);
 
-        for(Standard standard : standards){
-            if(check(input,standard.getValue())){
+
+        for(String tokenized : stringaTokenizzata){
+            System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
+
+            for (Standard standard : standards) {
+
+            if (check(tokenized, standard.getValue())) {
                 System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName());
-             //   System.out.println(input + " --> " + standard.getValue());
-                if(datiAddestramento == null){
+                //   System.out.println(input + " --> " + standard.getValue());
+                if (datiAddestramento == null) {
                     dbmock = DBmock.getIstanza();
-                    dbmock.putRicorrenza(input,standard.getValue());
+                    dbmock.putRicorrenza(input, standard.getValue());
                     return true;
-                }
-                else{
+                } else {
                     String chiave = this.getClass().getSimpleName();
-                    int valore = getDatiAddestramento().getCasiSuccesso().getOrDefault(chiave,0);
-                    getDatiAddestramento().getCasiSuccesso().put(chiave,valore + 1);
+                    int valore = getDatiAddestramento().getCasiSuccesso().getOrDefault(chiave, 0);
+                    getDatiAddestramento().getCasiSuccesso().put(chiave, valore + 1);
                     System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " + valore);
                     break;
                 }
-            }
-            else{
-              //  System.out.println("Parola " + standard.getValue() + "non trovata con " + this.getClass().getSimpleName());
+            } else {
+                //  System.out.println("Parola " + standard.getValue() + "non trovata con " + this.getClass().getSimpleName());
                 // passa un altro algoritmo con setNext()
             }
         }
+    }
         if( next != null){
             System.out.println("procedo con il successivo\n");
             next.check(input);

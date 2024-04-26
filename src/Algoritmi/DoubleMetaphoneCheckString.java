@@ -12,7 +12,6 @@ public class DoubleMetaphoneCheckString extends CheckString {
     }
 
 
-
     public boolean testM (String input, String standard){
         System.out.println(doublemetaphone.isDoubleMetaphoneEqual(input,standard));
         System.out.println(doublemetaphone.encode(input));

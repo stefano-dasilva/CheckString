@@ -11,6 +11,8 @@ public JaroCheckString(double soglia) {
 // Jaro Similarity of two Strings
         public boolean check(String s1, String s2)
         {
+
+            System.out.println("Jaro confronto " + s1 + " con " + s2);
             // If the Strings are equal
             if (s1 == s2)
                 return true;
@@ -39,7 +41,7 @@ public JaroCheckString(double soglia) {
                      j < Math.min(len2, i + max_dist + 1); j++)
 
                     // If there is a match
-                    if (s1.charAt(i) == s2.charAt(j) && hash_s2[j] == 0)
+                    if (s1.toLowerCase().charAt(i) == s2.toLowerCase().charAt(j) && hash_s2[j] == 0)
                     {
                         hash_s1[i] = 1;
                         hash_s2[j] = 1;
@@ -79,6 +81,7 @@ public JaroCheckString(double soglia) {
                     + ((double)match) / ((double)len2)
                     + ((double)match - t) / ((double)match))
                     / 3.0;
+            System.out.println("score : " + jarosimilarity);
 
 
             return jarosimilarity >= soglia;

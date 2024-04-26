@@ -19,7 +19,6 @@ public class Addestramento {
     public Addestramento(){
         inputIngresso = new ArrayList<>();
         casiSuccesso = new HashMap<>();
-
        readFile();
        numeroParole = inputIngresso.size();
     }

@@ -22,6 +22,7 @@ public class Tokenizer {
 	        paroleEliminate.add("an");
 	        paroleEliminate.add("republic");
 	        paroleEliminate.add("island");
+			paroleEliminate.add("repubblica");
 	        
 	        
 	        StringTokenizer tokenizer = new StringTokenizer(str, " ");
