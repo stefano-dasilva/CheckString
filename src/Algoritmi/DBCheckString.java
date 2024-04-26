@@ -13,10 +13,11 @@ public class DBCheckString extends CheckString {
             return  false;
         }
         String valore = ricorrenze.get(input);
+        System.out.println("chiave : " + input + " valore : " + valore);
         if (valore == null) {
             return false;
         }
-        return valore.equalsIgnoreCase(standard);
+        return true;
 
     }
 }

@@ -31,6 +31,7 @@ public class Addestramento {
     }
 
     public void statistiche(){
+        // STAMPA LE STATISTICHE
         System.out.println(casiSuccesso.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue())
                 .map(entry -> entry.getKey() + " " + ((entry.getValue() * 100) / numeroParole) + "%")
@@ -38,6 +39,7 @@ public class Addestramento {
 
     }
     public void readFile(){
+        // LEGGE IL FILE CHE CONTIENE L'INPUT DI ADDESTRAMENTO
         try{
             File file = new File("src/Assets/InputAddestramento.txt");
             Scanner scanner = new Scanner(file);
@@ -57,6 +59,10 @@ public class Addestramento {
     }
 
     public void buildChain(){
+        // CREA UNA CHAIN OF RESPONSABILITY
+        // LEVENSTEIN-> DOUBLEMETAPHONE -> CONTAINS -> JACCARD
+        // PER OGNI ALGORITMO SETDATIADDESTRAMENTO(THIS) SIGNIFICA CHE L'ALGORITMO HA UN RIFERIMENTO A QUESTA
+        // CLASSE ADDESTRAMENTO. GLI SERVE IL RIFERIMENTO PER SCRIVERE NELLA STRUTTURA DATI CASIDISUCCESSO
         CheckString levhensteinCheckString = new LevhensteinCheckString(1);
         CheckString metaphone = new DoubleMetaphoneCheckString();
         metaphone.setDatiAddestramento(this);
@@ -83,6 +89,8 @@ public class Addestramento {
     }
 
     public void addestra(){
+        // PER PRIMA COSA CREA UNA CHAIN OF RESPONSABILITY
+        // IN SEGUITO PER OGNI PAROLA DEGLI INPUT IN INGRESSO UTILIZZA LA CHAIN
         buildChain();
         for(String input : inputIngresso) {
                 chain.check(input);
