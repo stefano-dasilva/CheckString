@@ -7,6 +7,8 @@ import Addestramento.Addestramento;
 import Assets.DBmock;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
+import io.github.kju2.languagedetector.LanguageDetector;
+import io.github.kju2.languagedetector.language.Language;
 
 
 public abstract class CheckString {
@@ -28,9 +30,25 @@ public abstract class CheckString {
 
 
 
-        StandardFromFile standardFromFile = new StandardFromFile();
-        this.standards = standardFromFile.getStandards();
+      
         stringaTokenizzata.addAll(tokenizer.getTokens(input));
+        
+        try {
+			languageDetector = new LanguageDetector();
+			lingua=languageDetector.detectPrimaryLanguageOf(tokenizer.toString(stringaTokenizzata));
+			if(lingua.equals(lingua.ENGLISH)) {
+				StandardFromLocale standardFromLocale = new StandardFromLocale();
+			       this.standards = standardFromLocale.getStandards();
+				
+			}else {
+				StandardFromLocale standardFromLocale = new StandardFromLocale();
+				       this.standards = standardFromLocale.getStandards();
+			}
+		
+		} catch (IOException e) {
+			System.out.println("Nessuna Lingua Rilevata");
+			e.printStackTrace();
+		}
 
 
 
