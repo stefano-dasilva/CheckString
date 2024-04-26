@@ -1,17 +1,13 @@
 package Algoritmi;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import Addestramento.Addestramento;
 import Assets.DBmock;
 import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
-import ParoleStandard.StandardFromLocale;
-import io.github.kju2.languagedetector.LanguageDetector;
-import io.github.kju2.languagedetector.language.Language;
+
 
 
 public abstract class CheckString {
@@ -21,7 +17,6 @@ public abstract class CheckString {
     private Addestramento datiAddestramento;
     private DBmock dbmock;
     private Tokenizer tokenizer;
-
     private boolean parolaTrovata;
 
 
@@ -29,6 +24,7 @@ public abstract class CheckString {
         standards = new ArrayList<>();
         tokenizer = new Tokenizer();
 
+        ArrayList<String> paroleSimili = new ArrayList<>();
         ArrayList<String> inputTokenizzato = new ArrayList();
         inputTokenizzato.addAll(tokenizer.getTokens(input));
 
@@ -40,27 +36,58 @@ public abstract class CheckString {
         for(String tokenized : inputTokenizzato){
             System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
 
-            for (Standard standard : standards) {
 
-            if (check(tokenized, standard.getValue())) {
-                parolaTrovata = true;
-                System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName());
-                System.out.println(input + " --> " + standard.getValue());
-                if (datiAddestramento == null) {
-                    dbmock = DBmock.getIstanza();
-                    dbmock.putRicorrenza(input, standard.getValue());
-                    return true;
-                } else {
-                    String chiave = this.getClass().getSimpleName();
-                    int valore = getDatiAddestramento().getCasiSuccesso().getOrDefault(chiave, 0);
-                    getDatiAddestramento().getCasiSuccesso().put(chiave, valore + 1);
-                    System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " + valore);
-                    break;
+
+
+            for (Standard standard : standards) {
+                ArrayList<String> standardTokenizzato = new ArrayList();
+                standardTokenizzato.addAll(tokenizer.getTokens(standard.getValue()));
+                for(String standardToken : standardTokenizzato){
+                if (check(tokenized, standardToken)) {
+                    parolaTrovata = true;
+                    System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName());
+                    //  System.out.println(input + " --> " + standard.getValue());
+                    paroleSimili.add(standard.getValue());
+
+                    /*
+                    if (datiAddestramento == null) {
+                        dbmock = DBmock.getIstanza();
+                        dbmock.putRicorrenza(input, standard.getValue());
+                        paroleSimili.add(standard.getValue());
+                        // return true;
+                    } else {
+                        String chiave = this.getClass().getSimpleName();
+                        int valore = getDatiAddestramento().getCasiSuccesso().getOrDefault(chiave, 0);
+                        getDatiAddestramento().getCasiSuccesso().put(chiave, valore + 1);
+                        System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " + valore);
+                        break;
+                    }
+
+                     */
                 }
             }
         }
     }
         if (parolaTrovata) {
+            boolean parolaEsatta = false;
+            for( String parolasimile : paroleSimili){
+                if(parolasimile.equalsIgnoreCase(input)){
+                    parolaEsatta = true;
+                }
+            }
+
+            if(parolaEsatta){
+                System.out.println(input);
+            }
+            else{
+                for( String parolasimile : paroleSimili) {
+                    if(check(input,parolasimile)){
+                        System.out.println(parolasimile);
+                    }
+
+                }
+
+            }
             return true;
         } else if (next != null) {
             System.out.println("procedo con il successivo\n");
@@ -83,6 +110,10 @@ public abstract class CheckString {
 
     public Addestramento getDatiAddestramento() {
         return datiAddestramento;
+    }
+
+    public Collection<Standard> getStandards() {
+        return standards;
     }
 
     // TEMPLATE

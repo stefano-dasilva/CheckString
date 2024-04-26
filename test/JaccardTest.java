@@ -3,13 +3,13 @@ import Algoritmi.LevhensteinCheckString;
 
 public class JaccardTest {
     public static void main(String[] args) {
-        /*
-        JaccardCheckString jaccardCheckString = new JaccardCheckString(0.8);
-        jaccardCheckString.check("brasil","Brasile");
 
-         */
+        JaccardCheckString jaccardCheckString = new JaccardCheckString(0.8);
+        System.out.println(jaccardCheckString.check("repubblica ","repubblica ceca"));
+
+
         LevhensteinCheckString levhensteinCheckString = new LevhensteinCheckString(2);
-        levhensteinCheckString.check("brasil","Brasile");
+        levhensteinCheckString.check("iran","iraq");
 
     }
     }

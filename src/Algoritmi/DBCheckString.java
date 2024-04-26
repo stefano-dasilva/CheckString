@@ -2,11 +2,21 @@ package Algoritmi;
 
 import Assets.DBmock;
 
+import java.util.Map;
+
 public class DBCheckString extends CheckString {
     @Override
     protected boolean check(String input, String standard) {
-        boolean chiavepresente = DBmock.getIstanza().getRicorrenze().containsKey(input);
-        boolean valorepresente = DBmock.getIstanza().getRicorrenze().get(input).equals(standard);
-        return chiavepresente && valorepresente;
+    //    System.out.println("dentro db");
+        Map<String, String> ricorrenze = DBmock.getIstanza().getRicorrenze();
+        if(ricorrenze == null || !ricorrenze.containsKey(input)){
+            return  false;
+        }
+        String valore = ricorrenze.get(input);
+        if (valore == null) {
+            return false;
+        }
+        return valore.equalsIgnoreCase(standard);
+
     }
 }
