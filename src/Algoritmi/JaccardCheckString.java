@@ -9,17 +9,18 @@ public class JaccardCheckString extends CheckString{
     this.soglia=soglia;
     }
 
-//restituisce un double mentre deve restituire un booleano
     public boolean check(String word1, String word2) {
+        System.out.println("Sto confrontando " + word1 + " con " + word2);
+
         // Trasforma le parole in insiemi di caratteri
         HashSet<Character> set1 = new HashSet<>();
         HashSet<Character> set2 = new HashSet<>();
 
-        for (char c : word1.toCharArray()) {
+        for (char c : word1.toLowerCase().toCharArray()) {
             set1.add(c);
         }
 
-        for (char c : word2.toCharArray()) {
+        for (char c : word2.toLowerCase().toCharArray()) {
             set2.add(c);
         }
 
@@ -36,12 +37,12 @@ public class JaccardCheckString extends CheckString{
         double unionSize = union.size();
 
         double interunion = intersectionSize / unionSize;
-       if (interunion <= getSoglia()){
+        System.out.println(interunion);
+       if (interunion >= getSoglia()){
            return true;
        } else {
            return false;
        }
-
 
     }
 
