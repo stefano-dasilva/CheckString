@@ -6,12 +6,12 @@ import java.util.Collection;
 
 import Addestramento.Addestramento;
 import Assets.DBmock;
+import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
 import ParoleStandard.StandardFromLocale;
 import io.github.kju2.languagedetector.LanguageDetector;
 import io.github.kju2.languagedetector.language.Language;
-import jdk.javadoc.internal.doclets.formats.html.taglets.SnippetTaglet;
 
 
 public abstract class CheckString {
@@ -21,47 +21,31 @@ public abstract class CheckString {
     private Addestramento datiAddestramento;
     private DBmock dbmock;
     private Tokenizer tokenizer;
-    private LanguageDetector languageDetector;
-    private Language lingua;
+
+    private boolean parolaTrovata;
 
 
     public boolean check( String input) {
         standards = new ArrayList<>();
         tokenizer = new Tokenizer();
 
-        ArrayList<String> stringaTokenizzata = new ArrayList();
+        ArrayList<String> inputTokenizzato = new ArrayList();
+        inputTokenizzato.addAll(tokenizer.getTokens(input));
 
-        try {
-            languageDetector = new LanguageDetector();
-            lingua = languageDetector.detectPrimaryLanguageOf(input);
-            if(lingua.equals(lingua.ENGLISH)) {
-                StandardFromLocale standardFromLocale = new StandardFromLocale();
-                this.standards = standardFromLocale.getStandards();
+        ParoleStandard paroleStandard = new StandardFromFile();
+        this.standards = paroleStandard.getStandards();
 
-            }else {
-                StandardFromLocale standardFromLocale = new StandardFromLocale();
-                this.standards = standardFromLocale.getStandards();
-            }
+        parolaTrovata = false;
 
-        } catch (IOException e) {
-            System.out.println("Nessuna Lingua Rilevata");
-            e.printStackTrace();
-        }
-
-
-      
-        stringaTokenizzata.addAll(tokenizer.getTokens(input));
-
-
-
-        for(String tokenized : stringaTokenizzata){
+        for(String tokenized : inputTokenizzato){
             System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
 
             for (Standard standard : standards) {
 
             if (check(tokenized, standard.getValue())) {
+                parolaTrovata = true;
                 System.out.println("Parola " + standard.getValue() + " trovata con " + this.getClass().getSimpleName());
-                //   System.out.println(input + " --> " + standard.getValue());
+                System.out.println(input + " --> " + standard.getValue());
                 if (datiAddestramento == null) {
                     dbmock = DBmock.getIstanza();
                     dbmock.putRicorrenza(input, standard.getValue());
@@ -73,21 +57,17 @@ public abstract class CheckString {
                     System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " + valore);
                     break;
                 }
-            } else {
-                //  System.out.println("Parola " + standard.getValue() + "non trovata con " + this.getClass().getSimpleName());
-                // passa un altro algoritmo con setNext()
             }
         }
     }
-        if( next != null){
+        if (parolaTrovata) {
+            return true;
+        } else if (next != null) {
             System.out.println("procedo con il successivo\n");
-            next.check(input);
-
-        }
-        else {
+            return next.check(input);
+        } else {
             return false;
         }
-        return true;
     }
     protected String getName(){
         return this.getClass().getSimpleName();

@@ -7,10 +7,6 @@ public class DBCheckString extends CheckString {
     protected boolean check(String input, String standard) {
         boolean chiavepresente = DBmock.getIstanza().getRicorrenze().containsKey(input);
         boolean valorepresente = DBmock.getIstanza().getRicorrenze().get(input).equals(standard);
-        if(chiavepresente && valorepresente){
-            return  true;
-        }
-        else
-            return false;
+        return chiavepresente && valorepresente;
     }
 }

@@ -35,7 +35,7 @@ public class LevhensteinCheckString extends CheckString {
         }
 
         int distanza = dp[word1.length()][word2.length()];
-        System.out.println(distanza);
+      //  System.out.println(distanza);
         if (distanza <= getSoglia()) {
             return true;
         } else {

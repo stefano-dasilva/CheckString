@@ -12,7 +12,7 @@ public JaroCheckString(double soglia) {
         public boolean check(String s1, String s2)
         {
 
-            System.out.println("Jaro confronto " + s1 + " con " + s2);
+           // System.out.println("Jaro confronto " + s1 + " con " + s2);
             // If the Strings are equal
             if (s1 == s2)
                 return true;
@@ -81,7 +81,7 @@ public JaroCheckString(double soglia) {
                     + ((double)match) / ((double)len2)
                     + ((double)match - t) / ((double)match))
                     / 3.0;
-            System.out.println("score : " + jarosimilarity);
+        //    System.out.println("score : " + jarosimilarity);
 
 
             return jarosimilarity >= soglia;

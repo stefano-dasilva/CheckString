@@ -10,7 +10,7 @@ public class JaccardCheckString extends CheckString{
     }
 
     public boolean check(String word1, String word2) {
-        System.out.println("Sto confrontando " + word1 + " con " + word2);
+     //   System.out.println("Sto confrontando " + word1 + " con " + word2);
 
         // Trasforma le parole in insiemi di caratteri
         HashSet<Character> set1 = new HashSet<>();
@@ -35,9 +35,8 @@ public class JaccardCheckString extends CheckString{
         // Calcola la similarità di Jaccard
         double intersectionSize = intersection.size();
         double unionSize = union.size();
-
         double interunion = intersectionSize / unionSize;
-        System.out.println(interunion);
+    //    System.out.println(interunion);
        if (interunion >= getSoglia()){
            return true;
        } else {
