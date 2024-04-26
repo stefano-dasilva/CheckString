@@ -1,9 +1,6 @@
 package Addestramento;
 
-import Algoritmi.CheckString;
-import Algoritmi.ContainsCheckString;
-import Algoritmi.LevhensteinCheckString;
-import Algoritmi.MetaphoneCheckString;
+import Algoritmi.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,6 +10,7 @@ import java.util.stream.Collectors;
 public class Addestramento {
 
     private Map<String, Integer> casiSuccesso;
+
     private ArrayList<String> inputIngresso;
     private int numeroParole;
     private boolean isActive = true;
@@ -61,13 +59,16 @@ public class Addestramento {
 
     public void buildChain(){
         CheckString levhensteinCheckString = new LevhensteinCheckString(2);
-        CheckString metaphone = new MetaphoneCheckString();
+        CheckString metaphone = new DoubleMetaphoneCheckString();
         metaphone.setDatiAddestramento(this);
         levhensteinCheckString.setDatiAddestramento(this);
         levhensteinCheckString.setNext(metaphone);
         CheckString containsString = new ContainsCheckString();
         containsString.setDatiAddestramento(this);
         metaphone.setNext(containsString);
+        CheckString jaccard = new JaccardCheckString(0.75);
+        containsString.setNext(jaccard);
+        jaccard.setDatiAddestramento(this);
 
         this.chain = levhensteinCheckString;
     }
