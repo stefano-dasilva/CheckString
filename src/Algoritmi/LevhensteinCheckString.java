@@ -26,7 +26,7 @@ public class LevhensteinCheckString extends CheckString {
                 } else if (j == 0) {
                     dp[i][j] = i;
                 } else {
-                    int cost = (word1.charAt(i - 1) == word2.charAt(j - 1)) ? 0 : 1;
+                    int cost = (word1.toLowerCase().charAt(i - 1) == word2.toLowerCase().charAt(j - 1)) ? 0 : 1;
                     dp[i][j] = min(dp[i - 1][j - 1] + cost,  // sostituzione
                             dp[i - 1][j] + 1,         // eliminazione
                             dp[i][j - 1] + 1);        // inserimento
@@ -35,6 +35,7 @@ public class LevhensteinCheckString extends CheckString {
         }
 
         int distanza = dp[word1.length()][word2.length()];
+        System.out.println(distanza);
         if (distanza <= getSoglia()) {
             return true;
         } else {

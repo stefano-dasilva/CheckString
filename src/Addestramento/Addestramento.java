@@ -57,7 +57,7 @@ public class Addestramento {
     }
 
     public void buildChain(){
-        CheckString levhensteinCheckString = new LevhensteinCheckString(2);
+        CheckString levhensteinCheckString = new LevhensteinCheckString(1);
         CheckString metaphone = new DoubleMetaphoneCheckString();
         metaphone.setDatiAddestramento(this);
         levhensteinCheckString.setDatiAddestramento(this);

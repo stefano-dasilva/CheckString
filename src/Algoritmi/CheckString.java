@@ -1,5 +1,6 @@
 package Algoritmi;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,8 +8,10 @@ import Addestramento.Addestramento;
 import Assets.DBmock;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
+import ParoleStandard.StandardFromLocale;
 import io.github.kju2.languagedetector.LanguageDetector;
 import io.github.kju2.languagedetector.language.Language;
+import jdk.javadoc.internal.doclets.formats.html.taglets.SnippetTaglet;
 
 
 public abstract class CheckString {
@@ -18,8 +21,8 @@ public abstract class CheckString {
     private Addestramento datiAddestramento;
     private DBmock dbmock;
     private Tokenizer tokenizer;
-
-
+    private LanguageDetector languageDetector;
+    private Language lingua;
 
 
     public boolean check( String input) {
@@ -28,27 +31,26 @@ public abstract class CheckString {
 
         ArrayList<String> stringaTokenizzata = new ArrayList();
 
+        try {
+            languageDetector = new LanguageDetector();
+            lingua = languageDetector.detectPrimaryLanguageOf(input);
+            if(lingua.equals(lingua.ENGLISH)) {
+                StandardFromLocale standardFromLocale = new StandardFromLocale();
+                this.standards = standardFromLocale.getStandards();
+
+            }else {
+                StandardFromLocale standardFromLocale = new StandardFromLocale();
+                this.standards = standardFromLocale.getStandards();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Nessuna Lingua Rilevata");
+            e.printStackTrace();
+        }
 
 
       
         stringaTokenizzata.addAll(tokenizer.getTokens(input));
-        
-        try {
-			languageDetector = new LanguageDetector();
-			lingua=languageDetector.detectPrimaryLanguageOf(tokenizer.toString(stringaTokenizzata));
-			if(lingua.equals(lingua.ENGLISH)) {
-				StandardFromLocale standardFromLocale = new StandardFromLocale();
-			       this.standards = standardFromLocale.getStandards();
-				
-			}else {
-				StandardFromLocale standardFromLocale = new StandardFromLocale();
-				       this.standards = standardFromLocale.getStandards();
-			}
-		
-		} catch (IOException e) {
-			System.out.println("Nessuna Lingua Rilevata");
-			e.printStackTrace();
-		}
 
 
 

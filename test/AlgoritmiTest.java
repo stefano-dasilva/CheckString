@@ -6,15 +6,13 @@ import java.util.Scanner;
 public class AlgoritmiTest {
     public static void main(String[] args) {
 
-        CheckString levenstein =  new LevhensteinCheckString(1);
+        CheckString levenstein =  new LevhensteinCheckString(2);
         CheckString jaccard = new JaccardCheckString(0.78);
         levenstein.setNext(jaccard);
-        CheckString contains = new ContainsCheckString();
         CheckString jaro = new JaroCheckString(0.75);
         jaccard.setNext(jaro);
         CheckString doubleMetaphoneCheckString = new DoubleMetaphoneCheckString();
         jaro.setNext(doubleMetaphoneCheckString);
-
 
 
         String parola;
