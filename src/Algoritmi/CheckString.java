@@ -50,7 +50,7 @@ public abstract class CheckString {
         // ESEMPIO REPUBBLICA CECA -> CECA
         // LE PAROLE NON CONSIDERATI DAL TOKEN SONO PRESENTI IN ASSETS->LETTEREBANDITE.TXT
         for(String tokenized : inputTokenizzato){
-           // System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
+            System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
 
             // CONFRONTO I TOKEN CON LA LISTA DI PAROLE
             for (Standard standard : standards) {
@@ -69,8 +69,8 @@ public abstract class CheckString {
                     if (datiAddestramento == null) {
                         // AGGIUNGE NELLA STRUTTURA DATI DELLE RICORRENZE UN CASO
                         // ES FILI->FILIPPINE
-                        dbmock = DBmock.getIstanza();
-                        dbmock.putRicorrenza(input, standard.getValue());
+                      //  dbmock = DBmock.getIstanza();
+                       // dbmock.putRicorrenza(input, standard.getValue());
                         // AGGIUNGE AD UNA LISTA CHIAMATA PAROLE SIMILI
                         // TUTTE LE PAROLE CHE HANNO UNO SCORE SUPERIORE ALLA SOGLIA
                         // CALCOLATA DAI VARI ALGORITMI
@@ -82,17 +82,23 @@ public abstract class CheckString {
                         // ESEMPIO LEVENSTEIN->3
                         //         JARO-> 4 ECC
                         // LA CHIAVE è IL NOME DELL'ALGORITMO
+                        System.out.println("sono in algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized + "trovata parola " + standardToken);
+
                         String chiave = this.getClass().getSimpleName();
                         // IL VALORE è PRESO CON GETORDEFAULT : SE LA CHIAVE NON è ANCORA PRESENTE
                         // PERCHè NON è STATO ANCORA INSERITO ALCUN CASO DI SUCCESSO ALLORA IL VALORE è 0
                         // SE NO è IL VALORE CONTENUTO DALLA CHIAVE
                         int valore = getDatiAddestramento().getCasiSuccesso().getOrDefault(chiave, 0);
                         getDatiAddestramento().getCasiSuccesso().put(chiave, valore + 1);
-                        System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " + valore);
+                       // System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " + valore);
                         break;
                     }
                 }
             }
+                if(parolaTrovata && datiAddestramento != null){
+                    break;
+                }
+
         }
     }
         // SE LA PAROLA SIMILE è STATA TROVATA FA UN CONTROLLO:

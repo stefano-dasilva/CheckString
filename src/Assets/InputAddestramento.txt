@@ -5,14 +5,14 @@ Austrial
 Binglidush
 Belio
 Bresila
-anda
+canda
 Cil
 Cia
-Clobia
+Colobia
 Repuica Ceca
-Danirca
+Daniarca
 Egtto
-Finlaia
+Finladia
 Frncia
 Gernia
 Greciadn
@@ -37,8 +37,8 @@ Ser
 Philipne
 Polinia
 Porptgallo
-Ronia
-Ruxia
+Ronaia
+Ruxxia
 Aaia Sdita
 Singore
 pud Aurica
@@ -111,7 +111,7 @@ Rusian
 Ruand
 Sn Mavin
 Saud Arbi
-Snega
+Senega
 Srba
 Seiscell
 Sira Leon

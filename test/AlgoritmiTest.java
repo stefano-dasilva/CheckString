@@ -79,6 +79,7 @@ public class AlgoritmiTest {
                 {
                     // SE VI è UN SOLO SUGGERIMENTO , LO STAMPA SINGOLARMENTE
                     System.out.println(suggerimenti.get(0));
+                    DBmock.getIstanza().putRicorrenza(parola, suggerimenti.get(0));
                 }
             }
         }

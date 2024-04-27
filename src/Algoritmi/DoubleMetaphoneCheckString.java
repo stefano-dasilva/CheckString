@@ -25,6 +25,7 @@ public class DoubleMetaphoneCheckString extends CheckString {
     // FA IL CONTROLLO TRA LE DUE PAROLE DAL PUNTO DI VISTA FONETICO
     @Override
     protected boolean check(String input, String standard) {
+      //  System.out.println("metaphone confronto " + input + " con " + standard);
         return doublemetaphone.isDoubleMetaphoneEqual(input,standard);
     }
 }
