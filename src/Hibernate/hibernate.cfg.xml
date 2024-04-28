@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- FILE DI CONFIGURAZIONE DI HIBERNATE -->
+
+
+    <session-factory>
+
+
+
+
+        <!-- SPECIFICA IL LINGUAGGIO UTILIZZATO PER LE QUERY, IN QUESTO CASO MYSQL -->
+        <property name = "hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- SPECIFICA IL DRIVER UTILIZZATO -->
+        <property name = "hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- SPECIFICA DOVE SI TROVA LA TABELLA IN MYSQL -->
+        <property name = "hibernate.connection.url">jdbc:mysql://localhost/myschema</property>
+        <!-- SPECIFICA IL NOME UTENTE DI MYSQLWORKBENCH -->
+        <property name = "hibernate.connection.username">root</property>
+        <!-- SPECIFICA LA PASSWORD, L'HO LASCIATA VUOTA, DOVETE INSERIRE QUELLA CREATA QUANDO AVETE SCARICATO MYSQLWORKBENCH -->
+        <property name = "hibernate.connection.password"></property>
+
+        <!-- List of XML mapping files -->
+        <mapping resource = "Hibernate/standard.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>
