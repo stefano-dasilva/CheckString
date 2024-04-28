@@ -19,20 +19,21 @@ public abstract class CheckString {
     private DBmock dbmock;
     private Tokenizer tokenizer;
     private boolean parolaTrovata;
-    private final String PROFILES_DIRECTORY = "C:\\Users\\SAEEDH\\Downloads\\langProfiles";
+    private  LangDetector detector;
 
 
 
     public ArrayList<String> check( String input) {
         standards = new ArrayList<>();
         tokenizer = new Tokenizer();
+        detector= new LangDetector();
 
         String detectedLanguage = detectLanguage(input);
-        if (detectedLanguage.equalsIgnoreCase("it")){
+        if (detector.detectLanguage(input).equalsIgnoreCase("it")){
             ParoleStandard paroleStandard = new StandardFromLocale();
             this.standards = paroleStandard.getStandards();
         }else{
-            if (detectedLanguage.equalsIgnoreCase("en"))
+            if (detector.detectLanguage(input).equalsIgnoreCase("en"))
             ParoleStandard paroleStandard = new StandardFromFile();
             this.standards = paroleStandard.getStandards();
         }

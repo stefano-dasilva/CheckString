@@ -7,6 +7,8 @@ public class LangDetector {
     // Path to the directory containing language profiles
     private static final String PROFILES_DIRECTORY = "C:\\Users\\SAEEDH\\Downloads\\langProfiles"; // Provide the actual path here
 
+    public  LangDetector(){ }
+
     // Metodo per rilevare la lingua di una stringa
     public  String detectLanguage(String testo) {
         try {
