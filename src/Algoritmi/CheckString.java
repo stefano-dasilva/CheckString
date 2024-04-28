@@ -7,8 +7,6 @@ import Assets.DBmock;
 import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
-import ParoleStandard.StandardFromDB;
-import ParoleStandard.StandardFromLocale;
 
 
 
@@ -30,6 +28,7 @@ public abstract class CheckString {
         tokenizer = new Tokenizer();
         detector= new LangDetector();
 
+        String detectedLanguage = detectLanguage(input);
         if (detector.detectLanguage(input).equalsIgnoreCase("it")){
             ParoleStandard paroleStandard = new StandardFromLocale();
             this.standards = paroleStandard.getStandards();
@@ -43,7 +42,8 @@ public abstract class CheckString {
         ArrayList<String> inputTokenizzato = new ArrayList();
         inputTokenizzato.addAll(tokenizer.getTokens(input));
 
-
+        ParoleStandard paroleStandard = new StandardFromFile();
+        this.standards = paroleStandard.getStandards();
 
         parolaTrovata = false;
         // PRIMA DI SVOLGERE TUTTI GLI ALGORITMI CONTROLLO SE ALL'INTERNO DELLE
