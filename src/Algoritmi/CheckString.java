@@ -7,6 +7,8 @@ import Assets.DBmock;
 import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
+import ParoleStandard.StandardFromDB;
+import ParoleStandard.StandardFromLocale;
 
 
 
@@ -28,22 +30,32 @@ public abstract class CheckString {
         tokenizer = new Tokenizer();
         detector= new LangDetector();
 
-        String detectedLanguage = detectLanguage(input);
+        String detectedLanguage = detector.detectLanguage(input);
         if (detector.detectLanguage(input).equalsIgnoreCase("it")){
             ParoleStandard paroleStandard = new StandardFromLocale();
             this.standards = paroleStandard.getStandards();
         }else{
-            if (detector.detectLanguage(input).equalsIgnoreCase("en"))
-            ParoleStandard paroleStandard = new StandardFromFile();
-            this.standards = paroleStandard.getStandards();
+            if (detector.detectLanguage(input).equalsIgnoreCase("en")) {
+                ParoleStandard paroleStandard = new StandardFromFile();
+                this.standards = paroleStandard.getStandards();
+            }
         }
+
 
         ArrayList<String> paroleSimili = new ArrayList<>();
         ArrayList<String> inputTokenizzato = new ArrayList();
         inputTokenizzato.addAll(tokenizer.getTokens(input));
 
+        /*
         ParoleStandard paroleStandard = new StandardFromFile();
         this.standards = paroleStandard.getStandards();
+
+         */
+        /*
+        ParoleStandard paroleStandard1 = new StandardFromDB();
+        this.standards = paroleStandard1.getStandards();
+
+         */
 
         parolaTrovata = false;
         // PRIMA DI SVOLGERE TUTTI GLI ALGORITMI CONTROLLO SE ALL'INTERNO DELLE
