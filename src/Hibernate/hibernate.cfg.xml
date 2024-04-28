@@ -17,9 +17,9 @@
         <!-- SPECIFICA DOVE SI TROVA LA TABELLA IN MYSQL -->
         <property name = "hibernate.connection.url">jdbc:mysql://localhost/myschema</property>
         <!-- SPECIFICA IL NOME UTENTE DI MYSQLWORKBENCH -->
-        <property name = "hibernate.connection.username">root</property>
+        <property name = "hibernate.connection.username">root@localhost</property>
         <!-- SPECIFICA LA PASSWORD, L'HO LASCIATA VUOTA, DOVETE INSERIRE QUELLA CREATA QUANDO AVETE SCARICATO MYSQLWORKBENCH -->
-        <property name = "hibernate.connection.password"></property>
+        <property name = "hibernate.connection.password">Ad!11223344</property>
 
         <!-- List of XML mapping files -->
         <mapping resource = "Hibernate/standard.hbm.xml"/>
