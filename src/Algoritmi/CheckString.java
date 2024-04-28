@@ -7,7 +7,7 @@ import Assets.DBmock;
 import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
-
+import jdk.jfr.internal.util.Tokenizer;
 
 
 public abstract class CheckString {
@@ -26,17 +26,18 @@ public abstract class CheckString {
     public ArrayList<String> check( String input) {
         standards = new ArrayList<>();
         tokenizer = new Tokenizer();
-        detector= new LangDetector();
+        detector = new LangDetector();
 
-        String detectedLanguage = detectLanguage(input);
-        if (detector.detectLanguage(input).equalsIgnoreCase("it")){
+
+        if (detector.detectLanguage(input).equalsIgnoreCase("it")) {
             ParoleStandard paroleStandard = new StandardFromLocale();
             this.standards = paroleStandard.getStandards();
-        }else{
+        } else {
             if (detector.detectLanguage(input).equalsIgnoreCase("en"))
-            ParoleStandard paroleStandard = new StandardFromFile();
+                ParoleStandard paroleStandard = new StandardFromFile();
             this.standards = paroleStandard.getStandards();
         }
+    }
 
         ArrayList<String> paroleSimili = new ArrayList<>();
         ArrayList<String> inputTokenizzato = new ArrayList();

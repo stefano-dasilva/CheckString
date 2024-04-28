@@ -7,24 +7,28 @@ public class LangDetector {
     // Path to the directory containing language profiles
     private static final String PROFILES_DIRECTORY = "C:\\Users\\SAEEDH\\Downloads\\langProfiles"; // Provide the actual path here
 
-    public  LangDetector(){ }
-
-    // Metodo per rilevare la lingua di una stringa
-    public  String detectLanguage(String testo) {
+    static {
         try {
-            // Inizializza il language detector
+            // Initialize the language detector once
             DetectorFactory.loadProfile(PROFILES_DIRECTORY);
+        } catch (LangDetectException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        }
+    }
 
-            // Crea il detector e rileva la lingua del testo
+    public LangDetector() {}
+
+    // Method to detect the language of a string
+    public String detectLanguage(String text) {
+        try {
+            // Create the detector and detect the language of the text
             Detector detector = DetectorFactory.create();
-            detector.append(testo);
+            detector.append(text);
             return detector.detect();
         } catch (LangDetectException e) {
             e.printStackTrace();
             return "Unknown";
-
         }
     }
-
-
 }
