@@ -19,7 +19,7 @@
         <!-- SPECIFICA IL NOME UTENTE DI MYSQLWORKBENCH -->
         <property name = "hibernate.connection.username">root@localhost</property>
         <!-- SPECIFICA LA PASSWORD, L'HO LASCIATA VUOTA, DOVETE INSERIRE QUELLA CREATA QUANDO AVETE SCARICATO MYSQLWORKBENCH -->
-        <property name = "hibernate.connection.password">Ad!11223344</property>
+        <property name = "hibernate.connection.password"></property>
 
         <!-- List of XML mapping files -->
         <mapping resource = "Hibernate/standard.hbm.xml"/>
