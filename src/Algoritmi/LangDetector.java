@@ -1,3 +1,4 @@
+package  Algoritmi;
 import com.cybozu.labs.langdetect.Detector;
 import com.cybozu.labs.langdetect.DetectorFactory;
 import com.cybozu.labs.langdetect.LangDetectException;
@@ -5,7 +6,8 @@ import com.cybozu.labs.langdetect.LangDetectException;
 public class LangDetector {
 
     // Path to the directory containing language profiles
-    private static final String PROFILES_DIRECTORY = "C:\\Users\\SAEEDH\\Downloads\\langProfiles"; // Provide the actual path here
+    private static final String PROFILES_DIRECTORY = "C:\\Users\\DASILVAS\\Downloads\\langProfiles";
+    // Provide the actual path here
 
     static {
         try {

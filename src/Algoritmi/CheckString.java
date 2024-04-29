@@ -7,6 +7,8 @@ import Assets.DBmock;
 import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
+import ParoleStandard.StandardFromLocale;
+
 
 
 
@@ -34,8 +36,10 @@ public abstract class CheckString {
             this.standards = paroleStandard.getStandards();
         }else{
             if (detector.detectLanguage(input).equalsIgnoreCase("en"))
+            {
             ParoleStandard paroleStandard = new StandardFromFile();
             this.standards = paroleStandard.getStandards();
+            }
         }
 
         ArrayList<String> paroleSimili = new ArrayList<>();
