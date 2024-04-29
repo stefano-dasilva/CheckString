@@ -19,25 +19,26 @@ public class Tokenizer {
 	}
 	
 	 public ArrayList<String> getTokens(String str) {
-	        ArrayList<String> tokens = new ArrayList<>();
-	        readFile();
-	        // ArrayList che contiene le parole da eliminare dalla stringa
+		 ArrayList<String> tokens = new ArrayList<>();
+		 readFile();
+		 // ArrayList che contiene le parole da eliminare dalla stringa
 
-	        
-	        
-	        StringTokenizer tokenizer = new StringTokenizer(str, " ");
-	        while (tokenizer.hasMoreElements()) {
-	            tokens.add(tokenizer.nextToken());
-	        }
-	        
-	        // Utilizzo un iteratore per rimuovere le parole non volute dalla lista tokens
-	        Iterator<String> iterator = tokens.iterator();
-	        while (iterator.hasNext()) {
-	            String parola = iterator.next();
-	            if (paroleEliminate.contains(parola.toLowerCase())) {
-	                iterator.remove(); // Rimuovi l'elemento non voluto
-	            }
-	        }
+
+		 StringTokenizer tokenizer = new StringTokenizer(str, " ");
+		 while (tokenizer.hasMoreElements()) {
+			 tokens.add(tokenizer.nextToken());
+		 }
+		 if (tokens.size() > 1){
+
+			 // Utilizzo un iteratore per rimuovere le parole non volute dalla lista tokens
+			 Iterator<String> iterator = tokens.iterator();
+		 while (iterator.hasNext()) {
+			 String parola = iterator.next();
+			 if (paroleEliminate.contains(parola.toLowerCase())) {
+				 iterator.remove(); // Rimuovi l'elemento non voluto
+			 }
+		 }
+	 }
 	        
 	        return tokens;
 	    }

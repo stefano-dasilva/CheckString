@@ -18,7 +18,7 @@ public class LevhensteinCheckString extends CheckString {
 
     public boolean check(String word1, String word2) {
         int[][] dp = new int[word1.length() + 1][word2.length() + 1];
-        //System.out.println(" levenstein contronto "  + word1 + " con " + word2);
+       // System.out.println(" levenstein contronto "  + word1 + " con " + word2);
 
         for (int i = 0; i <= word1.length(); i++) {
             for (int j = 0; j <= word2.length(); j++) {
@@ -36,7 +36,7 @@ public class LevhensteinCheckString extends CheckString {
         }
 
         int distanza = dp[word1.length()][word2.length()];
-      //  System.out.println(distanza);
+      //  System.out.println( "distanza di lev tra " + word1 + " e " + word2 + " = " + distanza);
         if (distanza <= getSoglia()) {
             return true;
         } else {

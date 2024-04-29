@@ -8,6 +8,7 @@ import ParoleStandard.ParoleStandard;
 import ParoleStandard.Standard;
 import ParoleStandard.StandardFromFile;
 import ParoleStandard.StandardFromLocale;
+import ParoleStandard.StandardFromDB;
 
 
 
@@ -31,18 +32,19 @@ public abstract class CheckString {
         detector= new LangDetector();
 
 
-        if (detector.detectLanguage(input).equalsIgnoreCase("it")){
-            ParoleStandard paroleStandard = new StandardFromLocale();
+        if (detector.detectLanguage(input).equalsIgnoreCase("en") || datiAddestramento != null){
+            ParoleStandard paroleStandard = new StandardFromDB();
             this.standards = paroleStandard.getStandards();
-        }else{
-            if (detector.detectLanguage(input).equalsIgnoreCase("en"))
-            {
+           // System.out.println("altro");
+        }
+        else{
             ParoleStandard paroleStandard = new StandardFromFile();
             this.standards = paroleStandard.getStandards();
-            }
+          //  System.out.println("italiano");
         }
 
         ArrayList<String> paroleSimili = new ArrayList<>();
+
         ArrayList<String> inputTokenizzato = new ArrayList();
         inputTokenizzato.addAll(tokenizer.getTokens(input));
 
@@ -66,7 +68,7 @@ public abstract class CheckString {
         // ESEMPIO REPUBBLICA CECA -> CECA
         // LE PAROLE NON CONSIDERATI DAL TOKEN SONO PRESENTI IN ASSETS->LETTEREBANDITE.TXT
         for(String tokenized : inputTokenizzato){
-            System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
+           // System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
 
             // CONFRONTO I TOKEN CON LA LISTA DI PAROLE
             for (Standard standard : standards) {
@@ -124,6 +126,7 @@ public abstract class CheckString {
             // LA PAROLA SIMILE è UGUALE ALLA PAROLA ESATTA
             // ESEMPIO : SE SCRIVO IRAN PAROLE SIMILI POSSONO ESSERE IRAN E IRAQ
             for( String parolasimile : paroleSimili){
+             //   System.out.println(parolasimile);
                 if(parolasimile.equalsIgnoreCase(input)){
                     parolaEsatta = true;
                 }
@@ -145,10 +148,36 @@ public abstract class CheckString {
                 // ( MA SPESSO LA PAROLA IL CUI SCORE SUPERA LA SOGLIA è SOLO UNA
                 // QUINDI A VOLTE VIENE RESTITUITO GIUSTAMENTE UN ARRAYLIST DI 1 ELEMENTO
                 // ESEMPIO BRAZIL -> BRASILE
+
+                // QUI PER OGNI STRINGA SIMILE CON PIU PAROLE TIPO UNITED STATES ECC ECC
+                // CONTA SE IL NUMERO DI PAROLE SIMILI AL SUO INTERNO SIA UGUALE AL NUMERO
+                //  DI PAROLE CONTENUTE NELLA PAROLA STANDARD
+                // QUINDI UNITED STATES OF AMERICA  HA DUE PAROLE SIMILI A UNITED STATES
+                // IL NUMERO DI PAROLE DI UNITED STATES è DUE, QUINDI VA A DARE COME RISULTATO SOLO QUELLA
                 for( String parolasimile : paroleSimili) {
+                    int numParoleSimili = 0;
+                    ArrayList<String> standardTokenizzato = new ArrayList();
+                    standardTokenizzato.addAll(tokenizer.getTokens(parolasimile));
+                    ArrayList<String> provaarray = new ArrayList<>();
+                    provaarray.addAll(tokenizer.getTokens(input));
+                    for(String prova : provaarray ){
+                        for(String standard : standardTokenizzato){
+                            if( check(prova,standard)){
+                                numParoleSimili = numParoleSimili + 1;
+                            }
+                        }
+                    }
+                    if( numParoleSimili == standardTokenizzato.size()){
+                        ArrayList<String> risultato = new ArrayList<>();
+                        risultato.add(parolasimile);
+                        return  risultato;
+                    }
+
                     // TESTING
                      //   System.out.println(parolasimile);
                 }
+
+
             }
             return paroleSimili;
         } else if (next != null) {

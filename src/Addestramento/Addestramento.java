@@ -74,6 +74,9 @@ public class Addestramento {
         CheckString jaccard = new JaccardCheckString(0.75);
         containsString.setNext(jaccard);
         jaccard.setDatiAddestramento(this);
+        CheckString jaro = new JaroCheckString(0.75);
+        jaccard.setNext(jaro);
+        jaro.setDatiAddestramento(this);
 
         this.chain = levhensteinCheckString;
     }
