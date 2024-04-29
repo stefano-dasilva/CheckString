@@ -1,11 +1,5 @@
 import Addestramento.Addestramento;
-import Algoritmi.CheckString;
-import Algoritmi.DoubleMetaphoneCheckString;
-import Algoritmi.LevhensteinCheckString;
-import Algoritmi.MetaphoneCheckString;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import Assets.DBmock;
 
 public class AddestramentoTest {
 
@@ -14,7 +8,7 @@ public class AddestramentoTest {
 
        Addestramento addestramento = new Addestramento();
         addestramento.addestra();
-        addestramento.statistiche();
+        DBmock.getIstanza().statistiche();
        // addestramento.printMap();
 
     }

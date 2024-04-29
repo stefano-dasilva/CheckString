@@ -1,7 +1,9 @@
 package Algoritmi;
+import ParoleStandard.Standard;
+
 import java.util.HashSet;
 import java.util.Set;
-public class JaccardCheckString extends CheckString{
+public class JaccardCheckString extends CheckStringListValue{
     private double soglia;
 
 
@@ -9,7 +11,7 @@ public class JaccardCheckString extends CheckString{
     this.soglia=soglia;
     }
 
-    public boolean check(String word1, String word2) {
+    public Esito check(String word1, Standard word2) {
      //   System.out.println("Sto confrontando " + word1 + " con " + word2);
 
         // Trasforma le parole in insiemi di caratteri
@@ -20,7 +22,7 @@ public class JaccardCheckString extends CheckString{
             set1.add(c);
         }
 
-        for (char c : word2.toLowerCase().toCharArray()) {
+        for (char c : word2.getValue().toLowerCase().toCharArray()) {
             set2.add(c);
         }
 
@@ -38,9 +40,9 @@ public class JaccardCheckString extends CheckString{
         double interunion = intersectionSize / unionSize;
     //    System.out.println(interunion);
        if (interunion >= getSoglia()){
-           return true;
+           return new Esito(word2);
        } else {
-           return false;
+           return null;
        }
 
     }

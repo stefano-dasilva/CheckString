@@ -63,7 +63,7 @@ public class Addestramento {
         // LEVENSTEIN-> DOUBLEMETAPHONE -> CONTAINS -> JACCARD
         // PER OGNI ALGORITMO SETDATIADDESTRAMENTO(THIS) SIGNIFICA CHE L'ALGORITMO HA UN RIFERIMENTO A QUESTA
         // CLASSE ADDESTRAMENTO. GLI SERVE IL RIFERIMENTO PER SCRIVERE NELLA STRUTTURA DATI CASIDISUCCESSO
-        CheckString levhensteinCheckString = new LevhensteinCheckString(1);
+        CheckString levhensteinCheckString = new LevhensteinCheckString(2);
         CheckString metaphone = new DoubleMetaphoneCheckString();
         metaphone.setDatiAddestramento(this);
         levhensteinCheckString.setDatiAddestramento(this);

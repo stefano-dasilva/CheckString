@@ -1,9 +1,10 @@
 package Algoritmi;
 
+import ParoleStandard.Standard;
 import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.codec.language.Metaphone;
 
-public class DoubleMetaphoneCheckString extends CheckString {
+public class DoubleMetaphoneCheckString extends CheckStringListValue {
 
 
     // IN STA CLASSE SI UTILIZZA IL WRAPPER PATTERN, QUANDO VIENE ISTANZIATA SI ISTANZIA
@@ -24,8 +25,12 @@ public class DoubleMetaphoneCheckString extends CheckString {
 
     // FA IL CONTROLLO TRA LE DUE PAROLE DAL PUNTO DI VISTA FONETICO
     @Override
-    protected boolean check(String input, String standard) {
+    protected Esito check(String input, Standard standard) {
       //  System.out.println("metaphone confronto " + input + " con " + standard);
-        return doublemetaphone.isDoubleMetaphoneEqual(input,standard);
+        if(doublemetaphone.isDoubleMetaphoneEqual(input,standard.getValue())){
+            return new Esito(standard);
+        }
+        else
+            return null;
     }
 }

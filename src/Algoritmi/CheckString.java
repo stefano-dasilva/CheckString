@@ -15,23 +15,24 @@ import ParoleStandard.StandardFromDB;
 
 public abstract class CheckString {
 
-    private Collection<Standard> standards;
+  //  private Collection<Standard> standards;
     private CheckString next;
     // RIFERIMENTO DELLA CLASSE ADDESTRAMENTO
     private Addestramento datiAddestramento;
-    private DBmock dbmock;
-    private Tokenizer tokenizer;
-    private boolean parolaTrovata;
-    private  LangDetector detector;
+   // private  LangDetector detector;
 
 
 
-    public ArrayList<String> check( String input) {
-        standards = new ArrayList<>();
-        tokenizer = new Tokenizer();
-        detector= new LangDetector();
+    public Esito check( String input) {
+     //   standards = new ArrayList<>();
+      //  tokenizer = new Tokenizer();
+      //  detector= new LangDetector();
+
+        System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + input);
 
 
+
+/*
         if (detector.detectLanguage(input).equalsIgnoreCase("en") || datiAddestramento != null){
             ParoleStandard paroleStandard = new StandardFromDB();
             this.standards = paroleStandard.getStandards();
@@ -43,20 +44,57 @@ public abstract class CheckString {
           //  System.out.println("italiano");
         }
 
+
+
         ArrayList<String> paroleSimili = new ArrayList<>();
 
         ArrayList<String> inputTokenizzato = new ArrayList();
         inputTokenizzato.addAll(tokenizer.getTokens(input));
 
+         */
+        Esito esito = implementcheck(input);
+        if(esito!= null){
+            // non c'è un addestramento
+            if(datiAddestramento == null){
+                DBmock.getIstanza().putRicorrenza(input,esito.getStandard());
+                return esito;
+            }
+            else {
+                String chiave = this.getClass().getSimpleName();
+                // IL VALORE è PRESO CON GETORDEFAULT : SE LA CHIAVE NON è ANCORA PRESENTE
+                // PERCHè NON è STATO ANCORA INSERITO ALCUN CASO DI SUCCESSO ALLORA IL VALORE è 0
+                // SE NO è IL VALORE CONTENUTO DALLA CHIAVE;
+                int valore = DBmock.getIstanza().getCasiSuccesso().getOrDefault(chiave,0);
+                DBmock.getIstanza().getCasiSuccesso().put(chiave,valore + 1);
+                // System.out.println("aggiunto alla chiave" + this.getClass().getSimpleName() + " + 1" + "valore ora uguale a " +
+                if(next != null){
+                return next.check(input);
+                }
+                else
+                    return null;
+            }
+        }
+        else if (next != null) {
+            //     System.out.println("procedo con il successivo\n");
+            return next.check(input);
+        } else {
+            return null;
+        }
 
 
-        parolaTrovata = false;
+
+
+        /*
+
+        if(check(input, ) )
         // PRIMA DI SVOLGERE TUTTI GLI ALGORITMI CONTROLLO SE ALL'INTERNO DELLE
         // RICORRENZE PRESENTI NEL DBMOCK ( LA SIMULAZIONE DEL DB
         // HO GIà LA RICORRENZA, SE CE L'HO NON USO GLI ALGORITMI
         // QUESTO CONTROLLO IN PRATICA CHIEDE SE NELLA STRUTTURA RICORRENZE
         // C'è UNA CHIAVE CHE è UGUALE AL VALORE DELL'INPUT INSERITO
         // ESEMPIO : è STATA INSERITA UNA RICORRENZA CON CHIAVE FILI?
+
+        /*
         if(DBmock.getIstanza().getRicorrenze().containsKey(input)){
 
             ArrayList<String> riccorenza = new ArrayList<>();
@@ -67,6 +105,8 @@ public abstract class CheckString {
         // TOKENIZZO L'INPUT IN INGRESSO USANDO DEI VINCOLI
         // ESEMPIO REPUBBLICA CECA -> CECA
         // LE PAROLE NON CONSIDERATI DAL TOKEN SONO PRESENTI IN ASSETS->LETTEREBANDITE.TXT
+
+
         for(String tokenized : inputTokenizzato){
            // System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + tokenized);
 
@@ -186,6 +226,9 @@ public abstract class CheckString {
         } else {
             return null;
         }
+
+         */
+
     }
     protected String getName(){
         return this.getClass().getSimpleName();
@@ -199,16 +242,11 @@ public abstract class CheckString {
         this.datiAddestramento = datiAddestramento;
     }
 
-    public Addestramento getDatiAddestramento() {
-        return datiAddestramento;
-    }
 
-    public Collection<Standard> getStandards() {
-        return standards;
-    }
+
 
     // TEMPLATE
-    protected abstract boolean check(String input, String standard);
+    protected abstract Esito implementcheck(String input);
 
 
 

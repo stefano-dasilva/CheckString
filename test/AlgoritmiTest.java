@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class AlgoritmiTest {
     public static void main(String[] args) {
+        System.out.println("prova");
+        /*
         ArrayList<String> suggerimenti = new ArrayList<>();
 
         // QUESTO TEST POI SARà UTILIZZATO COME MAIN
@@ -86,5 +88,7 @@ public class AlgoritmiTest {
         // STAMPA LA STRUTTURA DATI CHE MOSTRA TUTTE LE RICORRENZE
         DBmock.getIstanza().printMap();
         scanIn.close();
+    }
+    */
     }
 }

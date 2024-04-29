@@ -1,11 +1,17 @@
 package Algoritmi;
 
-public class ContainsCheckString extends CheckString {
+import ParoleStandard.Standard;
+
+public class ContainsCheckString extends CheckStringListValue {
 
 
     @Override
-    public boolean check (String input, String standard) {
+    public Esito check (String input, Standard standard) {
+        if(input.contains(standard.getValue())){
+            return new Esito(standard);
+        }
+        else
+            return null;
 
-        return  input.contains(standard);
     }
 }

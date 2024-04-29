@@ -1,6 +1,8 @@
 package Algoritmi;
 
-public class JaroCheckString extends CheckString {
+import ParoleStandard.Standard;
+
+public class JaroCheckString extends CheckStringListValue {
 private double soglia;
 
 public JaroCheckString(double soglia) {
@@ -9,17 +11,17 @@ public JaroCheckString(double soglia) {
 
         // Function to calculate the
 // Jaro Similarity of two Strings
-        public boolean check(String s1, String s2)
+        public Esito check(String s1, Standard s2)
         {
 
            // System.out.println("Jaro confronto " + s1 + " con " + s2);
             // If the Strings are equal
-            if (s1 == s2)
-                return true;
+            if (s1 == s2.getValue())
+                return new Esito(s2) ;
 
             // Length of two Strings
             int len1 = s1.length(),
-                    len2 = s2.length();
+                    len2 = s2.getValue().length();
 
             // Maximum distance upto which matching
             // is allowed
@@ -30,7 +32,7 @@ public JaroCheckString(double soglia) {
 
             // Hash for matches
             int hash_s1[] = new int[s1.length()];
-            int hash_s2[] = new int[s2.length()];
+            int hash_s2[] = new int[s2.getValue().length()];
 
             // Traverse through the first String
             for (int i = 0; i < len1; i++)
@@ -41,7 +43,7 @@ public JaroCheckString(double soglia) {
                      j < Math.min(len2, i + max_dist + 1); j++)
 
                     // If there is a match
-                    if (s1.toLowerCase().charAt(i) == s2.toLowerCase().charAt(j) && hash_s2[j] == 0)
+                    if (s1.toLowerCase().charAt(i) == s2.getValue().toLowerCase().charAt(j) && hash_s2[j] == 0)
                     {
                         hash_s1[i] = 1;
                         hash_s2[j] = 1;
@@ -52,7 +54,7 @@ public JaroCheckString(double soglia) {
 
             // If there is no match
             if (match == 0)
-                return false;
+                return null;
 
             // Number of transpositions
             double t = 0;
@@ -72,7 +74,7 @@ public JaroCheckString(double soglia) {
                     while (hash_s2[point] == 0)
                         point++;
 
-                    if (s1.charAt(i) != s2.charAt(point++) )
+                    if (s1.charAt(i) != s2.getValue().charAt(point++) )
                         t++;
                 }
 
@@ -84,6 +86,11 @@ public JaroCheckString(double soglia) {
         //    System.out.println("score : " + jarosimilarity);
 
 
-            return jarosimilarity >= soglia;
+            if(jarosimilarity >= soglia){
+                return  new Esito(s2);
+            }
+            else
+               return null;
+
         }
 }
