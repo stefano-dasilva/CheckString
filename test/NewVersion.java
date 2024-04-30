@@ -1,7 +1,5 @@
-import Algoritmi.CheckString;
-import Algoritmi.JaccardCheckString;
-import Algoritmi.JaroCheckString;
-import Algoritmi.LevhensteinCheckString;
+import Algoritmi.*;
+import Assets.DBmock;
 
 public class NewVersion {
     public static void main(String[] args) {
@@ -10,6 +8,9 @@ public class NewVersion {
         JaccardCheckString jaccardCheckString = new JaccardCheckString(7.5);
         lev.setNext(jaro);
         jaro.setNext(jaccardCheckString);
-        lev.check("brazil");
+        Esito esito = lev.check("brazile");
+        System.out.println(esito.getStandard().getId());
+        DBmock.getIstanza().printMap();
+        System.out.println(DBmock.getIstanza().getStandardTable().get(esito.getStandard().getId()).getNumRicerche());
     }
     }

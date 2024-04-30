@@ -12,11 +12,13 @@ public class StandardFromLocale implements ParoleStandard {
     public StandardFromLocale(){
         countryCodes = Locale.getISOCountries();
         Locale[] locales = Locale.getAvailableLocales();
+        int id = 1;
         for(Locale locale : locales){
             String countryCode = locale.getCountry();
             if (!countryCode.isEmpty()) {
-                Standard standard = new Standard(locale.getCountry(), locale.getDisplayCountry());
+                Standard standard = new Standard(id,locale.getCountry(), locale.getDisplayCountry(), 0);
                 paroleStandard.add(standard);
+                id = id + 1;
             }
         }
 

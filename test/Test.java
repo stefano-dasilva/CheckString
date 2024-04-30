@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
+        /*
 
         CheckString checkStringContained = new ContainedCheckString();
         CheckString checkStringContains = new ContainsCheckString();
@@ -19,6 +20,8 @@ public class Test {
         for(Standard standard : standards){
             System.out.println(standard.getValue() );
         }
+
+         */
     }
 
 }

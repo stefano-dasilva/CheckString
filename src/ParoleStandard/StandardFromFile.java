@@ -1,5 +1,7 @@
 package ParoleStandard;
 
+import Assets.DBmock;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -17,12 +19,16 @@ public class StandardFromFile implements ParoleStandard {
         try{
             File file = new File("src/Assets/Nazioni2.txt");
             Scanner scanner = new Scanner(file);
+            int id = 1;
             while (scanner.hasNextLine()){
                 String parola = scanner.nextLine();
                 String codice = parola.substring(0, parola.indexOf(',')-1).trim();
                 String nome = parola.substring(parola.indexOf(',')+1, parola.length()).trim();
-                Standard standard = new Standard(codice, nome);
+                Standard standard = new Standard(id,codice, nome, 0);
+             //   System.out.println("NOME PAESE : " + nome + " CODICE PAESE " + standard.getId() );
                 paroleStandard.add(standard);
+                DBmock.getIstanza().getStandardTable().put(standard.getId(),standard);
+                id = id + 1;
             }
             scanner.close();
         }

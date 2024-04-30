@@ -15,6 +15,7 @@
         <!-- CORRISPONDENZE TRA GLI ATTRIBUTI DELLA CLASSE STANDARD E LE COLONNE DELLA TABELLA -->
         <property name = "code" column = "code" type = "string"/>
         <property name = "value" column = "value" type = "string"/>
+        <property name = "numRicerche" column = "num_ricerche" type = "int"/>
 
     </class>
 

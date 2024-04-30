@@ -5,6 +5,7 @@ public class Standard {
 	private int id;
    private String code;
    private String value;
+   private int numRicerche;
 public String getCode() {
 	return code;
 }
@@ -22,10 +23,12 @@ public void setValue(String value) {
 public Standard(){
 
 }
-public Standard(String code, String value) {
+public Standard(int id,String code, String value,int numRicerche ) {
 
 	this.code = code;
 	this.value = value;
+	this.numRicerche = numRicerche;
+	this.id = id;
 }
 
 	public int getId() {
@@ -34,6 +37,14 @@ public Standard(String code, String value) {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getNumRicerche() {
+		return numRicerche;
+	}
+
+	public void setNumRicerche(int numRicerche) {
+		this.numRicerche = numRicerche;
 	}
 
 	@Override

@@ -56,6 +56,9 @@ public abstract class CheckString {
         if(esito!= null){
             // non c'è un addestramento
             if(datiAddestramento == null){
+
+                Standard standard = esito.getStandard();
+                standard.setNumRicerche(standard.getNumRicerche() + 1);
                 DBmock.getIstanza().putRicorrenza(input,esito.getStandard());
                 return esito;
             }
@@ -80,6 +83,8 @@ public abstract class CheckString {
         } else {
             return null;
         }
+
+
 
 
 
