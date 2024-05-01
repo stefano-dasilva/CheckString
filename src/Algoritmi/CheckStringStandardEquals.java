@@ -1,8 +1,10 @@
 package Algoritmi;
 
+import Model.Corrispondenza;
+
 public class CheckStringStandardEquals extends CheckStringSingleValue{
     @Override
-    protected Esito checkSingle(String input) {
+    protected Corrispondenza checkSingle(String input) {
         return null;
     }
 }

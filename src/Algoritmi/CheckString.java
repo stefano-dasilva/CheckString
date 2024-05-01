@@ -1,16 +1,9 @@
 package Algoritmi;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import Addestramento.Addestramento;
 import Assets.DBmock;
-import ParoleStandard.ParoleStandard;
-import ParoleStandard.Standard;
-import ParoleStandard.StandardFromFile;
-import ParoleStandard.StandardFromLocale;
-import ParoleStandard.StandardFromDB;
-
-
+import Model.Corrispondenza;
+import Model.Standard;
 
 
 public abstract class CheckString {
@@ -23,7 +16,7 @@ public abstract class CheckString {
 
 
 
-    public Esito check( String input) {
+    public Corrispondenza check(String input) {
      //   standards = new ArrayList<>();
       //  tokenizer = new Tokenizer();
       //  detector= new LangDetector();
@@ -52,15 +45,15 @@ public abstract class CheckString {
         inputTokenizzato.addAll(tokenizer.getTokens(input));
 
          */
-        Esito esito = implementcheck(input);
-        if(esito!= null){
+        Corrispondenza corrispondenza = implementcheck(input);
+        if(corrispondenza != null){
             // non c'è un addestramento
             if(datiAddestramento == null){
 
-                Standard standard = esito.getStandard();
+                Standard standard = corrispondenza.getStandard();
                 standard.setNumRicerche(standard.getNumRicerche() + 1);
-                DBmock.getIstanza().putRicorrenza(input,esito.getStandard());
-                return esito;
+                DBmock.getIstanza().putRicorrenza(input, corrispondenza.getStandard());
+                return corrispondenza;
             }
             else {
                 String chiave = this.getClass().getSimpleName();
@@ -251,7 +244,7 @@ public abstract class CheckString {
 
 
     // TEMPLATE
-    protected abstract Esito implementcheck(String input);
+    protected abstract Corrispondenza implementcheck(String input);
 
 
 

@@ -1,9 +1,10 @@
 package Algoritmi;
-import ParoleStandard.Standard;
+import Model.Corrispondenza;
+import Model.Standard;
 
 import java.util.HashSet;
-import java.util.Set;
-public class JaccardCheckString extends CheckStringListValue{
+
+public class JaccardCheckString extends CheckStringListValue implements CheckStringSingleInput{
     private double soglia;
 
 
@@ -11,7 +12,7 @@ public class JaccardCheckString extends CheckStringListValue{
     this.soglia=soglia;
     }
 
-    public Esito check(String word1, Standard word2) {
+    public Corrispondenza check(String word1, Standard word2) {
      //   System.out.println("Sto confrontando " + word1 + " con " + word2);
 
         // Trasforma le parole in insiemi di caratteri
@@ -40,7 +41,7 @@ public class JaccardCheckString extends CheckStringListValue{
         double interunion = intersectionSize / unionSize;
     //    System.out.println(interunion);
        if (interunion >= getSoglia()){
-           return new Esito(word2);
+           return new Corrispondenza(word2);
        } else {
            return null;
        }

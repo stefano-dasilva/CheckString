@@ -1,6 +1,6 @@
 package Assets;
 
-import ParoleStandard.Standard;
+import Model.Standard;
 
 import java.util.HashMap;
 import java.util.Map;

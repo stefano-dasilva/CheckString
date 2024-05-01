@@ -1,10 +1,3 @@
-import Algoritmi.CheckString;
-import Algoritmi.ContainsCheckString;
-import ParoleStandard.Standard;
-import ParoleStandard.StandardFromFile;
-
-import java.util.ArrayList;
-
 public class Test {
     public static void main(String[] args) {
         /*

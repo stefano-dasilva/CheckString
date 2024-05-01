@@ -1,12 +1,9 @@
 package Algoritmi;
 
-import ParoleStandard.Standard;
+import Model.Corrispondenza;
+import Model.Standard;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.StringTokenizer;
-
-public class LevhensteinCheckString extends CheckStringListValue {
+public class LevhensteinCheckString extends CheckStringListValue implements CheckStringSingleInput {
     private int soglia;
 
     public LevhensteinCheckString(int soglia) {
@@ -18,7 +15,7 @@ public class LevhensteinCheckString extends CheckStringListValue {
 
 
 
-    public Esito check(String word1, Standard word2) {
+    public Corrispondenza check(String word1, Standard word2) {
         int[][] dp = new int[word1.length() + 1][word2.getValue().length() + 1];
        // System.out.println(" levenstein contronto "  + word1 + " con " + word2);
 
@@ -40,7 +37,7 @@ public class LevhensteinCheckString extends CheckStringListValue {
         int distanza = dp[word1.length()][word2.getValue().length()];
       //  System.out.println( "distanza di lev tra " + word1 + " e " + word2 + " = " + distanza);
         if (distanza <= getSoglia()) {
-            return new Esito(word2);
+            return new Corrispondenza(word2);
         } else {
             return null;
         }

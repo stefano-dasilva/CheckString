@@ -1,10 +1,3 @@
-import Algoritmi.*;
-import Assets.DBmock;
-import ParoleStandard.Standard;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class AlgoritmiTest {
     public static void main(String[] args) {
         System.out.println("prova");

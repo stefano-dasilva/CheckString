@@ -1,8 +1,9 @@
 package Algoritmi;
 
-import ParoleStandard.Standard;
+import Model.Corrispondenza;
+import Model.Standard;
 
-public class JaroCheckString extends CheckStringListValue {
+public class JaroCheckString extends CheckStringListValue implements CheckStringSingleInput {
 private double soglia;
 
 public JaroCheckString(double soglia) {
@@ -11,13 +12,13 @@ public JaroCheckString(double soglia) {
 
         // Function to calculate the
 // Jaro Similarity of two Strings
-        public Esito check(String s1, Standard s2)
+        public Corrispondenza check(String s1, Standard s2)
         {
 
            // System.out.println("Jaro confronto " + s1 + " con " + s2);
             // If the Strings are equal
             if (s1 == s2.getValue())
-                return new Esito(s2) ;
+                return new Corrispondenza(s2) ;
 
             // Length of two Strings
             int len1 = s1.length(),
@@ -87,7 +88,7 @@ public JaroCheckString(double soglia) {
 
 
             if(jarosimilarity >= soglia){
-                return  new Esito(s2);
+                return  new Corrispondenza(s2);
             }
             else
                return null;

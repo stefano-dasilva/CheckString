@@ -1,14 +1,15 @@
 package Algoritmi;
 
-import ParoleStandard.Standard;
+import Model.Corrispondenza;
+import Model.Standard;
 
 public class ContainsCheckString extends CheckStringListValue {
 
 
     @Override
-    public Esito check (String input, Standard standard) {
+    public Corrispondenza check (String input, Standard standard) {
         if(input.contains(standard.getValue())){
-            return new Esito(standard);
+            return new Corrispondenza(standard);
         }
         else
             return null;

@@ -1,10 +1,33 @@
-package ParoleStandard;
+package Model;
+import Dao.Interface.Bean;
+import com.sun.istack.NotNull;
 
-public class Standard {
-	// QUESTO ATTRIBUTO ID DEV'ESSERE UTILIZZATO DA HIBERNATE
-	private int id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+
+@Table (name = "standard")
+
+public class Standard  {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	@Column(name = "code", unique = true)
    private String code;
+	@Column(name = "value", unique = true)
+	@NotNull
    private String value;
+	@Column(name = "num_ricerche")
    private int numRicerche;
 public String getCode() {
 	return code;
@@ -49,7 +72,7 @@ public Standard(int id,String code, String value,int numRicerche ) {
 
 	@Override
 public String toString() {
-	return "ParoleStandard.Standard [code=" + code + ", value=" + value + "]";
+	return "Model.Standard [code=" + code + ", value=" + value + "]";
 }
 
 	

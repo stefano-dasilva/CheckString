@@ -1,4 +1,5 @@
 package ParoleStandard;
+import Model.Standard;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -6,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class StandardFromDB implements ParoleStandard {

@@ -1,6 +1,7 @@
 package Algoritmi;
 
-import ParoleStandard.Standard;
+import Model.Corrispondenza;
+import Model.Standard;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,10 +13,17 @@ import java.util.StringTokenizer;
 public class TokenizerCheckString extends CheckStringListValue {
 
 	ArrayList<String> paroleEliminate;
+	ArrayList<CheckStringSingleInput> algoritmi;
 
 
 	public TokenizerCheckString() {
 		this.paroleEliminate = new ArrayList<>();
+		this.algoritmi = new ArrayList<>();
+		algoritmi.add(new LevhensteinCheckString(2));
+		algoritmi.add(new JaccardCheckString(0.75));
+		algoritmi.add(new JaroCheckString(0.75));
+		algoritmi.add(new DoubleMetaphoneCheckString());
+
 	}
 	
 	 public ArrayList<String> getTokens(String str) {
@@ -70,24 +78,28 @@ public class TokenizerCheckString extends CheckStringListValue {
 	    }
 
 	@Override
-	protected Esito check(String input, Standard standard) {
-
-		CheckString lev = new LevhensteinCheckString(2);
-		CheckString jac = new JaccardCheckString(0.7);
-		lev.setNext(jac);
+	protected Corrispondenza check(String input, Standard standard) {
 
 		ArrayList<String> inputTokens = new ArrayList();
 		inputTokens.addAll(getTokens(input));
-		ArrayList<String> standardTokens = new ArrayList<>();
-		standardTokens.addAll(getTokens(standard.getValue()));
+		ArrayList<Standard> standardTokens = new ArrayList<>();
+		String[] values = standard.getValue().split("\\s+");
 
-		for(String inputToken : inputTokens){
-			for(String standardToken : standardTokens){
-				if(inputToken.equals(standardToken)){
-					return new Esito(standard);
-				}
-			}
+		for (String value : values) {
+			Standard token = new Standard(standard.getId(), standard.getCode(), value, 0);
+			standardTokens.add(token);
 		}
+
+
+		for (CheckStringSingleInput algoritmo : algoritmi){
+			for (String inputToken : inputTokens) {
+				for( Standard standardtoken : standardTokens)
+					if (algoritmo.check(inputToken, standardtoken) != null) {
+						System.out.println("trovato con tokenizer");
+						return new Corrispondenza(standard);
+					}
+			}
+	}
 		return null;
 	}
 }

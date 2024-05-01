@@ -1,21 +1,11 @@
 package Algoritmi;
 
+import Model.Corrispondenza;
 import ParoleStandard.ParoleStandard;
-import ParoleStandard.Standard;
+import Model.Standard;
 import ParoleStandard.StandardFromFile;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import ParoleStandard.Standard;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import ParoleStandard.StandardFromDB;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class CheckStringListValue extends  CheckString{
@@ -23,15 +13,15 @@ public abstract class CheckStringListValue extends  CheckString{
     private Collection<Standard> standards;
 
 
-    public Esito implementcheck (String input){
+    public Corrispondenza implementcheck (String input){
 
         ParoleStandard paroleStandard = new StandardFromFile();
         this.standards = paroleStandard.getStandards();
 
         for (Standard standard : standards) {
-            Esito esito = check(input,standard);
+            Corrispondenza corrispondenza = check(input,standard);
 
-            if (esito != null){
+            if (corrispondenza != null){
                 /*
                 SessionFactory factory =  new Configuration().configure("Hibernate/hibernate.cfg.xml").buildSessionFactory();
                 Session session = factory.openSession();
@@ -51,7 +41,7 @@ public abstract class CheckStringListValue extends  CheckString{
                     session.close();
                 }
                 */
-                return  esito;
+                return corrispondenza;
             }
         }
         return null;
@@ -59,6 +49,6 @@ public abstract class CheckStringListValue extends  CheckString{
 
 
 
-    protected abstract  Esito check(String input, Standard standard);
+    protected abstract Corrispondenza check(String input, Standard standard);
 
 }
