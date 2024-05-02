@@ -21,6 +21,7 @@ public class Corrispondenza  {
     private Integer numRicerche;
 
 
+
     @Column (name =  "input")
     private String input;
 

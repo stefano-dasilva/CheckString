@@ -80,6 +80,9 @@ public class TokenizerCheckString extends CheckStringListValue {
 	@Override
 	protected Corrispondenza check(String input, Standard standard) {
 
+
+
+
 		ArrayList<String> inputTokens = new ArrayList();
 		inputTokens.addAll(getTokens(input));
 		ArrayList<Standard> standardTokens = new ArrayList<>();

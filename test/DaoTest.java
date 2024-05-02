@@ -21,6 +21,7 @@ public class DaoTest {
 
 
         List<Standard> standards = standardDao.getAll();
+        /*
 
         Standard standard = standardDao.findById(3);
         System.out.println(standard);
@@ -28,6 +29,8 @@ public class DaoTest {
         corrispondenza.setInput("cio");
         corrispondenza.setStandard(standard);
         corrispondenzaDao.add(corrispondenza);
+
+         */
 
 
 
@@ -38,12 +41,12 @@ public class DaoTest {
 
          */
 
-      /*  NonTrovata nonTrovata = new NonTrovata();
-        nonTrovata.setInput("esemio");
+        NonTrovata nonTrovata = new NonTrovata();
+        nonTrovata.setInput("SHGSGDGDG");
         NonTrovataDao nonTrovataDao = factory.getBean("NonTrovataDao", NonTrovataDao.class);
         // se non c'è la aggiunge, se no aumenta il contatore
         nonTrovataDao.add(nonTrovata);
-*/
+
 
 
 

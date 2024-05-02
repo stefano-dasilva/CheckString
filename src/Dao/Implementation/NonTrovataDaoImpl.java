@@ -25,7 +25,7 @@ public class NonTrovataDaoImpl extends BaseDaoImpl implements NonTrovataDao {
             t.setNumRicerche(t.getNumRicerche() + 1);
             manager.merge(t);
         } else {
-            nonTrovata.setNumRicerche(0);
+            nonTrovata.setNumRicerche(1);
             manager.persist(nonTrovata);
         }
         return nonTrovata;

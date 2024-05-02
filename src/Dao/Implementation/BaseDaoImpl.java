@@ -22,6 +22,8 @@ public class BaseDaoImpl implements BaseDao {
     @Transactional
     @Override
     public  List<?> getAll(Class c) {
+
+
         String jpql = "from " + c.getSimpleName();
         Query q = manager.createQuery(jpql);
         List<?> resultList = q.getResultList();

@@ -23,6 +23,7 @@ public class CorrispondenzaDaoImpl extends BaseDaoImpl  implements Corrispondenz
     @Override
     public Corrispondenza add(Corrispondenza corrispondenza) {
 
+
         Corrispondenza c = findByInput(corrispondenza.getInput());
 
         if(c != null){
@@ -30,7 +31,7 @@ public class CorrispondenzaDaoImpl extends BaseDaoImpl  implements Corrispondenz
             manager.merge(c);
         }
         else{
-            corrispondenza.setNumRicerche(0);
+            corrispondenza.setNumRicerche(1);
             manager.persist(corrispondenza);
         }
         return corrispondenza;
