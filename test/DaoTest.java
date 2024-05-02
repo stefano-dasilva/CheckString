@@ -1,4 +1,5 @@
 import Config.Beans;
+import Dao.Interface.AlgoritmoDao;
 import Dao.Interface.CorrispondenzaDao;
 import Dao.Interface.NonTrovataDao;
 import Dao.Interface.StandardDao;
@@ -41,12 +42,17 @@ public class DaoTest {
 
          */
 
+        /*
         NonTrovata nonTrovata = new NonTrovata();
         nonTrovata.setInput("SHGSGDGDG");
         NonTrovataDao nonTrovataDao = factory.getBean("NonTrovataDao", NonTrovataDao.class);
         // se non c'è la aggiunge, se no aumenta il contatore
         nonTrovataDao.add(nonTrovata);
 
+         */
+
+        AlgoritmoDao algoritmoDao = factory.getBean("AlgoritmoDao", AlgoritmoDao.class);
+        algoritmoDao.incrementaSucceso("LevhensteinCheckString");
 
 
 

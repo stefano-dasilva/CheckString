@@ -28,7 +28,10 @@ public class DoubleMetaphoneCheckString extends CheckStringListValue implements 
     public Corrispondenza check(String input, Standard standard) {
       //  System.out.println("metaphone confronto " + input + " con " + standard);
         if(doublemetaphone.isDoubleMetaphoneEqual(input,standard.getValue())){
-            return new Corrispondenza(standard);
+            Corrispondenza corrispondenza = new Corrispondenza();
+            corrispondenza.setStandard(standard);
+            corrispondenza.setInput(input);
+            return corrispondenza;
         }
         else
             return null;

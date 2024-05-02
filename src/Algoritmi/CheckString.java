@@ -2,7 +2,9 @@ package Algoritmi;
 
 import Addestramento.Addestramento;
 import Assets.DBmock;
+import Config.FactoryUtil;
 import Model.Corrispondenza;
+import Model.NonTrovata;
 import Model.Standard;
 
 
@@ -16,10 +18,13 @@ public abstract class CheckString {
 
 
 
+
     public Corrispondenza check(String input) {
      //   standards = new ArrayList<>();
       //  tokenizer = new Tokenizer();
       //  detector= new LangDetector();
+
+        FactoryUtil factoryUtil = FactoryUtil.getIstanza();
 
         System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + input);
 
@@ -49,11 +54,19 @@ public abstract class CheckString {
         if(corrispondenza != null){
             // non c'è un addestramento
             if(datiAddestramento == null){
+                factoryUtil.getCorrispondenzaDao().add(corrispondenza);
 
+                return  corrispondenza;
+/*
                 Standard standard = corrispondenza.getStandard();
                 standard.setNumRicerche(standard.getNumRicerche() + 1);
+
+
                 DBmock.getIstanza().putRicorrenza(input, corrispondenza.getStandard());
                 return corrispondenza;
+
+ */
+
             }
             else {
                 String chiave = this.getClass().getSimpleName();
@@ -74,6 +87,9 @@ public abstract class CheckString {
             //     System.out.println("procedo con il successivo\n");
             return next.check(input);
         } else {
+            NonTrovata nonTrovata = new NonTrovata();
+            nonTrovata.setInput(input);
+            factoryUtil.getNonTrovataDao().add(nonTrovata);
             return null;
         }
 

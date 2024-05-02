@@ -1,5 +1,6 @@
 package Dao.Interface;
 
+import Model.Algoritmo;
 import Model.Corrispondenza;
 import Model.Standard;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,4 +17,11 @@ public interface StandardDao {
 
     @Transactional
     public Standard findById(Integer id);
+
+    @Transactional
+    public Standard findbyName(String nomepaese);
+
+    @Transactional
+    public Standard incrementaNumRicerche (String nomepaese);
+
 }

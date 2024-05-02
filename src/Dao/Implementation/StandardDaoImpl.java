@@ -1,12 +1,15 @@
 package Dao.Implementation;
 
 import Dao.Interface.StandardDao;
+import Model.Algoritmo;
 import Model.Corrispondenza;
 import Model.Standard;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 public class StandardDaoImpl extends BaseDaoImpl implements StandardDao {
@@ -19,6 +22,7 @@ public class StandardDaoImpl extends BaseDaoImpl implements StandardDao {
     @Transactional
     @Override
     public Standard add(Standard standard) {
+        standard.setNumRicerche(0);
         manager.persist(standard);
         return standard;
     }
@@ -31,5 +35,31 @@ public class StandardDaoImpl extends BaseDaoImpl implements StandardDao {
     @Override
     public Standard findById(Integer id) {
         return (Standard) super.findById(id,Standard.class);
+    }
+
+
+
+
+    @Override
+    public Standard findbyName(String nomepaese) {
+        try{
+            String jpql = "from Standard where value = :nomepaese";
+            Query q = manager.createQuery(jpql);
+            q.setParameter("nomepaese", nomepaese);
+            System.out.println(nomepaese);
+            return (Standard) q.getSingleResult();
+        }
+        catch (NoResultException exception){
+            return null;
+        }
+    }
+
+    @Override
+    public Standard incrementaNumRicerche(String nomepaese) {
+        Standard standard = (Standard) findbyName(nomepaese);
+        System.out.println(standard.getValue());
+        standard.setNumRicerche(standard.getNumRicerche() + 1 );
+        manager.merge(standard);
+        return null;
     }
 }

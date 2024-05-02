@@ -99,7 +99,10 @@ public class TokenizerCheckString extends CheckStringListValue {
 				for( Standard standardtoken : standardTokens)
 					if (algoritmo.check(inputToken, standardtoken) != null) {
 						System.out.println("trovato con tokenizer");
-						return new Corrispondenza(standard);
+						Corrispondenza corrispondenza = new Corrispondenza();
+						corrispondenza.setStandard(standard);
+						corrispondenza.setInput(input);
+						return corrispondenza;
 					}
 			}
 	}

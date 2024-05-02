@@ -41,7 +41,10 @@ public class JaccardCheckString extends CheckStringListValue implements CheckStr
         double interunion = intersectionSize / unionSize;
     //    System.out.println(interunion);
        if (interunion >= getSoglia()){
-           return new Corrispondenza(word2);
+           Corrispondenza corrispondenza = new Corrispondenza();
+           corrispondenza.setStandard(word2);
+           corrispondenza.setInput(word1);
+           return corrispondenza;
        } else {
            return null;
        }

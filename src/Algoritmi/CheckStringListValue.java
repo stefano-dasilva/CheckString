@@ -1,11 +1,13 @@
 package Algoritmi;
 
+import Config.FactoryUtil;
 import Model.Corrispondenza;
 import ParoleStandard.ParoleStandard;
 import Model.Standard;
 import ParoleStandard.StandardFromFile;
 
 
+import javax.xml.stream.FactoryConfigurationError;
 import java.util.Collection;
 
 public abstract class CheckStringListValue extends  CheckString{
@@ -14,33 +16,18 @@ public abstract class CheckStringListValue extends  CheckString{
 
 
     public Corrispondenza implementcheck (String input){
-
+/*
         ParoleStandard paroleStandard = new StandardFromFile();
         this.standards = paroleStandard.getStandards();
+
+ */
+        this.standards = FactoryUtil.getIstanza().getStandardDao().getAll();
 
         for (Standard standard : standards) {
             Corrispondenza corrispondenza = check(input,standard);
 
             if (corrispondenza != null){
-                /*
-                SessionFactory factory =  new Configuration().configure("Hibernate/hibernate.cfg.xml").buildSessionFactory();
-                Session session = factory.openSession();
-                Transaction tx = null;
-                try {
-                    tx = session.beginTransaction();
-                    System.out.println("numero ricerche : " + standard.getNumRicerche());
-                    standard.setNumRicerche(standard.getNumRicerche() + 1);
-                    System.out.println("numero ricerche dopo : " + standard.getNumRicerche());
-
-                    session.update(standard);
-                    tx.commit();
-                } catch (HibernateException e) {
-                    if (tx != null) tx.rollback();
-                    e.printStackTrace();
-                } finally {
-                    session.close();
-                }
-                */
+                FactoryUtil.getIstanza().getStandardDao().incrementaNumRicerche(standard.getValue());
                 return corrispondenza;
             }
         }

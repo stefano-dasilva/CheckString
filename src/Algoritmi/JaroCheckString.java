@@ -88,7 +88,10 @@ public JaroCheckString(double soglia) {
 
 
             if(jarosimilarity >= soglia){
-                return  new Corrispondenza(s2);
+                Corrispondenza corrispondenza = new Corrispondenza();
+                corrispondenza.setStandard(s2);
+                corrispondenza.setInput(s1);
+                return corrispondenza;
             }
             else
                return null;

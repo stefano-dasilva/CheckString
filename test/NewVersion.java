@@ -11,11 +11,8 @@ public class NewVersion {
         lev.setNext(jaro);
         jaro.setNext(jaccardCheckString);
         jaccardCheckString.setNext(tokenizer);
-        Corrispondenza corrispondenza = lev.check("repubblica ce");
-        System.out.println(corrispondenza.getStandard().getId());
-        System.out.println(corrispondenza.getStandard().getValue());
+        Corrispondenza corrispondenza = lev.check("philippines");
 
-        DBmock.getIstanza().printMap();
-        System.out.println(DBmock.getIstanza().getStandardTable().get(corrispondenza.getStandard().getId()).getNumRicerche());
+
     }
     }

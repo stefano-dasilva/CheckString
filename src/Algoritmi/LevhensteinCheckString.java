@@ -37,7 +37,10 @@ public class LevhensteinCheckString extends CheckStringListValue implements Chec
         int distanza = dp[word1.length()][word2.getValue().length()];
       //  System.out.println( "distanza di lev tra " + word1 + " e " + word2 + " = " + distanza);
         if (distanza <= getSoglia()) {
-            return new Corrispondenza(word2);
+            Corrispondenza corrispondenza = new Corrispondenza();
+            corrispondenza.setStandard(word2);
+            corrispondenza.setInput(word1);
+            return corrispondenza;
         } else {
             return null;
         }
