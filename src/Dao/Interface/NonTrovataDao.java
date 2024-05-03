@@ -11,4 +11,7 @@ public interface NonTrovataDao {
 
     @Transactional
     public NonTrovata findByInput(String input);
+
+    @Transactional
+    public NonTrovata Update(NonTrovata nonTrovata);
 }

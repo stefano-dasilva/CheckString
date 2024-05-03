@@ -6,10 +6,14 @@ import org.springframework.transaction.annotation.Transactional;
 public interface CorrispondenzaDao {
 
 
-    @Transactional
+   @Transactional
     public Corrispondenza add(Corrispondenza corrispondenza);
 
     @Transactional
     public Corrispondenza findByInput(String input);
+
+    @Transactional
+    public Corrispondenza Update (Corrispondenza corrispondenza);
+
 
 }

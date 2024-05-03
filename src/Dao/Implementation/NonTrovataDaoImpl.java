@@ -20,14 +20,9 @@ public class NonTrovataDaoImpl extends BaseDaoImpl implements NonTrovataDao {
 
     @Override
     public NonTrovata add(NonTrovata nonTrovata) {
-        NonTrovata t = findByInput(nonTrovata.getInput());
-        if (t != null) {
-            t.setNumRicerche(t.getNumRicerche() + 1);
-            manager.merge(t);
-        } else {
-            nonTrovata.setNumRicerche(1);
-            manager.persist(nonTrovata);
-        }
+        nonTrovata.setNumRicerche(1);
+        manager.persist(nonTrovata);
+
         return nonTrovata;
     }
 
@@ -38,4 +33,15 @@ public class NonTrovataDaoImpl extends BaseDaoImpl implements NonTrovataDao {
        return (NonTrovata) super.findByInput(input,NonTrovata.class);
 
     }
+
+    @Override
+    public NonTrovata Update(NonTrovata nonTrovata) {
+
+        NonTrovata c=findByInput(nonTrovata.getInput());
+
+        c.setNumRicerche(c.getNumRicerche()+1);
+        return c;
+    }
+
+
 }
