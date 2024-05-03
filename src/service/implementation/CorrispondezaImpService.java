@@ -13,16 +13,9 @@ public class CorrispondezaImpService implements CorrispondenzaService {
 
 
     @Override
-    public String ApprovaCorrispondeza(String corrispondenza) throws Exception {
+    public Corrispondenza ApprovaCorrispondeza(Corrispondenza corrispondenza) throws Exception {
         //inizio transazione
-
-        Corrispondenza c= corrispondenzaDao.findByInput(corrispondenza);
-
-        if(c!=null){
-            corrispondenzaDao.Update(c);
-        }else{
-            corrispondenzaDao.add(c);
-        }
+        corrispondenzaDao.Update(corrispondenza);
         return corrispondenza;
         //fine transazione
 

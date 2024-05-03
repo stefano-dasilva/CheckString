@@ -22,8 +22,6 @@ public class NonTrovatoServiceImpl implements NonTrovatoService {
         }else{
             nonTrovataDao.add(nonTrovata);
         }
-
-
         return nonTrovata;
     }
 
