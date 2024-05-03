@@ -54,6 +54,7 @@ public abstract class CheckString {
         if(corrispondenza != null){
             // non c'è un addestramento
             if(datiAddestramento == null){
+                corrispondenza.setAlgoritmo_usato(this.getClass().getSimpleName());
                 factoryUtil.getCorrispondenzaDao().add(corrispondenza);
 
                 return  corrispondenza;

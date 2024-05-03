@@ -20,10 +20,14 @@ public class Corrispondenza  {
     @Column (name = "num_ricerche")
     private Integer numRicerche;
 
-
-
     @Column (name =  "input")
     private String input;
+
+    @Column (name =  "algoritmo_usato")
+    private String algoritmo_usato;
+
+    @Column (name =  "approvata")
+    private boolean approvata;
 
     public Corrispondenza(Standard standard){
         this.standard = standard;
@@ -64,4 +68,12 @@ public class Corrispondenza  {
     public String getInput() {
         return input;
     }
+
+    public void setAlgoritmo_usato(String algoritmo_usato) {this.algoritmo_usato = algoritmo_usato;}
+
+    public String getAlgoritmo_usato() {return algoritmo_usato; }
+
+    public void setApprovata(boolean approvata) {this.approvata = approvata;}
+
+    public boolean getApprovata() {return approvata;}
 }
