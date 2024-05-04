@@ -14,4 +14,7 @@ public interface NonTrovataDao {
 
     @Transactional
     public NonTrovata Update(NonTrovata nonTrovata);
+
+    @Transactional
+    public NonTrovata Delete(NonTrovata nonTrovata);
 }

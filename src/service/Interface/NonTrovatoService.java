@@ -9,8 +9,15 @@ public interface NonTrovatoService {
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.REQUIRED,
+            propagation = Propagation.NESTED,
             isolation = Isolation.READ_UNCOMMITTED)
     public NonTrovata inserisciNonTrovato(NonTrovata nonTrovata) throws Exception;
+
+
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public NonTrovata rimuoviNonTrovata(NonTrovata nonTrovata) throws Exception;
 
 }

@@ -6,6 +6,8 @@ import service.Interface.NonTrovatoService;
 
 public class NonTrovatoServiceImpl implements NonTrovatoService {
 
+
+
     private NonTrovataDaoImpl nonTrovataDao;
 
     public NonTrovatoServiceImpl() {
@@ -24,6 +26,22 @@ public class NonTrovatoServiceImpl implements NonTrovatoService {
         }
         return nonTrovata;
     }
+
+    @Override
+    public NonTrovata rimuoviNonTrovata(NonTrovata nonTrovata) throws Exception {
+
+        NonTrovata n=nonTrovataDao.findByInput(nonTrovata.getInput());
+
+        if(n!=null){
+            nonTrovataDao.Delete(nonTrovata);
+        }else{
+            System.out.println("Nessun elemento corrispondente");
+        }
+
+        return nonTrovata;
+    }
+
+
 
 
 }

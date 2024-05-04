@@ -11,7 +11,7 @@ public interface CorrispondenzaService {
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.REQUIRED,
+            propagation = Propagation.NESTED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Corrispondenza ApprovaCorrispondeza(Corrispondenza corrispondeza) throws Exception;
 

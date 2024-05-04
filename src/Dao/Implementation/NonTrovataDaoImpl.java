@@ -37,10 +37,18 @@ public class NonTrovataDaoImpl extends BaseDaoImpl implements NonTrovataDao {
     @Override
     public NonTrovata Update(NonTrovata nonTrovata) {
 
-        NonTrovata c=findByInput(nonTrovata.getInput());
 
-        c.setNumRicerche(c.getNumRicerche()+1);
-        return c;
+
+        nonTrovata.setNumRicerche(nonTrovata.getNumRicerche()+1);
+        return nonTrovata;
+    }
+
+    @Override
+    public NonTrovata Delete(NonTrovata nonTrovata) {
+       manager.detach(nonTrovata);
+       nonTrovata.setNumRicerche(0);
+       return nonTrovata;
+
     }
 
 

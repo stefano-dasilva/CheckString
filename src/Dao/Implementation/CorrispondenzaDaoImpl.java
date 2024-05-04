@@ -37,10 +37,8 @@ public class CorrispondenzaDaoImpl extends BaseDaoImpl  implements Corrispondenz
     @Override
     public Corrispondenza Update(Corrispondenza corrispondenza) {
 
-        Corrispondenza c=findByInput(corrispondenza.getInput());
-
-        c.setNumRicerche(c.getNumRicerche()+1);
-        return c;
+      corrispondenza.setNumRicerche(corrispondenza.getNumRicerche()+1);
+        return corrispondenza;
     }
 
 }
