@@ -1,13 +1,11 @@
 package Model;
 
-import Dao.Interface.Bean;
-
 import javax.persistence.*;
 
 @Entity
 @Table (name = "algoritmo")
 
-public class Algoritmo  {
+public class Algoritmo implements Bean  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +16,13 @@ public class Algoritmo  {
     private String nome;
 
     @Column(name = "successo")
-    private Integer successo;
+    private double successo;
+
+    @Column(name = "media_tempo")
+    private double mediaTempo;
+
+    @Column(name = "percentuale_approvazione")
+    private double percentualeApprovazione;
 
 
     public Algoritmo(){
@@ -41,12 +45,27 @@ public class Algoritmo  {
         return nome;
     }
 
-    public void setSuccesso(Integer successo) {
+    public void setSuccesso(double successo) {
         this.successo = successo;
     }
 
-    public Integer getSuccesso() {
+    public double getSuccesso() {
         return successo;
     }
 
+    public double getMediaTempo() {
+        return mediaTempo;
+    }
+
+    public void setMediaTempo(double mediaTempo) {
+        this.mediaTempo = mediaTempo;
+    }
+
+    public double getPercentualeApprovazione() {
+        return percentualeApprovazione;
+    }
+
+    public void setPercentualeApprovazione(double percentualeApprovazione) {
+        this.percentualeApprovazione = percentualeApprovazione;
+    }
 }

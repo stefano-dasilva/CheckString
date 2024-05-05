@@ -8,7 +8,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import Model.Standard;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 public class AlgoritmoDaoImpl extends BaseDaoImpl implements AlgoritmoDao {
@@ -18,15 +22,15 @@ public class AlgoritmoDaoImpl extends BaseDaoImpl implements AlgoritmoDao {
     //@PersistenceContext(type=PersistenceContextType.EXTENDED) // opzioni EXTENDED o TRANSACTION (default)
     private EntityManager manager;
 
-
     @Transactional
     @Override
-    public Algoritmo incrementaSucceso(String nome) {
-        Algoritmo algoritmo = (Algoritmo) findByInputAlg(nome);
-        System.out.println(algoritmo.getNome());
-        algoritmo.setSuccesso(algoritmo.getSuccesso() + 1 );
-        manager.merge(algoritmo);
-        return null;
+    public Algoritmo update(Algoritmo algoritmo) {
+        return (Algoritmo) super.update(algoritmo);
+    }
+
+    @Override
+    public List<Algoritmo> getAll() {
+        return (List<Algoritmo>) super.getAll(Algoritmo.class);
     }
 
 

@@ -1,16 +1,15 @@
 package Algoritmi;
 
-import Assets.DBmock;
+import Config.FactoryUtil;
 import Model.Corrispondenza;
 import Model.Standard;
 
 public class CheckStringInputEquals extends  CheckStringSingleValue{
     @Override
     protected Corrispondenza checkSingle(String input) {
-        if(DBmock.getIstanza().getRicorrenze().containsKey(input)){
-            Integer chiave = DBmock.getIstanza().getRicorrenze().get(input);
-            Standard standard = DBmock.getIstanza().getStandardTable().get(chiave);
-            return  new Corrispondenza(standard);
+        Corrispondenza corrispondenza = FactoryUtil.getIstanza().getCorrispondezaService().findByInput(input);
+        if(corrispondenza != null){
+            return  corrispondenza;
         }
         return null;
     }

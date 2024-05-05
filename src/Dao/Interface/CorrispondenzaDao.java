@@ -3,17 +3,26 @@ package Dao.Interface;
 import Model.Corrispondenza;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface CorrispondenzaDao {
 
 
    @Transactional
-    public Corrispondenza add(Corrispondenza corrispondenza);
+    public Corrispondenza create(Corrispondenza corrispondenza);
 
     @Transactional
     public Corrispondenza findByInput(String input);
 
     @Transactional
-    public Corrispondenza Update (Corrispondenza corrispondenza);
+    public Corrispondenza update (Corrispondenza corrispondenza);
+
+    @Transactional
+    public List<Corrispondenza> findbyAlgorithm(String algorithm);
+
+
+
+
 
 
 }

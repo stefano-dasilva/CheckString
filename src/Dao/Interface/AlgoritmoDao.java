@@ -2,13 +2,20 @@ package Dao.Interface;
 
 import Model.Algoritmo;
 import Model.Corrispondenza;
+import Model.Standard;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 public interface AlgoritmoDao {
 
     @Transactional
-    public Algoritmo incrementaSucceso (String nome);
+    public Algoritmo update (Algoritmo algoritmo);
+
+    @Transactional
+    public List<Algoritmo> getAll();
+
 
     @Transactional
     public Algoritmo findByInputAlg(String nomealgoritmo);

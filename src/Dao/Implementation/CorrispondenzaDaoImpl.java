@@ -5,6 +5,7 @@ import Model.Corrispondenza;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
+import java.util.List;
 
 public class CorrispondenzaDaoImpl extends BaseDaoImpl  implements CorrispondenzaDao {
 
@@ -19,26 +20,30 @@ public class CorrispondenzaDaoImpl extends BaseDaoImpl  implements Corrispondenz
 
   @Transactional
     @Override
-    public Corrispondenza add(Corrispondenza corrispondenza) {
+    public Corrispondenza create(Corrispondenza corrispondenza) {
 
-            corrispondenza.setNumRicerche(1);
-            manager.persist(corrispondenza);
-
-        return corrispondenza;
+        return (Corrispondenza) super.create(corrispondenza);
     }
 
+
+    @Override
+    public Corrispondenza update(Corrispondenza corrispondenza) {
+
+      return (Corrispondenza) super.update(corrispondenza);
+    }
+
+    @Override
+    public List<Corrispondenza> findbyAlgorithm(String algoritmo) {
+        String jpql = "from Corrispondenza where algoritmo_usato = :algoritmo_usato";
+        Query q = manager.createQuery(jpql);
+        q.setParameter("algoritmo_usato", algoritmo);
+        return q.getResultList();
+    }
 
 
     @Override
     public Corrispondenza findByInput(String input) {
        return (Corrispondenza) super.findByInput(input,Corrispondenza.class);
-    }
-
-    @Override
-    public Corrispondenza Update(Corrispondenza corrispondenza) {
-
-      corrispondenza.setNumRicerche(corrispondenza.getNumRicerche()+1);
-        return corrispondenza;
     }
 
 }

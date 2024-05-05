@@ -1,6 +1,5 @@
 package ParoleStandard;
 
-import Assets.DBmock;
 import Model.Standard;
 
 import java.io.File;
@@ -28,7 +27,7 @@ public class StandardFromFile implements ParoleStandard {
                 Standard standard = new Standard(id,codice, nome, 0);
              //   System.out.println("NOME PAESE : " + nome + " CODICE PAESE " + standard.getId() );
                 paroleStandard.add(standard);
-                DBmock.getIstanza().getStandardTable().put(standard.getId(),standard);
+              //  DBmock.getIstanza().getStandardTable().put(standard.getId(),standard);
                 id = id + 1;
             }
             scanner.close();

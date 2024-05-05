@@ -1,6 +1,7 @@
 package Dao.Implementation;
 
 import Dao.Interface.BaseDao;
+import Model.Bean;
 import Model.Corrispondenza;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +48,17 @@ public class BaseDaoImpl implements BaseDao {
     public Object findById(Integer id, Class c) {
         Object o = manager.find(c, id);
         return o;
+    }
+
+    @Override
+    public Object create(Bean bean) {
+        manager.persist(bean);
+        return bean;
+    }
+
+    @Override
+    public Object update(Bean bean) {
+        manager.merge(bean);
+        return bean;
     }
 }

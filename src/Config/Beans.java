@@ -16,6 +16,14 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import service.Interface.AlgoritmoService;
+import service.Interface.CorrispondenzaService;
+import service.Interface.NonTrovataService;
+import service.Interface.StandardService;
+import service.implementation.AlgoritmoServiceImpl;
+import service.implementation.CorrispondezaImpService;
+import service.implementation.NonTrovataServiceImpl;
+import service.implementation.StandardServiceImpl;
 
 @Configuration   /*qui ci cono le istanze da creare e gestire con il container di Spring DI-IoC*/
 @ComponentScan(basePackages="src")
@@ -30,7 +38,7 @@ public class Beans {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUsername("root");
-        ds.setPassword("");
+        ds.setPassword("uvagv6gG98");
         ds.setUrl("jdbc:mysql://localhost:3306/myschema");
         return ds;
     }
@@ -101,6 +109,32 @@ public class Beans {
     public BaseDao getBaseDao (){
         BaseDao dao = new BaseDaoImpl();
         return dao;
+    }
+
+
+    @Bean(name="AlgoritmoService")
+    public AlgoritmoService getAlgoritmoService (){
+        AlgoritmoService service = new AlgoritmoServiceImpl();
+
+        return service;
+    }
+
+    @Bean(name="CorrispondenzaService")
+    public CorrispondenzaService getCorrispondenzaService (){
+        CorrispondenzaService service = new CorrispondezaImpService();
+        return service;
+    }
+
+    @Bean(name="NonTrovataService")
+    public NonTrovataService getNonTrovataService (){
+        NonTrovataService service = new NonTrovataServiceImpl();
+        return service;
+    }
+
+    @Bean(name="StandardService")
+    public StandardService getStandardService (){
+        StandardService service = new StandardServiceImpl();
+        return service;
     }
 
 }

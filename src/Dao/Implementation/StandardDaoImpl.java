@@ -21,10 +21,15 @@ public class StandardDaoImpl extends BaseDaoImpl implements StandardDao {
 
     @Transactional
     @Override
-    public Standard add(Standard standard) {
+    public Standard create(Standard standard) {
         standard.setNumRicerche(0);
         manager.persist(standard);
         return standard;
+    }
+
+    @Override
+    public Standard update(Standard standard) {
+       return (Standard) super.update(standard);
     }
 
     @Override
@@ -54,12 +59,5 @@ public class StandardDaoImpl extends BaseDaoImpl implements StandardDao {
         }
     }
 
-    @Override
-    public Standard incrementaNumRicerche(String nomepaese) {
-        Standard standard = (Standard) findbyName(nomepaese);
-        System.out.println(standard.getValue());
-        standard.setNumRicerche(standard.getNumRicerche() + 1 );
-        manager.merge(standard);
-        return null;
-    }
+
 }

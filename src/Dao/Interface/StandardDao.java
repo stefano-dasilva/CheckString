@@ -10,7 +10,10 @@ import java.util.List;
 public interface StandardDao {
 
     @Transactional
-    public Standard add(Standard  standard);
+    public Standard create(Standard  standard);
+
+    @Transactional
+    public Standard update(Standard standard);
 
     @Transactional
     public List<Standard> getAll();
@@ -21,7 +24,6 @@ public interface StandardDao {
     @Transactional
     public Standard findbyName(String nomepaese);
 
-    @Transactional
-    public Standard incrementaNumRicerche (String nomepaese);
+
 
 }

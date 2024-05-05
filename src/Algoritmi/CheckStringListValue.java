@@ -1,5 +1,7 @@
 package Algoritmi;
 
+import Addestramento.Addestramento;
+import Assets.DBlist;
 import Config.FactoryUtil;
 import Model.Corrispondenza;
 import ParoleStandard.ParoleStandard;
@@ -21,13 +23,18 @@ public abstract class CheckStringListValue extends  CheckString{
         this.standards = paroleStandard.getStandards();
 
  */
-        this.standards = FactoryUtil.getIstanza().getStandardDao().getAll();
+        this.standards = DBlist.getIstanza().getStandardList();
 
         for (Standard standard : standards) {
             Corrispondenza corrispondenza = check(input,standard);
 
-            if (corrispondenza != null){
-                FactoryUtil.getIstanza().getStandardDao().incrementaNumRicerche(standard.getValue());
+            // se c'è una corrispondenza
+            if (corrispondenza != null ){
+                // ... e non c'è un addestramento attivo
+                if(!Addestramento.getIstanza().isActive()){
+                    // ... aumento il numero di ricerche di quello standard
+                FactoryUtil.getIstanza().getStandardService().incrementaRicerche(standard);
+                }
                 return corrispondenza;
             }
         }

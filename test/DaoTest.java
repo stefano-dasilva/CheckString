@@ -52,7 +52,7 @@ public class DaoTest {
          */
 
         AlgoritmoDao algoritmoDao = factory.getBean("AlgoritmoDao", AlgoritmoDao.class);
-        algoritmoDao.incrementaSucceso("LevhensteinCheckString");
+       // algoritmoDao.incrementaSucceso("LevhensteinCheckString");
 
 
 

@@ -19,11 +19,8 @@ public class NonTrovataDaoImpl extends BaseDaoImpl implements NonTrovataDao {
     private EntityManager manager;
 
     @Override
-    public NonTrovata add(NonTrovata nonTrovata) {
-        nonTrovata.setNumRicerche(1);
-        manager.persist(nonTrovata);
-
-        return nonTrovata;
+    public NonTrovata create(NonTrovata nonTrovata) {
+        return (NonTrovata) super.create(nonTrovata);
     }
 
 
@@ -31,20 +28,15 @@ public class NonTrovataDaoImpl extends BaseDaoImpl implements NonTrovataDao {
     @Override
     public NonTrovata findByInput(String input) {
        return (NonTrovata) super.findByInput(input,NonTrovata.class);
-
     }
 
     @Override
-    public NonTrovata Update(NonTrovata nonTrovata) {
-
-
-
-        nonTrovata.setNumRicerche(nonTrovata.getNumRicerche()+1);
-        return nonTrovata;
+    public NonTrovata update(NonTrovata nonTrovata) {
+        return (NonTrovata) super.update(nonTrovata);
     }
 
     @Override
-    public NonTrovata Delete(NonTrovata nonTrovata) {
+    public NonTrovata delete(NonTrovata nonTrovata) {
        manager.detach(nonTrovata);
        nonTrovata.setNumRicerche(0);
        return nonTrovata;

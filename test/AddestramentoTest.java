@@ -1,15 +1,20 @@
 import Addestramento.Addestramento;
-import Assets.DBmock;
+import Model.Algoritmo;
+
+import java.util.List;
 
 public class AddestramentoTest {
 
     public static void main(String[] args) {
 
 
-       Addestramento addestramento = new Addestramento();
+       Addestramento addestramento = Addestramento.getIstanza();
         addestramento.addestra();
-        DBmock.getIstanza().statistiche();
-       // addestramento.printMap();
+
+       List<Algoritmo> algoritmi = addestramento.stampaClassifica();
+       for( Algoritmo algoritmo : algoritmi){
+           System.out.println("Nome : " + algoritmo.getNome() + "Percentuale successo : " + algoritmo.getSuccesso() + "Media tempo successo : " + algoritmo.getMediaTempo());
+       }
 
     }
     }

@@ -1,5 +1,4 @@
 package Model;
-import Dao.Interface.Bean;
 
 import javax.persistence.*;
 
@@ -7,7 +6,7 @@ import javax.persistence.*;
 @Entity
 
 @Table (name = "corrispondenza")
-public class Corrispondenza  {
+public class Corrispondenza implements Bean  {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

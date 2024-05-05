@@ -1,5 +1,6 @@
 package Algoritmi;
 
+import Addestramento.Addestramento;
 import Model.Corrispondenza;
 import Model.Standard;
 
@@ -81,29 +82,30 @@ public class TokenizerCheckString extends CheckStringListValue {
 	protected Corrispondenza check(String input, Standard standard) {
 
 
-
-
 		ArrayList<String> inputTokens = new ArrayList();
 		inputTokens.addAll(getTokens(input));
 		ArrayList<Standard> standardTokens = new ArrayList<>();
 		String[] values = standard.getValue().split("\\s+");
+		//repubblica ceca -> repubblica  / ceca
 
 		for (String value : values) {
 			Standard token = new Standard(standard.getId(), standard.getCode(), value, 0);
 			standardTokens.add(token);
 		}
 
-
+// confronta per ogni algoritmo il token dell'input con il token dello standard
 		for (CheckStringSingleInput algoritmo : algoritmi){
 			for (String inputToken : inputTokens) {
-				for( Standard standardtoken : standardTokens)
+				for (Standard standardtoken : standardTokens){
+					//  se trova una corrispondenza
 					if (algoritmo.check(inputToken, standardtoken) != null) {
-						System.out.println("trovato con tokenizer");
-						Corrispondenza corrispondenza = new Corrispondenza();
-						corrispondenza.setStandard(standard);
-						corrispondenza.setInput(input);
-						return corrispondenza;
+							// ... ritorna la corrispondenza e si ferma
+							Corrispondenza corrispondenza = new Corrispondenza();
+							corrispondenza.setStandard(standard);
+							corrispondenza.setInput(input);
+							return corrispondenza;
 					}
+			}
 			}
 	}
 		return null;

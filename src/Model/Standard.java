@@ -1,5 +1,4 @@
 package Model;
-import Dao.Interface.Bean;
 import com.sun.istack.NotNull;
 
 import javax.persistence.Column;
@@ -7,16 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 
 @Table (name = "standard")
 
-public class Standard  {
+public class Standard implements Bean  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

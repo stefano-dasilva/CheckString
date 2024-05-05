@@ -7,14 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 public interface NonTrovataDao {
 
     @Transactional
-    public NonTrovata add(NonTrovata nonTrovata);
+    public NonTrovata create(NonTrovata nonTrovata);
 
     @Transactional
     public NonTrovata findByInput(String input);
 
     @Transactional
-    public NonTrovata Update(NonTrovata nonTrovata);
+    public NonTrovata update(NonTrovata nonTrovata);
 
     @Transactional
-    public NonTrovata Delete(NonTrovata nonTrovata);
+    public NonTrovata delete(NonTrovata nonTrovata);
 }

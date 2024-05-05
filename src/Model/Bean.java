@@ -1,4 +1,4 @@
-package Dao.Interface;
+package Model;
 
 public interface Bean {
 }
