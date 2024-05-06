@@ -9,6 +9,7 @@ import service.Interface.CorrispondenzaService;
 import Dao.Implementation.CorrispondenzaDaoImpl;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CorrispondezaImpService implements CorrispondenzaService {
 
@@ -19,10 +20,8 @@ public class CorrispondezaImpService implements CorrispondenzaService {
     AlgoritmoDao algoritmoDao;
 
 
-
     public CorrispondezaImpService() {
     }
-
 
 
     @Override
@@ -33,18 +32,26 @@ public class CorrispondezaImpService implements CorrispondenzaService {
         // se c'è già una corrispondenza
         if(c != null){
             c.setNumRicerche(c.getNumRicerche() + 1);
-            if( c.getAlgoritmo_usato() != corrispondenza.getAlgoritmo_usato()){
+            if(!c.getApprovata()){
+                // gli cambio la corrispondenza solo se non è approvato
+            c.setStandard(corrispondenza.getStandard());
+            }
+            if(!Objects.equals(c.getAlgoritmo_usato(), "ManualCheckString")){
                 c.setAlgoritmo_usato(corrispondenza.getAlgoritmo_usato());
             }
             corrispondenzaDao.update(c);
+            corrispondenza = c;
         }
         else {
             corrispondenza.setNumRicerche(1);
             corrispondenzaDao.create(corrispondenza);
         }
+        if(!Objects.equals(corrispondenza.getAlgoritmo_usato(), "ManualCheckString")){
+
         Algoritmo a = algoritmoDao.findByInputAlg(corrispondenza.getAlgoritmo_usato());
         a.setCorrispondenzeTrovate(a.getCorrispondenzeTrovate() + 1 );
         algoritmoDao.update(a);
+        }
 
 
         return corrispondenza;
@@ -64,9 +71,11 @@ public class CorrispondezaImpService implements CorrispondenzaService {
         if(c != null) {
             c.setApprovata(true);
             corrispondenzaDao.update(c);
+            if(!Objects.equals(c.getAlgoritmo_usato(), "ManualCheckString")){
             Algoritmo a = algoritmoDao.findByInputAlg(c.getAlgoritmo_usato());
             a.setCorrispondeApprovate(a.getCorrispondeApprovate() + 1 );
             algoritmoDao.update(a);
+            }
         }
 
         return corrispondenza;

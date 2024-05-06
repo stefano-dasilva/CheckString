@@ -13,7 +13,7 @@ public class Corrispondenza implements Bean  {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "standard_id")
+    @JoinColumn(name = "standard_value", referencedColumnName = "value")
     private Standard standard;
 
     @Column (name = "num_ricerche")

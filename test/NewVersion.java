@@ -19,10 +19,13 @@ public class NewVersion {
         jaccardCheckString.setNext(doubleMetaphone);
         doubleMetaphone.setNext(inputEquals);
         inputEquals.setNext(tokenizer);
-        Corrispondenza c = lev.check("italia");
+        Corrispondenza c = lev.check("algeria");
+
         if( c!= null){
             corrispondenzaService.approva(c);
         }
+
+
 
 
     }

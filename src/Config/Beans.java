@@ -45,6 +45,8 @@ public class Beans {
     @Bean
     public LocalContainerEntityManagerFactoryBean  getEntityManager(){
 
+
+
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 
         // factory.setValidationMode(ValidationMode.AUTO);

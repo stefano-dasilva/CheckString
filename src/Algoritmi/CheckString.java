@@ -29,8 +29,9 @@ public abstract class CheckString {
             if(!Addestramento.getIstanza().isActive()){
                 // ... aggiungo alla corrispondenza trovata il nome dell'algoritmo e l'aggiungo al DB
                 corrispondenza.setAlgoritmo_usato(this.getClass().getSimpleName());
-                System.out.println(corrispondenza.getAlgoritmo_usato());
-                factoryUtil.getCorrispondezaService().add(corrispondenza);
+               // System.out.println(corrispondenza.getAlgoritmo_usato());
+             //   System.out.println(corrispondenza.getStandard().getValue());
+                corrispondenza = factoryUtil.getCorrispondezaService().add(corrispondenza);
                 return  corrispondenza;
             }
             else {
