@@ -1,10 +1,13 @@
 import Algoritmi.*;
+import Config.FactoryUtil;
 import Model.Corrispondenza;
+import service.Interface.CorrispondenzaService;
 
 public class NewVersion {
     public static void main(String[] args) {
 
 
+        CorrispondenzaService corrispondenzaService = FactoryUtil.getIstanza().getCorrispondezaService();
         CheckString lev = new LevhensteinCheckString(1);
         CheckString jaro = new JaroCheckString(7.5);
         CheckString jaccardCheckString = new JaccardCheckString(7.5);
@@ -16,7 +19,10 @@ public class NewVersion {
         jaccardCheckString.setNext(doubleMetaphone);
         doubleMetaphone.setNext(inputEquals);
         inputEquals.setNext(tokenizer);
-        lev.check("cambodia");
+        Corrispondenza c = lev.check("italia");
+        if( c!= null){
+            corrispondenzaService.approva(c);
+        }
 
 
     }

@@ -21,8 +21,11 @@ public class Algoritmo implements Bean  {
     @Column(name = "media_tempo")
     private double mediaTempo;
 
-    @Column(name = "percentuale_approvazione")
-    private double percentualeApprovazione;
+    @Column(name = "corr_trovate")
+    private int corrispondenzeTrovate;
+
+    @Column(name = "corr_approvate")
+    private int corrispondeApprovate;
 
 
     public Algoritmo(){
@@ -61,11 +64,19 @@ public class Algoritmo implements Bean  {
         this.mediaTempo = mediaTempo;
     }
 
-    public double getPercentualeApprovazione() {
-        return percentualeApprovazione;
+    public int getCorrispondenzeTrovate() {
+        return corrispondenzeTrovate;
     }
 
-    public void setPercentualeApprovazione(double percentualeApprovazione) {
-        this.percentualeApprovazione = percentualeApprovazione;
+    public int getCorrispondeApprovate() {
+        return corrispondeApprovate;
+    }
+
+    public void setCorrispondeApprovate(int corrispondeApprovate) {
+        this.corrispondeApprovate = corrispondeApprovate;
+    }
+
+    public void setCorrispondenzeTrovate(int corrispondenzeTrovate) {
+        this.corrispondenzeTrovate = corrispondenzeTrovate;
     }
 }

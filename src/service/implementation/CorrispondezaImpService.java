@@ -39,10 +39,13 @@ public class CorrispondezaImpService implements CorrispondenzaService {
             corrispondenzaDao.update(c);
         }
         else {
-
             corrispondenza.setNumRicerche(1);
             corrispondenzaDao.create(corrispondenza);
         }
+        Algoritmo a = algoritmoDao.findByInputAlg(corrispondenza.getAlgoritmo_usato());
+        a.setCorrispondenzeTrovate(a.getCorrispondenzeTrovate() + 1 );
+        algoritmoDao.update(a);
+
 
         return corrispondenza;
     }
@@ -61,24 +64,10 @@ public class CorrispondezaImpService implements CorrispondenzaService {
         if(c != null) {
             c.setApprovata(true);
             corrispondenzaDao.update(c);
-
-            // cerca tutte le corrispondenze che hanno utilizzato di quell'algoritmo...
-            List<Corrispondenza> corrispondenze_algoritmo = corrispondenzaDao.findbyAlgorithm(c.getAlgoritmo_usato());
-            int approvata = 0;
-            for(Corrispondenza corrispondenza_algoritmo : corrispondenze_algoritmo){
-                if (corrispondenza_algoritmo.getApprovata()){
-                    // se la corrispondenza cercata è stata approvata aumenta il numero di corrispondeze
-                    // approvate per quell'algoritmo
-                    approvata++;
-                }
-            }
-            // ... ora cambia la percentuale di corrispondenze attrovate per quell'algoritmo
-            Algoritmo algoritmo = algoritmoDao.findByInputAlg(c.getAlgoritmo_usato());
-            algoritmo.setPercentualeApprovazione((100.0 * approvata) / corrispondenze_algoritmo.size());
-            algoritmoDao.update(algoritmo);
+            Algoritmo a = algoritmoDao.findByInputAlg(c.getAlgoritmo_usato());
+            a.setCorrispondeApprovate(a.getCorrispondeApprovate() + 1 );
+            algoritmoDao.update(a);
         }
-
-
 
         return corrispondenza;
         //fine transazione
