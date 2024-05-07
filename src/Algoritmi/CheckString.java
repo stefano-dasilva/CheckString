@@ -28,7 +28,8 @@ public abstract class CheckString {
             // ... se non c'è un addestramento in corso
             if(!Addestramento.getIstanza().isActive()){
                 // ... aggiungo alla corrispondenza trovata il nome dell'algoritmo e l'aggiungo al DB
-                corrispondenza.setAlgoritmo_usato(this.getClass().getSimpleName());
+                corrispondenza.setAlgoritmo_usato(this.getName());
+
                // System.out.println(corrispondenza.getAlgoritmo_usato());
              //   System.out.println(corrispondenza.getStandard().getValue());
                 corrispondenza = factoryUtil.getCorrispondezaService().add(corrispondenza);
@@ -85,8 +86,8 @@ public abstract class CheckString {
 
     }
 
-    protected String getName(){
-        return this.getClass().getSimpleName();
+    protected final  String getName(){
+        return this.getClass().getSimpleName() + getNameDetails();
     }
 
     public void setNext(CheckString checkString){
@@ -95,7 +96,9 @@ public abstract class CheckString {
 
     // TEMPLATE
     protected abstract Corrispondenza implementcheck(String input);
-
+protected String getNameDetails(){
+    return "";
+}
 
 
 }

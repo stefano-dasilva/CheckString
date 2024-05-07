@@ -12,13 +12,16 @@ public class TestInputUtente {
         CorrispondenzaService corrispondenzaService = FactoryUtil.getIstanza().getCorrispondezaService();
         CheckString jaro = new JaroCheckString(0.75);
         CheckString jaccardCheckString = new JaccardCheckString(0.75);
-       // CheckString lev = new LevhensteinCheckString(1);
+        CheckString lev1 = new LevhensteinCheckString(1);
+        CheckString lev2 = new LevhensteinCheckString(2);
+        CheckString lev3 = new LevhensteinCheckString(3);
         CheckString doubleMetaphone = new DoubleMetaphoneCheckString();
         CheckString inputEquals = new CheckStringInputEquals();
         CheckString tokenizer = new TokenizerCheckString();
         jaro.setNext(jaccardCheckString);
         jaccardCheckString.setNext(doubleMetaphone);
-       // lev.setNext(doubleMetaphone);
+        lev1.setNext(lev2);
+        lev2.setNext(lev3);
         doubleMetaphone.setNext(inputEquals);
         inputEquals.setNext(tokenizer);
 
@@ -27,12 +30,12 @@ public class TestInputUtente {
         Scanner scanIn = new Scanner(System.in);
         Corrispondenza c;
         while (true) {
-            System.out.println("Input utente: \n");
+            System.out.println("Input utente:\n");
             input = scanIn.nextLine();
             if (input.equals("fine")) {
                 break;
             }
-            c = jaro.check(input);
+            c = lev1.check(input);
             if( c != null){
                 System.out.println(" Corrispondenza trovata : " + c.getStandard().getValue());
                 System.out.println(" Approvi la corrispondenza trovata ? S approvi / N non approvi");

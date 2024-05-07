@@ -48,8 +48,8 @@ public class LevhensteinCheckString extends CheckStringListValue implements Chec
 
 
     @Override
-    public String getName(){
-        return super.getName()+getSoglia();
+    public String getNameDetails(){
+        return "-" + getSoglia();
     }
 
 
