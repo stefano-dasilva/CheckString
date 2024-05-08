@@ -33,6 +33,11 @@ public class AlgoritmoDaoImpl extends BaseDaoImpl implements AlgoritmoDao {
         return (List<Algoritmo>) super.getAll(Algoritmo.class);
     }
 
+    @Override
+    public Algoritmo create(Algoritmo algoritmo) {
+        return (Algoritmo) super.create(algoritmo);
+    }
+
 
     @Transactional
     @Override
@@ -48,6 +53,8 @@ public class AlgoritmoDaoImpl extends BaseDaoImpl implements AlgoritmoDao {
             return null;
         }
     }
+
+
 
 
 }

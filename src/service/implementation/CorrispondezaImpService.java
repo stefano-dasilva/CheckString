@@ -49,11 +49,17 @@ public class CorrispondezaImpService implements CorrispondenzaService {
         if(!Objects.equals(corrispondenza.getAlgoritmo_usato(), "ManualCheckString")){
 
         Algoritmo a = algoritmoDao.findByInputAlg(corrispondenza.getAlgoritmo_usato());
+        if( a != null){
         a.setCorrispondenzeTrovate(a.getCorrispondenzeTrovate() + 1 );
         algoritmoDao.update(a);
         }
-
-
+        else{
+            Algoritmo algoritmo = new Algoritmo();
+            algoritmo.setNome(corrispondenza.getAlgoritmo_usato());
+            algoritmo.setCorrispondenzeTrovate(1);
+            algoritmoDao.create(algoritmo);
+        }
+        }
         return corrispondenza;
     }
 

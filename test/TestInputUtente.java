@@ -12,9 +12,9 @@ public class TestInputUtente {
         CorrispondenzaService corrispondenzaService = FactoryUtil.getIstanza().getCorrispondezaService();
         CheckString jaro = new JaroCheckString(0.75);
         CheckString jaccardCheckString = new JaccardCheckString(0.75);
-        CheckString lev1 = new LevhensteinCheckString(1);
-        CheckString lev2 = new LevhensteinCheckString(2);
-        CheckString lev3 = new LevhensteinCheckString(3);
+        CheckString lev1 = new LevhensteinCheckString(4);
+        CheckString lev2 = new LevhensteinCheckString(5);
+        CheckString lev3 = new LevhensteinCheckString(6);
         CheckString doubleMetaphone = new DoubleMetaphoneCheckString();
         CheckString inputEquals = new CheckStringInputEquals();
         CheckString tokenizer = new TokenizerCheckString();

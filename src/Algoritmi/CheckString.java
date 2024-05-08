@@ -11,15 +11,12 @@ public abstract class CheckString {
 
     private CheckString next;
 
-
     public Corrispondenza check(String input) {
 
         // in questa classe singleton sono presenti i vari service
         FactoryUtil factoryUtil = FactoryUtil.getIstanza();
 
        // System.out.println("Provo con l'algoritmo " + this.getClass().getSimpleName() + "la parola " + input);
-
-
 
             double tempoInizio = System.currentTimeMillis();
         Corrispondenza corrispondenza = implementcheck(input);

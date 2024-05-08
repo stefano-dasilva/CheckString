@@ -3,15 +3,12 @@ package Algoritmi;
 import Model.Corrispondenza;
 import Model.Standard;
 
-public class LevhensteinCheckString extends CheckStringListValue implements CheckStringSingleInput {
-    private int soglia;
+public class LevhensteinCheckString extends CheckStringConSoglia implements CheckStringSingleInput {
 
     public LevhensteinCheckString(int soglia) {
-        this.soglia = soglia;
+        super(soglia);
     }
-    public int getSoglia() {
-        return soglia;
-    }
+
 
 
 
@@ -47,10 +44,7 @@ public class LevhensteinCheckString extends CheckStringListValue implements Chec
     }
 
 
-    @Override
-    public String getNameDetails(){
-        return "-" + getSoglia();
-    }
+
 
 
     private int min(int a, int b, int c) {

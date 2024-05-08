@@ -16,6 +16,9 @@ public interface AlgoritmoDao {
     @Transactional
     public List<Algoritmo> getAll();
 
+    @Transactional
+    public Algoritmo create(Algoritmo algoritmo);
+
 
     @Transactional
     public Algoritmo findByInputAlg(String nomealgoritmo);
