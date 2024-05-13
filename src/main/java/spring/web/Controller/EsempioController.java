@@ -8,6 +8,8 @@ import Model.Corrispondenza;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 
 @Controller
 public class EsempioController {
@@ -15,7 +17,7 @@ public class EsempioController {
 
     @GetMapping("/")
     public String showForm() {
-        return "esempio";
+        return "form";
     }
 
 
@@ -24,8 +26,9 @@ public class EsempioController {
     @ResponseBody
     public String checkString(@WebParam(name = "nome") String nome,
                             @WebParam(name = "cognome") String cognome,
-                            @WebParam(name = "nazione") String nazione,
-                            @WebParam(name = "password") String password) {
+                            @WebParam(name = "naz") String nazione,
+                            @WebParam(name = "password") String password
+                             /* @WebParam(name="nascita")Date nascita */) {
         FactoryUtil factoryUtil = FactoryUtil.getIstanza();
         Corrispondenza corrispondenza = factoryUtil.getCheckStringService().buildChain().check(nazione);
         if(corrispondenza != null){
