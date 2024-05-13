@@ -1,7 +1,6 @@
 body {
-    background-image: url('../../resources/trans2.webp');
+    background-image: url('../../resources/flags2.jpg');
     background-repeat: no-repeat;
-    background-position-x: center;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -40,6 +39,7 @@ body {
 #h2 {
     margin-top: 30px;
     font-size: 30px;
+    text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
