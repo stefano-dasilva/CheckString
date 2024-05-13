@@ -7,6 +7,7 @@ import Dao.Interface.StandardDao;
 import Model.Standard;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import service.CheckStringService;
 import service.Interface.AlgoritmoService;
 import service.Interface.CorrispondenzaService;
 import service.Interface.NonTrovataService;
@@ -27,6 +28,7 @@ public class FactoryUtil {
     private CorrispondenzaService corrispondezaService;
     private NonTrovataService nonTrovataService;
     private StandardService standardService;
+    private CheckStringService checkStringService;
 
 
     private static FactoryUtil istanza;
@@ -38,6 +40,7 @@ public class FactoryUtil {
         this.corrispondezaService = factory.getBean("CorrispondenzaService", CorrispondenzaService.class);
         this.nonTrovataService = factory.getBean("NonTrovataService", NonTrovataService.class);
         this.standardService = factory.getBean("StandardService", StandardService.class);
+        this.checkStringService = factory.getBean("CheckStringService", CheckStringService.class);
     }
 
     public synchronized static FactoryUtil getIstanza() {
@@ -47,6 +50,10 @@ public class FactoryUtil {
         }
         return istanza;
     }
+
+
+
+
 
     public AlgoritmoService getAlgoritmoService() {
         return algoritmoService;
@@ -62,5 +69,9 @@ public class FactoryUtil {
 
     public StandardService getStandardService() {
         return standardService;
+    }
+
+    public CheckStringService getCheckStringService() {
+        return checkStringService;
     }
 }

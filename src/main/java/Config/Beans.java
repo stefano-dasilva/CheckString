@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import service.CheckStringService;
 import service.Interface.AlgoritmoService;
 import service.Interface.CorrispondenzaService;
 import service.Interface.NonTrovataService;
@@ -34,7 +35,6 @@ public class Beans {
 
     @Bean(name="dataSource")
     public DataSource getDataSource () {
-
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUsername("root");
@@ -136,6 +136,11 @@ public class Beans {
     @Bean(name="StandardService")
     public StandardService getStandardService (){
         StandardService service = new StandardServiceImpl();
+        return service;
+    }
+    @Bean(name="CheckStringService")
+    public CheckStringService getCheckStringService (){
+        CheckStringService service = new CheckStringService();
         return service;
     }
 

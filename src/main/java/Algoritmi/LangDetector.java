@@ -1,4 +1,4 @@
-package  Algoritmi;
+package Algoritmi;
 import com.cybozu.labs.langdetect.Detector;
 import com.cybozu.labs.langdetect.DetectorFactory;
 import com.cybozu.labs.langdetect.LangDetectException;
