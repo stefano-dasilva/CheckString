@@ -26,13 +26,13 @@ public class EsempioController {
     @ResponseBody
     public String checkString(@WebParam(name = "nome") String nome,
                             @WebParam(name = "cognome") String cognome,
-                            @WebParam(name = "naz") String nazione,
-                            @WebParam(name = "password") String password
-                             /* @WebParam(name="nascita")Date nascita */) {
+                            @WebParam(name = "nazione") String nazione,
+                            @WebParam(name = "password") String password,
+                              @WebParam(name="nascita")String nascita  ) {
         FactoryUtil factoryUtil = FactoryUtil.getIstanza();
         Corrispondenza corrispondenza = factoryUtil.getCheckStringService().buildChain().check(nazione);
         if(corrispondenza != null){
-        return  "Benvenuto " + nome + cognome  + " da " + corrispondenza.getStandard().getValue();
+        return  "Benvenuto " + nome + " " +  cognome  + " da " + corrispondenza.getStandard().getValue() + " nascita " + nascita;
         }
         else
             return "Paese non riconosciuto";

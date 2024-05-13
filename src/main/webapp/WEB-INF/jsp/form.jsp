@@ -38,10 +38,10 @@
                
 
                 <div id="sec4">
-                <label for="naz">Inserisci la tua nazionalità</label><br>
+                <label for="nazione">Inserisci la tua nazionalità</label><br>
                 </div>
                 <div id="sec11">
-                <input type="text" id="naz" name="naz" placeholder="Nazionalità" required>
+                <input type="text" id="nazione" name="nazione" placeholder="Nazionalità" required>
                 <i class='bx bx-world'></i><br><br>
                 </div>
                 

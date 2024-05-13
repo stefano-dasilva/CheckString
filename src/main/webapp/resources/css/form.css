@@ -44,7 +44,7 @@ body {
 
 }
 
-#nome, #cognome, #naz, #pass, #pass2 {
+#nome, #cognome, #nazione, #pass, #pass2 {
 
     border-style: solid;
     border-radius: 15px;
