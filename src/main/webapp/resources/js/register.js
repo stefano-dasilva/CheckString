@@ -85,7 +85,7 @@ register.addEventListener('submit', check);
 
 function controllapassword(){
 
-    var pass1 = document.getElementById("pass");
+    var pass1 = document.getElementById("password");
     var pass2 = document.getElementById("pass2");
     var inputbox = document.getElementById("ripetipassword");
 
