@@ -7,15 +7,20 @@ import javax.validation.Valid;
 import Config.FactoryUtil;
 import Model.Corrispondenza;
 import Model.Utente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import service.Interface.UtenteService;
 import spring.web.vo.UserForm;
 
 
 @Controller
 public class EsempioController {
+
+    @Autowired
+    private UtenteService utenteService;
 
 
     @GetMapping("/form_register")
@@ -58,6 +63,9 @@ public class EsempioController {
             else{
                 utente.setNazione("non trovata");
             }
+
+            utenteService.inserisciUtente(utente);
+
         }
 
         return "Paese non riconosciuto";

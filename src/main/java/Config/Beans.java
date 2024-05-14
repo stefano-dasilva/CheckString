@@ -17,14 +17,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import service.CheckStringService;
-import service.Interface.AlgoritmoService;
-import service.Interface.CorrispondenzaService;
-import service.Interface.NonTrovataService;
-import service.Interface.StandardService;
-import service.implementation.AlgoritmoServiceImpl;
-import service.implementation.CorrispondezaImpService;
-import service.implementation.NonTrovataServiceImpl;
-import service.implementation.StandardServiceImpl;
+import service.Interface.*;
+import service.implementation.*;
 
 @Configuration   /*qui ci cono le istanze da creare e gestire con il container di Spring DI-IoC*/
 @ComponentScan(basePackages="src")
@@ -38,7 +32,7 @@ public class Beans {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUsername("root");
-        ds.setPassword("");
+        ds.setPassword("uvagv6gG98");
         ds.setUrl("jdbc:mysql://localhost:3306/myschema");
         return ds;
     }
@@ -113,6 +107,12 @@ public class Beans {
         return dao;
     }
 
+    @Bean(name="UtenteDao")
+    public UtenteDao getUtenteDao (){
+        UtenteDao dao = new UtenteDaoImpl();
+        return dao;
+    }
+
 
     @Bean(name="AlgoritmoService")
     public AlgoritmoService getAlgoritmoService (){
@@ -141,6 +141,12 @@ public class Beans {
     @Bean(name="CheckStringService")
     public CheckStringService getCheckStringService (){
         CheckStringService service = new CheckStringService();
+        return service;
+    }
+
+    @Bean(name="UtenteService")
+    public UtenteService getUtenteService (){
+        UtenteService service = new UtenteServiceImpl();
         return service;
     }
 

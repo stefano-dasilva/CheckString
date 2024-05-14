@@ -8,10 +8,7 @@ import Model.Standard;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import service.CheckStringService;
-import service.Interface.AlgoritmoService;
-import service.Interface.CorrispondenzaService;
-import service.Interface.NonTrovataService;
-import service.Interface.StandardService;
+import service.Interface.*;
 import service.implementation.AlgoritmoServiceImpl;
 import service.implementation.CorrispondezaImpService;
 import service.implementation.NonTrovataServiceImpl;
@@ -29,6 +26,7 @@ public class FactoryUtil {
     private NonTrovataService nonTrovataService;
     private StandardService standardService;
     private CheckStringService checkStringService;
+    private UtenteService utenteService;
 
 
     private static FactoryUtil istanza;
@@ -41,6 +39,7 @@ public class FactoryUtil {
         this.nonTrovataService = factory.getBean("NonTrovataService", NonTrovataService.class);
         this.standardService = factory.getBean("StandardService", StandardService.class);
         this.checkStringService = factory.getBean("CheckStringService", CheckStringService.class);
+        this.utenteService = factory.getBean("UtenteService",UtenteService.class);
     }
 
     public synchronized static FactoryUtil getIstanza() {
@@ -73,5 +72,9 @@ public class FactoryUtil {
 
     public CheckStringService getCheckStringService() {
         return checkStringService;
+    }
+
+    public UtenteService getUtenteService() {
+        return utenteService;
     }
 }
