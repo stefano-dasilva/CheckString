@@ -1,6 +1,7 @@
 const pass= document.getElementById("pass");
 const pass2= document.getElementById("pass2");
 const form= document.getElementById("rom");
+const date=document.getElementById("nascita");
 
 
 
@@ -14,6 +15,29 @@ function checkSpecial(pass){
         }
                 return false;
             }
+
+
+
+
+
+function checkDate(dateValue) {
+    const dataValue = new Date(dateValue); // Parse string to Date object
+    const yearInserito = dataValue.getFullYear();
+    const monthInserito = dataValue.getMonth();
+    const dayInserito = dataValue.getDate();
+    const dataAttuale = new Date();
+    const yearAttuale = dataAttuale.getFullYear();
+    const monthAttuale = dataAttuale.getMonth();
+    const dayAttuale = dataAttuale.getDate();
+
+    if (yearAttuale - yearInserito >= 18 && monthInserito <= monthAttuale && dayInserito <= dayAttuale) {
+        return true;
+    }
+    return false;
+}
+
+
+
             
 
         
@@ -34,7 +58,11 @@ function check(event){
             alert("La password deve contenere almeno un carattere speciale tra @, #, !, $, &");
             event.preventDefault();
 
-          }
+          } else if(!checkDate(date.value())){
+              alert("Non sei maggiorenne. Torna dalla mamma");
+              event.preventDefault();
+
+    }
             else if(pass.value !== pass2.value){
             
                 alert("le due password non sono identiche");
