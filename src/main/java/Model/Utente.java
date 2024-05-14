@@ -17,6 +17,9 @@ public class Utente implements Bean{
     @Column (name = "username")
     private String username;
 
+    @Column (name = "nazione")
+    private String nazione;
+
     @Column(name = "nome")
     private String nome;
 
@@ -67,5 +70,13 @@ public class Utente implements Bean{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNazione() {
+        return nazione;
+    }
+
+    public void setNazione(String nazione) {
+        this.nazione = nazione;
     }
 }

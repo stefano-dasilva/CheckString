@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import Config.FactoryUtil;
 import Model.Corrispondenza;
+import Model.Utente;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,6 +39,26 @@ public class EsempioController {
       //  Corrispondenza corrispondenza = factoryUtil.getCheckStringService().buildChain().check(nazione);
         System.out.println("form:" + userform);
         System.out.println("br:" + bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+        else
+        {
+            Utente utente = new Utente();
+            utente.setNome(userform.getNome());
+            utente.setCognome(userform.getCognome());
+            utente.setDataNascita(userform.getDataNascita());
+            utente.setUsername(userform.getUsername());
+            utente.setPassword(userform.getPassword());
+             Corrispondenza corrispondenza = factoryUtil.getCheckStringService().buildChain().check(userform.getNazione());
+            if(corrispondenza!= null){
+                utente.setNazione(corrispondenza.getStandard().getValue());
+            }
+            else{
+                utente.setNazione("non trovata");
+            }
+        }
 
         return "Paese non riconosciuto";
     }

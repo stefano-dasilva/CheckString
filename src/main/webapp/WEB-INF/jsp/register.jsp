@@ -84,11 +84,13 @@
                </div>
 
                 <div >
-                <label for="pass2">Inserisci Nuovamente Password</label>
+                    <form:label for="pass2" path="password2" >Reinserisci Password</form:label>
                     <div id="ripetipassword">
                 <i class='bx bx-lock-alt'></i>
-                <input type="password" id="pass2" name="password" placeholder="Password" required onchange="controllapassword()">
+                        <form:input type="password" id="pass2" name="password" placeHolder="Password" path="password2"   cssErrorClass="error_input" onchange="controllapassword()"/>
                     </div>
+                    <form:errors path="password2" cssClass="error_message" />
+
                 </div>
                 </div>
 
