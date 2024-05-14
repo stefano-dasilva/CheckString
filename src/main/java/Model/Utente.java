@@ -23,7 +23,7 @@ public class Utente implements Bean{
     @Column(name = "cognome")
     private String cognome;
 
-    @Column(name = "data nascita")
+    @Column(name = "data_nascita")
     private Date dataNascita;
 
     @Column(name = "password")
