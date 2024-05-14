@@ -17,10 +17,14 @@ public class UtenteServiceImpl implements UtenteService {
     @Override
     public Utente inserisciUtente(Utente utente) {
        if (utente!=null){
-           utenteDao.create(utente);
-
+           System.out.println("sono dentro dao utente");
+           Utente u = utenteDao.findByUsername(utente.getUsername());
+           if(u == null) {
+               Utente usernuovo = utenteDao.create(utente);
+               return usernuovo;
+           }
        }
-       return utente;
+       return null;
     }
 
     @Override

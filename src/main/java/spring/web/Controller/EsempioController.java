@@ -65,11 +65,14 @@ public class EsempioController {
                 utente.setNazione("non trovata");
             }
 
-            utenteService.inserisciUtente(utente);
+
+            if( utenteService.inserisciUtente(utente)!= null){
+                return "Salve " + utente.getUsername() + " da " + utente.getNazione();
+            }
+            else
+                return "L'utente già esiste ";
 
         }
-
-        return "Paese non riconosciuto";
     }
 
     @PostMapping("/login")

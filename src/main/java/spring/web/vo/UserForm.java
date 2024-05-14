@@ -1,6 +1,7 @@
 package spring.web.vo;
 
 import com.sun.istack.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -20,6 +21,7 @@ public class UserForm {
     @Size(min=6, max=20, message="password dev'essere tra 6 e 20 caratteri ")
     @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "non rispetta il formato")
     private String password2;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascita;
     @NotNull
     @Size(min=2, message="nome troppo corto ")

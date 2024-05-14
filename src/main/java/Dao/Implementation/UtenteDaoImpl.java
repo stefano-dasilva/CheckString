@@ -2,6 +2,7 @@ package Dao.Implementation;
 import Dao.Interface.UtenteDao;
 import Model.Utente;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
@@ -29,9 +30,13 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
     @Override
     public Utente findByUsername(String username) {
         String jpql = "from Utente where username=:username";
-       Query q= manager.createQuery(jpql);
+        Query q = manager.createQuery(jpql);
         q.setParameter("username", username);
-        return (Utente) q.getSingleResult();
+        try {
+            return (Utente) q.getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
 
 
     }
