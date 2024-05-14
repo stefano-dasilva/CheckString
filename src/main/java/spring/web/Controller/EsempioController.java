@@ -8,16 +8,19 @@ import Model.Corrispondenza;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
 
 @Controller
 public class EsempioController {
 
 
+    @GetMapping("/form_register")
+    public String showRegister() {
+        return "register";
+    }
+
     @GetMapping("/")
-    public String showForm() {
-        return "form";
+    public String showLogin() {
+        return "login";
     }
 
 

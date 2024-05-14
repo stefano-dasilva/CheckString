@@ -1,6 +1,6 @@
 const pass= document.getElementById("pass");
 const pass2= document.getElementById("pass2");
-const form= document.getElementById("rom");
+const register= document.getElementById("form");
 const date=document.getElementById("nascita");
 
 
@@ -53,6 +53,15 @@ function check(event){
             alert("La password è troppo lunga");
             event.preventDefault();
 
+register.addEventListener('submit', check);
+
+
+
+
+
+
+
+
           }
           else if(!checkSpecial(pass.value)){
             alert("La password deve contenere almeno un carattere speciale tra @, #, !, $, &");
@@ -70,14 +79,27 @@ function check(event){
 
             }
         }
+
+
+
+
+function controllapassword(){
+
+    var pass1 = document.getElementById("pass");
+    var pass2 = document.getElementById("pass2");
+    var inputbox = document.getElementById("ripetipassword");
+
+    if(pass1.value && pass2.value){
+
+        if(pass1.value !== pass2.value){
+
+            inputbox.style.borderColor = "red";
+        }
+        else{
+            inputbox.style.borderColor = 'black'
+        }
+    }
+    console.log(pass1.value,pass2.value)
+}
     
-
-form.addEventListener('submit', check);
-
-
-
-
-
-
-
 

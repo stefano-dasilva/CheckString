@@ -1,0 +1,32 @@
+$background-image: url('../../resources/flags2.jpg');
+$transparecy: rgba(255, 255, 255, 0.6);
+
+
+body {
+  background-image:$background-image;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+#layerWrap {
+
+  background: $transparecy;
+  display: flex;
+  width: 30%;
+  height: 80%;
+  border: 0.5px solid black;
+  border-radius: 2%;
+}
+
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+}
