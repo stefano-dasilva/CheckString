@@ -1,4 +1,6 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html; charset=UTF-8" %>
+
 
 <HTML>
      <HEAD>
@@ -8,68 +10,81 @@
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-        
      </HEAD>
      <BODY>
         
         <div id="layerWrap">
-           
 
-            <form id="form" action="submit" method="POST">
+
+            <form:form id="form" method="POST"
+                       action="register"  modelAttribute="userform" >
                
                 <h2>Registrati</h2>
 
                 <div id="inputgroup">
 
                 <div>
-                <label for="nome">Inserisci il tuo nome</label>
+                    <form:label for="nome"  path="nome" >Inserisci il tuo nome</form:label>
                 <div>
                 <i class='bx bxs-user'></i>
-                <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                    <form:input type="text" id="nome"  path="nome" placeholder="Nome" cssErrorClass="error_input" />
                 </div>
+                    <form:errors path="nome" cssClass="error_message" />
                 </div>
 
 
                 <div>
-                <label for="cognome">Inserisci il tuo cognome</label>
+                    <form:label for="cognome"  path="cognome" >Inserisci il tuo cognome</form:label>
                     <div>
                 <i class='bx bxs-user'></i>
-                <input type="text" id="cognome" name="cognome" placeholder="Cognome">
+                        <form:input type="text" id="cognome" name="cognome"   path="cognome" placeholder="Cognome" cssErrorClass="error_input" />
                     </div>
+                    <form:errors path="cognome" cssClass="error_message" />
                 </div>
-               
+
+                    <div>
+                        <form:label for="username"  path="username" >Inserisci il tuo Username</form:label>
+                        <div>
+                            <i class='bx bxs-user'></i>
+                            <form:input type="text" id="username" name="username"   path="username" placeholder="Username" cssErrorClass="error_input" />
+                        </div>
+                        <form:errors path="username" cssClass="error_message" />
+                    </div>
+
 
                 <div >
-                <label for="nazione">Inserisci la tua nazionalità</label>
+                    <form:label for="nazione" path="nazione" >Inserisci il tuo Username</form:label>
+
                     <div>
                 <i class='bx bx-world'></i>
-                <input type="text" id="nazione" name="nazione" placeholder="Nazionalità" required>
+                        <form:input type="text" id="nazione" name="nazione"   path="nazione" placeholder="Nazionalità" cssErrorClass="error_input" />
                     </div>
+                    <form:errors path="nazione" cssClass="error_message" />
                 </div>
                 
 
                 <div>
-                <label for="nascita">Data di Nascita</label>
+                    <form:label for="nascita" path="dataNascita" >Data di Nascita</form:label>
                     <div>
 
                         <i class='bx bxs-calendar'></i>
-
-                <input type="date" id="nascita" name="nascita" required>
+                        <form:input type="date" id="nascita" name="nascita"   path="dataNascita"  cssErrorClass="error_input" />
                     </div>
+                    <form:errors path="dataNascita" cssClass="error_message" />
                 </div>
               
 
                <div>
-                <label for="pass">Inserisci Password</label>
+                   <form:label for="pass" path="password" >Inserisci Password</form:label>
                    <div>
                 <i class='bx bx-lock-alt'></i>
-                <input type="password" id="pass" name="password" placeholder="Password" required onchange="controllapassword()">
+                       <form:input type="password" id="password" name="password" placeHolder="Password"   path="password"  cssErrorClass="error_input" onchange="controllapassword()"/>
                    </div>
-                </div>
+                   <form:errors path="password" cssClass="error_message" />
+               </div>
 
                 <div >
-                <label for="pass">Inserisci Nuovamente Password</label>
+                <label for="pass2">Inserisci Nuovamente Password</label>
                     <div id="ripetipassword">
                 <i class='bx bx-lock-alt'></i>
                 <input type="password" id="pass2" name="password" placeholder="Password" required onchange="controllapassword()">
@@ -79,7 +94,7 @@
 
 
                 <button type="submit">SUBMIT</button>
-            </form>
+            </form:form>
         </div>
 
 
