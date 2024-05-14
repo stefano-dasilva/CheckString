@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import service.Interface.UtenteService;
 import spring.web.vo.UserForm;
+import spring.web.vo.UserLogin;
 
 
 @Controller
@@ -70,6 +71,23 @@ public class EsempioController {
 
         return "Paese non riconosciuto";
     }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public String Login(@ModelAttribute("userlogin") @Valid UserLogin userLogin, BindingResult bindingResult, Model model) {
+        System.out.println("login:" + userLogin);
+        System.out.println("br:" + bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            return "login";
+
+        }else {
+
+            return "Login Effettuato";
+        }
+    }
+
+
 
 
 
