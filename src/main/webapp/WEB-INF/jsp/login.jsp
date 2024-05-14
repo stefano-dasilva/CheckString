@@ -16,7 +16,7 @@
 <div id="layerWrap">
 
 
-    <form id="form" action="submit" method="POST">
+    <form id="form" action="submit" method="POST" modelAttribute="userLogin">
 
         <h2>Login</h2>
 
