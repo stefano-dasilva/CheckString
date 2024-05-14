@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 public class UserForm {
 
@@ -16,7 +17,10 @@ public class UserForm {
     @Size(min=6, max=20, message="password dev'essere tra 6 e 20 caratteri ")
     @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "non rispetta il formato")
     private String password;
-    private String dataNascita;
+    @Size(min=6, max=20, message="password dev'essere tra 6 e 20 caratteri ")
+    @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "non rispetta il formato")
+    private String password2;
+    private Date dataNascita;
     @NotNull
     @Size(min=2, message="nome troppo corto ")
     private String nome;
@@ -53,12 +57,12 @@ public class UserForm {
         return cognome;
     }
 
-    public void setDataNascita(String dataNascita) {
+    public void setDataNascita(Date dataNascita) {
         this.dataNascita = dataNascita;
 
     }
 
-    public String getDataNascita() {
+    public Date getDataNascita() {
         return dataNascita;
     }
 
@@ -76,5 +80,13 @@ public class UserForm {
 
     public String getNazione() {
         return nazione;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
+
+    public String getPassword2() {
+        return password2;
     }
 }
