@@ -47,5 +47,10 @@ public class UtenteServiceImpl implements UtenteService {
         return utente;
     }
 
+    @Override
+    public Utente findByUsername(String username) {
+        return utenteDao.findByUsername(username);
+    }
+
 
 }

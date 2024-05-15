@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html; charset=UTF-8" %>
 
 <HTML>
@@ -16,29 +17,34 @@
 <div id="layerWrap">
 
 
-    <form id="form" action="submit" method="POST" modelAttribute="userLogin">
+    <form:form id="form" method="POST"
+               action="login"  modelAttribute="userlogin" >
 
         <h2>Login</h2>
 
         <div id="inputgroup">
 
             <div id="sec01">
-                <label for="username">Inserisci il tuo username</label>
+                <form:label for="username"  path="username" >Inserisci il tuo username</form:label>
                 <div id="usernameWrap">
                     <i class='bx bxs-user'></i>
-                    <input type="text" id="username" name="username" placeholder="Username" required onchange="checkUsername()">
+                    <form:input type="text" id="username"  path="username" placeholder="Username" cssErrorClass="error_input" onchange="checkUsername()" />
                 </div>
                 <span></span>
+                <form:errors path="username" cssClass="error_message" />
             </div>
 
 
             <div id="sec02">
+                <form:label for="password"  path="password" >Inserisci </form:label>
+
                 <label for="password">Inserisci Password</label>
                 <div>
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <form:input type="password" id="password"  path="password" placeholder="Password" cssErrorClass="error_input"  />
                 </div>
                 <span></span>
+                <form:errors path="password" cssClass="error_message" />
             </div>
 
 
@@ -49,7 +55,7 @@
         <p >Non hai una password? <a href="/CheckString/form_register">Registrati !</a></p>
         </div>
 
-    </form>
+    </form:form>
 </div>
 
 

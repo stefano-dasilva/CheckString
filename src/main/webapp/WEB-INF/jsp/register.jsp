@@ -17,7 +17,7 @@
 
 
             <form:form id="form" method="POST"
-                       action="register"  modelAttribute="userform" >
+                       action="register"  modelAttribute="userregister" >
                
                 <h2>Registrati</h2>
 

@@ -3,16 +3,15 @@ package spring.web.vo;
 import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-public class UserForm {
+public class UserRegister {
 
 
     @NotNull
-    @Size(min=3, max=20, message="password dev'essere tra 3 e 20 caratteri ")
+    @Size(min=3, max=20, message="username dev'essere tra 3 e 20 caratteri ")
     private String username;
     @NotNull
     @Size(min=6, max=20, message="password dev'essere tra 6 e 20 caratteri ")

@@ -26,5 +26,11 @@ public interface UtenteService {
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente cambiaPassword(Utente utente, String password);
 
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Utente findByUsername(String username);
+
 
 }
