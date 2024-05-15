@@ -36,9 +36,7 @@
 
 
             <div id="sec02">
-                <form:label for="password"  path="password" >Inserisci </form:label>
-
-                <label for="password">Inserisci Password</label>
+                <form:label for="password"  path="password" >Inserisci Password </form:label>
                 <div>
                     <i class='bx bx-lock-alt'></i>
                     <form:input type="password" id="password"  path="password" placeholder="Password" cssErrorClass="error_input"  />
