@@ -36,7 +36,6 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    @ResponseBody
     public String Register(@ModelAttribute("userregister") @Valid UserRegister userRegister, BindingResult bindingResult, Model model) throws NoSuchAlgorithmException {
         FactoryUtil factoryUtil = FactoryUtil.getIstanza();
         System.out.println("form:" + userRegister);
@@ -64,10 +63,10 @@ public class AuthController {
 
 
             if( utenteService.inserisciUtente(utente)!= null){
-                return "Salve " + utente.getUsername() + " da " + utente.getNazione();
+                return "profile";
             }
             else
-                return "L'utente già esiste ";
+                return "register ";
 
         }
     }
@@ -80,7 +79,6 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    @ResponseBody
     public String Login(@ModelAttribute("userlogin") @Valid UserLogin userLogin, BindingResult bindingResult, Model model) throws NoSuchAlgorithmException {
         System.out.println("user:" + userLogin.getUsername());
         System.out.println("password:" + userLogin.getPassword());
@@ -94,6 +92,7 @@ public class AuthController {
 
             Utente u = utenteService.findByUsername(userLogin.getUsername());
             if(u == null){
+                model.addAttribute("errorUsername", "Utente non esiste");
                 return "login";
             }
             MD5 md5 = new MD5(userLogin.getPassword());
@@ -101,10 +100,11 @@ public class AuthController {
             System.out.println("password in db " + u.getPassword());
 
             if(!u.getPassword().equalsIgnoreCase(md5.hash())){
+                model.addAttribute("errorPass", "Password sbagliata");
                 return "login";
             }
 
-            return "Login Effettuato";
+            return "profile";
         }
     }
 

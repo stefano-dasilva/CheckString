@@ -30,7 +30,7 @@
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="username"  path="username" placeholder="Username" cssErrorClass="error_input" onchange="checkUsername()" />
                 </div>
-                <span></span>
+                <span>${errorUsername}</span>
                 <form:errors path="username" cssClass="error_message" />
             </div>
 
@@ -41,7 +41,7 @@
                     <i class='bx bx-lock-alt'></i>
                     <form:input type="password" id="password"  path="password" placeholder="Password" cssErrorClass="error_input"  />
                 </div>
-                <span></span>
+                <span>${errorPass}</span>
                 <form:errors path="password" cssClass="error_message" />
             </div>
 
@@ -49,8 +49,8 @@
         </div>
 
         <div id="form_footer">
-        <button type="submit">LOGIN</button>
-        <p >Non hai una password? <a href="/CheckString/form_register">Registrati !</a></p>
+            <button type="submit">LOGIN</button>
+            <p >Non hai una password? <a href="/CheckString/form_register">Registrati !</a></p>
         </div>
 
     </form:form>

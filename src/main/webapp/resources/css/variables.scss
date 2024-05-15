@@ -26,6 +26,12 @@ body {
   border-radius: 2%;
 }
 
+@media only screen and (max-width: 768px) {
+  #layerWrap {
+    width: 80%;
+  }
+}
+
 @mixin flex-column{
   display: flex;
   flex-direction: column;

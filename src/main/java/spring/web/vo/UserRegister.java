@@ -14,10 +14,8 @@ public class UserRegister {
     @Size(min=3, max=20, message="username dev'essere tra 3 e 20 caratteri ")
     private String username;
     @NotNull
-    @Size(min=6, max=20, message="password dev'essere tra 6 e 20 caratteri ")
     @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "non rispetta il formato")
     private String password;
-    @Size(min=6, max=20, message="password dev'essere tra 6 e 20 caratteri ")
     @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "non rispetta il formato")
     private String password2;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
