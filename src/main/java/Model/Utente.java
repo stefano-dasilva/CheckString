@@ -79,4 +79,8 @@ public class Utente implements Bean{
     public void setNazione(String nazione) {
         this.nazione = nazione;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

@@ -1,13 +1,14 @@
 package spring.web.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-
 import Config.FactoryUtil;
 import Config.MD5;
 import Model.Corrispondenza;
 import Model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +37,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public String Register(@ModelAttribute("userregister") @Valid UserRegister userRegister, BindingResult bindingResult, Model model) throws NoSuchAlgorithmException {
+    public String Register(@ModelAttribute("userregister") @Valid UserRegister userRegister, BindingResult bindingResult, Model model, HttpServletRequest request) throws NoSuchAlgorithmException {
         FactoryUtil factoryUtil = FactoryUtil.getIstanza();
         System.out.println("form:" + userRegister);
         System.out.println("br:" + bindingResult);
@@ -63,6 +64,8 @@ public class AuthController {
 
 
             if( utenteService.inserisciUtente(utente)!= null){
+                HttpSession session = request.getSession();
+                session.setAttribute("username", utente.getUsername());
                 return "profile";
             }
             else
@@ -79,7 +82,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String Login(@ModelAttribute("userlogin") @Valid UserLogin userLogin, BindingResult bindingResult, Model model) throws NoSuchAlgorithmException {
+    public String Login(@ModelAttribute("userlogin") @Valid UserLogin userLogin, BindingResult bindingResult, Model model, HttpServletRequest request) throws NoSuchAlgorithmException {
         System.out.println("user:" + userLogin.getUsername());
         System.out.println("password:" + userLogin.getPassword());
 
@@ -104,15 +107,12 @@ public class AuthController {
                 return "login";
             }
 
-            return "profile";
+
+            HttpSession session = request.getSession();
+            session.setAttribute("username",u.getUsername());
+            return "redirect:/show_profile";
         }
     }
-
-
-
-
-
-
 
 }
 
