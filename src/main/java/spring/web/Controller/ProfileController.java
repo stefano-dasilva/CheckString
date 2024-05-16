@@ -33,7 +33,7 @@ public class ProfileController {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
         if(username == null ){
-            return "/login";
+            return "redirect:/";
         }
 
         Utente u = utenteService.findByUsername(username);

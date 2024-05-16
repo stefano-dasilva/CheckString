@@ -25,6 +25,8 @@ public class AuthController {
 
     @Autowired
     private UtenteService utenteService;
+    @Autowired
+    private HttpSession httpSession;
 
 
     @GetMapping("/form_register")
@@ -52,15 +54,8 @@ public class AuthController {
             utente.setCognome(userRegister.getCognome());
             utente.setDataNascita(userRegister.getDataNascita());
             utente.setUsername(userRegister.getUsername());
-            MD5 md5 = new MD5(userRegister.getPassword());
-            utente.setPassword(md5.hash());
-             Corrispondenza corrispondenza = factoryUtil.getCheckStringService().buildChain().check(userRegister.getNazione());
-            if(corrispondenza!= null){
-                utente.setNazione(corrispondenza.getStandard().getValue());
-            }
-            else{
-                utente.setNazione("non trovata");
-            }
+            utente.setPassword(userRegister.getPassword());
+            utente.setNazione(userRegister.getNazione());
 
 
             if( utenteService.inserisciUtente(utente)!= null){
