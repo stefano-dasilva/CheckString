@@ -54,7 +54,7 @@ public class AuthController {
 
             if( utenteService.inserisciUtente(utente)!= null){
                 session.setAttribute("username", utente.getUsername());
-                return "profile";
+                return "redirect:/show_profile";
             }
             else
                 return "register ";
