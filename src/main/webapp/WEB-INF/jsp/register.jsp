@@ -68,7 +68,7 @@
                 <div>
 
                     <i class='bx bxs-calendar'></i>
-                    <form:input type="date" id="nascita" name="nascita"   path="dataNascita"  cssErrorClass="error_input" />
+                    <form:input type="text" placeholder="gg/mm/yyyy" onfocus="this.type='date'" name="nascita"   path="dataNascita"  cssErrorClass="error_input" />
                 </div>
                 <form:errors path="dataNascita" cssClass="error_message" />
             </div>

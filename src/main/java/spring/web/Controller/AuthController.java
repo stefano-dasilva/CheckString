@@ -7,6 +7,7 @@ import Config.FactoryUtil;
 import Config.MD5;
 import Model.Corrispondenza;
 import Model.Utente;
+import converter.UtenteConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public String Register(@ModelAttribute("userregister") @Valid UserRegister userRegister, BindingResult bindingResult, Model model, HttpServletRequest request) throws NoSuchAlgorithmException {
+    public String Register(@ModelAttribute("userregister") @Valid UserRegister userRegister, BindingResult bindingResult, Model model, HttpSession session) throws NoSuchAlgorithmException {
         FactoryUtil factoryUtil = FactoryUtil.getIstanza();
         System.out.println("form:" + userRegister);
         System.out.println("br:" + bindingResult);
@@ -48,18 +49,10 @@ public class AuthController {
             return "register";
         }
         else
-        {
-            Utente utente = new Utente();
-            utente.setNome(userRegister.getNome());
-            utente.setCognome(userRegister.getCognome());
-            utente.setDataNascita(userRegister.getDataNascita());
-            utente.setUsername(userRegister.getUsername());
-            utente.setPassword(userRegister.getPassword());
-            utente.setNazione(userRegister.getNazione());
+        { Utente utente = UtenteConverter.convert(userRegister);
 
 
             if( utenteService.inserisciUtente(utente)!= null){
-                HttpSession session = request.getSession();
                 session.setAttribute("username", utente.getUsername());
                 return "profile";
             }
@@ -68,7 +61,6 @@ public class AuthController {
 
         }
     }
-
 
     @GetMapping("/")
     public String showLogin(Model m, @ModelAttribute("userlogin") UserLogin userLogin) {
@@ -107,6 +99,8 @@ public class AuthController {
             session.setAttribute("username",u.getUsername());
             return "redirect:/show_profile";
         }
+
+
     }
 
 }
