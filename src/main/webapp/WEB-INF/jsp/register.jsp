@@ -53,7 +53,7 @@
 
 
             <div >
-                <form:label for="nazione" path="nazione" >Inserisci il tuo Username</form:label>
+                <form:label for="nazione" path="nazione" >Inserisci la tua nazionalità</form:label>
 
                 <div>
                     <i class='bx bx-world'></i>

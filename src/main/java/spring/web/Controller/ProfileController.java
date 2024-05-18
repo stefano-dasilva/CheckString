@@ -1,6 +1,7 @@
 package spring.web.Controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import Config.FactoryUtil;
@@ -32,6 +33,7 @@ public class ProfileController {
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
+
         if(username == null ){
             return "redirect:/";
         }
@@ -55,6 +57,7 @@ public class ProfileController {
 
         return "profile";
     }
+
 
 
 

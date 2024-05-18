@@ -103,8 +103,11 @@
 
 
             <div class="logout mb-3 mt-3 text-center">
-                <button type="button" class="btn btn-outline-dark">Logout</button>
+                <form action="logout" method="get">
+                    <button type="submit" class="btn btn-outline-dark">Logout</button>
+                </form>
             </div>
+
         </div>
     </div>
 </div>

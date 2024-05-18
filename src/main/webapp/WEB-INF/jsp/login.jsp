@@ -50,6 +50,7 @@
 
         <div id="form_footer">
             <button type="submit">LOGIN</button>
+
             <p >Non hai una password? <a href="/CheckString/form_register">Registrati !</a></p>
         </div>
 

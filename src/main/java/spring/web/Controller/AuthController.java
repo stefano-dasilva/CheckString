@@ -31,9 +31,9 @@ public class AuthController {
 
 
     @GetMapping("/form_register")
-    public String showRegister(Model m, @ModelAttribute("userregister") UserRegister userRegister) {
+    public String showRegister(Model m) {
 
-        m.addAttribute("userregister", userRegister);
+        m.addAttribute("userregister", new UserRegister());
         return "register";
     }
 
@@ -57,14 +57,14 @@ public class AuthController {
                 return "redirect:/show_profile";
             }
             else
-                return "register ";
+                return "register";
 
         }
     }
 
     @GetMapping("/")
-    public String showLogin(Model m, @ModelAttribute("userlogin") UserLogin userLogin) {
-        m.addAttribute("userlogin",userLogin);
+    public String showLogin(Model m) {
+        m.addAttribute("userlogin",new UserLogin());
         return "login";
     }
 
@@ -99,9 +99,20 @@ public class AuthController {
             session.setAttribute("username",u.getUsername());
             return "redirect:/show_profile";
         }
-
-
     }
+
+
+    @GetMapping("/logout")
+    public String Logout(HttpServletRequest request, Model m) {
+       request.getSession().invalidate();
+       System.out.println("Sessione chiusa");
+       m.addAttribute("userlogin", new UserLogin());
+       return "login";
+    }
+
+
+
+
 //
 }
 
