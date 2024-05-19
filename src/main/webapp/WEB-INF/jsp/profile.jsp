@@ -37,10 +37,21 @@
 
 
 
-<div id="first">
-    <div class="container mt-3">
-        <h5 class="display-5">Benvenuto nel tuo profilo</h5>
+<div class="first">
+    <div class="chicco mt-3 d-flex justify-content-between align-items-center">
+
+            <h5 class="display-5">Benvenuto nel tuo profilo</h5>
+            <div class="logout">
+                <form action="logout" method="get">
+                    <button type="submit" class="btn btn-outline-dark">Logout</button>
+                </form>
+            </div>
+        </div>
     </div>
+
+
+
+
 
     <div class="sezioneFoto">
         <div class="container mt-5">
@@ -102,11 +113,7 @@
             </div>
 
 
-            <div class="logout mb-3 mt-3 text-center">
-                <form action="logout" method="get">
-                    <button type="submit" class="btn btn-outline-dark">Logout</button>
-                </form>
-            </div>
+
 
         </div>
     </div>
