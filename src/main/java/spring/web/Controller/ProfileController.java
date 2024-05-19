@@ -34,25 +34,13 @@ public class ProfileController {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
 
-        if(username == null ){
-            return "redirect:/";
-        }
-
         Utente u = utenteService.findByUsername(username);
-        System.out.println("show_prorfile " + u.getUsername());
-        System.out.println("show_prorfile " + u.getNome());
-        System.out.println("show_prorfile " + u.getCognome());
-        System.out.println("show_prorfile " + u.getDataNascita());
-        System.out.println("show_prorfile " + u.getNazione());
 
         m.addAttribute("username",u.getUsername());
         m.addAttribute("name",u.getNome());
         m.addAttribute("cognome",u.getCognome());
         m.addAttribute("nazione",u.getNazione());
         m.addAttribute("data_nascita",u.getDataNascita());
-
-
-
 
 
         return "profile";
