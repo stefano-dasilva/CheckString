@@ -3,9 +3,11 @@
 <html>
 <head>
     <title>Chat WebSocket</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/prova.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script type="text/javascript">
+
         var stompClient = null;
         var id;
 
@@ -13,10 +15,10 @@
 
             id = idpass;
             console.log(id)
+            connect();
         }
 
         function setConnected(connected) {
-            document.getElementById('connect').disabled = connected;
             document.getElementById('disconnect').disabled = !connected;
             document.getElementById('conversationDiv').style.visibility
                 = connected ? 'visible' : 'hidden';
@@ -24,6 +26,7 @@
         }
 
         function connect() {
+            disconnect();
             let socket = new SockJS("/CheckString/chat/" + id );
             stompClient = Stomp.over(socket);
             console.log(stompClient)
@@ -47,7 +50,7 @@
         }
 
         function sendMessage() {
-            var from = document.getElementById('from').value;
+            var from = "`${nome_user}`";
             var text = document.getElementById('text').value;
             stompClient.send("/app/chat/" + id, {},
                 JSON.stringify({'from':from, 'text':text}));
@@ -66,11 +69,9 @@
 <body onload="disconnect()">
 <div>
     <div>
-        <input type="text" id="from" placeholder="Choose a nickname"/>
     </div>
     <br />
     <div>
-        <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">
             Disconnect
         </button>
@@ -81,9 +82,12 @@
         <button id="sendMessage" onclick="sendMessage();">Send</button>
         <p id="response"></p>
     </div>
-    <div>
+    <div id="chat-background">
         <c:forEach var="chat" items="${chats}">
-            <span onclick="setChatID(`${chat.id}`)" >${chat.user1}  ${chat.user2}  ${chat.id}</span>
+            <div  >
+                <span>${chat.user1 eq nome_user ? chat.user2 : chat.user1}</span>
+                <button onclick="setChatID(`${chat.id}`)">Chatta</button>
+            </div>
             </c:forEach>
     </div>
 </div>

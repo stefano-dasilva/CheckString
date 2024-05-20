@@ -35,6 +35,7 @@ public class EsempioController {
         List<Chat> chats = chatService.findChatsFromUser(u);
 
         m.addAttribute("chats",chats);
+        m.addAttribute("nome_user",u.getUsername());
 
 
 
