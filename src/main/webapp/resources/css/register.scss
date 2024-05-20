@@ -74,6 +74,15 @@ button[type = "submit"]{
   font-family: "Montserrat", sans-serif;
 
 }
+.form-control small {
+  visibility: visible;
+  color: red;
+}
+
+.form-control.error{
+  border: 2px solid red;
+
+}
 
 
 

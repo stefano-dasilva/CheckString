@@ -19,46 +19,55 @@
     <form:form id="form" method="POST"
                action="register"  modelAttribute="userregister" >
 
+
+
         <h2>Registrati</h2>
 
         <div id="inputgroup">
 
-            <div>
+            <div class="form-control">
                 <form:label for="nome"  path="nome" >Inserisci il tuo nome</form:label>
                 <div>
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="nome"  path="nome" placeholder="Nome" cssErrorClass="error_input" />
                 </div>
+                <small></small>
                 <form:errors path="nome" cssClass="error_message" />
+
             </div>
 
 
-            <div>
+            <div class="form-control">
                 <form:label for="cognome"  path="cognome" >Inserisci il tuo cognome</form:label>
                 <div>
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="cognome" name="cognome"   path="cognome" placeholder="Cognome" cssErrorClass="error_input" />
                 </div>
+                <small></small>
                 <form:errors path="cognome" cssClass="error_message" />
+
             </div>
 
-            <div>
+            <div class="form-control">
                 <form:label for="username"  path="username" >Inserisci il tuo Username</form:label>
                 <div>
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="username" name="username"   path="username" placeholder="Username" cssErrorClass="error_input" />
                 </div>
+                <small></small>
                 <form:errors path="username" cssClass="error_message" />
+
             </div>
 
 
-            <div >
+            <div class="form-control">
                 <form:label for="nazione" path="nazione" >Inserisci la tua nazionalità</form:label>
 
                 <div>
                     <i class='bx bx-world'></i>
                     <form:input type="text" id="nazione" name="nazione"   path="nazione" placeholder="Nazionalità" cssErrorClass="error_input" />
                 </div>
+                <small></small>
                 <form:errors path="nazione" cssClass="error_message" />
             </div>
 
@@ -74,22 +83,23 @@
             </div>
 
 
-            <div>
+            <div class="form-control">
                 <form:label for="pass" path="password" >Inserisci Password</form:label>
                 <div>
                     <i class='bx bx-lock-alt'></i>
-                    <form:input type="password" id="password" name="password" placeHolder="Password"   path="password"  cssErrorClass="error_input" onchange="controllapassword()"/>
+                    <form:input type="password" id="pass" name="password" placeHolder="Password"   path="password"  cssErrorClass="error_input" onchange="controllapassword()"/>
                 </div>
+                <small></small>
                 <form:errors path="password" cssClass="error_message" />
             </div>
 
-            <div >
+            <div class="form-control">
                 <form:label for="pass2" path="password2" >Reinserisci Password</form:label>
                 <div id="ripetipassword">
                     <i class='bx bx-lock-alt'></i>
                     <form:input type="password" id="pass2" name="password" placeHolder="Password" path="password2"   cssErrorClass="error_input" onchange="controllapassword()"/>
                 </div>
-                <form:errors path="password2" cssClass="error_message" />
+                <small></small>
 
             </div>
         </div>
