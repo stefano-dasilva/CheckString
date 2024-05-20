@@ -26,8 +26,7 @@ public class AuthController {
 
     @Autowired
     private UtenteService utenteService;
-    @Autowired
-    private HttpSession httpSession;
+
 
 
     @GetMapping("/form_register")
@@ -53,8 +52,8 @@ public class AuthController {
 
 
             if( utenteService.inserisciUtente(utente)!= null){
-                session.setAttribute("username", utente.getUsername());
-                return "redirect:/show_profile";
+                session.setAttribute("user", utente);
+                return "redirect:/show_home";
             }
             else
                 return "register";
@@ -69,7 +68,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String Login(@ModelAttribute("userlogin") @Valid UserLogin userLogin, BindingResult bindingResult, Model model, HttpServletRequest request) throws NoSuchAlgorithmException {
+    public String Login(@ModelAttribute("userlogin") @Valid UserLogin userLogin, BindingResult bindingResult, Model model, HttpSession session) throws NoSuchAlgorithmException {
         System.out.println("user:" + userLogin.getUsername());
         System.out.println("password:" + userLogin.getPassword());
 
@@ -95,9 +94,9 @@ public class AuthController {
             }
 
 
-            HttpSession session = request.getSession();
-            session.setAttribute("username",u.getUsername());
-            return "redirect:/show_profile";
+
+            session.setAttribute("user",u);
+            return "redirect:/show_home";
         }
     }
 

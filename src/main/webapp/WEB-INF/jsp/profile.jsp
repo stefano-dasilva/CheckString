@@ -88,7 +88,7 @@
 
                     <div class="col-md-6">
                         <label for="cognome" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="cognome" name="cognome" value=${cognome} readonly>
+                        <input type="text" class="form-control" id="cognome" name="cognome" value="${cognome}" readonly>
                     </div>
                 </div>
 

@@ -1,0 +1,131 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+}
+
+nav {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Syne", sans-serif;
+  font-weight: bold;
+}
+
+#wrapper {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#wrapper div {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#home {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 90%;
+}
+
+h2 {
+  font-family: "Syne", sans-serif;
+  text-align: center;
+}
+
+#imageWrapper {
+  width: 60%;
+  height: 100%;
+}
+#imageWrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#gamecard {
+  width: 40%;
+  height: 100%;
+  background-color: #FEF9E6;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#gamecard #gamedesc {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Montserrat", sans-serif;
+}
+#gamecard #gamedesc p {
+  line-height: 1.5;
+}
+#gamecard #footer_section {
+  width: 90%;
+  height: 20%;
+  font-family: "Syne", sans-serif;
+  font-weight: bold;
+  background-color: #FDEEB6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 1rem;
+  gap: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+#gamecard #footer_section span {
+  margin-left: 1rem;
+}
+
+span a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#footer_section i {
+  transition: transform 0.3s ease;
+  font-size: 2rem;
+}
+
+#footer_section:hover i {
+  transform: translateX(10px);
+}
+
+span {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  #imageWrapper {
+    display: none;
+  }
+  #gamecard {
+    width: 90%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*# sourceMappingURL=home.css.map */

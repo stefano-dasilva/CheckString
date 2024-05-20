@@ -29,12 +29,11 @@ public class ProfileController {
 
 
     @GetMapping("/show_profile")
-    public String showProfile(HttpServletRequest request, Model m) {
+    public String showProfile(HttpSession session, Model m) {
 
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
 
-        Utente u = utenteService.findByUsername(username);
+        Utente u = (Utente) session.getAttribute("user");
+        System.out.println(u.getUsername() + u.getNome() + u.getCognome());
 
         m.addAttribute("username",u.getUsername());
         m.addAttribute("name",u.getNome());
@@ -44,6 +43,13 @@ public class ProfileController {
 
 
         return "profile";
+    }
+
+    @GetMapping("/show_home")
+    public String showHome() {
+
+
+        return "home";
     }
 
 
