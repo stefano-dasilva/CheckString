@@ -2,6 +2,7 @@ package Model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 
@@ -31,6 +32,13 @@ public class Utente implements Bean{
 
     @Column(name = "password")
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "amici",
+            joinColumns = @JoinColumn(name = "user"),
+            inverseJoinColumns = @JoinColumn(name = "amico"))
+    Set<Utente> amici;
 
     public String getUsername() {
         return username;
@@ -82,5 +90,13 @@ public class Utente implements Bean{
 
     public Integer getId() {
         return id;
+    }
+
+    public Set<Utente> getAmici() {
+        return amici;
+    }
+
+    public void setAmici(Utente amico) {
+        this.amici.add(amico);
     }
 }

@@ -32,9 +32,9 @@ public class ProfileController {
     public String showProfile(HttpServletRequest request, Model m) {
 
         HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
+        Utente u = (Utente) session.getAttribute("user");
 
-        Utente u = utenteService.findByUsername(username);
+
 
         m.addAttribute("username",u.getUsername());
         m.addAttribute("name",u.getNome());

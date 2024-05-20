@@ -5,12 +5,11 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.FrameworkServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {spring.web.WebConfig.class};
+        return new Class<?>[] {spring.web.WebConfig.class, spring.web.WebSocketConfig.class};
     }
 
     @Override
@@ -23,14 +22,10 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         return new String[] {"/"};
     }
 
-
     @Override
     protected FrameworkServlet createDispatcherServlet(WebApplicationContext servletAppContext) {
         DispatcherServlet ds = new DispatcherServlet(servletAppContext);
         ds.setThrowExceptionIfNoHandlerFound(true);
         return ds;
     }
-
-
-
 }

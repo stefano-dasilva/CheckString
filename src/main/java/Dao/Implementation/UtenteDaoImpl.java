@@ -1,5 +1,6 @@
 package Dao.Implementation;
 import Dao.Interface.UtenteDao;
+import Model.Standard;
 import Model.Utente;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -19,6 +20,11 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
     public Utente create(Utente utente) {
         manager.persist(utente);
         return utente;
+    }
+
+    @Override
+    public Utente update(Utente utente) {
+        return (Utente) super.update(utente);
     }
 
     @Override
@@ -45,6 +51,8 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
     public List<Utente> getAll() {
         return (List<Utente>) super.getAll(Utente.class);
     }
+
+
 
     @Override
     public void cambiaPassword(Utente utente, String nuovaPassword) {

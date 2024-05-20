@@ -113,6 +113,12 @@ public class Beans {
         return dao;
     }
 
+    @Bean(name="ChatDao")
+    public ChatDao getChatDao (){
+        ChatDao dao = new ChatDaoImpl();
+        return dao;
+    }
+
 
     @Bean(name="AlgoritmoService")
     public AlgoritmoService getAlgoritmoService (){
@@ -147,6 +153,12 @@ public class Beans {
     @Bean(name="UtenteService")
     public UtenteService getUtenteService (){
         UtenteService service = new UtenteServiceImpl();
+        return service;
+    }
+
+    @Bean(name="ChatService")
+    public ChatService getChatService (){
+        ChatService service = new ChatServiceImpl();
         return service;
     }
 

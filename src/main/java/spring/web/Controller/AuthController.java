@@ -1,5 +1,6 @@
 package spring.web.Controller;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -10,11 +11,14 @@ import Model.Utente;
 import converter.UtenteConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import service.Interface.UtenteService;
+import spring.web.Message;
 import spring.web.vo.UserRegister;
 import spring.web.vo.UserLogin;
 
@@ -53,7 +57,7 @@ public class AuthController {
 
 
             if( utenteService.inserisciUtente(utente)!= null){
-                session.setAttribute("username", utente.getUsername());
+                session.setAttribute("user", utente);
                 return "redirect:/show_profile";
             }
             else
@@ -96,9 +100,38 @@ public class AuthController {
 
 
             HttpSession session = request.getSession();
-            session.setAttribute("username",u.getUsername());
+            session.setAttribute("user",u);
             return "redirect:/show_profile";
         }
+    }
+
+
+    @PostMapping("/addfriend")
+    @ResponseBody
+    public String addFriend(@RequestParam("id") String username, HttpServletRequest request){
+
+        HttpSession session = request.getSession(false);
+
+        Utente u = (Utente) session.getAttribute("user");
+
+        utenteService.addFriend(u,username);
+
+        return "il friend username è " + username;
+    }
+
+    @GetMapping("/viewFriends")
+    @ResponseBody
+    public String viewFriends(HttpServletRequest request){
+
+        HttpSession session = request.getSession(false);
+
+        Utente u = (Utente) session.getAttribute("user");
+
+        for(Utente utente : u.getAmici()){
+            System.out.println(utente.getUsername());
+        }
+
+        return "il friend username è " ;
     }
 
 
@@ -109,6 +142,12 @@ public class AuthController {
        m.addAttribute("userlogin", new UserLogin());
        return "login";
     }
+
+
+
+
+
+
 
 
 

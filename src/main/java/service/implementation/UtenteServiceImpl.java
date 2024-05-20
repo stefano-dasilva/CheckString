@@ -68,5 +68,16 @@ public class UtenteServiceImpl implements UtenteService {
         return utenteDao.findByUsername(username);
     }
 
+    @Override
+    public Utente addFriend(Utente utente, String username) {
+        Utente amico = findByUsername(username);
+        if(amico != null){
+            utente.setAmici(amico);
+            utenteDao.update(utente);
+            amico.setAmici(utente);
+            utenteDao.update(amico);
+        }
+        return null;
+    }
 
 }
