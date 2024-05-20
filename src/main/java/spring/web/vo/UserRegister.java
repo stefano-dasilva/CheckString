@@ -3,6 +3,7 @@ package spring.web.vo;
 import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class UserRegister {
     private String password;
     @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "non rispetta il formato")
     private String password2;
+    @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascita;
     @NotNull

@@ -32,7 +32,7 @@ public class Beans {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUsername("root");
-        ds.setPassword("uvagv6gG98");
+        ds.setPassword("Ad!11223344");
         ds.setUrl("jdbc:mysql://localhost:3306/myschema");
         return ds;
     }
