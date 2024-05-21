@@ -8,16 +8,23 @@ import Config.FactoryUtil;
 import Config.MD5;
 import Model.Corrispondenza;
 import Model.Utente;
+
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import service.Interface.UtenteService;
 import spring.web.vo.UserRegister;
 import spring.web.vo.UserLogin;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.security.NoSuchAlgorithmException;
 
 
@@ -42,6 +49,8 @@ public class ProfileController {
         m.addAttribute("data_nascita",u.getDataNascita());
 
 
+
+
         return "profile";
     }
 
@@ -58,6 +67,44 @@ public class ProfileController {
 
         return "gamesselection";
     }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("img") CommonsMultipartFile img, HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+
+        Utente utente = utenteService.findByUsername(username);
+
+          if(utente != null && !img.isEmpty()) {
+            String name = img.getOriginalFilename();
+            byte[] bytes = img.getBytes();
+            String path = request.getSession().getServletContext().getRealPath("/") + "resources" + File.separator + "img" +
+                    File.separator + name;
+            System.out.println(name + path);
+
+
+            try {
+                FileOutputStream immagine = new FileOutputStream(new File(path));
+                immagine.write(bytes);
+                immagine.close();
+                System.out.println("immagine caricata");
+                utente.setImmagine(bytes);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            model.addAttribute("imagine", utente.getImmagine());
+            System.out.println("immaggine " + utente.getImmagine());
+        }
+
+         return "profile";
+
+
+    }
+
 
 
 

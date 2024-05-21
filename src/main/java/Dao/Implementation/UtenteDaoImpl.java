@@ -11,6 +11,7 @@ import java.util.List;
 
 public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
 
+
     @PersistenceContext
 
     private EntityManager manager;
@@ -54,6 +55,14 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
         q.setParameter("password", nuovaPassword);
 
     }
+
+
+
+
+
+
+
+
 
 
 }

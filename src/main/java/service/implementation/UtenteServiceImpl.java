@@ -12,6 +12,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class UtenteServiceImpl implements UtenteService {
 
+
+
     @Autowired
     UtenteDao utenteDao;
     @Autowired
@@ -67,6 +69,8 @@ public class UtenteServiceImpl implements UtenteService {
     public Utente findByUsername(String username) {
         return utenteDao.findByUsername(username);
     }
+
+
 
 
 }

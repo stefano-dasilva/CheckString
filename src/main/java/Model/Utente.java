@@ -32,6 +32,12 @@ public class Utente implements Bean{
     @Column(name = "password")
     private String password;
 
+    @Lob
+    @Column(name = "img")
+    private byte[] img;
+
+
+
     public String getUsername() {
         return username;
     }
@@ -80,7 +86,13 @@ public class Utente implements Bean{
         this.nazione = nazione;
     }
 
-    public Integer getId() {
-        return id;
+    public byte[] getImmagine() {
+        return img;
     }
+
+    public void setImmagine(byte[] immagine) {
+        this.img = immagine;
+    }
+
+
 }

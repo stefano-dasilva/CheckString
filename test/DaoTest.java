@@ -1,8 +1,5 @@
 import Config.Beans;
-import Dao.Interface.AlgoritmoDao;
-import Dao.Interface.CorrispondenzaDao;
-import Dao.Interface.NonTrovataDao;
-import Dao.Interface.StandardDao;
+import Dao.Interface.*;
 import Model.Corrispondenza;
 import Model.NonTrovata;
 import Model.Standard;
@@ -53,6 +50,10 @@ public class DaoTest {
 
         AlgoritmoDao algoritmoDao = factory.getBean("AlgoritmoDao", AlgoritmoDao.class);
        // algoritmoDao.incrementaSucceso("LevhensteinCheckString");
+
+
+        UtenteDao utenteDao=factory.getBean("UtenteDao", UtenteDao.class);
+
 
 
 

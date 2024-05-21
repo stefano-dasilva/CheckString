@@ -22,4 +22,5 @@ public interface UtenteDao {
     @Transactional
     public void cambiaPassword(Utente utente, String nuovaPassword);
 
+
 }

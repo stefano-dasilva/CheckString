@@ -63,10 +63,15 @@
             <br>
 
             <div class="interno text-center">
-                <img src="profilo.jpg" class="img-fluid rounded" alt="profilo">
+                <img src="@{/resources/img/{imagine}(img=${immagine})}" class="img-fluid rounded" />
+
                 <div class="caricaFoto mt-3">
-                    <button type="button" class="btn btn-outline-primary">Carica Foto</button>
+                    <form action="upload" method="post" enctype="multipart/form-data">
+                    <input for="file" type="file" name="img" class="btn btn-outline-primary" >
+                        <button type="submit" class="btn btn-outline-primary mt-3" id="file">Carica</button>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>

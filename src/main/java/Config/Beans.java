@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import service.CheckStringService;
 import service.Interface.*;
 import service.implementation.*;
@@ -148,6 +149,13 @@ public class Beans {
     public UtenteService getUtenteService (){
         UtenteService service = new UtenteServiceImpl();
         return service;
+    }
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(50000000);
+        return multipartResolver;
     }
 
 }
