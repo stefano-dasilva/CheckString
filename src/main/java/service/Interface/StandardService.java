@@ -26,5 +26,11 @@ public interface StandardService {
     @Transactional
     public Standard findByInput( String value);
 
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Standard getRandom() ;
+
 
 }

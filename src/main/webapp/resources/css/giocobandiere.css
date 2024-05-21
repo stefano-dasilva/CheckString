@@ -1,0 +1,66 @@
+#second_game_wrap {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#second_game_wrap div {
+  width: 40%;
+  height: 90%;
+  background-color: #FEF9E6;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h3 {
+  font-family: "Syne", sans-serif;
+  color: #DAAB00;
+  text-align: center;
+}
+
+#inizia, #bottone {
+  outline: none;
+  background-color: #DAAB00;
+  padding: 2rem;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1rem;
+  color: #FEF9E6;
+  cursor: pointer;
+}
+
+#inizia {
+  width: 80%;
+}
+
+#bottone {
+  width: 90%;
+}
+
+.img_wrapper {
+  width: 80%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#inputUtente {
+  outline: none;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+/*# sourceMappingURL=giocobandiere.css.map */

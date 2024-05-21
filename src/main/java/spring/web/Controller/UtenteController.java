@@ -22,43 +22,7 @@ public class UtenteController {
     private UtenteService utenteService;
 
 
-    @GetMapping("/show_profile")
-    public String showProfile(HttpSession session, Model m) {
 
-
-        Utente u = (Utente) session.getAttribute("user");
-        System.out.println(u.getUsername() + u.getNome() + u.getCognome());
-
-        m.addAttribute("username",u.getUsername());
-        m.addAttribute("name",u.getNome());
-        m.addAttribute("cognome",u.getCognome());
-        m.addAttribute("nazione",u.getNazione());
-        m.addAttribute("data_nascita",u.getDataNascita());
-        if(u.getImmagine() != null){
-        String base64Image = Base64.getEncoder().encodeToString(u.getImmagine());
-
-        m.addAttribute("immagine", base64Image);
-        }
-
-
-
-
-        return "profile";
-    }
-
-    @GetMapping("/show_home")
-    public String showHome() {
-
-
-        return "home";
-    }
-
-    @GetMapping("/show_games")
-    public String showGames() {
-
-
-        return "gamesselection";
-    }
 
     @PostMapping("/upload")
     public String upload(@RequestParam("img") CommonsMultipartFile img, HttpSession session, Model model) {

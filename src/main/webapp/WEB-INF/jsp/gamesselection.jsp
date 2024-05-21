@@ -28,9 +28,8 @@
             </div>
             <div id="first_footer">
                 <span>GIOCA</span>
-                <div id="first_footer_box">
+                <i class='bx bx-right-arrow-alt'></i>
 
-                </div>
 
             </div>
         </div>
@@ -45,9 +44,8 @@
             <div id="second_footer">
 
                 <span>GIOCA</span>
-                <div id="second_footer_box">
+                <i class='bx bx-right-arrow-alt'></i>
 
-                </div>
 
             </div>
         </div>
@@ -60,9 +58,8 @@
             <div id="third_footer">
 
                 <span>GIOCA</span>
-                <div id="third_footer_box">
+                <i class='bx bx-right-arrow-alt'></i>
 
-                </div>
 
             </div>
         </div>

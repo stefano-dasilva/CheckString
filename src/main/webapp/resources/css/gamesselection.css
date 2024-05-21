@@ -76,6 +76,10 @@ h2 {
   font-family: "Syne", sans-serif;
   color: #E9FCF6;
 }
+#first_footer i {
+  color: #E9FCF6;
+  font-size: 2rem;
+}
 
 #second_footer {
   background-color: #DAAB00;
@@ -83,6 +87,10 @@ h2 {
 #second_footer span {
   font-family: "Syne", sans-serif;
   color: #FEF9E6;
+}
+#second_footer i {
+  color: #FEF9E6;
+  font-size: 2rem;
 }
 
 #third_footer {
@@ -92,31 +100,14 @@ h2 {
   font-family: "Syne", sans-serif;
   color: #FFF2F9;
 }
+#third_footer i {
+  color: #FFF2F9;
+  font-size: 2rem;
+}
 
 span {
   color: black;
   font-family: "Syne", sans-serif;
-}
-
-#first_footer_box {
-  height: 35px;
-  width: 35px;
-  border-radius: 100%;
-  background-color: #E9FCF6;
-}
-
-#second_footer_box {
-  height: 35px;
-  width: 35px;
-  background-color: #FEF9E6;
-  border-radius: 100%;
-}
-
-#third_footer_box {
-  height: 35px;
-  width: 35px;
-  background-color: #FFF2F9;
-  border-radius: 100%;
 }
 
 /*# sourceMappingURL=gamesselection.css.map */

@@ -76,6 +76,12 @@ h2{
     color: $green_light;
   }
 
+  i{
+    color: $green_light;
+    font-size: 2rem;
+
+  }
+
 }
 
 #second_footer{
@@ -84,6 +90,11 @@ h2{
   span{
     font-family: "Syne", sans-serif;
     color: $yellow_light;
+  }
+  i{
+    color: $yellow_light;
+    font-size: 2rem;
+
   }
 
 
@@ -97,6 +108,11 @@ h2{
     color: $pink_light;
   }
 
+  i{
+    color: $pink_light;
+    font-size: 2rem;
+  }
+
 }
 
 span{
@@ -104,24 +120,5 @@ span{
   font-family: "Syne", sans-serif;
 }
 
-#first_footer_box{
-  height: 35px;
-  width: 35px;
-  border-radius: 100%;
-  background-color: $green_light;
 
-}
 
-#second_footer_box{
-  height: 35px;
-  width: 35px;
-  background-color: $yellow_light;
-  border-radius: 100%;
-}
-
-#third_footer_box{
-  height: 35px;
-  width: 35px;
-  background-color: $pink_light;
-  border-radius: 100%;
-}

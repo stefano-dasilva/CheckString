@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import service.Interface.StandardService;
 
 import java.util.List;
+import java.util.Random;
 
 public class StandardServiceImpl implements StandardService {
 
@@ -37,5 +38,12 @@ public class StandardServiceImpl implements StandardService {
     @Override
     public Standard findByInput(String value) {
         return standardDao.findbyName(value);
+    }
+
+    @Override
+    public Standard getRandom() {
+        Random random = new Random();
+        int randomNum =   random.nextInt(245) + 1;
+        return standardDao.findById(randomNum);
     }
 }
