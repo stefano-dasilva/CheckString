@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Base64" %><%--
   Created by IntelliJ IDEA.
   User: DASILVAS
   Date: 15/05/2024
@@ -62,8 +62,11 @@
             </div>
             <br>
 
+
             <div class="interno text-center">
-                <img src="@{/resources/img/{imagine}(img=${immagine})}" class="img-fluid rounded" />
+                <div class="img-container">
+                    <img src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded" />
+                </div>
 
                 <div class="caricaFoto mt-3">
                     <form action="upload" method="post" enctype="multipart/form-data">

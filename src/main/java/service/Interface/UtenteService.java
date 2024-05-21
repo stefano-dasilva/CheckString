@@ -34,6 +34,12 @@ public interface UtenteService {
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente findByUsername(String username);
 
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Utente caricaImmagine(byte[] img, Utente utente);
+
 
 
 

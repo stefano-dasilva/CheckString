@@ -1,7 +1,8 @@
 @import  'auth';
+@import 'variables';
 
 #form {
-  @include flex-column;
+  @include flex-column();
   width: 100%;
   height: 100%;
   background-color: inherit;
@@ -9,8 +10,7 @@
 }
 
 #inputgroup{
-  @include flex-column;
-  justify-content: space-between;
+  @include flex-column(space-beetween);
   height: 84%;
   width: 100%;
   gap: 0.5rem;
@@ -19,8 +19,7 @@
 #inputgroup > div {
   width: 100%;
   height: 20%;
-  @include flex-column;
-  justify-content: space-between;
+  @include flex-column(space-beetween);
 }
 
 
@@ -32,9 +31,7 @@
   border-radius: 0.4rem;
   margin-right: auto;
   margin-left: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flex-row(null,center);
   gap: 1rem;
 
 

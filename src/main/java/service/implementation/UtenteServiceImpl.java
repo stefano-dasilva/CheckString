@@ -70,7 +70,14 @@ public class UtenteServiceImpl implements UtenteService {
         return utenteDao.findByUsername(username);
     }
 
-
+    @Override
+    public Utente caricaImmagine(byte[] img, Utente utente) {
+        if(utente != null){
+            utente.setImmagine(img);
+            utenteDao.update(utente);
+        }
+        return utente;
+    }
 
 
 }

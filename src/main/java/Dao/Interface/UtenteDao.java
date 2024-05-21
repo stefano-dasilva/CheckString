@@ -1,5 +1,6 @@
 package Dao.Interface;
 
+import Model.Standard;
 import Model.Utente;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,9 @@ public interface UtenteDao {
 
     @Transactional
     public void cambiaPassword(Utente utente, String nuovaPassword);
+
+    @Transactional
+    public Utente update(Utente standard);
 
 
 }

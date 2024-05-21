@@ -1,5 +1,6 @@
 package Dao.Implementation;
 import Dao.Interface.UtenteDao;
+import Model.Standard;
 import Model.Utente;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -56,13 +57,10 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
 
     }
 
-
-
-
-
-
-
-
+    @Override
+    public Utente update(Utente utente) {
+        return (Utente) super.update(utente);
+    }
 
 
 }

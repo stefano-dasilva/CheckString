@@ -1,17 +1,106 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @import  'auth';
- *   |          ^^^^^^
- *   '
- *   register.scss 1:10  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import  'auth';\d\a   \2502           ^^^^^^\a   \2575 \a   register.scss 1:10  root stylesheet";
+body {
+  background-image: url("../../resources/flags2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
 }
+
+#layerWrap {
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  width: 30%;
+  height: 80%;
+  border: 0.5px solid black;
+  border-radius: 2%;
+}
+
+@media only screen and (max-width: 768px) {
+  #layerWrap {
+    width: 80%;
+  }
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+}
+
+#inputgroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-beetween;
+  height: 84%;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+#inputgroup > div {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-beetween;
+}
+
+#inputgroup > div > div {
+  border: 2px solid black;
+  width: 90%;
+  height: 60%;
+  border-radius: 0.4rem;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+h2 {
+  height: 8%;
+  font-size: 20px;
+  margin-top: 1rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+input[type=text], input[type=password], input[type=date] {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: "Montserrat", sans-serif;
+}
+
+i, label {
+  margin-left: 1rem;
+}
+
+button[type=submit] {
+  width: 60%;
+  height: 8%;
+  margin: 1.5rem auto;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #4ED19F;
+  border-radius: 0.5rem;
+  border: 3px solid black;
+  font-family: "Montserrat", sans-serif;
+}
+
+.form-control small {
+  visibility: visible;
+  color: red;
+}
+
+.form-control.error {
+  border: 2px solid red;
+}
+
+/*# sourceMappingURL=register.css.map */
