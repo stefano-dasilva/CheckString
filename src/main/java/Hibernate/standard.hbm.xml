@@ -8,7 +8,7 @@
 
     <!-- C'è UNA CORRISPONDENZA TRA LA CLASSE STANDARD DEL NOSTRO PROGETTO JAVA E LA TABELLA STANDARD IN MYSQLWORKBENCH -->
     <!-- PAROLESTANDARD.STANDARD INDICA IL PERCORSO DOVE è CONTENUTA LA CLASSE -->
-    <class name = "ParoleStandard.Standard" table = "standard">
+    <class name = "Model.Standard" table = "standard">
         <!-- QUESTA INDICA LA PRIMARY KEY, VIENE AUTOGENERATA INCREMENTALMENTE-->
         <id name="id" column="id" type="int"><generator class="increment" /></id>
 

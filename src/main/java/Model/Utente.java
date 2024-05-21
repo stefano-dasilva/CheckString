@@ -1,11 +1,14 @@
 package Model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
 
+@Entity
 @Table(name= "Utente")
 public class Utente implements Bean{
 
