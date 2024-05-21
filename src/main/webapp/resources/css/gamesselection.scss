@@ -1,5 +1,11 @@
 @import "variables";
 
+$yellow_strong: #DAAB00;
+$green_strong : #119C75;
+$green_light : #E9FCF6;
+$yellow_light : #FEF9E6;
+$pink_strong :  #FF0096;
+$pink_light : #FFF2F9;
 
 #hero_games{
   width: 100%;
@@ -7,18 +13,143 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
   #games_section{
-    width: 80%;
+    width: 90%;
     height: 90%;
-    border: 2px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    div{
-      height: 100%;
-      width: 30%;
-      border: 1px solid red;
-    }
+
   }
+}
+
+#first_game{
+  background-color: $green_light;
+  color: $green_strong;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  border-radius: 1rem;
+  font-family: "Syne", sans-serif;
+
+}
+
+#second_game{
+  background-color: $yellow_light;
+  color: $yellow_strong;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  border-radius: 1rem;
+  font-family: "Syne", sans-serif;
+
+}
+
+#third_game{
+  background-color: $pink_light;
+  color: $pink_strong;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+
+  border-radius: 1rem;
+  font-family: "Syne", sans-serif;
+
+}
+
+h2{
+  text-align: center;
+}
+
+.p_wrapper{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#first_footer,#second_footer,#third_footer{
+  height: 20%;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #4ED19F;
+  border-radius: 1rem;
+}
+
+#first_footer {
+  background-color: $green_strong;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  span{
+    font-family: "Syne", sans-serif;
+    color: $green_light;
+  }
+
+}
+
+#second_footer{
+  background-color: $yellow_strong;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  span{
+    font-family: "Syne", sans-serif;
+    color: $yellow_light;
+  }
+
+
+}
+
+#third_footer{
+  background-color: $pink_strong;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  span{
+    font-family: "Syne", sans-serif;
+    color: $pink_light;
+  }
+
+}
+
+span{
+  color: black;
+  font-family: "Syne", sans-serif;
+}
+
+#first_footer_box{
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  background-color: $green_light;
+
+}
+
+#second_footer_box{
+  height: 35px;
+  width: 35px;
+  background-color: $yellow_light;
+  border-radius: 100%;
+}
+
+#third_footer_box{
+  height: 35px;
+  width: 35px;
+  background-color: $pink_light;
+  border-radius: 100%;
 }

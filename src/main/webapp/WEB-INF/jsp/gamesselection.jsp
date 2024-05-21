@@ -31,9 +31,52 @@
 <div id="hero_games">
 
     <div id="games_section">
-        <div id="first_game"></div>
-        <div id="second_game"></div>
-        <div id="third_game"></div>
+        <div id="first_game">
+            <h2>Indovina le capitali</h2>
+            <div class="p_wrapper">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
+            </p>
+            </div>
+            <div id="first_footer">
+                <span>GIOCA</span>
+                <div id="first_footer_box">
+
+                </div>
+
+            </div>
+        </div>
+        <div id="second_game">
+            <h2>Indovina le bandiere</h2>
+            <div class="p_wrapper">
+
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
+            </p>
+            </div>
+            <div id="second_footer">
+
+                <span>GIOCA</span>
+                <div id="second_footer_box">
+
+                </div>
+
+            </div>
+        </div>
+        <div id="third_game">
+            <h2>Indovina la popolazione</h2>
+            <div class="p_wrapper">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
+            </p>
+            </div>
+            <div id="third_footer">
+
+                <span>GIOCA</span>
+                <div id="third_footer_box">
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </div>
