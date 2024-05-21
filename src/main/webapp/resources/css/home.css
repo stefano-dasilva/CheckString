@@ -31,6 +31,11 @@ nav {
   justify-content: space-between;
 }
 
+span a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #home {
   width: 100%;
   height: 90%;
@@ -96,11 +101,6 @@ h2 {
 }
 #gamecard #footer_section span {
   margin-left: 1rem;
-}
-
-span a {
-  text-decoration: none;
-  color: inherit;
 }
 
 #footer_section i {

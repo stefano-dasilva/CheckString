@@ -52,6 +52,13 @@ public class ProfileController {
         return "home";
     }
 
+    @GetMapping("/show_games")
+    public String showGames() {
+
+
+        return "gamesselection";
+    }
+
 
 
 

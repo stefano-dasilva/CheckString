@@ -31,4 +31,31 @@ nav {
   justify-content: space-between;
 }
 
-/*# sourceMappingURL=variables.css.map */
+span a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#hero_games {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+}
+#hero_games #games_section {
+  width: 80%;
+  height: 90%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#hero_games #games_section div {
+  height: 100%;
+  width: 30%;
+  border: 1px solid red;
+}
+
+/*# sourceMappingURL=gamesselection.css.map */

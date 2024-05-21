@@ -9,7 +9,6 @@ public class MD5 {
     private String password;
 
 
-
     public MD5(String password){
         this.password = password;
     }
