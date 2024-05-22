@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import service.Interface.UtenteService;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Base64;
 
 
@@ -29,17 +32,20 @@ public class UtenteController {
 
 
 
+
+
         Utente utente =  (Utente ) session.getAttribute("user");
 
           if(utente != null && !img.isEmpty()) {
-            byte[] bytes = img.getBytes();
-
-              utenteService.caricaImmagine(bytes, utente);
-              System.out.println("Immagine caricata");
-
-
-
-        }
+              try {
+                  byte[] bytes = img.getBytes();
+                  utenteService.caricaImmagine(bytes, utente);
+                  System.out.println("Immagine caricata");
+              } catch (Exception e) {
+                  e.printStackTrace();
+                  System.out.println("Errore durante il caricamento dell'immagine");
+              }
+          }
 
          return "redirect:/show_profile";
 
