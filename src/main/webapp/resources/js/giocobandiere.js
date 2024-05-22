@@ -49,6 +49,7 @@ function iniziaGioco() {
 function provaTentativo(){
     var input_utente = document.getElementById("inputUtente");
     var image = document.getElementById("image");
+    console.log(dati?.[0]?.currencies)
     if(input_utente.value === dati?.[0]?.translations?.ita?.common ){
         console.log("azzeccata")
         bandiere_azzeccate++;
