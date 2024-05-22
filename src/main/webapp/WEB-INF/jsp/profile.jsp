@@ -52,9 +52,7 @@
             <div id="delete1">
 
                 <img src="profile.jpg" class="img-fluid rounded" id="img" />
-                <form action="delete" method="post">
-                    <button id="delete" class="btn"><i class="fa fa-trash"></i></button>
-                </form>
+
             </div>
 
 
