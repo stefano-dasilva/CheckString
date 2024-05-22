@@ -1,6 +1,6 @@
 const img = document.getElementById("img");
 const formUpload = document.getElementById("upload");
-const formDelete = document.getElementById("delete");
+
 
 formUpload.addEventListener('submit', changePathUpload)
 
@@ -10,6 +10,4 @@ function changePathUpload(){
 }
 
 
-function changePathDelete(){
-    img.src = "profile.jpg";
-}
+
