@@ -23,7 +23,9 @@ public class GameRestController {
         RestTemplate restTemplate = new RestTemplate();
         String code = standardService.getRandom().getCode();
         String url = "https://restcountries.com/v3.1/alpha/" + code;
+        System.out.println(url);
         String result = restTemplate.getForObject(url, String.class);
+        System.out.println(result);
         return result;
 
 
