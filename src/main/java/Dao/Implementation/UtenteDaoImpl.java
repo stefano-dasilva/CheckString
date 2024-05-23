@@ -62,5 +62,14 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
         return (Utente) super.update(utente);
     }
 
+    @Override
+    public Utente removeImg(Utente utente) {
+        String jpql= "UPDATE Utente SET img = NULL WHERE username = :username";
+        Query q= manager.createQuery(jpql);
+        return utente;
+    }
+
+
+
 
 }

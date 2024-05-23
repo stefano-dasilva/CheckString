@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profile.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 
@@ -48,30 +50,17 @@
             <input type="text" id="nomefoto" name="nome" value=${name} readonly>
         </div>
 
-        <div class="img-container">
 
 
-
-            <div class="img-container">
-
-
-                    <img src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded" />
-
-
+        <div id="imgCont">
+            <img id="img" src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded"  />
+            <div id="bin">
+                <form action="rimuoviImg" method="get">
+                <button style="font-size:24px" id="del"><i class="fa fa-trash-o" style="font-size:24px"></i></button>
+                </form>
             </div>
-
-
-
-
-
-
-
-
-
-
-            <!--<img src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded" />-->
-
         </div>
+
 
         <div id="bottone" class="caricaFoto mt-3">
             <form action="upload" method="post" enctype="multipart/form-data">

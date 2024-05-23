@@ -79,5 +79,15 @@ public class UtenteServiceImpl implements UtenteService {
         return utente;
     }
 
+    @Override
+    public Utente rimuoviImg(Utente utente, byte[] bytes) {
+        utenteDao.removeImg(utente);
+        utente.setImmagine(bytes);
+        utenteDao.update(utente);
+        return utente;
+    }
+
+
+
 
 }

@@ -78,11 +78,11 @@ h2{
 #nomefoto {
     border-style: none;
     background-color: beige;
-    width: 100px;
+    width: 85px;
     font-family: "Syne", sans-serif ;
     text-transform: uppercase;
     font-size: large;
-    text-align: center;
+    text-align: right;
 }
 
 #bho {
@@ -92,6 +92,8 @@ h2{
 
 
 }
+
+
 
 #bottone {
     margin-bottom: 10px;
@@ -124,9 +126,22 @@ h2{
 
 }
 
-#delete1 {
+#imgCont {
     display: flex;
-    justify-content: right;
-    align-items: start;
+    flex-direction: row;
+    justify-content: center;
 }
+
+#bin {
+
+    display: flex;
+    align-items: start;
+    padding-right: 5px;
+}
+
+#del {
+    border-style: none;
+    background-color: beige;
+}
+
 

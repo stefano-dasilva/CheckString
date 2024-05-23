@@ -40,6 +40,13 @@ public interface UtenteService {
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente caricaImmagine(byte[] img, Utente utente);
 
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Utente rimuoviImg(Utente utente, byte[] bytes);
+
+
 
 
 

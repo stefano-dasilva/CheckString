@@ -31,9 +31,6 @@ public class UtenteController {
     public String upload(@RequestParam("img") CommonsMultipartFile img, HttpSession session, Model model) {
 
 
-
-
-
         Utente utente =  (Utente ) session.getAttribute("user");
 
           if(utente != null && !img.isEmpty()) {
@@ -51,6 +48,8 @@ public class UtenteController {
 
 
     }
+
+
 
 
 

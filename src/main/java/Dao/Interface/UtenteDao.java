@@ -26,5 +26,8 @@ public interface UtenteDao {
     @Transactional
     public Utente update(Utente standard);
 
+   @Transactional
+    public Utente removeImg(Utente utente);
+
 
 }

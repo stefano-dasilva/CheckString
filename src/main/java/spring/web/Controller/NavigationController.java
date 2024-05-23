@@ -1,5 +1,6 @@
 package spring.web.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +11,44 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
 import Model.Utente;
+import org.springframework.web.servlet.function.support.RouterFunctionMapping;
+import service.Interface.UtenteService;
 
 
 @Controller
 public class NavigationController {
+
+    File file=new File("C:\\Users\\SAEEDH\\Desktop\\CheckString\\CheckString\\src\\main\\webapp\\resources\\profile.jpg");
+    byte[] defaultBytes;
+    @Autowired
+    private RouterFunctionMapping routerFunctionMapping;
+
+    {
+        try {
+            defaultBytes = Files.readAllBytes(file.toPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Autowired
+    private UtenteService utenteService;
+
+    @GetMapping("/rimuoviImg")
+    public String rimuoviImag(HttpSession session) {
+        Utente u = (Utente) session.getAttribute("user");
+        if (u != null) {
+            try {
+                utenteService.rimuoviImg(u, defaultBytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+        }
+        return "redirect:/show_profile"; // Redirect to profile page after removing image
+    }
+
 
     @GetMapping("/show_home")
     public String showHome() {
@@ -28,6 +63,7 @@ public class NavigationController {
 
         return "gamesselection";
     }
+
 
     @GetMapping("/show_profile")
     public String showProfile(HttpSession session, Model m) throws IOException {
@@ -56,6 +92,9 @@ public class NavigationController {
 
         return "profile";
     }
+
+
+
 
 
     @GetMapping("/show_giocobandiere")
