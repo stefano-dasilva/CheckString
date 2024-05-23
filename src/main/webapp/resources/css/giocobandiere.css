@@ -2,11 +2,22 @@
   height: 90%;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2rem;
 }
-#second_game_wrap div {
-  width: 40%;
+#second_game_wrap #second_game_card {
+  width: 30%;
+  height: 90%;
+  background-color: #FEF9E6;
+  border-radius: 2rem;
+  gap: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#second_game_wrap #second_game_info {
+  width: 50%;
   height: 90%;
   background-color: #FEF9E6;
   border-radius: 2rem;

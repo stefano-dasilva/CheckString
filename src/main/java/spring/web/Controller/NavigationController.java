@@ -40,7 +40,6 @@ public class NavigationController {
         m.addAttribute("data_nascita",u.getDataNascita());
         if(u.getImmagine() != null){
             String base64Image = Base64.getEncoder().encodeToString(u.getImmagine());
-
             m.addAttribute("immagine", base64Image);
         }
 

@@ -3,14 +3,22 @@
 #second_game_wrap{
   height: 90%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  div{
-    width: 40%;
+  @include flex-row(space-around);
+  gap: 2rem;
+  #second_game_card{
+    width: 30%;
     height: 90%;
     background-color: $yellow_light;
     border-radius: 2rem;
+    gap: 0rem;
+    @include flex-column(space-around);
+  }
+  #second_game_info{
+    width: 50%;
+    height: 90%;
+    background-color: $yellow_light;
+    border-radius: 2rem;
+
     @include flex-column(space-around);
   }
 }

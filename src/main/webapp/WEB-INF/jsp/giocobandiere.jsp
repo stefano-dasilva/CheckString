@@ -19,10 +19,11 @@
 
 <section id="second_game_wrap">
     <div id="second_game_card">
-
         <h3 id="title">Indovina il numero maggiore di bandiere!</h3>
         <button id="inizia">Inizia ora il gioco</button>
-
+    </div>
+    <div id ="second_game_info">
+        <%@ include file="mappa.jsp" %>
     </div>
 
 
@@ -32,7 +33,7 @@
 
 
 
-<script src=${pageContext.request.contextPath}/resources/js/giocobandiere.js></script>
+<script type="module" src=${pageContext.request.contextPath}/resources/js/giocobandiere.js></script>
 
 </BODY>
 </HTML>

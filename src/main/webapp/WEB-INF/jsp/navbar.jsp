@@ -4,7 +4,7 @@
     <div id="wrapper">
         <div>
             <span>CLASSIFICA</span>
-            <span><a href="/CheckString/show_games">GIOCA</span>
+            <span><a href="/CheckString/show_games">GIOCA</a></span>
         </div>
         <div>
             <span><a href="/CheckString/show_profile" style="text-decoration: none; color: inherit;">PROFILO</a></span>

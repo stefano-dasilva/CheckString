@@ -1,9 +1,14 @@
+import paesijson from '../countries.json' with { type: 'json' };
+
 document.getElementById("inizia").addEventListener("click", function() {
     iniziaGioco();
 });
 
 
-var dati;
+
+
+var paese_random;
+var standard;
 var bandiere_azzeccate = 0;
 
 function iniziaGioco() {
@@ -24,9 +29,12 @@ function iniziaGioco() {
     fetch('randomcountry')
         .then(response => response.json())
         .then(data => {
-                img.src = data[0].flags.png;
-                dati = data;
-                console.log(data?.[0]?.translations?.ita?.common)
+                var paese = paesijson.find(paese => paese.cca2 === data.code )
+                img.src = paese.flags.png
+                paese_random = paese;
+                standard = data
+                console.log(paese)
+                console.log(data)
             }
         )
 
@@ -34,31 +42,35 @@ function iniziaGioco() {
     var inputUtente = document.createElement("input");
     inputUtente.type = "text";
     inputUtente.id = "inputUtente";
+    inputUtente.placeholder = "Inserisci un tentativo.."
     card.appendChild(inputUtente)
     var button = document.createElement("button")
     button.id = "bottone"
-    button.textContent = "invia";
+    button.textContent = "PROVA";
     button.addEventListener("click",function (){
         provaTentativo();
     })
     card.appendChild(button)
 
-
 }
 
 function provaTentativo(){
     var input_utente = document.getElementById("inputUtente");
-    var image = document.getElementById("image");
-    console.log(dati?.[0]?.currencies)
-    if(input_utente.value === dati?.[0]?.translations?.ita?.common ){
+    var img = document.getElementById("image");
+
+    if(input_utente.value === standard?.value ){
         console.log("azzeccata")
+        input_utente.value = ""
         bandiere_azzeccate++;
         fetch('randomcountry')
             .then(response => response.json())
             .then(data => {
-                    image.src = data[0].flags.png;
-                    dati = data;
-                console.log(data?.[0]?.translations?.ita?.common)
+                var paese = paesijson.find(paese => paese.cca2 === data.code )
+                img.src = paese.flags.png
+                paese_random = paese;
+                standard = data
+                console.log(paese)
+                console.log(data)
                 }
             )
 
@@ -72,10 +84,11 @@ function provaTentativo(){
         img_wrapper.remove()
         const card = document.getElementById("second_game_card")
         var punteggio = document.createElement("h3");
-        punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + "punti"
+        punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
         card.appendChild(punteggio)
-
     }
-
-
+    var paese_mappa = document.getElementById(standard.code)
+    if(paese_mappa !== null){
+        paese_mappa.style.fill = "#F00";
+    }
 }
