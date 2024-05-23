@@ -30,6 +30,7 @@
 
 
 
+
 </head>
 
 <body>
@@ -49,11 +50,23 @@
 
         <div class="img-container">
 
-            <div id="delete1">
 
-                <img src="profile.jpg" class="img-fluid rounded" id="img" />
+
+            <div class="img-container">
+
+
+                    <img src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded" />
+
 
             </div>
+
+
+
+
+
+
+
+
 
 
             <!--<img src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded" />-->
