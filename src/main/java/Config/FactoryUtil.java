@@ -1,22 +1,8 @@
 package Config;
 
-import Dao.Interface.AlgoritmoDao;
-import Dao.Interface.CorrispondenzaDao;
-import Dao.Interface.NonTrovataDao;
-import Dao.Interface.StandardDao;
-import Model.Standard;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import service.CheckStringService;
 import service.Interface.*;
-import service.implementation.AlgoritmoServiceImpl;
-import service.implementation.CorrispondezaImpService;
-import service.implementation.NonTrovataServiceImpl;
-import service.implementation.StandardServiceImpl;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class FactoryUtil {
 
@@ -25,7 +11,6 @@ public class FactoryUtil {
     private CorrispondenzaService corrispondezaService;
     private NonTrovataService nonTrovataService;
     private StandardService standardService;
-    private CheckStringService checkStringService;
     private UtenteService utenteService;
 
 
@@ -38,7 +23,6 @@ public class FactoryUtil {
         this.corrispondezaService = factory.getBean("CorrispondenzaService", CorrispondenzaService.class);
         this.nonTrovataService = factory.getBean("NonTrovataService", NonTrovataService.class);
         this.standardService = factory.getBean("StandardService", StandardService.class);
-        this.checkStringService = factory.getBean("CheckStringService", CheckStringService.class);
         this.utenteService = factory.getBean("UtenteService",UtenteService.class);
     }
 
@@ -70,9 +54,6 @@ public class FactoryUtil {
         return standardService;
     }
 
-    public CheckStringService getCheckStringService() {
-        return checkStringService;
-    }
 
     public UtenteService getUtenteService() {
         return utenteService;

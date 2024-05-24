@@ -1,22 +1,20 @@
 package service.Interface;
 
-import Model.NonTrovata;
+import Filter.ClassificaFilter;
+import Model.Utente;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface NonTrovataService {
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
-    @Transactional(
-            rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.REQUIRED)
-    public NonTrovata inserisciNonTrovata(NonTrovata nonTrovata) ;
-
+public interface CheckStringService {
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.NESTED,
             isolation = Isolation.READ_UNCOMMITTED)
-    public NonTrovata rimuoviNonTrovata(NonTrovata nonTrovata) throws Exception;
+    public String check(String nazione) ;
 
 }

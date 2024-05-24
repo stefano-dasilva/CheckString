@@ -1,11 +1,13 @@
 package service.Interface;
 
+import Filter.ClassificaFilter;
 import Model.Utente;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public interface UtenteService {
 
@@ -51,6 +53,35 @@ public interface UtenteService {
             propagation = Propagation.NESTED,
             isolation = Isolation.READ_UNCOMMITTED)
     Utente updateDati(Utente u, Utente u1);
+
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Utente setRecordBandiere(Utente utente, int num_bandiere);
+
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Utente setRecordCapitali(Utente utente, int num_capitali);
+
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Utente setRecordPopolazione(Utente utente, int num_popolazione);
+
+
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public List<Utente> showClassifica(ClassificaFilter filter);
+
+
+
+
 
 
 

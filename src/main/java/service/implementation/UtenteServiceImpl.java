@@ -2,13 +2,14 @@ package service.implementation;
 
 import Config.MD5;
 import Dao.Interface.UtenteDao;
-import Model.Corrispondenza;
+import Filter.ClassificaFilter;
 import Model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.CheckStringService;
+import service.Interface.CheckStringService;
 import service.Interface.UtenteService;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class UtenteServiceImpl implements UtenteService {
 
@@ -19,8 +20,13 @@ public class UtenteServiceImpl implements UtenteService {
     @Autowired
     CheckStringService checkStringService;
 
+
     public UtenteServiceImpl() {}
 
+    @Override
+    public List<Utente> showClassifica(ClassificaFilter filter) {
+        return  utenteDao.getClassifica(filter);
+    }
 
 
     @Override
@@ -31,13 +37,7 @@ public class UtenteServiceImpl implements UtenteService {
            if(u == null) {
                MD5 md5 = new MD5(utente.getPassword());
                utente.setPassword(md5.hash());
-               Corrispondenza corrispondenza = checkStringService.buildChain().check(utente.getNazione());
-               if(corrispondenza!= null){
-                   utente.setNazione(corrispondenza.getStandard().getValue());
-               }
-               else{
-                   utente.setNazione("non trovata");
-               }
+               utente.setNazione(checkStringService.check(utente.getNazione()));
                Utente usernuovo = utenteDao.create(utente);
                return usernuovo;
            }
@@ -95,5 +95,31 @@ public class UtenteServiceImpl implements UtenteService {
         return u1;
     }
 
+    @Override
+    public Utente setRecordBandiere(Utente utente, int num_bandiere) {
+        if(utente.getRecordBandiere() < num_bandiere){
+            utente.setRecordBandiere(num_bandiere);
+            utenteDao.update(utente);
+        }
+        return utente;
+    }
+
+    @Override
+    public Utente setRecordCapitali(Utente utente, int num_capitali) {
+        if(utente.getRecordBandiere() < num_capitali){
+            utente.setRecordBandiere(num_capitali);
+            utenteDao.update(utente);
+        }
+        return utente;
+    }
+
+    @Override
+    public Utente setRecordPopolazione(Utente utente, int num_popolazione) {
+        if(utente.getRecordBandiere() < num_popolazione){
+            utente.setRecordBandiere(num_popolazione);
+            utenteDao.update(utente);
+        }
+        return utente;
+    }
 
 }

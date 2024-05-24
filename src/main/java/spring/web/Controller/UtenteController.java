@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import Config.FactoryUtil;
+import Filter.ClassificaFilter;
 import Model.Utente;
 
 
@@ -22,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
+import java.util.List;
 
 
 @Controller
@@ -67,45 +69,34 @@ public class UtenteController {
         }
 
         Utente utente = UtenteConverter.convert(salvaRegister);
-
-        System.out.println(utente.getDataNascita());
-
-           Utente sessionUser=utenteService.findByUsername(salvaRegister.getUsername());
+        Utente sessionUser = (Utente) session.getAttribute("user");
 
 
-           if(sessionUser != null) {
-               utenteService.updateDati(sessionUser, utente);
-               session.setAttribute("user", utente);
-           }
 
-
+            utenteService.updateDati(sessionUser, utente);
+            session.setAttribute("user", utente);
 
         return "redirect:/show_profile";
     }
 
 
+    @PostMapping("/show_classifica")
+    @ResponseBody
+    public String showClassificaGenerale(@ModelAttribute("filter") ClassificaFilter filter){
+        System.out.println(filter.getCategoriaGioco());
+        List<Utente> utenti = utenteService.showClassifica(filter);
 
+        for(Utente utente : utenti){
+            System.out.println(utente.getUsername());
+        }
 
-
-
+        return "provaprova";
     }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 

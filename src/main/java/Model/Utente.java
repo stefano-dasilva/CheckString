@@ -1,6 +1,7 @@
 package Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -35,6 +36,18 @@ public class Utente implements Bean{
     @Lob
     @Column(name = "img")
     private byte[] img;
+
+    @Column(name = "record_bandiere")
+    private Integer recordBandiere;
+
+    @Column(name = "record_capitali")
+    private Integer recordCapitali;
+
+    @NotNull
+    @Column(name = "record_popolazioni")
+    private Integer recordPopolazioni;
+
+
 
 
     public Integer getId() {
@@ -97,5 +110,27 @@ public class Utente implements Bean{
         this.img = immagine;
     }
 
+    public void setRecordBandiere(Integer recordBandiere) {
+        this.recordBandiere = recordBandiere;
+    }
 
+    public void setRecordCapitali(Integer recordCapitali) {
+        this.recordCapitali = recordCapitali;
+    }
+
+    public void setRecordPopolazioni(Integer recordPopolazioni) {
+        this.recordPopolazioni = recordPopolazioni;
+    }
+
+    public Integer getRecordBandiere() {
+        return recordBandiere;
+    }
+
+    public Integer getRecordCapitali() {
+        return recordCapitali;
+    }
+
+    public Integer getRecordPopolazioni() {
+        return recordPopolazioni;
+    }
 }
