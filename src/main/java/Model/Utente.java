@@ -37,6 +37,9 @@ public class Utente implements Bean{
     private byte[] img;
 
 
+    public Integer getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;

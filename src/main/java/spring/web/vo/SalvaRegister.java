@@ -14,6 +14,9 @@ public class SalvaRegister {
     private String username;
 
 
+
+
+
     @NotNull
     @Size(min=2, message="nome troppo corto ")
     private String nome;
@@ -26,6 +29,8 @@ public class SalvaRegister {
     @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascita;
+
+
 
 
 

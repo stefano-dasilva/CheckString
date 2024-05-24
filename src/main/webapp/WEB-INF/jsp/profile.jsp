@@ -105,14 +105,14 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="nazionalità" class="form-label">Nazionalità</label>
-                            <input type="text" class="form-control" id="nazionalità" name="nazionalità" value="${nazione}" readonly>
+                            <label for="nazione" class="form-label">Nazionalità</label>
+                            <input type="text" class="form-control" id="nazione" name="nazione" value="${nazione}" readonly>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="nascita" class="form-label">Data Di Nascita</label>
-                            <input type="text" class="form-control" id="nascita" name="nascita" value="${data_nascita}" readonly>
+                            <label for="dataNascita" class="form-label">Data Di Nascita</label>
+                            <input type="text" class="form-control" id="dataNascita" name="dataNascita" value="${data_nascita}" readonly>
                         </div>
                     </div>
                     <button type="button" id="editButton" class="btn btn-warning">Modifica</button>
