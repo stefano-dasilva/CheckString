@@ -1,5 +1,6 @@
 package Dao.Interface;
 
+import Filter.ClassificaFilter;
 import Model.Standard;
 import Model.Utente;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,10 @@ public interface UtenteDao {
     public Utente removeImg(Utente utente);
    @Transactional
     public Utente updateDati(Utente u, Utente u1);
+
+
+    @Transactional
+    public List<Utente> getClassifica(ClassificaFilter filter);
 
 
 }

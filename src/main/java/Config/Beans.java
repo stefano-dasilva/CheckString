@@ -7,8 +7,6 @@ import Dao.Interface.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,7 +15,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import service.CheckStringService;
 import service.Interface.*;
 import service.implementation.*;
 
@@ -139,11 +136,15 @@ public class Beans {
         StandardService service = new StandardServiceImpl();
         return service;
     }
+
     @Bean(name="CheckStringService")
-    public CheckStringService getCheckStringService (){
-        CheckStringService service = new CheckStringService();
-        return service;
+    public CheckStringService getCheckStringService(){
+        CheckStringService service = new CheckStringServiceImpl();
+        return  service;
     }
+
+
+
 
     @Bean(name="UtenteService")
     public UtenteService getUtenteService (){

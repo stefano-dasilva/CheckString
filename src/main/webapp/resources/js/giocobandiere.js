@@ -10,6 +10,7 @@ document.getElementById("inizia").addEventListener("click", function() {
 var paese_random;
 var standard;
 var bandiere_azzeccate = 0;
+var input_standardizzato;
 
 function iniziaGioco() {
     document.getElementById("inizia").remove()
@@ -56,39 +57,50 @@ function iniziaGioco() {
 
 function provaTentativo(){
     var input_utente = document.getElementById("inputUtente");
-    var img = document.getElementById("image");
 
-    if(input_utente.value === standard?.value ){
-        console.log("azzeccata")
-        input_utente.value = ""
-        bandiere_azzeccate++;
-        fetch('randomcountry')
-            .then(response => response.json())
-            .then(data => {
-                var paese = paesijson.find(paese => paese.cca2 === data.code )
-                img.src = paese.flags.png
-                paese_random = paese;
-                standard = data
-                console.log(paese)
-                console.log(data)
-                }
-            )
+    fetch("checkstring?input=" + encodeURIComponent(input_utente.value))
+        .then(response => response.json())
+        .then(data => {
+            input_standardizzato = data?.inputstandard;
+            console.log(input_standardizzato)
+            var img = document.getElementById("image");
+            console.log(input_standardizzato)
 
-    }
-    else{
-        image.remove();
-        input_utente.remove()
-        var bottone = document.getElementById("bottone")
-        bottone.remove()
-        var img_wrapper = document.getElementById("img_wrapper")
-        img_wrapper.remove()
-        const card = document.getElementById("second_game_card")
-        var punteggio = document.createElement("h3");
-        punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
-        card.appendChild(punteggio)
-    }
-    var paese_mappa = document.getElementById(standard.code)
-    if(paese_mappa !== null){
-        paese_mappa.style.fill = "#F00";
-    }
+            if(input_standardizzato === standard?.value ){
+                console.log("azzeccata")
+                input_utente.value = ""
+                bandiere_azzeccate++;
+                fetch('randomcountry')
+                    .then(response => response.json())
+                    .then(data => {
+                            var paese = paesijson.find(paese => paese.cca2 === data.code )
+                            img.src = paese.flags.png
+                            paese_random = paese;
+                            standard = data
+                            console.log(paese)
+                            console.log(data)
+                        }
+                    )
+
+            }
+            else{
+                image.remove();
+                input_utente.remove()
+                var bottone = document.getElementById("bottone")
+                bottone.remove()
+                var img_wrapper = document.getElementById("img_wrapper")
+                img_wrapper.remove()
+                const card = document.getElementById("second_game_card")
+                var punteggio = document.createElement("h3");
+                punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
+                card.appendChild(punteggio)
+            }
+            var paese_mappa = document.getElementById(standard.code)
+            if(paese_mappa !== null){
+                paese_mappa.style.fill = "#F00";
+            }
+            }
+        )
+
+
 }
