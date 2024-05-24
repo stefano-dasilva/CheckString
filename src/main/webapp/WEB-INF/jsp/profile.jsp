@@ -33,6 +33,8 @@
 
 
 
+
+
 </head>
 
 <body>
@@ -45,7 +47,7 @@
 
 
 <div id="bho">
-    <div class="upload">
+    <div class="up">
         <div id="photo">
             <input type="text" id="nomefoto" name="nome" value=${name} readonly>
         </div>
@@ -53,7 +55,9 @@
 
 
         <div id="imgCont">
-            <img id="img" src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded"  />
+            <div id="lol">
+            <img id="img1" src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded"  />
+            </div>
             <div id="bin">
                 <form action="rimuoviImg" method="get">
                 <button style="font-size:24px" id="del"><i class="fa fa-trash-o" style="font-size:24px"></i></button>
@@ -65,10 +69,10 @@
         <div id="bottone" class="caricaFoto mt-3">
             <form action="upload" method="post" enctype="multipart/form-data">
                 <div id="lab">
-                    <label  for="file" id="fotolabel" >Carica</label>
+                 <label  for="file" id="fotolabel">Carica</label>
                     <input  type="file" name="img" id="file">
+                  <button type="submit">Salva</button>
                 </div>
-
             </form>
         </div>
     </div>
@@ -83,37 +87,42 @@
 
         <div id="box">
             <div class="first3 mt-3">
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" value=${name} readonly>
+                <form action="salva" method="post" id="formDati" modelAttribute="salvaRegister">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="${name}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cognome" class="form-label">Cognome</label>
+                            <input type="text" class="form-control" id="cognome" name="cognome" value="${cognome}" readonly>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="cognome" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="cognome" name="cognome" value="${cognome}" readonly>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value=${username} readonly>
-                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="${username}" readonly>
+                        </div>
 
-                    <div class="col-md-6">
-                        <label for="nazionalità" class="form-label">Nazionalità</label>
-                        <input type="text" class="form-control" id="nazionalità" name="nazionalità" value=${nazione} readonly >
+                        <div class="col-md-6">
+                            <label for="nazionalità" class="form-label">Nazionalità</label>
+                            <input type="text" class="form-control" id="nazionalità" name="nazionalità" value="${nazione}" readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="nascita" class="form-label">Data Di Nascita</label>
-                        <input type="text" class="form-control" id="nascita" name="nascita" value=${data_nascita} readonly>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="nascita" class="form-label">Data Di Nascita</label>
+                            <input type="text" class="form-control" id="nascita" name="nascita" value="${data_nascita}" readonly>
+                        </div>
                     </div>
-                </div>
+                    <button type="button" id="editButton" class="btn btn-warning">Modifica</button>
+
+                    <button type="submit" id="saveButton" class="btn btn-success d-none">Salva</button>
+
+                </form>
             </div>
         </div>
     </div>
-
 </div>
 
 
@@ -130,5 +139,7 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"
 ></script>
+
+<script src=${pageContext.request.contextPath}/resources/js/profile.js></script>
 </body>
 </html>

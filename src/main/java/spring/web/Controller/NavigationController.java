@@ -19,7 +19,8 @@ import service.Interface.UtenteService;
 public class NavigationController {
 
     File file=new File("C:\\Users\\SAEEDH\\Desktop\\CheckString\\CheckString\\src\\main\\webapp\\resources\\profile.jpg");
-    byte[] defaultBytes;
+    byte[] defaultBytes= Files.readAllBytes(file.toPath());
+
     @Autowired
     private RouterFunctionMapping routerFunctionMapping;
 
@@ -34,6 +35,9 @@ public class NavigationController {
 
     @Autowired
     private UtenteService utenteService;
+
+    public NavigationController() throws IOException {
+    }
 
     @GetMapping("/rimuoviImg")
     public String rimuoviImag(HttpSession session) {
@@ -69,8 +73,7 @@ public class NavigationController {
     public String showProfile(HttpSession session, Model m) throws IOException {
 
 
-        File file=new File("C:\\Users\\SAEEDH\\Desktop\\CheckString\\CheckString\\src\\main\\webapp\\resources\\profile.jpg");
-        byte[] defaultBytes= Files.readAllBytes(file.toPath());
+
 
 
         Utente u = (Utente) session.getAttribute("user");

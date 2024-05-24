@@ -1,16 +1,22 @@
 package spring.web.Controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import Config.FactoryUtil;
 import Model.Utente;
 
 
+import converter.UtenteConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import service.Interface.UtenteService;
+import spring.web.vo.SalvaRegister;
+import spring.web.vo.UserRegister;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,11 +33,15 @@ public class UtenteController {
 
 
 
+
     @PostMapping("/upload")
     public String upload(@RequestParam("img") CommonsMultipartFile img, HttpSession session, Model model) {
 
-
+        System.out.println("ciao");
         Utente utente =  (Utente ) session.getAttribute("user");
+
+
+
 
           if(utente != null && !img.isEmpty()) {
               try {
@@ -48,6 +58,34 @@ public class UtenteController {
 
 
     }
+
+    @RequestMapping ("/salva")
+    public String salvaDati(@ModelAttribute("salvaRegister") @Valid SalvaRegister salvaRegister, BindingResult bindingResult, Model model, HttpSession session) {
+        System.out.println("ciao pippo");
+        if (bindingResult.hasErrors()) {
+            return "profile";
+        }
+
+        Utente utente = UtenteConverter.convert(salvaRegister);
+        Utente sessionUser = (Utente) session.getAttribute("user");
+
+
+
+            utenteService.updateDati(sessionUser, utente);
+            session.setAttribute("user", utente);
+
+        return "redirect:/show_profile";
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 

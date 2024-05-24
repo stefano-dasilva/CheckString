@@ -72,6 +72,7 @@ public class UtenteServiceImpl implements UtenteService {
 
     @Override
     public Utente caricaImmagine(byte[] img, Utente utente) {
+        utenteDao.removeImg(utente);
         if(utente != null){
             utente.setImmagine(img);
             utenteDao.update(utente);
@@ -82,12 +83,17 @@ public class UtenteServiceImpl implements UtenteService {
     @Override
     public Utente rimuoviImg(Utente utente, byte[] bytes) {
         utenteDao.removeImg(utente);
+
         utente.setImmagine(bytes);
         utenteDao.update(utente);
         return utente;
     }
 
-
+    @Override
+    public Utente updateDati(Utente u, Utente u1) {
+        utenteDao.updateDati(u, u1);
+        return u1;
+    }
 
 
 }

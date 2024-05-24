@@ -69,6 +69,19 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
         return utente;
     }
 
+    @Override
+    public Utente updateDati(Utente u, Utente u1) {
+
+        String jpql = "UPDATE Utente u SET u.nome = :nome, u.username = :username, u.cognome = :cognome, u.nazione = :nazione ";
+        Query query = manager.createQuery(jpql);
+        query.setParameter("nome", u1.getNome());
+        query.setParameter("username", u1.getUsername());
+        query.setParameter("cognome", u1.getCognome());
+        query.setParameter("nazione", u1.getNazione());
+
+        query.executeUpdate();
+        return u1;
+    }
 
 
 

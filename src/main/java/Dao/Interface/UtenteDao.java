@@ -28,6 +28,8 @@ public interface UtenteDao {
 
    @Transactional
     public Utente removeImg(Utente utente);
+   @Transactional
+    public Utente updateDati(Utente u, Utente u1);
 
 
 }

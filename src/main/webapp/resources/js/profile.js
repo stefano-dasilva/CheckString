@@ -1,13 +1,13 @@
-const img = document.getElementById("img");
-const formUpload = document.getElementById("upload");
+document.addEventListener('DOMContentLoaded', function() {
+    const editButton = document.getElementById('editButton');
+    const saveButton = document.getElementById('saveButton');
+    const formFields = document.querySelectorAll('#formDati input');
 
-
-formUpload.addEventListener('submit', changePathUpload)
-
-
-function changePathUpload(){
-    img.src = "data:image/jpeg;base64,${immagine}";
-}
-
-
-
+    editButton.addEventListener('click', function() {
+        formFields.forEach(field => {
+            field.removeAttribute('readonly');
+        });
+        editButton.classList.add('d-none');
+        saveButton.classList.remove('d-none');
+    });
+});
