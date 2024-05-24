@@ -69,15 +69,22 @@ public class UtenteController {
         }
 
         Utente utente = UtenteConverter.convert(salvaRegister);
-        Utente sessionUser = (Utente) session.getAttribute("user");
+
+        System.out.println(utente.getDataNascita());
+
+        Utente sessionUser=utenteService.findByUsername(salvaRegister.getUsername());
 
 
-
+        if(sessionUser != null) {
             utenteService.updateDati(sessionUser, utente);
             session.setAttribute("user", utente);
+        }
+
+
 
         return "redirect:/show_profile";
     }
+
 
 
     @PostMapping("/show_classifica")
