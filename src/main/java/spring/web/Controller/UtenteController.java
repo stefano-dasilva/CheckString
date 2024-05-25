@@ -3,9 +3,9 @@ package spring.web.Controller;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import service.Interface.StandardService;
-import spring.web.dto.UtenteClassifica;
-import spring.web.vo.Filter.ClassificaFilter;
+import Config.FactoryUtil;
+
+import Filter.ClassificaFilter;
 import Model.Utente;
 import Model.Standard;
 
@@ -17,10 +17,17 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import service.Interface.StandardService;
 import service.Interface.UtenteService;
+import spring.web.dto.UtenteClassifica;
 import spring.web.vo.SalvaRegister;
+import spring.web.vo.UserRegister;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 
@@ -73,7 +80,8 @@ public class UtenteController {
 
         System.out.println(utente.getDataNascita());
 
-        Utente sessionUser=utenteService.findByUsername(salvaRegister.getUsername());
+        Utente sessionUser= (Utente) session.getAttribute("user");
+
 
 
         if(sessionUser != null) {
@@ -111,7 +119,11 @@ public class UtenteController {
     @ResponseBody
     public String showClassificaGenerale(@ModelAttribute("filter") ClassificaFilter filter){
         System.out.println(filter.getCategoriaGioco());
+        List<Utente> utenti = utenteService.showClassifica(filter);
 
+        for(Utente utente : utenti){
+            System.out.println(utente.getUsername());
+        }
 
         return "provaprova";
     }

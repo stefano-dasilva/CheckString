@@ -106,8 +106,17 @@ public class NavigationController {
         }
 
 
+    @GetMapping("/show_giocoCapitali")
+    public String showGiocoCapitali() {
+        return "capitali";
+    }
+
+
+
 
 }
+
+
 
 
 

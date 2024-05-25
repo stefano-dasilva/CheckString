@@ -1,0 +1,63 @@
+body {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+ #bottone {
+     margin-top: 50px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ #titolo{
+     margin-bottom: 80px;
+ }
+
+ #parte1 {
+     margin-top: 100px;
+ }
+
+#subTitle {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+
+}
+
+#ig {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
+
+}
+
+#opzioni {
+    display: flex;
+    border-style: groove;
+
+    button {
+        padding: 20px;
+        margin: 30px;
+    }
+
+
+}
+
+#col1 {
+    margin-right: 20px;
+}
+
+#titolo {
+    text-align: center;
+}
+
