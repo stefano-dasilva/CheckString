@@ -26,62 +26,62 @@ public interface UtenteService {
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente rimuoviUtente(Utente utente);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente cambiaPassword(Utente utente, String password);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente findByUsername(String username);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente caricaImmagine(byte[] img, Utente utente);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente rimuoviImg(Utente utente, byte[] bytes);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     Utente updateDati(Utente u, Utente u1);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente setRecordBandiere(Utente utente, int num_bandiere);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente setRecordCapitali(Utente utente, int num_capitali);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente setRecordPopolazione(Utente utente, int num_popolazione);
 
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public List<UtenteClassifica> showClassifica(ClassificaFilter filter);
 

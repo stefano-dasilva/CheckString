@@ -114,29 +114,41 @@ public class UtenteServiceImpl implements UtenteService {
 
     @Override
     public Utente setRecordBandiere(Utente utente, int num_bandiere) {
-        if(utente.getRecordBandiere() < num_bandiere){
-            utente.setRecordBandiere(num_bandiere);
-            utenteDao.update(utente);
+        Utente u = utenteDao.findByUsername(utente.getUsername());
+        if( u != null){
+            if(u.getRecordBandiere() < num_bandiere){
+                u.setRecordBandiere(num_bandiere);
+                utenteDao.update(u);
+            }
+            return utente;
         }
-        return utente;
+        return null;
     }
 
     @Override
     public Utente setRecordCapitali(Utente utente, int num_capitali) {
-        if(utente.getRecordBandiere() < num_capitali){
-            utente.setRecordBandiere(num_capitali);
-            utenteDao.update(utente);
+        Utente u = utenteDao.findByUsername(utente.getUsername());
+        if( u != null){
+            if(u.getRecordCapitali() < num_capitali){
+                u.setRecordCapitali(num_capitali);
+                utenteDao.update(u);
+            }
+            return utente;
         }
-        return utente;
+        return null;
     }
 
     @Override
     public Utente setRecordPopolazione(Utente utente, int num_popolazione) {
-        if(utente.getRecordBandiere() < num_popolazione){
-            utente.setRecordBandiere(num_popolazione);
-            utenteDao.update(utente);
+        Utente u = utenteDao.findByUsername(utente.getUsername());
+        if (u != null) {
+            if (u.getRecordPopolazioni() < num_popolazione) {
+                u.setRecordPopolazioni(num_popolazione);
+                utenteDao.update(u);
+            }
+            return utente;
         }
-        return utente;
+        return null;
     }
 
 }

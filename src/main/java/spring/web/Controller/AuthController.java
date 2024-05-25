@@ -53,7 +53,7 @@ public class AuthController {
 System.out.println(utente);
 
             if( utenteService.inserisciUtente(utente)!= null){
-                session.setAttribute("user", utente);
+                session.setAttribute("utente", utente);
                 return "redirect:/show_home";
             }
             else {
@@ -98,7 +98,7 @@ System.out.println(utente);
 
 
 
-            session.setAttribute("user",u);
+            session.setAttribute("utente",u);
             return "redirect:/show_home";
         }
     }

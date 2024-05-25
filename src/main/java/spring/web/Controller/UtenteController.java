@@ -48,7 +48,7 @@ public class UtenteController {
     public String upload(@RequestParam("img") CommonsMultipartFile img, HttpSession session, Model model) {
 
         System.out.println("ciao");
-        Utente utente =  (Utente ) session.getAttribute("user");
+        Utente utente =  (Utente ) session.getAttribute("utente");
 
 
 
@@ -80,13 +80,13 @@ public class UtenteController {
 
         System.out.println(utente.getDataNascita());
 
-        Utente sessionUser= (Utente) session.getAttribute("user");
+        Utente sessionUser= (Utente) session.getAttribute("utente");
 
 
 
         if(sessionUser != null) {
             utenteService.updateDati(sessionUser, utente);
-            session.setAttribute("user", utente);
+            session.setAttribute("utente", utente);
         }
 
 

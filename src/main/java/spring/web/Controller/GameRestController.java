@@ -1,11 +1,15 @@
 package spring.web.Controller;
 
 import Model.Standard;
+import Model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import service.Interface.CheckStringService;
 import service.Interface.StandardService;
+import service.Interface.UtenteService;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class GameRestController {
@@ -15,6 +19,11 @@ public class GameRestController {
 
     @Autowired
     CheckStringService checkStringService;
+
+    @Autowired
+    UtenteService utenteService;
+
+
 
     @RequestMapping(
             path={"/randomcountry"},
@@ -77,4 +86,59 @@ public class GameRestController {
         return String.format("{\"inputstandard\":\"%s\"}", inputStandard);
 
     }
+
+    @RequestMapping(
+            path={"/aumentapunti"},
+            method= {RequestMethod.GET},
+            produces  = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    public String aumentaPunti(HttpSession session){
+
+
+
+        if(session.getAttribute("punteggio") == null){
+            session.setAttribute("punteggio",1);
+        }
+        else{
+            System.out.println("aumentapuntielse");
+            session.setAttribute("punteggio", (Integer) session.getAttribute("punteggio") + 1 );
+        }
+
+        return String.format("{\"punteggio\":\"%s\"}", session.getAttribute("punteggio"));
+
+    }
+
+    @RequestMapping(
+            path={"/finiscigioco"},
+            method= {RequestMethod.GET},
+            produces  = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    public String finisciGioco(@RequestParam("gioco") String gioco, HttpSession session){
+
+        Utente utente =(Utente) session.getAttribute("utente");
+
+        System.out.println("il gioco è finito");
+        System.out.println(session.getAttribute("punteggio"));
+
+        if(gioco.equals("giocoBandiere")){
+            utenteService.setRecordBandiere(utente,(Integer) session.getAttribute("punteggio"));
+        }
+        else if(gioco.equals("giocoCapitali")){
+            utenteService.setRecordCapitali(utente,(Integer) session.getAttribute("punteggio"));
+
+        }
+        else if(gioco.equals("giocoPopolazione")){
+            utenteService.setRecordPopolazione(utente,(Integer) session.getAttribute("punteggio"));
+        }
+
+        session.setAttribute("punteggio", 0);
+
+
+
+
+
+        return String.format("{\"inputstandard\":\"%s\"}", "ciao");
+
+    }
+
 }
