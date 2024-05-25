@@ -56,12 +56,12 @@ public class GameRestController {
         String value2 = standard2.getValue();
 
         Standard standard3 = standardService.getRandom();
-        String code3 = standard2.getCode();
-        String value3 = standard2.getValue();
+        String code3 = standard3.getCode();
+        String value3 = standard3.getValue();
 
         Standard standard4 = standardService.getRandom();
-        String code4 = standard2.getCode();
-        String value4 = standard2.getValue();
+        String code4 = standard4.getCode();
+        String value4 = standard4.getValue();
 
         return String.format("{\"code1\":\"%s\", \"value1\":\"%s\", " +
                         "\"code2\":\"%s\", \"value2\":\"%s\", " +

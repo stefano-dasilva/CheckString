@@ -36,7 +36,7 @@
 
         </div>
 
-       
+
 
         <div id="gioco">
             <div id="ig">
@@ -60,7 +60,7 @@
                 </div>
 
 
-                
+
 
             </div>
 
