@@ -3,9 +3,9 @@ package spring.web.Controller;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import Config.FactoryUtil;
-
-import Filter.ClassificaFilter;
+import service.Interface.StandardService;
+import spring.web.dto.UtenteClassifica;
+import spring.web.vo.Filter.ClassificaFilter;
 import Model.Utente;
 import Model.Standard;
 
@@ -119,11 +119,7 @@ public class UtenteController {
     @ResponseBody
     public String showClassificaGenerale(@ModelAttribute("filter") ClassificaFilter filter){
         System.out.println(filter.getCategoriaGioco());
-        List<Utente> utenti = utenteService.showClassifica(filter);
 
-        for(Utente utente : utenti){
-            System.out.println(utente.getUsername());
-        }
 
         return "provaprova";
     }
