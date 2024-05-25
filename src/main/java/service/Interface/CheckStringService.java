@@ -13,7 +13,7 @@ public interface CheckStringService {
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
-            propagation = Propagation.NESTED,
+            propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
     public String check(String nazione) ;
 

@@ -13,6 +13,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import service.Interface.UtenteService;
 import spring.web.vo.UserRegister;
@@ -49,15 +50,17 @@ public class AuthController {
         }
         else
         { Utente utente = UtenteConverter.convert(userRegister);
-
+System.out.println(utente);
 
             if( utenteService.inserisciUtente(utente)!= null){
                 session.setAttribute("user", utente);
                 return "redirect:/show_home";
             }
-            else
+            else {
+                //model.addAttribute("errorPass", "Username esistente");
+                bindingResult.rejectValue("username", "error.user", "An account already exists for this username");
                 return "register";
-
+            }
         }
     }
 

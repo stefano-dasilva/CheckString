@@ -31,15 +31,23 @@ public class UtenteServiceImpl implements UtenteService {
 
     @Override
     public Utente inserisciUtente(Utente utente) throws NoSuchAlgorithmException {
+
        if (utente!=null){
            System.out.println("sono dentro dao utente");
            Utente u = utenteDao.findByUsername(utente.getUsername());
+           System.out.println("before: " + u);
            if(u == null) {
                MD5 md5 = new MD5(utente.getPassword());
                utente.setPassword(md5.hash());
+               utente.setRecordPopolazioni(0);
+               utente.setRecordBandiere(0);
+               utente.setRecordCapitali(0);
                utente.setNazione(checkStringService.check(utente.getNazione()));
                Utente usernuovo = utenteDao.create(utente);
+               System.out.println("then: " + usernuovo);
                return usernuovo;
+           } else{
+              System.out.println("else");
            }
        }
        return null;

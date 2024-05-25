@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html; charset=UTF-8" %>
 
@@ -28,9 +29,11 @@
 
             <div class="form-control">
                 <form:label for="nome"  path="nome" >Inserisci il tuo nome</form:label>
-                <div>
+                <div class="input-container">
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="nome"  path="nome" placeholder="Nome" cssErrorClass="error_input" />
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
                 <small></small>
                 <form:errors path="nome" cssClass="error_message" />
@@ -40,9 +43,11 @@
 
             <div class="form-control">
                 <form:label for="cognome"  path="cognome" >Inserisci il tuo cognome</form:label>
-                <div>
+                <div class="input-container">
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="cognome" name="cognome"   path="cognome" placeholder="Cognome" cssErrorClass="error_input" />
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
                 <small></small>
                 <form:errors path="cognome" cssClass="error_message" />
@@ -51,9 +56,11 @@
 
             <div class="form-control">
                 <form:label for="username"  path="username" >Inserisci il tuo Username</form:label>
-                <div>
+                <div class="input-container">
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="username" name="username"   path="username" placeholder="Username" cssErrorClass="error_input" />
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
                 <small></small>
                 <form:errors path="username" cssClass="error_message" />
@@ -64,31 +71,37 @@
             <div class="form-control">
                 <form:label for="nazione" path="nazione" >Inserisci la tua nazionalità</form:label>
 
-                <div>
+                <div class="input-container">
                     <i class='bx bx-world'></i>
                     <form:input type="text" id="nazione" name="nazione"   path="nazione" placeholder="Nazionalità" cssErrorClass="error_input" />
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
                 <small></small>
                 <form:errors path="nazione" cssClass="error_message" />
             </div>
 
 
-            <div>
+            <div class="form-control">
                 <form:label for="nascita" path="dataNascita" >Data di Nascita</form:label>
-                <div>
-
+                <div class="input-container">
                     <i class='bx bxs-calendar'></i>
-                    <form:input type="text" placeholder="gg/mm/yyyy" onfocus="this.type='date'" name="nascita"   path="dataNascita"  cssErrorClass="error_input" />
+                    <form:input type="text" placeholder="gg/mm/yyyy" id= "nascita"  name="nascita"   path="dataNascita"  cssErrorClass="error_input"  onfocus="this.type='date'"/>
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
+                <small></small>
                 <form:errors path="dataNascita" cssClass="error_message" />
             </div>
 
 
             <div class="form-control">
                 <form:label for="pass" path="password" >Inserisci Password</form:label>
-                <div>
+                <div class="input-container">
                     <i class='bx bx-lock-alt'></i>
-                    <form:input type="password" id="pass" name="password" placeHolder="Password"   path="password"  cssErrorClass="error_input" onchange="controllapassword()"/>
+                    <form:input type="password" id="pass" name="password" placeHolder="Password"   path="password"  cssErrorClass="error_input" />
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
                 <small></small>
                 <form:errors path="password" cssClass="error_message" />
@@ -96,9 +109,11 @@
 
             <div class="form-control">
                 <form:label for="pass2" path="password2" >Reinserisci Password</form:label>
-                <div id="ripetipassword">
+                <div class="input-container">
                     <i class='bx bx-lock-alt'></i>
-                    <form:input type="password" id="pass2" name="password" placeHolder="Password" path="password2"   cssErrorClass="error_input" onchange="controllapassword()"/>
+                    <form:input type="password" id="pass2" name="password" placeHolder="Password" path="password2"   cssErrorClass="error_input" />
+                    <i class="icon-check bx bx-check"></i>
+                    <i class="icon-error bx bx-error"></i>
                 </div>
                 <small></small>
 
@@ -114,4 +129,3 @@
 <script src=${pageContext.request.contextPath}/resources/js/register.js></script>
 </BODY>
 </HTML>
-//

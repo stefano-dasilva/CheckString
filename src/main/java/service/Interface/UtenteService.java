@@ -11,11 +11,16 @@ import java.util.List;
 
 public interface UtenteService {
 
-    @Transactional(
+  /*  @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.NESTED,
             isolation = Isolation.READ_UNCOMMITTED)
     public Utente inserisciUtente(Utente utente) throws NoSuchAlgorithmException;
+*/
+  @Transactional(
+          rollbackFor = {Throwable.class, Exception.class},
+          propagation = Propagation.REQUIRED)
+  public Utente inserisciUtente(Utente utente) throws NoSuchAlgorithmException;
 
 
     @Transactional(

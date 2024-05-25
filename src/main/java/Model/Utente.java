@@ -2,6 +2,7 @@ package Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity
@@ -43,13 +44,27 @@ public class Utente implements Bean{
     @Column(name = "record_capitali")
     private Integer recordCapitali;
 
-    @NotNull
+   // @NotNull
     @Column(name = "record_popolazioni")
     private Integer recordPopolazioni;
 
 
-
-
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", nazione='" + nazione + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", dataNascita=" + dataNascita +
+                ", password='" + password + '\'' +
+                ", img=" + Arrays.toString(img) +
+                ", recordBandiere=" + recordBandiere +
+                ", recordCapitali=" + recordCapitali +
+                ", recordPopolazioni=" + recordPopolazioni +
+                '}';
+    }
     public Integer getId() {
         return id;
     }
