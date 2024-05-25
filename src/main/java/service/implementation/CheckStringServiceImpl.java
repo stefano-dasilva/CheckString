@@ -1,20 +1,12 @@
 package service.implementation;
 
 import Algoritmi.*;
-import Config.MD5;
-import Dao.Interface.UtenteDao;
-import Filter.ClassificaFilter;
 import Model.Corrispondenza;
 import Model.NonTrovata;
-import Model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.Interface.CheckStringService;
 import service.Interface.CorrispondenzaService;
 import service.Interface.NonTrovataService;
-import service.Interface.UtenteService;
-
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 public class CheckStringServiceImpl implements CheckStringService {
 

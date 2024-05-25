@@ -7,10 +7,8 @@ import javax.validation.constraints.Size;
 public class UserLogin {
 
     @NotNull
-    @Size(min=6, max=20)
     private String username;
 
-    @Pattern(regexp = "^(?=.*[@#$%^&+=!]).{6,}$", message = "la pass non rispetta il formato")
     private String password;
 
     public String getUsername() {

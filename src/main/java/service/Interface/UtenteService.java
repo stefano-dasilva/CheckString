@@ -1,6 +1,7 @@
 package service.Interface;
 
-import Filter.ClassificaFilter;
+import spring.web.dto.UtenteClassifica;
+import spring.web.vo.Filter.ClassificaFilter;
 import Model.Utente;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -82,7 +83,7 @@ public interface UtenteService {
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.NESTED,
             isolation = Isolation.READ_UNCOMMITTED)
-    public List<Utente> showClassifica(ClassificaFilter filter);
+    public List<UtenteClassifica> showClassifica(ClassificaFilter filter);
 
 
 

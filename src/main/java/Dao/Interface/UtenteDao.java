@@ -1,7 +1,6 @@
 package Dao.Interface;
 
-import Filter.ClassificaFilter;
-import Model.Standard;
+import spring.web.vo.Filter.ClassificaFilter;
 import Model.Utente;
 import org.springframework.transaction.annotation.Transactional;
 

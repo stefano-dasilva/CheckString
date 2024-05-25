@@ -70,11 +70,12 @@ h2 {
 }
 
 #first_footer {
-  background-color: #119C75;
+  background-color: #7DCCB5;
 }
 #first_footer span {
   font-family: "Syne", sans-serif;
   color: #E9FCF6;
+  font-weight: bold;
 }
 #first_footer i {
   color: #E9FCF6;
@@ -82,11 +83,12 @@ h2 {
 }
 
 #second_footer {
-  background-color: #DAAB00;
+  background-color: #ECD273;
 }
 #second_footer span {
   font-family: "Syne", sans-serif;
   color: #FEF9E6;
+  font-weight: bold;
 }
 #second_footer i {
   color: #FEF9E6;
@@ -94,11 +96,12 @@ h2 {
 }
 
 #third_footer {
-  background-color: #FF0096;
+  background-color: #FF79C7;
 }
 #third_footer span {
   font-family: "Syne", sans-serif;
   color: #FFF2F9;
+  font-weight: bold;
 }
 #third_footer i {
   color: #FFF2F9;

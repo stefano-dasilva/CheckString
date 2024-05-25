@@ -3,9 +3,11 @@ package spring.web.Controller;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import Config.FactoryUtil;
-import Filter.ClassificaFilter;
+import service.Interface.StandardService;
+import spring.web.dto.UtenteClassifica;
+import spring.web.vo.Filter.ClassificaFilter;
 import Model.Utente;
+import Model.Standard;
 
 
 import converter.UtenteConverter;
@@ -17,12 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import service.Interface.UtenteService;
 import spring.web.vo.SalvaRegister;
-import spring.web.vo.UserRegister;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Base64;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,6 +29,9 @@ public class UtenteController {
 
     @Autowired
     private UtenteService utenteService;
+
+    @Autowired
+    private StandardService standardService;
 
 
 
@@ -87,18 +88,65 @@ public class UtenteController {
 
 
 
+
+    @GetMapping("/show_classifica")
+    public String showClassifica(Model m) {
+        m.addAttribute("classificafilter", new ClassificaFilter());
+
+        List<Standard> standards = standardService.getAll();
+        List<String> values = new ArrayList<>();
+
+        for (Standard standard : standards) {
+            values.add(standard.getValue());
+
+        }
+        m.addAttribute("nazioni",values);
+
+
+        return "classifica";
+    }
+
+
     @PostMapping("/show_classifica")
     @ResponseBody
     public String showClassificaGenerale(@ModelAttribute("filter") ClassificaFilter filter){
         System.out.println(filter.getCategoriaGioco());
-        List<Utente> utenti = utenteService.showClassifica(filter);
 
-        for(Utente utente : utenti){
-            System.out.println(utente.getUsername());
-        }
 
         return "provaprova";
     }
+
+
+    @PostMapping("/classifica")
+
+    public String Classifica(@ModelAttribute("classificafilter") @Valid ClassificaFilter classificaFilter,BindingResult bindingResult, Model m, HttpSession session) {
+
+        List<Standard> standards = standardService.getAll();
+        List<String> values = new ArrayList<>();
+
+        for (Standard standard : standards) {
+            values.add(standard.getValue());
+
+        }
+
+        m.addAttribute("nazioni",values);
+        if(bindingResult.hasErrors()){
+            return "classifica";
+        }
+
+        List<UtenteClassifica> utenticlassifica = utenteService.showClassifica(classificaFilter);
+
+        m.addAttribute("nazioni",values);
+        m.addAttribute("utenti",utenticlassifica);
+        m.addAttribute("gioco",classificaFilter.getCategoriaGioco());
+
+
+
+
+
+        return "classifica";
+    }
+
 
 
 

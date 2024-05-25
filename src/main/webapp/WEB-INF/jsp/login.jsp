@@ -28,7 +28,7 @@
                 <form:label for="username"  path="username" >Inserisci il tuo username</form:label>
                 <div id="usernameWrap">
                     <i class='bx bxs-user'></i>
-                    <form:input type="text" id="username"  path="username" placeholder="Username" cssErrorClass="error_input" onchange="checkUsername()" />
+                    <form:input type="text" id="username"  path="username" placeholder="Username" cssErrorClass="error_input"/>
                 </div>
                 <span>${errorUsername}</span>
                 <form:errors path="username" cssClass="error_message" />

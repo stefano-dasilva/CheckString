@@ -1,7 +1,6 @@
 package Dao.Implementation;
 import Dao.Interface.UtenteDao;
-import Filter.ClassificaFilter;
-import Model.Standard;
+import spring.web.vo.Filter.ClassificaFilter;
 import Model.Utente;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -65,6 +64,7 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
             }
         }
         if (filtro.getMinimo() != null) {
+            System.out.println("filtro.getMinimo() != null");
             if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoBandiere")) {
                 predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("recordBandiere"), filtro.getMinimo()));
             } else if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoCapitali")) {
@@ -75,6 +75,8 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
         }
 
         if (filtro.getMassimo() != null) {
+            System.out.println("filtro.getMassimo() != null");
+
             if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoBandiere")) {
                 predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("recordBandiere"), filtro.getMassimo()));
             } else if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoCapitali")) {
@@ -84,7 +86,8 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
             }
         }
 
-        if (filtro.getNazione() != null) {
+        if (filtro.getNazione() != null && filtro.getNazione() != "" ) {
+            System.out.println("filtro.getNazione() != null");
             predicates.add(criteriaBuilder.equal(root.get("nazione"), filtro.getNazione()));
         }
         if(filtro.getCategoriaGioco() == null && filtro.getNazione() == null && filtro.getMassimo() == null && filtro.getMinimo() == null){

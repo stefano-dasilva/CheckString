@@ -1,8 +1,11 @@
 $yellow_light : #FEF9E6;
+$yellow_medium: #ECD273;
 $yellow_strong: #DAAB00;
 $pink_light : #FFF2F9;
+$pink_medium: #FF79C7;
 $pink_strong :  #FF0096;
 $green_light : #E9FCF6;
+$green_medium: #7DCCB5;
 $green_strong : #119C75;
 
 @mixin flex-row($justify-content : null, $align-items : null){

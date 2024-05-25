@@ -70,26 +70,31 @@ h2{
 }
 
 #first_footer {
-  background-color: $green_strong;
+  background-color: $green_medium;
+;
   span{
     font-family: "Syne", sans-serif;
     color: $green_light;
+    font-weight: bold;
+
   }
 
   i{
     color: $green_light;
     font-size: 2rem;
 
+
   }
 
 }
 
 #second_footer{
-  background-color: $yellow_strong;
+  background-color: $yellow_medium;
 
   span{
     font-family: "Syne", sans-serif;
     color: $yellow_light;
+    font-weight: bold;
   }
   i{
     color: $yellow_light;
@@ -101,11 +106,14 @@ h2{
 }
 
 #third_footer{
-  background-color: $pink_strong;
+  background-color: $pink_medium;
+;
 
   span{
     font-family: "Syne", sans-serif;
     color: $pink_light;
+    font-weight: bold;
+
   }
 
   i{

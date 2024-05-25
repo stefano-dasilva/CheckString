@@ -2,13 +2,16 @@ package service.implementation;
 
 import Config.MD5;
 import Dao.Interface.UtenteDao;
-import Filter.ClassificaFilter;
+import converter.UtenteConverter;
+import spring.web.dto.UtenteClassifica;
+import spring.web.vo.Filter.ClassificaFilter;
 import Model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.Interface.CheckStringService;
 import service.Interface.UtenteService;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UtenteServiceImpl implements UtenteService {
@@ -24,8 +27,14 @@ public class UtenteServiceImpl implements UtenteService {
     public UtenteServiceImpl() {}
 
     @Override
-    public List<Utente> showClassifica(ClassificaFilter filter) {
-        return  utenteDao.getClassifica(filter);
+    public List<UtenteClassifica> showClassifica(ClassificaFilter filter) {
+
+           List<Utente> classifica_utenti = utenteDao.getClassifica(filter);
+           List<UtenteClassifica> utenteClassifica = new ArrayList<>();
+           for(Utente utente : classifica_utenti){
+               utenteClassifica.add(UtenteConverter.convert(utente,filter.getCategoriaGioco()));
+           }
+           return utenteClassifica;
     }
 
 
