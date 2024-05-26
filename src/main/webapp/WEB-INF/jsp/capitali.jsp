@@ -18,12 +18,13 @@
 
         <div id="parte1">
         <div id="titolo">
-        <h2>Quante Capitali Conosci?</h2>
+        <h1>Quante Capitali Conosci?</h1>
         </div>
-
+           <div id="mappa">
             <%@ include file="mappa.jsp" %>
+           </div>
             <div id="bottone">
-            <button id="iniziaBottone">Inizia il gioco</button>
+            <button id="iniziaBottone">Inizia a giocare</button>
             </div>
         </div>
 
@@ -40,14 +41,25 @@
 
         <div id="gioco">
             <div id="ig">
+
+                <span>Punti: <span id="punti"></span> </span>
+
             <img  alt="bandiera" id="img" >
+
+
             </div>
 
 
 <div id="container2">
 
-            <div id="opzioni">
 
+<div id="contMess">
+    <div id="rispostaCorretta">
+        <span>Risposta Corretta !!!</span>
+    </div>
+</div>
+
+            <div id="opzioni">
                 <div id="col1">
                     <span id="first"></span>
                 <span id="second"></span>

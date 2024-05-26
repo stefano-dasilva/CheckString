@@ -79,54 +79,52 @@
     </div>
 </div>
 
-
 <div id="info">
     <div id="containerInfo">
         <div id="title">
             <h3 class="display-5">I Tuoi Dati</h3>
         </div>
-
         <div id="box">
             <div class="first3 mt-3">
-                <form action="salva" method="post" id="formDati" modelAttribute="salvaRegister">
+                <form:form action="salva" method="post" modelAttribute="salvaRegister">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="nome" value="${name}" readonly>
+                            <form:label path="nome" class="form-label">Nome</form:label>
+                            <form:input path="nome" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:errors path="nome" cssClass="error_message" />
                         </div>
                         <div class="col-md-6">
-                            <label for="cognome" class="form-label">Cognome</label>
-                            <input type="text" class="form-control" id="cognome" name="cognome" value="${cognome}" readonly>
+                            <form:label path="cognome" class="form-label">Cognome</form:label>
+                            <form:input path="cognome" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:errors path="cognome" cssClass="error_message" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="${username}" readonly>
+                            <form:label path="username" class="form-label">Username</form:label>
+                            <form:input path="username" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:errors path="username" cssClass="error_message" />
                         </div>
-
                         <div class="col-md-6">
-                            <label for="nazione" class="form-label">Nazionalità</label>
-                            <input type="text" class="form-control" id="nazione" name="nazione" value="${nazione}" readonly>
+                            <form:label path="nazione" class="form-label">Nazionalità</form:label>
+                            <form:input path="nazione" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:errors path="nazione" cssClass="error_message" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dataNascita" class="form-label">Data Di Nascita</label>
-                            <input type="text" class="form-control" id="dataNascita" name="dataNascita" value="${data_nascita}" readonly>
+                            <form:label path="dataNascita" class="form-label">Data Di Nascita</form:label>
+                            <form:input path="dataNascita" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:errors path="dataNascita" cssClass="error_message" />
                         </div>
                     </div>
                     <button type="button" id="editButton" class="btn btn-warning">Modifica</button>
-
                     <button type="submit" id="saveButton" class="btn btn-success d-none">Salva</button>
-
-                </form>
+                </form:form>
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 <script

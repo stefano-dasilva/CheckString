@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     parte2.parentNode.removeChild(parte2);
 
     document.getElementById("iniziaBottone").addEventListener('click', inizia);
+    var punteggio = 0;
+
 
     function inizia(){
         document.getElementById("container").appendChild(parte2);
@@ -69,26 +71,54 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 console.log(data);
                 console.log(paese1);
 
-                first.addEventListener("click", () => verifica(first.textContent, paese1.capital));
-                second.addEventListener("click", () => verifica(second.textContent, paese1.capital));
-                third.addEventListener("click", () => verifica(third.textContent, paese1.capital));
-                fourth.addEventListener("click", () => verifica(fourth.textContent, paese1.capital));
+                first.addEventListener("click", () => verifica(first, paese1.capital));
+                second.addEventListener("click", () => verifica(second, paese1.capital));
+                third.addEventListener("click", () => verifica(third, paese1.capital));
+                fourth.addEventListener("click", () => verifica(fourth, paese1.capital));
+                 document.getElementById("punti").innerText= punteggio;
+                resetColor();
             })
 
-        function verifica(param1, param2) {
-            console.log("Parametro 1:", param1);
-            console.log("Parametro 2:", param2);
+        function verifica(capitaleSelezionata, CapitaleCorretta) {
 
-            if (param1 === param2[0]) {
+            console.log(" Capitale Selezionata:", capitaleSelezionata);
+            console.log("Capitale Corretta:", CapitaleCorretta);
+
+
+
+            if (capitaleSelezionata.textContent === CapitaleCorretta[0]) {
                 console.log("Risposta corretta");
+                capitaleSelezionata.style.backgroundColor="green";
 
-                fetchCountries();
+                punteggio++;
+                var punti = document.getElementById("punti").innerText= punteggio;
+                var message=document.getElementById("rispostaCorretta");
+                message.style.display = "inline-flex";
+                setTimeout(function (){
+                    message.style.display = "none";
+                    fetchCountries();
+                }, 1000);
             } else {
                 console.log("Risposta sbagliata");
+                capitaleSelezionata.style.backgroundColor="red";
+            }
+        }
 
+        function resetColor(){
+
+            var span1=document.getElementById("first");
+            var span2=document.getElementById("second");
+            var span3=document.getElementById("third");
+            var span4=document.getElementById("fourth");
+            const spanArray = [span1, span2, span3, span4];
+            for (let i=0; i<spanArray.length; i++){
+                spanArray[i].style.backgroundColor = "white";
 
             }
         }
+
+
+
 
 
 
