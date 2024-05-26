@@ -32,7 +32,7 @@
         <div id="parte2">
         <div id="subTitle">
 
-            <h4 id="ban">Indovina la capitale di <span id="paese"></span></h4>
+            <h2 id="ban">Indovina la capitale di <span id="paese"></span></h2>
 
         </div>
 
@@ -43,21 +43,23 @@
             <img  alt="bandiera" id="img" >
             </div>
 
+
+<div id="container2">
+
             <div id="opzioni">
 
-
-                <form action="risposta" method="get">
-                    <div id="col1">
-                        <button type="submit"><span id="first"></span></button>
-                <button type="submit"><span id="second"></span></button>
+                <div id="col1">
+                    <span id="first"></span>
+                <span id="second"></span>
                 </div>
                 <div id="col2">
-                <button type="submit"><span id="third"></span></button>
-                <button type="submit"><span id="fourth"></span></button>
+                <span id="third"></span>
+               <span id="fourth"></span>
                 </div>
-                </form>
+
 
                 </div>
+</div>
 
 
 

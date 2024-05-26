@@ -1,3 +1,4 @@
+
 import paesijson from '../countries.json' with { type: 'json' };
 
 
@@ -18,10 +19,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         fetch('randomcountry2')
             .then(response => response.json())
             .then(data => {
-                var paese1 = paesijson.find(paese => paese.cca2 === data.code1 );
-                var paese2 = paesijson.find(paese => paese.cca2 === data.code2 );
-                var paese3 = paesijson.find(paese => paese.cca2 === data.code3 );
-                var paese4 = paesijson.find(paese => paese.cca2 === data.code4 );
+                var paese1 = paesijson.find(paese => paese.cca2 === data.code1);
+                var paese2 = paesijson.find(paese => paese.cca2 === data.code2);
+                var paese3 = paesijson.find(paese => paese.cca2 === data.code3);
+                var paese4 = paesijson.find(paese => paese.cca2 === data.code4);
 
 
                 if (!paese1.capital || !paese2.capital || !paese3.capital || !paese4.capital) {
@@ -65,14 +66,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                 var img = document.getElementById("img");
                 img.src = paese1.flags.png;
-
-                console.log(paese1);
-                console.log(paese2);
-                console.log(paese3);
-                console.log(paese4);
                 console.log(data);
-                console.log(paese);
+                console.log(paese1);
+
+                first.addEventListener("click", () => verifica(first.textContent, paese1.capital));
+                second.addEventListener("click", () => verifica(second.textContent, paese1.capital));
+                third.addEventListener("click", () => verifica(third.textContent, paese1.capital));
+                fourth.addEventListener("click", () => verifica(fourth.textContent, paese1.capital));
             })
 
-    }
-});
+        function verifica(param1, param2) {
+            console.log("Parametro 1:", param1);
+            console.log("Parametro 2:", param2);
+
+            if (param1 === param2[0]) {
+                console.log("Risposta corretta");
+
+                fetchCountries();
+            } else {
+                console.log("Risposta sbagliata");
+
+
+            }
+        }
+
+
+
+    }})
+
