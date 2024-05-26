@@ -71,6 +71,30 @@ public class GameRestController {
 
     }
 
+    @RequestMapping(
+            path={"randomcountry3"},
+            method = {RequestMethod.GET},
+            produces ={MediaType.APPLICATION_JSON_VALUE}
+    )
+    private  String randomcountry3(){
+
+        Standard standard1 = standardService.getRandom();
+        String code1 = standard1.getCode();
+        String value1 = standard1.getValue();
+
+        Standard standard2 = standardService.getRandom();
+        String code2 = standard2.getCode();
+        String value2 = standard2.getValue();
+
+
+
+        return String.format("{\"standard1\": {\"code\": \"%s\", \"value\": \"%s\"}, " +
+                        "\"standard2\": {\"code\": \"%s\", \"value\": \"%s\"}}",
+                code1, value1, code2, value2);
+
+
+    }
+
 
 
 

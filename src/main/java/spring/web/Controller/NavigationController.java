@@ -1,18 +1,33 @@
 package spring.web.Controller;
 
+import Config.FactoryUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.security.NoSuchAlgorithmException;
+import Model.Standard;
+
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
+
 import Model.Utente;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.function.support.RouterFunctionMapping;
+import service.Interface.StandardService;
 import service.Interface.UtenteService;
+import spring.web.vo.Filter.ClassificaFilter;
+import spring.web.vo.UserRegister;
 
 
 @Controller
@@ -41,7 +56,7 @@ public class NavigationController {
 
     @GetMapping("/rimuoviImg")
     public String rimuoviImag(HttpSession session) {
-        Utente u = (Utente) session.getAttribute("user");
+        Utente u = (Utente) session.getAttribute("utente");
         if (u != null) {
             try {
                 utenteService.rimuoviImg(u, defaultBytes);
@@ -61,6 +76,8 @@ public class NavigationController {
         return "home";
     }
 
+
+
     @GetMapping("/show_games")
     public String showGamesSelection() {
 
@@ -76,7 +93,7 @@ public class NavigationController {
 
 
 
-        Utente u = (Utente) session.getAttribute("user");
+        Utente u = (Utente) session.getAttribute("utente");
         System.out.println(u.getUsername() + u.getNome() + u.getCognome());
 
         m.addAttribute("username",u.getUsername());
@@ -109,6 +126,11 @@ public class NavigationController {
     @GetMapping("/show_giocoCapitali")
     public String showGiocoCapitali() {
         return "capitali";
+    }
+
+    @GetMapping("/show_giocopopolazione")
+    public String showGiocoPopolazione() {
+        return "giocopopolazioni";
     }
 
 
