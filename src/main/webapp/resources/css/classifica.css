@@ -168,15 +168,13 @@ input[type=number]::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
 }
 
 .profile_pic_wrapper {
-  border: 2px solid red;
   height: 100px;
-  width: 100px;
-  border-radius: 100%;
+  width: 100px !important;
   overflow: clip;
+  border-radius: 100%;
 }
 
 .img_utente {
@@ -200,7 +198,7 @@ input[type=number]::placeholder {
   justify-content: space-around;
   align-items: center;
 }
-#utente_wrapper span {
+#utente_wrapper div {
   width: 25%;
 }
 
@@ -208,15 +206,38 @@ input[type=number]::placeholder {
   background-color: #FFF2F9;
   color: #FF0096;
 }
+.giocoPopolazione .username {
+  background-color: #FF79C7;
+  color: #FFF2F9;
+  padding: 0.4rem;
+  border-radius: 0.8rem;
+}
 
 .giocoCapitali {
   background-color: #E9FCF6;
   color: #119C75;
 }
+.giocoCapitali .username {
+  background-color: #7DCCB5;
+  color: #E9FCF6;
+  padding: 0.4rem;
+  border-radius: 0.8rem;
+}
 
 .giocoBandiere {
   background-color: #FEF9E6;
   color: #DAAB00;
+}
+.giocoBandiere .username {
+  background-color: #ECD273;
+  color: #FEF9E6;
+  padding: 0.4rem;
+  border-radius: 0.8rem;
+}
+
+.Tutte {
+  background-color: #F3F3F5;
+  color: #69757A;
 }
 
 /*# sourceMappingURL=classifica.css.map */

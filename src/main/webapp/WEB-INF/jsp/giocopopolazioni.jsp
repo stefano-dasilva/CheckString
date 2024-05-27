@@ -20,7 +20,7 @@
 <section id="third_game_wrap">
     <div id="third_game_card">
         <div id="third_game_content">
-        <h3 id="title">Indovina il numero maggiore di bandiere!</h3>
+        <h3 id="title">Indovina il paese più popolato !</h3>
         <button id="inizia">Inizia ora il gioco</button>
         </div>
     </div>

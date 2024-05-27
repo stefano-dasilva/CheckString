@@ -103,3 +103,15 @@ img{
   width: 100%;
   display: flex;
 }
+
+#inizia{
+  outline: none;
+  border: none;
+  width: 80%;
+  padding: 1rem;
+  font-family: "Syne", sans-serif;
+  background-color: $pink_medium;
+  color: $pink-light;
+  cursor: pointer;
+
+}

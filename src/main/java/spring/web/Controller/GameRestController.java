@@ -145,22 +145,54 @@ public class GameRestController {
         int punteggio;
         if(session.getAttribute("punteggio") != null){
             punteggio = (Integer ) session.getAttribute("punteggio");
+            session.setAttribute("punteggio",0);
             if(gioco.equals("giocoBandiere")){
                 nuovo_record = utenteService.setRecordBandiere(utente,punteggio);
+                session.setAttribute("punteggio",0);
+
             }
             else if(gioco.equals("giocoCapitali")){
                 nuovo_record = utenteService.setRecordCapitali(utente,punteggio);
+                session.setAttribute("punteggio",0);
+
             }
             else if(gioco.equals("giocoPopolazione")){
                 nuovo_record = utenteService.setRecordPopolazione(utente,punteggio);
+                session.setAttribute("punteggio",0);
+
             }
         }
         else{
             punteggio = 0;
         }
-        System.out.println(punteggio);
+
+
 
         return String.format("{\"punteggio\":\"%s\", \"nuovo_record\":\"%s\"}", punteggio, nuovo_record);
     }
+
+    @RequestMapping(
+            path={"/controllatentativi"},
+            method= {RequestMethod.GET},
+            produces  = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    String controllTentativi(HttpSession session){
+
+        int tentativi_rimasti = 0;
+
+
+        if(session.getAttribute("skips") != null){
+            tentativi_rimasti = (Integer) session.getAttribute("skips");
+            tentativi_rimasti = tentativi_rimasti - 1;
+            session.setAttribute("skips",tentativi_rimasti);
+        }
+
+
+
+        return String.format("{\"tentativi_rimasti\":\"%s\"}", tentativi_rimasti);
+    }
+
+
+
 
 }

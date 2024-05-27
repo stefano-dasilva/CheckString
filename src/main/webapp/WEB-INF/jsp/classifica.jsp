@@ -35,8 +35,8 @@
        </div>
         <div id="row_2">
             <div class="radio-buttons">
-                <form:radiobutton id="option1" name="options"  value="Tutti" path="categoriaGioco" />
-                <form:label id="tutti" for="option1"  path="categoriaGioco" >Tutti</form:label>
+                <form:radiobutton id="option1" name="options"  value="Tutte" path="categoriaGioco" />
+                <form:label id="tutti" for="option1"  path="categoriaGioco" >Tutte</form:label>
 
                 <form:radiobutton id="option2" name="options"  value="giocoBandiere" path="categoriaGioco" />
                 <form:label id="radio_bandiere" for="option2"  path="categoriaGioco" >Bandiere</form:label>
@@ -78,24 +78,13 @@
 
         <c:forEach items="${utenti}" var="utente" varStatus="loop">
             <div id="utente_wrapper" class=${gioco}>
-                <c:choose>
-                    <c:when test="${fn:startsWith(utente.foto, 'src/')}">
-                        <div class="profile_pic">
-                            <img class=" img_utente" src=${utente.foto}>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
                     <div class="profile_pic">
-                        <div class="profile_pic_wrapper">
-                    <img class="img_utente" src="data:image/jpeg;base64,${utente.foto}"/>
-                        </div>
+                        <div class="profile_pic_wrapper"><img class="img_utente" src="data:image/jpeg;base64,${utente.foto}"/></div>
                     </div>
-                    </c:otherwise>
-                </c:choose>
-                <span>${loop.index + 1}</span>
-                <span>${utente.nome}  ${utente.cognome}</span>
-                <span>${utente.username}</span>
-                <span>${utente.punteggio}</span>
+                <div> <span>${loop.index + 1}</span></div>
+                <div><span>${utente.nome}  ${utente.cognome}</span></div>
+                <div><span class="username">${utente.username}</span></div>
+                <div><span>${utente.punteggio}</span></div>
 
 
             </div>

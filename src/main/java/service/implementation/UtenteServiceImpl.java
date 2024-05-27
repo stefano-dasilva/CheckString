@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import service.Interface.CheckStringService;
 import service.Interface.UtenteService;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class UtenteServiceImpl implements UtenteService {
     public UtenteServiceImpl() {}
 
     @Override
-    public List<UtenteClassifica> showClassifica(ClassificaFilter filter) {
+    public List<UtenteClassifica> showClassifica(ClassificaFilter filter) throws IOException {
 
            List<Utente> classifica_utenti = utenteDao.getClassifica(filter);
            List<UtenteClassifica> utenteClassifica = new ArrayList<>();

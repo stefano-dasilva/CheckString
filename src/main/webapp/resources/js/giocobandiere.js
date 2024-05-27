@@ -13,8 +13,8 @@ var standard;
 var bandiere_azzeccate = 0;
 var input_standardizzato;
 
-async function iniziaGioco() {
 
+function creaCard(){
 
     /*il gioco è iniziato, cancello i bottoni*/
     document.getElementById("inizia").remove()
@@ -23,20 +23,95 @@ async function iniziaGioco() {
 
     /*creo i tag del wrapper dell'immagine e dell'immagine stessa che sarà la bandiera*/
     const card = document.getElementById("second_game_card")
+    var upper_wrapper = document.createElement("div")
+    var box_skips = document.createElement("div")
+    box_skips.id = "box_skips"
+    upper_wrapper.id = "upper_wrapper";
     var img_wrapper = document.createElement("div");
-    img_wrapper.classList.add("img_wrapper");
     img_wrapper.id = "img_wrapper"
-    card.appendChild(img_wrapper);
+    upper_wrapper.appendChild(img_wrapper)
+    upper_wrapper.appendChild(box_skips)
+    var box_skip = document.createElement("i")
+    var box_skip2 = document.createElement("i")
+    var box_skip3 = document.createElement("i")
+
+    box_skip.classList.add('bx', 'bx-world');
+    box_skip2.classList.add('bx', 'bx-world');
+    box_skip3.classList.add('bx', 'bx-world');
+
+    box_skips.appendChild(box_skip)
+    box_skips.appendChild(box_skip2)
+    box_skips.appendChild(box_skip3)
+
+    card.appendChild(upper_wrapper);
     var img = document.createElement("img");
     img.id = "image";
     img_wrapper.appendChild(img)
 
+    var input_wrapper = document.createElement("div");
+    var bottoni_wrapper = document.createElement("div");
+
+    input_wrapper.id = "input_wrapper"
+    bottoni_wrapper.id = "bottoni_wrapper"
+
+    /*creo semplicemente il tag input per permette allo user di scrivere ed un bottone per inviare il tentativo*/
+    var inputUtente = document.createElement("input");
+    inputUtente.type = "text";
+    inputUtente.id = "inputUtente";
+    inputUtente.placeholder = "Inserisci un tentativo.."
+    input_wrapper.appendChild(inputUtente)
+    var button = document.createElement("button")
+    button.id = "bottone"
+    button.textContent = "PROVA";
+    var skip = document.createElement("button")
+    skip.id = "skipbottone"
+    skip.textContent = "SKIP";
+
+    /*aggiunto l'evento di click al bottone*/
+    button.addEventListener("click", function () {
+        provaTentativo();
+    })
+    skip.addEventListener("click", function () {
+        saltaBandiera();
+    })
+    input_wrapper.appendChild(bottoni_wrapper)
+    bottoni_wrapper.appendChild(button)
+    bottoni_wrapper.appendChild(skip)
+
+    card.appendChild(input_wrapper)
+
+}
+
+async function saltaBandiera(){
+
+    fetch('controllatentativi')
+        .then(response=>response.json())
+        .then(async (data) => {
+            if (data.tentativi_rimasti >= 0) {
+                console.log(data.tentativi_rimasti)
+                await cambiaBandiera()
+                var box_skips = document.getElementById("box_skips")
+                var cambia_colore = box_skips.children[data.tentativi_rimasti];
+                cambia_colore.classList.add('nondisponibile')
+            }
+        })
+
+
+
+}
+
+async function iniziaGioco() {
+
+
+
+    creaCard()
 
     /*faccio una fetch a /randomcountry che mi restituisce il codice e il valore di un paese random standard*/
     await fetchRandomCountry().then(data =>{
 
         /*qui prendo dal json locale dei paesi il paese che ha come codice quello casuale preso prima*/
         var paese = paesijson.find(paese => paese.cca2 === data.code)
+        var img = document.getElementById("image")
         /* e setto la src dell'immagine la pandiera del paese ottenuto*/
         img.src = paese.flags.png
         /*mi salvo in delle variabili la parte del json che rappresenta le informaizoni del paese appena
@@ -49,22 +124,6 @@ async function iniziaGioco() {
     })
 
 
-
-
-    /*creo semplicemente il tag input per permette allo user di scrivere ed un bottone per inviare il tentativo*/
-    var inputUtente = document.createElement("input");
-    inputUtente.type = "text";
-    inputUtente.id = "inputUtente";
-    inputUtente.placeholder = "Inserisci un tentativo.."
-    card.appendChild(inputUtente)
-    var button = document.createElement("button")
-    button.id = "bottone"
-    button.textContent = "PROVA";
-    /*aggiunto l'evento di click al bottone*/
-    button.addEventListener("click", function () {
-        provaTentativo();
-    })
-    card.appendChild(button)
 
 }
 
@@ -93,7 +152,6 @@ async function cambiaBandiera(){
     var img = document.getElementById("image");
 
     input_utente.value = ""
-    bandiere_azzeccate++;
 
     /*stesso discorso di prima cambia l'immagine in base alla random country*/
     await fetchRandomCountry().then(data => {
@@ -112,19 +170,30 @@ async function cambiaBandiera(){
 
 async function finisciGioco(){
 
-    var input_utente = document.getElementById("inputUtente");
 
-    image.remove();
-    input_utente.remove()
-    var bottone = document.getElementById("bottone")
-    bottone.remove()
-    var img_wrapper = document.getElementById("img_wrapper")
-    img_wrapper.remove()
+
+    var upper_wrapper = document.getElementById("upper_wrapper")
+    upper_wrapper.remove()
+
+    var input_wrapper = document.getElementById("input_wrapper")
+    input_wrapper.remove()
+
     const card = document.getElementById("second_game_card")
-    var punteggio = document.createElement("h3");
-    punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
-    card.appendChild(punteggio)
+
     fetch("finiscigioco?gioco=giocoBandiere")
+        .then(response => response.json())
+        .then((data) => {
+            var punteggio = document.createElement("h3");
+            punteggio.innerText = "Hai totalizzato " + data.punteggio + " punti"
+            card.appendChild(punteggio)
+            console.log(data.nuovo_record)
+            if(data.nuovo_record === "true"){
+                var nuovo_record = document.createElement("h3");
+                nuovo_record.innerText = "Hai superato il tuo record!"
+                card.appendChild(nuovo_record)
+            }
+            console.log(data)
+        })
 
 }
 

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public interface UtenteService {
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
-    public List<UtenteClassifica> showClassifica(ClassificaFilter filter);
+    public List<UtenteClassifica> showClassifica(ClassificaFilter filter) throws IOException;
 
 
 

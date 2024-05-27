@@ -120,7 +120,7 @@ public class UtenteController {
 
     @PostMapping("/classifica")
 
-    public String Classifica(@ModelAttribute("classificafilter") @Valid ClassificaFilter classificaFilter,BindingResult bindingResult, Model m, HttpSession session) {
+    public String Classifica(@ModelAttribute("classificafilter") @Valid ClassificaFilter classificaFilter,BindingResult bindingResult, Model m, HttpSession session) throws IOException {
 
         List<Standard> standards = standardService.getAll();
         List<String> values = new ArrayList<>();

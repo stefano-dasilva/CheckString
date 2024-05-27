@@ -11,7 +11,7 @@
     background-color: $yellow_light;
     border-radius: 2rem;
     gap: 0rem;
-    @include flex-column(space-around);
+    @include flex-column(space-around,center);
   }
   #second_game_info{
     width: 50%;
@@ -29,15 +29,12 @@ h3{
   text-align: center;
 }
 
-#inizia, #bottone {
+#inizia ,#bottone, #skipbottone{
   outline: none;
   background-color: $yellow_strong;
   padding: 2rem;
   font-family: "Montserrat", sans-serif;
   border: none;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 1rem;
   color: $yellow_light;
   cursor: pointer;
 
@@ -48,30 +45,64 @@ h3{
   width: 80%;
 }
 
-#bottone{
-  width: 90%;
-}
 
-.img_wrapper{
-  width: 80%;
-  height: auto;
-  margin-right: auto;
-  margin-left: auto;
-
-}
-
-img{
+#bottoni_wrapper{
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  @include flex-row(space-between);
 }
 
+#bottone{
+  width: 70%;
+  background-color: $yellow-strong;
+  border-bottom-left-radius: 1rem;
+}
+#skipbottone{
+  width: 25%;
+  background-color: $yellow-medium;
+  border-bottom-right-radius: 1rem;
+
+}
 
 
 #inputUtente{
   outline: none;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  padding: 0.5rem;
+
   margin-bottom: 1rem;
+}
+
+#input_wrapper{
+  width: 90%;
+  @include flex-column();
+}
+
+#upper_wrapper{
+  width: 90%;
+  height: 50%;
+  @include flex-column();
+}
+#img_wrapper{
+  width: 100%;
+  height: 80%;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+#box_skips{
+  width: 100%;
+  height: 20%;
+  @include flex-row(space-around,center);
+}
+
+i{
+  font-size: 30px;
+  color: green;
+}
+
+.nondisponibile{
+  color: red;
 }

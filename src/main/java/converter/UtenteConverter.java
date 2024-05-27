@@ -6,6 +6,9 @@ import spring.web.dto.UtenteClassifica;
 import spring.web.vo.SalvaRegister;
 import spring.web.vo.UserRegister;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Base64;
 
 public class UtenteConverter {
@@ -38,7 +41,7 @@ public class UtenteConverter {
 
     }
 
-    public static UtenteClassifica convert (Utente utente, String tipoGioco){
+    public static UtenteClassifica convert (Utente utente, String tipoGioco) throws IOException {
         UtenteClassifica utenteClassifica = new UtenteClassifica();
 
        utenteClassifica.setNome(utente.getNome());
@@ -48,7 +51,9 @@ public class UtenteConverter {
            utenteClassifica.setFoto(Base64.getEncoder().encodeToString(utente.getImmagine()));
        }
        else{
-           utenteClassifica.setFoto("src/main/webapp/resources/profile.jpg");
+           File file=new File("C:\\Users\\DASILVAS\\Desktop\\progetti\\CheckString\\src\\main\\webapp\\resources\\profile.jpg");
+           byte[] defaultBytes= Files.readAllBytes(file.toPath());
+           utenteClassifica.setFoto(Base64.getEncoder().encodeToString(defaultBytes));
        }
        if(tipoGioco.equals("giocoBandiere")){
            utenteClassifica.setPunteggio(utente.getRecordBandiere());

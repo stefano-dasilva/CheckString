@@ -64,9 +64,14 @@ async function finisciGioco(){
         .then((data) => {
             var punteggio = document.createElement("h3");
             punteggio.innerText = "Hai totalizzato " + data.punteggio + " punti"
-            if(data.nuovo_record === true){
+            console.log(data.nuovo_record)
+            if(data.nuovo_record === "true"){
+                console.log("c'è stato un nuovo record")
+                console.log(data)
                 var nuovo_record = document.createElement("h3");
                 nuovo_record.innerText = "Hai superato il tuo record!"
+                console.log(nuovo_record)
+                third_game_content.appendChild(nuovo_record)
             }
             third_game_content.appendChild(punteggio)
             console.log(data)

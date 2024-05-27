@@ -119,8 +119,11 @@ public class NavigationController {
 
 
     @GetMapping("/show_giocobandiere")
-        public String showGiocoBandiere() {
-            return "giocobandiere";
+        public String showGiocoBandiere(HttpSession session) {
+
+        session.setAttribute("skips",3);
+
+        return "giocobandiere";
         }
 
 

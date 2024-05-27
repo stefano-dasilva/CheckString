@@ -109,4 +109,15 @@ img {
   display: flex;
 }
 
+#inizia {
+  outline: none;
+  border: none;
+  width: 80%;
+  padding: 1rem;
+  font-family: "Syne", sans-serif;
+  background-color: #FF79C7;
+  color: #FFF2F9;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=giocopopolazioni.css.map */
