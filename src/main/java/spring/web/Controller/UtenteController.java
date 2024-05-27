@@ -78,16 +78,11 @@ public class UtenteController {
         }
 
         Utente utente = UtenteConverter.convert(salvaRegister);
-
-        System.out.println(utente.getDataNascita());
-
-        Utente sessionUser= (Utente) session.getAttribute("utente");
-
+        Utente sessionUser = (Utente) session.getAttribute("utente");
 
 
         if(sessionUser != null) {
-            utenteService.updateDati(sessionUser, utente);
-            session.setAttribute("utente", utente);
+            session.setAttribute("utente", utenteService.updateDati(sessionUser, utente));
         }
 
 

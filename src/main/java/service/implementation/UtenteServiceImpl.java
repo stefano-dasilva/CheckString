@@ -109,8 +109,16 @@ public class UtenteServiceImpl implements UtenteService {
 
     @Override
     public Utente updateDati(Utente u, Utente u1) {
-        utenteDao.updateDati(u, u1);
-        return u1;
+        Utente utente = utenteDao.findByUsername(u.getUsername());
+        if(utente != null){
+            utente.setNome(u1.getNome());
+            utente.setUsername(u1.getUsername());
+            utente.setCognome(u1.getCognome());
+            utente.setNazione(u1.getNazione());
+            utente.setDataNascita(u1.getDataNascita());
+            return utenteDao.update(utente);
+        }
+        return null;
     }
 
     @Override
