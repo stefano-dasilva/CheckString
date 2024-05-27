@@ -264,15 +264,16 @@ function setSuccessFor(input){
 
     const iconError = formControl.querySelector('.icon-error');
     const iconCheck = formControl.querySelector('.icon-check');
-
+const small = formControl.querySelector("small")
     formControl.classList.add('success');
     formControl.classList.remove('error');
    // formControl.className = 'form-control success';
     // nascondiamo icona di errore
+
     iconError.style.display = 'none';
     // mostriamo icona di check
     iconCheck.style.display = 'inline';
-
+small.style.display = 'none';
 
 }
 

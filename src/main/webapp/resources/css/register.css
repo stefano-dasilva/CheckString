@@ -1,3 +1,220 @@
+/*@import  'auth';
+@import 'variables';
+
+#form {
+  @include flex-column();
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+
+}
+
+#inputgroup{
+  @include flex-column(space-beetween);
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+}
+
+#inputgroup > div {
+  width: 100%;
+  height: 50px;
+  @include flex-column(space-beetween);
+  margin-bottom: 0.3rem;
+
+}
+
+
+  #inputgroup > div > .input-container{
+
+  border: 2px solid black;
+  width: 90%;
+  height: 50px;
+  border-radius: 0.4rem;
+  margin-right: auto;
+  margin-left: auto;
+  @include flex-row(null,center);
+  gap: 0.5rem;
+  position: relative;
+    padding-bottom: 0.3rem;
+
+}
+
+
+h2 {
+  height: 8%;
+  font-size: 20px;
+  margin-top: 1rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+input[type="text"], input[type="password"], input[type="date"] {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: "Montserrat", sans-serif;
+}
+
+i,label{
+  margin-left: 1rem;
+color: black;
+}
+
+
+button[type = "submit"]{
+  width: 60%;
+  height: 8%;
+  margin: 2.4rem auto;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #4ED19F;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.form-control small {
+  //visibility: visible;
+  color: red;
+  margin-left: 1.5rem;
+  //position: absolute;
+  bottom: -0.5rem;
+}
+
+/*.input-container {
+  border: 2px solid red;
+
+}
+
+
+
+.icon-check,
+.icon-error {
+  position: absolute;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+
+
+.form-control.success .icon-check {
+  display: inline;
+  color: green;
+
+}
+
+.form-control.error .icon-error {
+  display: inline;
+  color: red;
+}
+
+/*.form-control{
+  display: inline;
+  color: red;
+}/*
+
+/*i.icon-check {
+  color: green;
+  visibility: hidden;
+}
+
+i.icon-error {
+  color: red;
+  visibility: hidden;
+}
+
+i.bx{
+  color: black;
+}
+
+
+
+/*
+#form {
+  @include flex-column();
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+
+}
+
+#inputgroup{
+  @include flex-column(space-beetween);
+  height: 84%;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+#inputgroup > div {
+  width: 100%;
+  height: 20%;
+  @include flex-column(space-beetween);
+}
+
+
+#inputgroup > div > div{
+
+  border: 2px solid black;
+  width: 90%;
+  height: 60%;
+  border-radius: 0.4rem;
+  margin-right: auto;
+  margin-left: auto;
+  @include flex-row(null,center);
+  gap: 1rem;
+
+
+}
+
+
+h2 {
+  height: 8%;
+  font-size: 20px;
+  margin-top: 1rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+input[type="text"], input[type="password"], input[type="date"] {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: "Montserrat", sans-serif;
+}
+
+i, label{
+  margin-left: 1rem;
+}
+
+
+button[type = "submit"]{
+  width: 60%;
+  height: 8%;
+  margin: 1.5rem auto;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #4ED19F;
+  border-radius: 0.5rem;
+  border: 3px solid black;
+  font-family: "Montserrat", sans-serif;
+
+}
+.form-control small {
+  visibility: visible;
+  color: red;
+}
+
+.form-control.error{
+  border: 2px solid red;
+
+}
+
+
+
+*/
 body {
   background-image: url("../../resources/flags2.jpg");
   background-repeat: no-repeat;
@@ -53,7 +270,7 @@ body {
 #inputgroup > div > div {
   border: 2px solid black;
   width: 90%;
-  height: 60%;
+  height: 25px;
   border-radius: 0.4rem;
   margin-right: auto;
   margin-left: auto;
@@ -61,6 +278,7 @@ body {
   flex-direction: row;
   align-items: center;
   gap: 1rem;
+  position: relative;
 }
 
 h2 {
@@ -84,23 +302,38 @@ i, label {
 
 button[type=submit] {
   width: 60%;
-  height: 8%;
+  height: 46px;
   margin: 1.5rem auto;
   padding: 0.5rem;
   cursor: pointer;
   background-color: #4ED19F;
   border-radius: 0.5rem;
-  border: 3px solid black;
+  border: 2px solid black;
   font-family: "Montserrat", sans-serif;
+}
+
+i.icon-check {
+  color: green;
+  display: none;
+}
+
+i.icon-error {
+  color: red;
+  display: none;
+}
+
+.form-control.input-container .icon-check,
+.form-control.input-container .icon-error {
+  position: absolute;
+  right: 1rem;
+  display: none;
 }
 
 .form-control small {
   visibility: visible;
   color: red;
-}
-
-.form-control.error {
-  border: 2px solid red;
+  margin-left: 1rem;
+  height: 0.5px;
 }
 
 /*# sourceMappingURL=register.css.map */

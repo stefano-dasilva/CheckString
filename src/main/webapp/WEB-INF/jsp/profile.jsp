@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.Base64" %><%--
   Created by IntelliJ IDEA.
   User: DASILVAS
@@ -72,59 +73,77 @@
                 <div id="lab">
                  <label  for="file" id="fotolabel">Carica</label>
                     <input  type="file" name="img" id="file">
-                  <button type="submit">Salva</button>
+                  <button id="salva" type="submit">Salva</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+
 <div id="info">
     <div id="containerInfo">
         <div id="title">
             <h3 class="display-5">I Tuoi Dati</h3>
         </div>
+
         <div id="box">
+
             <div class="first3 mt-3">
-                <form:form action="salva" method="post" modelAttribute="salvaRegister">
+
+                <form:form action="salva" method="post" id="formDati" modelAttribute="salvaRegister">
+
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <form:label path="nome" class="form-label">Nome</form:label>
-                            <form:input path="nome" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:label for="nome" path="nome"   class="form-label">Nome</form:label>
+                            <form:input type="text" class="form-control" id="nome" path="nome" value="${name}" readonly="true" cssErrorClass="error_input"/>
+                            <small></small>
                             <form:errors path="nome" cssClass="error_message" />
                         </div>
+
+
                         <div class="col-md-6">
-                            <form:label path="cognome" class="form-label">Cognome</form:label>
-                            <form:input path="cognome" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:label for="cognome" path="cognome" class="form-label">Cognome</form:label>
+                            <form:input type="text" class="form-control" id="cognome" path="cognome"  name="cognome" value="${cognome}" readonly="true" cssErrorClass="error_input"/>
+                            <small></small>
                             <form:errors path="cognome" cssClass="error_message" />
                         </div>
+
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <form:label path="username" class="form-label">Username</form:label>
-                            <form:input path="username" readonly="true" cssErrorClass="error_input" class="form-control"/>
+                            <form:label for="username" path="username" class="form-label">Username</form:label>
+                            <form:input type="text" class="form-control" id="username" path="username" name="username" value="${username}" readonly="true" cssErrorClass="error_input"/>
+                            <small></small>
                             <form:errors path="username" cssClass="error_message" />
                         </div>
+
                         <div class="col-md-6">
-                            <form:label path="nazione" class="form-label">Nazionalità</form:label>
-                            <form:input path="nazione" readonly="true" cssErrorClass="error_input" class="form-control"/>
-                            <form:errors path="nazione" cssClass="error_message" />
+                            <form:label for="nazione" class="form-label" path="nazione">Nazionalità</form:label>
+                            <form:input type="text" class="form-control" id="nazione" path="nazione"  name="nazione" value="${nazione}" readonly="true" cssErrorClass="error_input"/>
+                            <small></small>
+                            <form:errors path="username" cssClass="error_message" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <form:label path="dataNascita" class="form-label">Data Di Nascita</form:label>
-                            <form:input path="dataNascita" readonly="true" cssErrorClass="error_input" class="form-control"/>
-                            <form:errors path="dataNascita" cssClass="error_message" />
+                            <form:label for="dataNascita" class="form-label" path="dataNascita"   >Data Di Nascita</form:label>
+                            <form:input type="text" class="form-control" id="dataNascita" path="dataNascita"  name="dataNascita" value="${data_nascita}" readonly="true" cssErrorClass="error_input"/>
+                            <small></small>
+                            <form:errors path="username" cssClass="error_message" />
                         </div>
                     </div>
                     <button type="button" id="editButton" class="btn btn-warning">Modifica</button>
+
                     <button type="submit" id="saveButton" class="btn btn-success d-none">Salva</button>
+
                 </form:form>
             </div>
         </div>
     </div>
 </div>
+
+
 
 
 <script

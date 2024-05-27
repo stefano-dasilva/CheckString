@@ -55,7 +55,7 @@ h2{
     margin-top: 25px;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+
     border-radius: 20%;
     background-color: beige;
 
@@ -79,11 +79,12 @@ h2{
 #nomefoto {
     border-style: none;
     background-color: beige;
-    width: 85px;
+    width: 200px;
     font-family: "Syne", sans-serif ;
     text-transform: uppercase;
     font-size: large;
-    text-align: left;
+    text-align: center;
+    align-items: center;
 }
 
 #bho {
@@ -102,7 +103,7 @@ h2{
 }
 
 #fotolabel{
-    display: block;
+    display: inline;
     width: 200px;
     background-color:darkgoldenrod;
     color: white;
@@ -111,6 +112,18 @@ h2{
     height: 40px;
     padding-top: 7px;
 }
+#salva{
+    width: 100px;
+    background-color:darkgoldenrod;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    height: 40px;
+display: none;
+
+    justify-content: center;
+}
+
 
 
 
@@ -121,6 +134,10 @@ h2{
 
 #file {
     display: none;
+}
+
+#lol{
+    justify-content: center;
 }
 
 #img1 {
