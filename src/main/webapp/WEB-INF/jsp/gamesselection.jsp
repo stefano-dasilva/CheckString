@@ -26,12 +26,10 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
             </p>
             </div>
-            <div id="first_footer">
+            <a id="first_footer" href="show_giocoCapitali">
                 <span>GIOCA</span>
                 <i class='bx bx-right-arrow-alt'></i>
-
-
-            </div>
+            </a>
         </div>
         <div id="second_game">
             <h2>Indovina le bandiere</h2>
@@ -41,13 +39,10 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
             </p>
             </div>
-            <div id="second_footer">
-
+            <a id="second_footer" href="show_giocobandiere">
                 <span>GIOCA</span>
                 <i class='bx bx-right-arrow-alt'></i>
-
-
-            </div>
+            </a>
         </div>
         <div id="third_game">
             <h2>Indovina la popolazione</h2>
@@ -55,13 +50,10 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
             </p>
             </div>
-            <div id="third_footer">
-
+            <a id="third_footer" href="show_giocopopolazione">
                 <span>GIOCA</span>
                 <i class='bx bx-right-arrow-alt'></i>
-
-
-            </div>
+            </a>
         </div>
     </div>
 

@@ -23,9 +23,10 @@
   }
 }
 
-h3{
+h2,h3{
   font-family: "Syne", sans-serif;
   color: $yellow_strong;
+  margin: 0;
   text-align: center;
 }
 
@@ -39,10 +40,15 @@ h3{
   cursor: pointer;
 
 
+
 }
 
 #inizia{
   width: 80%;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 
@@ -54,12 +60,16 @@ h3{
 #bottone{
   width: 70%;
   background-color: $yellow-strong;
+  font-size: 1rem;
+  font-weight: bold;
   border-bottom-left-radius: 1rem;
 }
 #skipbottone{
   width: 25%;
   background-color: $yellow-medium;
   border-bottom-right-radius: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
 
 }
 
@@ -105,4 +115,50 @@ i{
 
 .nondisponibile{
   color: red;
+}
+
+.centerbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#finish_content{
+  width: 70%;
+  height: 50%;
+  @include flex-column(space-between,center)
+}
+#didascalia_wrapper{
+  @include flex-column(space-between,center);
+  width: 100%;
+  height: 30%;
+}
+#rigioca_wrapper{
+  @include flex-column(null,center);
+  width: 100%;
+  height: 30%;
+  gap: 1rem;
+}
+
+#bottone_esterno{
+  background-color: $yellow-strong;
+  width: 20%;
+  padding: 1rem;
+  font-family: "Syne", sans-serif;
+  outline: none;
+  border: none;
+  color: $yellow_light;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+#separatore {
+   border-top: 2px solid $yellow_strong;
+  width: 40%;
+ }
+
+.bx-refresh{
+  color: $yellow-strong;
+  cursor: pointer;
+  font-size: 3rem;
+
 }

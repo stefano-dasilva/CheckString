@@ -41,6 +41,17 @@ public class UtenteConverter {
 
     }
 
+    public static SalvaRegister convert (Utente u){
+        SalvaRegister salvaRegister = new SalvaRegister();
+        salvaRegister.setUsername(u.getUsername());
+        salvaRegister.setCognome(u.getCognome());
+        salvaRegister.setNome(u.getNome());
+        salvaRegister.setDataNascita(u.getDataNascita());
+        salvaRegister.setNazione(u.getNazione());
+        return salvaRegister;
+
+    }
+
     public static UtenteClassifica convert (Utente utente, String tipoGioco) throws IOException {
         UtenteClassifica utenteClassifica = new UtenteClassifica();
 

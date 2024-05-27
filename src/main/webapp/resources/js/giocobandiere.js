@@ -100,6 +100,56 @@ async function saltaBandiera(){
 
 }
 
+function aggiornaCardInfo(){
+
+
+    var mappa_wrapper = document.getElementById("mappa");
+
+    mappa_wrapper.remove();
+
+    var finish_content = document.createElement("div");
+    finish_content.id = "finish_content"
+    var second_game_info = document.getElementById("second_game_info")
+    second_game_info.appendChild(finish_content)
+    second_game_info.classList.add("centerbox")
+    var didascalia_wrapper = document.createElement("div");
+    didascalia_wrapper.id = "didascalia_wrapper"
+    var didascalia = document.createElement("h3");
+    didascalia.id = "didascalia"
+    didascalia.innerText = `Scopri ulteriori informazioni su ${standard.value}`
+    var button_external = document.createElement("button");
+    button_external.id = "bottone_esterno"
+    button_external.innerText = "SCOPRI"
+    button_external.addEventListener("click", function (){
+        window.open(paese_random.maps.openStreetMaps, "_blank");
+    })
+
+    didascalia_wrapper.appendChild(didascalia)
+    didascalia_wrapper.appendChild(button_external)
+    finish_content.appendChild(didascalia_wrapper)
+    console.log(paese_random.maps.openStreetMaps);
+
+    var separatore = document.createElement("div")
+    separatore.id = "separatore"
+    finish_content.appendChild(separatore)
+    var rigioca_wrapper = document.createElement("div")
+    rigioca_wrapper.id = "rigioca_wrapper"
+    finish_content.appendChild(rigioca_wrapper)
+    var didascalia2 = document.createElement("h3");
+    didascalia2.id = "didascalia2"
+    didascalia2.innerText = `Rigioca`
+    rigioca_wrapper.appendChild(didascalia2)
+    var refresh = document.createElement("i");
+    refresh.classList.add('bx', 'bx-refresh');
+    refresh.addEventListener('click',restart)
+    rigioca_wrapper.appendChild(refresh)
+
+}
+
+async function restart(){
+    fetch('show_giocobandiere').then(window.location.reload())
+}
+
 async function iniziaGioco() {
 
 
@@ -183,7 +233,7 @@ async function finisciGioco(){
     fetch("finiscigioco?gioco=giocoBandiere")
         .then(response => response.json())
         .then((data) => {
-            var punteggio = document.createElement("h3");
+            var punteggio = document.createElement("h2");
             punteggio.innerText = "Hai totalizzato " + data.punteggio + " punti"
             card.appendChild(punteggio)
             console.log(data.nuovo_record)
@@ -194,6 +244,8 @@ async function finisciGioco(){
             }
             console.log(data)
         })
+
+  aggiornaCardInfo()
 
 }
 

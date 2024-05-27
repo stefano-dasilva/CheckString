@@ -3,7 +3,7 @@
 <nav>
     <div id="wrapper">
         <div>
-            <span>CLASSIFICA</span>
+            <span><a href="/CheckString/show_classifica">CLASSIFICA</a></span>
             <span><a href="/CheckString/show_games">GIOCA</a></span>
         </div>
         <div>

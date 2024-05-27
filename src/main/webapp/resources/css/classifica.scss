@@ -85,15 +85,15 @@ input[type="radio"] {
 
 
 #option3:checked + label {
-  background-color: $green_strong;
+  background-color: $green_medium;
   color: $green_light;
 }
 #option2:checked + label {
-  background-color: $yellow_strong;
+  background-color: $yellow_medium;
   color: $yellow_light;
 }
 #option4:checked + label {
-  background-color: $pink_strong;
+  background-color: $pink_medium;
   color: $pink_light;
 }
 
@@ -121,7 +121,6 @@ input[type="number"] {
   font-family: "Syne", sans-serif;
 }
 
-/* Stile per il placeholder */
 input[type="number"]::placeholder {
   color: #999;
 }
@@ -212,7 +211,7 @@ input[type="number"]::placeholder {
     background-color: $pink_medium;
     color: $pink-light;
     padding: 0.4rem;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
   }
 }
 
@@ -224,7 +223,7 @@ input[type="number"]::placeholder {
     background-color: $green_medium;
     color: $green_light;
     padding: 0.4rem;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
   }
 }
 
@@ -235,7 +234,7 @@ input[type="number"]::placeholder {
     background-color: $yellow_medium;
     color: $yellow-light;
     padding: 0.4rem;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
   }
 }
 
@@ -243,6 +242,16 @@ input[type="number"]::placeholder {
   background-color:  #F3F3F5;
   color: #69757A ;
 
+}
+
+div {
+  span{
+    font-size: 20px;
+  }
+}
+
+i{
+  font-size: 2rem;
 }
 
 

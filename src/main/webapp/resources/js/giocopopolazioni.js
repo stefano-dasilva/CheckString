@@ -16,6 +16,30 @@ var standarddx;
 var bandiere_azzeccate = 0;
 
 
+function aggiornaCardInfo(){
+
+
+    var chart = document.getElementById("first_chart");
+    var third_game_info = document.getElementById("third_game_info");
+    chart.remove();
+
+    var finish_content = document.createElement("div");
+    finish_content.id = "finish_content"
+    third_game_info.appendChild(finish_content)
+    var didascalia = document.createElement("h3");
+    didascalia.id = "didascalia"
+    didascalia.innerText = `Rigioca`
+    finish_content.appendChild(didascalia)
+    var refresh = document.createElement("i");
+    refresh.classList.add('bx', 'bx-refresh');
+    refresh.addEventListener('click',restart)
+    finish_content.appendChild(refresh)
+
+}
+
+async function restart(){
+    fetch('show_giocopopolazione').then(window.location.reload())
+}
 
 async function fetchRandomCountry() {
     const response = await fetch("randomcountry3")
@@ -76,14 +100,17 @@ async function finisciGioco(){
             third_game_content.appendChild(punteggio)
             console.log(data)
         })
-/*
-    var punteggio = document.createElement("h3");
-    punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
-    card.appendChild(punteggio)
-    fetch("finiscigioco?gioco=giocoPopolazione")
+
+    aggiornaCardInfo()
+
+    /*
+        var punteggio = document.createElement("h3");
+        punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
+        card.appendChild(punteggio)
+        fetch("finiscigioco?gioco=giocoPopolazione")
 
 
- */
+     */
 }
 
 async function provaTentativo(event){
@@ -99,9 +126,24 @@ async function provaTentativo(event){
     if(confronto_popolazione){
         /* e l'utente ha schiacciato lower ( ovvero che quella di destra sia minore )*/
         if(scelta === "lower"){
-            console.log("bravo")
             aumentaPunti()
+            var nome_paese_sx = document.getElementById("nome_paesesx")
+            nome_paese_sx.innerText = paese_randomsx.population
+            var nome_paese_dx = document.getElementById("nome_paesedx")
+            nome_paese_dx.innerText = paese_randomdx.population
+            if(paese_randomdx.population > paese_randomsx.population){
+                nome_paese_dx.style.color = "green"
+                nome_paese_sx.style.color = "red"
+            }
+            else{
+                nome_paese_dx.style.color = "red"
+                nome_paese_sx.style.color = "green"
+            }
+            setTimeout(function () {
+                nome_paese_dx.style.color = "black"
+                nome_paese_sx.style.color = "black"
             aggiornaCard()
+            }, 1000);
 
         }
         /* e l'utente ha schiacciato higher */
@@ -112,13 +154,27 @@ async function provaTentativo(event){
     }
     if(!confronto_popolazione){
         if(scelta === "lower"){
-            console.log("hai sbagliato")
             await finisciGioco()
         }
         else{
             aumentaPunti()
+            var nome_paese_sx = document.getElementById("nome_paesesx")
+                nome_paese_sx.innerText = paese_randomsx.population
+            var nome_paese_dx = document.getElementById("nome_paesedx")
+            nome_paese_dx.innerText = paese_randomdx.population
+            if(paese_randomdx.population > paese_randomsx.population){
+                nome_paese_dx.style.color = "green"
+                nome_paese_sx.style.color = "red"
+            }
+            else{
+                nome_paese_dx.style.color = "red"
+                nome_paese_sx.style.color = "green"
+            }
+            setTimeout(function () {
+                nome_paese_dx.style.color = "black"
+                nome_paese_sx.style.color = "black"
             aggiornaCard()
-            console.log("bravo")
+            }, 1000);
         }
     }
 

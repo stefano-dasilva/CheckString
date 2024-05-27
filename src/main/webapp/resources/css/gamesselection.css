@@ -71,6 +71,7 @@ h2 {
 
 #first_footer {
   background-color: #7DCCB5;
+  cursor: pointer;
 }
 #first_footer span {
   font-family: "Syne", sans-serif;
@@ -84,6 +85,7 @@ h2 {
 
 #second_footer {
   background-color: #ECD273;
+  cursor: pointer;
 }
 #second_footer span {
   font-family: "Syne", sans-serif;
@@ -97,6 +99,7 @@ h2 {
 
 #third_footer {
   background-color: #FF79C7;
+  cursor: pointer;
 }
 #third_footer span {
   font-family: "Syne", sans-serif;
@@ -111,6 +114,28 @@ h2 {
 span {
   color: black;
   font-family: "Syne", sans-serif;
+}
+
+i {
+  transition: transform 0.3s ease;
+  font-size: 2rem;
+}
+
+#first_footer:hover i {
+  transform: translateX(10px);
+}
+
+#second_footer:hover i {
+  transform: translateX(10px);
+}
+
+#third_footer:hover i {
+  transform: translateX(10px);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /*# sourceMappingURL=gamesselection.css.map */

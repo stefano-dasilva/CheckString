@@ -56,15 +56,20 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
             System.out.println(" categoria gioco " + filtro.getCategoriaGioco());
             if (filtro.getCategoriaGioco().equals("giocoBandiere")) {
                 criteriaQuery.orderBy(criteriaBuilder.desc(root.get("recordBandiere")));
+                predicates.add(criteriaBuilder.gt(root.get("recordBandiere"), 0));
             } else if (filtro.getCategoriaGioco().equals("giocoCapitali")) {
                 criteriaQuery.orderBy(criteriaBuilder.desc(root.get("recordCapitali")));
+                predicates.add(criteriaBuilder.gt(root.get("recordCapitali"), 0));
             } else if( filtro.getCategoriaGioco().equals("giocoPopolazione")) {
                 criteriaQuery.orderBy(criteriaBuilder.desc(root.get("recordPopolazioni")));
+                predicates.add(criteriaBuilder.gt(root.get("recordPopolazioni"), 0));
+
             }
             else{
                 criteriaQuery.orderBy(criteriaBuilder.desc( criteriaBuilder.sum(
                         criteriaBuilder.sum(root.get("recordBandiere"), root.get("recordCapitali")),
                         root.get("recordPopolazioni"))));
+                predicates.add(criteriaBuilder.gt(criteriaBuilder.sum(criteriaBuilder.sum(root.get("recordBandiere"), root.get("recordCapitali")), root.get("recordPopolazioni")), 0));
 
             }
         }

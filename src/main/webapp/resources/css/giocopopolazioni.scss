@@ -74,7 +74,7 @@ img{
   color: $pink-light;
   outline: none;
   border: none;
-
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -82,14 +82,12 @@ img{
 }
 
 #higher{
-  border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   border-left: 2px solid $pink_strong;
 }
 
 #lower{
   border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
 }
 
 
@@ -105,13 +103,28 @@ img{
 }
 
 #inizia{
-  outline: none;
-  border: none;
   width: 80%;
-  padding: 1rem;
-  font-family: "Syne", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  outline: none;
   background-color: $pink_medium;
-  color: $pink-light;
+  padding: 2rem;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  color: $pink_light;
   cursor: pointer;
 
+}
+
+.bx-refresh{
+  color: $pink-strong;
+  cursor: pointer;
+  font-size: 3rem;
+
+}
+
+#finish_content{
+  @include flex-column(null,center);
 }

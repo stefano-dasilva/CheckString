@@ -81,9 +81,23 @@
                     <div class="profile_pic">
                         <div class="profile_pic_wrapper"><img class="img_utente" src="data:image/jpeg;base64,${utente.foto}"/></div>
                     </div>
-                <div> <span>${loop.index + 1}</span></div>
+                <div>
+                    <c:choose>
+                        <c:when test = "${loop.index == 0}">
+                            <i class='bx bxs-trophy' ></i>
+                        </c:when>
+
+                        <c:when test = "${loop.index  == 1 || loop.index == 2}">
+                            <i class='bx bxs-medal' ></i>
+                        </c:when>
+
+                        <c:otherwise>
+                    <span>${loop.index + 1}</span>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
                 <div><span>${utente.nome}  ${utente.cognome}</span></div>
-                <div><span class="username">${utente.username}</span></div>
+                <div><span class="username">@${utente.username}</span></div>
                 <div><span>${utente.punteggio}</span></div>
 
 

@@ -23,7 +23,9 @@
         <button id="inizia">Inizia ora il gioco</button>
     </div>
     <div id ="second_game_info">
+        <div id = "mappa">
         <%@ include file="mappa.jsp" %>
+        </div>
     </div>
 
 

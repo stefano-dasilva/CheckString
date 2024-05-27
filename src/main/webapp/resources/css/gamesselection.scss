@@ -71,6 +71,7 @@ h2{
 
 #first_footer {
   background-color: $green_medium;
+  cursor: pointer;
 ;
   span{
     font-family: "Syne", sans-serif;
@@ -90,6 +91,8 @@ h2{
 
 #second_footer{
   background-color: $yellow_medium;
+  cursor: pointer;
+
 
   span{
     font-family: "Syne", sans-serif;
@@ -107,6 +110,7 @@ h2{
 
 #third_footer{
   background-color: $pink_medium;
+  cursor: pointer;
 ;
 
   span{
@@ -127,6 +131,24 @@ span{
   color: black;
   font-family: "Syne", sans-serif;
 }
+
+i {
+  transition: transform 0.3s ease;
+  font-size: 2rem;
+}
+
+#first_footer:hover i {
+  transform: translateX(10px);
+}#second_footer:hover i {
+  transform: translateX(10px);
+}#third_footer:hover i {
+  transform: translateX(10px);
+}
+
+ a{
+   text-decoration: none;
+   color: inherit;
+ }
 
 
 

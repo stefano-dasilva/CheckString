@@ -78,6 +78,7 @@ img {
   color: #FFF2F9;
   outline: none;
   border: none;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -85,14 +86,12 @@ img {
 }
 
 #higher {
-  border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   border-left: 2px solid #FF0096;
 }
 
 #lower {
   border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
 }
 
 #third_game_content {
@@ -110,14 +109,30 @@ img {
 }
 
 #inizia {
-  outline: none;
-  border: none;
   width: 80%;
-  padding: 1rem;
-  font-family: "Syne", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  outline: none;
   background-color: #FF79C7;
+  padding: 2rem;
+  font-family: "Montserrat", sans-serif;
+  border: none;
   color: #FFF2F9;
   cursor: pointer;
+}
+
+.bx-refresh {
+  color: #FF0096;
+  cursor: pointer;
+  font-size: 3rem;
+}
+
+#finish_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*# sourceMappingURL=giocopopolazioni.css.map */

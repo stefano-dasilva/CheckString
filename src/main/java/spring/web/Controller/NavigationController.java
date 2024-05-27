@@ -1,6 +1,7 @@
 package spring.web.Controller;
 
 import Config.FactoryUtil;
+import converter.UtenteConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,12 +94,7 @@ public class NavigationController {
 
         Utente u = (Utente) session.getAttribute("utente");
         System.out.println(u.getUsername() + u.getNome() + u.getCognome());
-        SalvaRegister salvaRegister = new SalvaRegister();
-        salvaRegister.setUsername(u.getUsername());
-        salvaRegister.setCognome(u.getCognome());
-        salvaRegister.setNome(u.getNome());
-        salvaRegister.setDataNascita(u.getDataNascita());
-        salvaRegister.setNazione(u.getNazione());
+        SalvaRegister salvaRegister = UtenteConverter.convert(u);
         m.addAttribute("salvaRegister", salvaRegister);
         System.out.println(u.getUsername() + u.getNome() + u.getCognome());
         if(u.getImmagine() != null){
@@ -111,18 +107,13 @@ public class NavigationController {
             m.addAttribute("immagine", base64Image);
         }
 
-
-
         return "profile";
     }
 
 
 
-
-
     @GetMapping("/show_giocobandiere")
         public String showGiocoBandiere(HttpSession session) {
-
         session.setAttribute("skips",3);
 
         return "giocobandiere";
