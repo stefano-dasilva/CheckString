@@ -100,11 +100,13 @@ public class NavigationController {
         salvaRegister.setDataNascita(u.getDataNascita());
         salvaRegister.setNazione(u.getNazione());
         m.addAttribute("salvaRegister", salvaRegister);
-        m.addAttribute("username", u.getUsername());
+        System.out.println(u.getUsername() + u.getNome() + u.getCognome());
         if(u.getImmagine() != null){
+            System.out.println("utente ha già un immagine");
             String base64Image = Base64.getEncoder().encodeToString(u.getImmagine());
             m.addAttribute("immagine", base64Image);
         }else {
+            System.out.println("utente NON ha un immagine");
             String base64Image = Base64.getEncoder().encodeToString(defaultBytes);
             m.addAttribute("immagine", base64Image);
         }
