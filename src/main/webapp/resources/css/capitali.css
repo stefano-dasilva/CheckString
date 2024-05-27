@@ -210,6 +210,7 @@ body {
 
 
 
+
     #mostraPunteggio  {
 
         width: 600px;
@@ -218,6 +219,7 @@ body {
         text-align: center;
         border-radius: 15px;
         padding-top: 60px;
+        margin-top: 80px;
 
 
 

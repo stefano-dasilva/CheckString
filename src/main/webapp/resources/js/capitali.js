@@ -27,8 +27,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var paese2 = paesijson.find(paese => paese.cca2 === data.code2);
                 var paese3 = paesijson.find(paese => paese.cca2 === data.code3);
                 var paese4 = paesijson.find(paese => paese.cca2 === data.code4);
+                const AllCaps = [paese1.capital, paese2.capital, paese3.capital, paese4.capital];
+                const caps1 = [paese2.capital, paese3.capital, paese4.capital];
+                const caps2 = [paese1.capital, paese3.capital, paese4.capital];
+                const caps3 = [paese1.capital, paese2.capital, paese4.capital];
+                const caps4 = [paese1.capital, paese2.capital, paese3.capital];
+                const contCaps = [caps1, caps2, caps3, caps4];
 
                 if (!paese1.capital || !paese2.capital || !paese3.capital || !paese4.capital) {
+                    for (let i=0; i<AllCaps.length; i++){
+                        for (let j=0; j<contCaps.length; j++){
+                            for (let z=0; z<contCaps[j]; z++){
+                                if (AllCaps[i] === contCaps[j]){
+                                    fetchCountries();
+                                    return;
+                                }
+                            }
+                        }
+                    }
                     console.log("Non ho trovato tutte le capitali");
                     fetchCountries();
                     return;
@@ -115,6 +131,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             setTimeout(function () {
                 var finale = document.getElementById("cont4");
                 var puntiFinali = document.getElementById("punteggioFinale").innerText = punteggio;
+                document.getElementById("container").appendChild(finale);
                 finale.style.display = "inline-flex";
                 },1000);
 
