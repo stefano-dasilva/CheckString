@@ -31,7 +31,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
 
 
 
@@ -51,7 +53,7 @@
 <div id="bho">
     <div class="up">
         <div id="photo">
-            <input type="text" id="nomefoto" name="nome" value=${name} readonly>
+            <span id="nomefoto" name="nome" >${username} </span>
         </div>
 
 

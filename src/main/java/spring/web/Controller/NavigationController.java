@@ -27,6 +27,7 @@ import org.springframework.web.servlet.function.support.RouterFunctionMapping;
 import service.Interface.StandardService;
 import service.Interface.UtenteService;
 import spring.web.vo.Filter.ClassificaFilter;
+import spring.web.vo.SalvaRegister;
 import spring.web.vo.UserRegister;
 
 
@@ -90,17 +91,16 @@ public class NavigationController {
     public String showProfile(HttpSession session, Model m) throws IOException {
 
 
-
-
-
         Utente u = (Utente) session.getAttribute("utente");
         System.out.println(u.getUsername() + u.getNome() + u.getCognome());
-
-        m.addAttribute("username",u.getUsername());
-        m.addAttribute("name",u.getNome());
-        m.addAttribute("cognome",u.getCognome());
-        m.addAttribute("nazione",u.getNazione());
-        m.addAttribute("data_nascita",u.getDataNascita());
+        SalvaRegister salvaRegister = new SalvaRegister();
+        salvaRegister.setUsername(u.getUsername());
+        salvaRegister.setCognome(u.getCognome());
+        salvaRegister.setNome(u.getNome());
+        salvaRegister.setDataNascita(u.getDataNascita());
+        salvaRegister.setNazione(u.getNazione());
+        m.addAttribute("salvaRegister", salvaRegister);
+        m.addAttribute("username", u.getUsername());
         if(u.getImmagine() != null){
             String base64Image = Base64.getEncoder().encodeToString(u.getImmagine());
             m.addAttribute("immagine", base64Image);
@@ -108,6 +108,7 @@ public class NavigationController {
             String base64Image = Base64.getEncoder().encodeToString(defaultBytes);
             m.addAttribute("immagine", base64Image);
         }
+
 
 
         return "profile";

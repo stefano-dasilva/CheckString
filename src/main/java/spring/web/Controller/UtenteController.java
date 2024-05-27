@@ -73,7 +73,8 @@ public class UtenteController {
     public String salvaDati(@ModelAttribute("salvaRegister") @Valid SalvaRegister salvaRegister, BindingResult bindingResult, Model model, HttpSession session) {
         System.out.println("ciao pippo");
         if (bindingResult.hasErrors()) {
-            return "profile";
+            System.out.println("C'è stato un errore");
+            return "redirect:/show_profile";
         }
 
         Utente utente = UtenteConverter.convert(salvaRegister);
