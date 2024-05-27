@@ -139,6 +139,35 @@ body {
 
 }
 
+#contMess1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#rispostaSbagliata {
+
+
+    display: none;
+    margin-top: 10px;
+}
+
+#rispostaSbagliata span {
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 20px;
+    width: 300px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    background-color: red;
+    color: white;
+
+}
 
 #col1, #col2 {
     display: flex;
@@ -171,4 +200,47 @@ body {
 #col1 {
     margin-right: 30px;
 }
+
+#cont4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+
+
+
+    #mostraPunteggio  {
+
+        width: 600px;
+        height: 100px;
+        background-color: #119C75;
+        text-align: center;
+        border-radius: 15px;
+        padding-top: 60px;
+
+
+
+
+        span {
+
+
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 25px;
+            letter-spacing: 1.4px;
+            word-spacing: 0.8px;
+            color: white;
+            font-weight: 700;
+            text-decoration: none solid rgb(68, 68, 68);
+            font-style: normal;
+            font-variant: small-caps;
+            text-transform: uppercase;
+
+
+
+        }
+    }
+}
+
+
 

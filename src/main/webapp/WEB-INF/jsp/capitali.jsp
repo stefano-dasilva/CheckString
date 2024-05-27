@@ -13,8 +13,7 @@
     <%@ include file="navbar.jsp" %>
 
 
-        <div id="container">
-
+    <div id="container">
 
         <div id="parte1">
         <div id="titolo">
@@ -28,25 +27,18 @@
             </div>
         </div>
 
-
-
         <div id="parte2">
         <div id="subTitle">
-
             <h2 id="ban">Indovina la capitale di <span id="paese"></span></h2>
-
         </div>
 
 
 
         <div id="gioco">
             <div id="ig">
-
                 <span>Punti: <span id="punti"></span> </span>
 
-            <img  alt="bandiera" id="img" >
-
-
+                <img  alt="bandiera" id="img" >
             </div>
 
 
@@ -58,6 +50,12 @@
         <span>Risposta Corretta !!!</span>
     </div>
 </div>
+    <div id="contMess1">
+        <div id="rispostaSbagliata">
+            <span>Risposta Sbagliata :(</span>
+        </div>
+    </div>
+
 
             <div id="opzioni">
                 <div id="col1">
@@ -68,20 +66,21 @@
                 <span id="third"></span>
                <span id="fourth"></span>
                 </div>
-
-
-                </div>
+            </div>
 </div>
 
-
-
-
-            </div>
 
         </div>
 
-
 </div>
+        <div id="cont4">
+            <div id="mostraPunteggio">
+                <span>Il Tuo Punteggio è <span id="punteggioFinale"></span></span>
+            </div>
+        </div>
+        </div>
+
+
         <script type="module" src=${pageContext.request.contextPath}/resources/js/capitali.js></script>
     </body>
 

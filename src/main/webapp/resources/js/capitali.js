@@ -1,6 +1,4 @@
-
 import paesijson from '../countries.json' with { type: 'json' };
-
 
 document.addEventListener('DOMContentLoaded', (event) => {
     var parte2 = document.getElementById("parte2");
@@ -9,12 +7,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("iniziaBottone").addEventListener('click', inizia);
     var punteggio = 0;
 
-
-    function inizia(){
+    function inizia() {
         document.getElementById("container").appendChild(parte2);
-        var parte1=document.getElementById("parte1");
+        var parte1 = document.getElementById("parte1");
         parte1.parentNode.removeChild(parte1);
         fetchCountries();
+    }
+
+    async function aumentaPunti() {
+        const response = await fetch("aumentapunti");
+        return response.json();
     }
 
     function fetchCountries() {
@@ -26,13 +28,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var paese3 = paesijson.find(paese => paese.cca2 === data.code3);
                 var paese4 = paesijson.find(paese => paese.cca2 === data.code4);
 
-
                 if (!paese1.capital || !paese2.capital || !paese3.capital || !paese4.capital) {
                     console.log("Non ho trovato tutte le capitali");
                     fetchCountries();
                     return;
                 }
-
 
                 var paeseIndovinato = paese1.name.common;
                 var paese = document.getElementById("paese");
@@ -43,12 +43,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var third = document.getElementById("third");
                 var fourth = document.getElementById("fourth");
 
-                var paese1Cap = paese1.capital[0];
-                var paese2Cap = paese2.capital[0];
-                var paese3Cap = paese3.capital[0];
-                var paese4Cap = paese4.capital[0];
+                var capitaleIndovinata = paese1.capital[0];
 
-                var capitali = [paese1Cap, paese2Cap, paese3Cap, paese4Cap];
+                var capitali = [paese1.capital[0], paese2.capital[0], paese3.capital[0], paese4.capital[0]];
 
                 const randomIdx1 = Math.floor(Math.random() * capitali.length);
                 first.textContent = capitali[randomIdx1];
@@ -62,65 +59,77 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 third.textContent = capitali[randomIdx3];
                 capitali.splice(randomIdx3, 1);
 
-                const randomIdx4 = Math.floor(Math.random() * capitali.length);
-                fourth.textContent = capitali[randomIdx4];
-                capitali.splice(randomIdx4, 1);
+                fourth.textContent = capitali[Math.floor(Math.random() * capitali.length)];
 
                 var img = document.getElementById("img");
                 img.src = paese1.flags.png;
-                console.log(data);
-                console.log(paese1);
 
-                first.addEventListener("click", () => verifica(first, paese1.capital));
-                second.addEventListener("click", () => verifica(second, paese1.capital));
-                third.addEventListener("click", () => verifica(third, paese1.capital));
-                fourth.addEventListener("click", () => verifica(fourth, paese1.capital));
-                 document.getElementById("punti").innerText= punteggio;
+
+                first.replaceWith(first.cloneNode(true));
+                second.replaceWith(second.cloneNode(true));
+                third.replaceWith(third.cloneNode(true));
+                fourth.replaceWith(fourth.cloneNode(true));
+
+                first = document.getElementById("first");
+                second = document.getElementById("second");
+                third = document.getElementById("third");
+                fourth = document.getElementById("fourth");
+
+                first.addEventListener("click", () => verifica(first, capitaleIndovinata));
+                second.addEventListener("click", () => verifica(second, capitaleIndovinata));
+                third.addEventListener("click", () => verifica(third, capitaleIndovinata));
+                fourth.addEventListener("click", () => verifica(fourth, capitaleIndovinata));
+
+                document.getElementById("punti").innerText = punteggio;
                 resetColor();
-            })
+            });
+    }
 
-        function verifica(capitaleSelezionata, CapitaleCorretta) {
+    async function verifica(capitaleSelezionata, capitaleCorretta) {
+        console.log("Capitale Selezionata:", capitaleSelezionata.textContent);
+        console.log("Capitale Corretta:", capitaleCorretta);
 
-            console.log(" Capitale Selezionata:", capitaleSelezionata);
-            console.log("Capitale Corretta:", CapitaleCorretta);
+        if (capitaleSelezionata.textContent === capitaleCorretta) {
+            console.log("Risposta corretta");
+            capitaleSelezionata.style.backgroundColor = "green";
 
+            punteggio++;
+            const risposta = await aumentaPunti();
+            console.log(risposta);
+            document.getElementById("punti").innerText = punteggio;
+            var message = document.getElementById("rispostaCorretta");
+            message.style.display = "inline-flex";
+            setTimeout(function () {
+                message.style.display = "none";
+                fetchCountries();
+            }, 1000);
+        } else {
+            console.log("Risposta sbagliata");
+            var message1 = document.getElementById("rispostaSbagliata");
+            message1.style.display = "inline-flex";
+            setTimeout(function () {
+                message1.style.display = "none";
+                parte2.parentNode.removeChild(parte2);
 
+            }, 1000);
+            setTimeout(function () {
+                var finale = document.getElementById("cont4");
+                var puntiFinali = document.getElementById("punteggioFinale").innerText = punteggio;
+                finale.style.display = "inline-flex";
+                },1000);
 
-            if (capitaleSelezionata.textContent === CapitaleCorretta[0]) {
-                console.log("Risposta corretta");
-                capitaleSelezionata.style.backgroundColor="green";
-
-                punteggio++;
-                var punti = document.getElementById("punti").innerText= punteggio;
-                var message=document.getElementById("rispostaCorretta");
-                message.style.display = "inline-flex";
-                setTimeout(function (){
-                    message.style.display = "none";
-                    fetchCountries();
-                }, 1000);
-            } else {
-                console.log("Risposta sbagliata");
-                capitaleSelezionata.style.backgroundColor="red";
-            }
         }
 
-        function resetColor(){
+    }
 
-            var span1=document.getElementById("first");
-            var span2=document.getElementById("second");
-            var span3=document.getElementById("third");
-            var span4=document.getElementById("fourth");
-            const spanArray = [span1, span2, span3, span4];
-            for (let i=0; i<spanArray.length; i++){
-                spanArray[i].style.backgroundColor = "white";
-
-            }
+    function resetColor() {
+        var span1 = document.getElementById("first");
+        var span2 = document.getElementById("second");
+        var span3 = document.getElementById("third");
+        var span4 = document.getElementById("fourth");
+        const spanArray = [span1, span2, span3, span4];
+        for (let i = 0; i < spanArray.length; i++) {
+            spanArray[i].style.backgroundColor = "white";
         }
-
-
-
-
-
-
-    }})
-
+    }
+});
