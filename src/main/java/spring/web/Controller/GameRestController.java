@@ -119,7 +119,6 @@ public class GameRestController {
     public String aumentaPunti(HttpSession session){
 
 
-
         if(session.getAttribute("punteggio") == null){
             session.setAttribute("punteggio",1);
         }
@@ -140,29 +139,28 @@ public class GameRestController {
     public String finisciGioco(@RequestParam("gioco") String gioco, HttpSession session){
 
         Utente utente =(Utente) session.getAttribute("utente");
+        boolean nuovo_record = false;
 
         System.out.println("il gioco è finito");
-        System.out.println(session.getAttribute("punteggio"));
-
-        if(gioco.equals("giocoBandiere")){
-            utenteService.setRecordBandiere(utente,(Integer) session.getAttribute("punteggio"));
+        int punteggio;
+        if(session.getAttribute("punteggio") != null){
+            punteggio = (Integer ) session.getAttribute("punteggio");
+            if(gioco.equals("giocoBandiere")){
+                nuovo_record = utenteService.setRecordBandiere(utente,punteggio);
+            }
+            else if(gioco.equals("giocoCapitali")){
+                nuovo_record = utenteService.setRecordCapitali(utente,punteggio);
+            }
+            else if(gioco.equals("giocoPopolazione")){
+                nuovo_record = utenteService.setRecordPopolazione(utente,punteggio);
+            }
         }
-        else if(gioco.equals("giocoCapitali")){
-            utenteService.setRecordCapitali(utente,(Integer) session.getAttribute("punteggio"));
-
+        else{
+            punteggio = 0;
         }
-        else if(gioco.equals("giocoPopolazione")){
-            utenteService.setRecordPopolazione(utente,(Integer) session.getAttribute("punteggio"));
-        }
+        System.out.println(punteggio);
 
-        session.setAttribute("punteggio", 0);
-
-
-
-
-
-        return String.format("{\"inputstandard\":\"%s\"}", "ciao");
-
+        return String.format("{\"punteggio\":\"%s\", \"nuovo_record\":\"%s\"}", punteggio, nuovo_record);
     }
 
 }

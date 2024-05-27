@@ -42,11 +42,43 @@ async function iniziaGioco(){
         standarddx = data.standard2;
         nome_paesesx.innerText = standardsx.value
         nome_paesedx.innerText = standarddx.value
-        console.log(paesesx);
-        console.log(paesedx);
+        drawTemperatureChart(paesesx.capitalInfo.latlng,paesedx.capitalInfo.latlng)
+        console.log(paesesx.capitalInfo.latlng);
+        console.log(paesedx.capitalInfo.latlng);
     })
 
 
+}
+
+async function finisciGioco(){
+
+    var wrapper_paesi = document.getElementById("wrapper_paesi");
+    var bottoni_wrapper = document.getElementById("bottoni_wrapper");
+    wrapper_paesi.remove()
+    bottoni_wrapper.remove()
+    var third_game_content = document.getElementById("third_game_content")
+
+
+    fetch("finiscigioco?gioco=giocoPopolazione")
+        .then(response => response.json())
+        .then((data) => {
+            var punteggio = document.createElement("h3");
+            punteggio.innerText = "Hai totalizzato " + data.punteggio + " punti"
+            if(data.nuovo_record === true){
+                var nuovo_record = document.createElement("h3");
+                nuovo_record.innerText = "Hai superato il tuo record!"
+            }
+            third_game_content.appendChild(punteggio)
+            console.log(data)
+        })
+/*
+    var punteggio = document.createElement("h3");
+    punteggio.innerText = "Hai totalizzato " + bandiere_azzeccate + " punti"
+    card.appendChild(punteggio)
+    fetch("finiscigioco?gioco=giocoPopolazione")
+
+
+ */
 }
 
 async function provaTentativo(event){
@@ -54,20 +86,33 @@ async function provaTentativo(event){
     var confronto_popolazione = (paese_randomsx.population > paese_randomdx.population)
     console.log("popolazione paese sx : " +  paese_randomsx.population + " popolazione paese dx : " + paese_randomdx.population)
 
+    /*fa un confronto tra le due popolazioni, quindi confronto_popolazione sarà true quando il paese di sx avrà una pop maggione
+    e sarà false quando la popolazione del paese di sx sarà minore di quella di destra
+     */
     var scelta = event.target.value;
+    /* caso in cui la popolazione del paese di sinistra è maggiore... */
     if(confronto_popolazione){
+        /* e l'utente ha schiacciato lower ( ovvero che quella di destra sia minore )*/
         if(scelta === "lower"){
             console.log("bravo")
+            aumentaPunti()
+            aggiornaCard()
+
         }
+        /* e l'utente ha schiacciato higher */
         else{
             console.log("hai sbagliato")
+            await finisciGioco()
         }
     }
     if(!confronto_popolazione){
         if(scelta === "lower"){
             console.log("hai sbagliato")
+            await finisciGioco()
         }
         else{
+            aumentaPunti()
+            aggiornaCard()
             console.log("bravo")
         }
     }
@@ -76,16 +121,48 @@ async function provaTentativo(event){
 
 }
 
-function creaComposizioneCard(){
+
+
+/*fa una fetch a /aumentapunti e restituisce i punti attuali della partita e restituisce in json ( solo per test )*/
+async function aumentaPunti() {
+    const response = await fetch("aumentapunti")
+    return response.json();
+}
+
+async function  aggiornaCard(){
+
+    await fetchRandomCountry().then((data)=>{
+        /* prende i due paesi corrispondenti dal json locale presi tramite codice casuale*/
+        const paesesx = paesijson.find(paese => paese.cca2 === data.standard1.code);
+        const paesedx = paesijson.find(paese => paese.cca2 === data.standard2.code);
+
+        /*assenga ai tag immagini corrispondente le bandiere*/
+        imgsx.src = paesesx.flags.png;
+        imgdx.src = paesedx.flags.png;
+
+        paese_randomsx = paesesx;
+        paese_randomdx = paesedx;
+        standardsx = data.standard1;
+        standarddx = data.standard2;
+        nome_paesesx.innerText = standardsx.value
+        nome_paesedx.innerText = standarddx.value
+        drawTemperatureChart(paesesx.capitalInfo.latlng,paesedx.capitalInfo.latlng)
+        console.log(paesesx);
+        console.log(paesedx);
+
+    })
+
+
+
+}
+
+function creaComposizioneCard() {
 
     document.getElementById("inizia").remove()
     document.getElementById("title").remove()
 
 
     const card = document.getElementById("third_game_content")
-
-
-
 
 
     var wrapper_paesi = document.createElement("div");
@@ -143,17 +220,79 @@ function creaComposizioneCard(){
     var lower = document.createElement("button")
     lower.id = "lower"
     bottoni_wrapper.appendChild(lower)
-    lower.innerText = "Lower"
+    lower.innerText = "Lower "
     lower.value = "lower"
+    var downarrow = document.createElement('i');
+    downarrow.classList.add('bx', 'bxs-down-arrow');
+    lower.appendChild(downarrow)
+
+
 
     var higher = document.createElement("button")
     higher.id = "higher"
     higher.innerText = "Higher"
     higher.value = "higher"
     bottoni_wrapper.appendChild(higher)
+    var uparrow = document.createElement('i');
+    uparrow.classList.add('bx', 'bxs-up-arrow');
+    higher.appendChild(uparrow)
+
+
+
 
     /*e gli aggiungo un event listener di click*/
     lower.addEventListener("click", provaTentativo)
-    higher.addEventListener("click",provaTentativo)
+    higher.addEventListener("click", provaTentativo)
 
+}
+
+
+async function fetchWeatherAPI(latlng){
+
+
+
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latlng[0]}&longitude=${latlng[1]}&hourly=temperature_2m`)
+    return response.json()
+}
+
+
+
+
+async function drawTemperatureChart(latlngsx,latlngdx ) {
+
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(async function () {
+
+        const responsesx = await fetchWeatherAPI(latlngsx);
+        const responsedx = await fetchWeatherAPI(latlngdx);
+
+        const temperaturesx = responsesx.hourly;
+        const temperaturedx = responsedx.hourly;
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'ora');
+        data.addColumn('number', standardsx.value);
+        data.addColumn('number', standarddx.value);
+        var rows = [];
+
+        temperaturesx.time.forEach(function(ora, indice) {
+            rows.push([ora.slice(5,16), temperaturesx.temperature_2m[indice], temperaturedx.temperature_2m[indice]]);
+        });
+
+        data.addRows(rows);
+
+        var options = {
+            hAxis: {
+                title: "Ora"
+            },
+            vAxis: {
+                title: "Temperatura (°C)"
+            },
+            backgroundColor: '#FFF2F9'
+        };
+
+        var chartElement = document.getElementById( 'first_chart');
+        var chart = new google.visualization.LineChart(chartElement);
+        chart.draw(data, options);
+    });
 }

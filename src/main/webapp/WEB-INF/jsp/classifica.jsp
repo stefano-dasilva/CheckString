@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
@@ -77,7 +78,20 @@
 
         <c:forEach items="${utenti}" var="utente" varStatus="loop">
             <div id="utente_wrapper" class=${gioco}>
-                <span>foto</span>
+                <c:choose>
+                    <c:when test="${fn:startsWith(utente.foto, 'src/')}">
+                        <div class="profile_pic">
+                            <img class=" img_utente" src=${utente.foto}>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                    <div class="profile_pic">
+                        <div class="profile_pic_wrapper">
+                    <img class="img_utente" src="data:image/jpeg;base64,${utente.foto}"/>
+                        </div>
+                    </div>
+                    </c:otherwise>
+                </c:choose>
                 <span>${loop.index + 1}</span>
                 <span>${utente.nome}  ${utente.cognome}</span>
                 <span>${utente.username}</span>

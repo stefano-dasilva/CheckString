@@ -51,7 +51,7 @@
   padding: 0.5rem;
   margin-right: 1rem;
   outline: none;
- // border: none;
+  border: none;
   background-color: $yellow-strong;
   border-radius: 2rem;
   font-family: "Syne", sans-serif;
@@ -97,10 +97,7 @@ input[type="radio"] {
   color: $pink_light;
 }
 
-#tutti:checked + label {
-  background-color: $pink_strong;
-  color: $pink_light;
-}
+
 
 .radio-buttons{
   width: 50%;
@@ -108,15 +105,14 @@ input[type="radio"] {
 }
 
 select {
- // border: 1px solid #ccc;
   background-color: #fff;
   font-family: "Syne", sans-serif;
 
 }
 
 select option {
-  background-color: #fff; /* Imposta il colore di sfondo delle opzioni */
-  color: #333; /* Imposta il colore del testo delle opzioni */
+  background-color: #fff;
+  color: #333;
 }
 
 
@@ -170,6 +166,29 @@ input[type="number"]::placeholder {
   }
 
 
+}
+
+.profile_pic{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.profile_pic_wrapper{
+
+  border: 2px solid red;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  overflow: clip;
+}
+.img_utente{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 #utenti_wrapper{

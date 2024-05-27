@@ -115,14 +115,6 @@ public class UtenteController {
     }
 
 
-    @PostMapping("/show_classifica")
-    @ResponseBody
-    public String showClassificaGenerale(@ModelAttribute("filter") ClassificaFilter filter){
-        System.out.println(filter.getCategoriaGioco());
-
-
-        return "provaprova";
-    }
 
 
     @PostMapping("/classifica")
@@ -131,6 +123,13 @@ public class UtenteController {
 
         List<Standard> standards = standardService.getAll();
         List<String> values = new ArrayList<>();
+        System.out.println(classificaFilter.getMinimo());
+        System.out.println(classificaFilter.getMassimo());
+        if(classificaFilter.getCategoriaGioco() == null){
+            classificaFilter.setCategoriaGioco("Tutte");
+        }
+        System.out.println(classificaFilter.getCategoriaGioco());
+        System.out.println(classificaFilter.getNazione());
 
         for (Standard standard : standards) {
             values.add(standard.getValue());

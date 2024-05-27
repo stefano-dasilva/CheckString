@@ -4,7 +4,7 @@ public class UtenteClassifica {
     private String nome;
     private String cognome;
     private String username;
-    private byte[] foto;
+    private String foto;
     private int punteggio;
 
 
@@ -35,11 +35,11 @@ public class UtenteClassifica {
         this.username = username;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

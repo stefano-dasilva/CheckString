@@ -51,6 +51,7 @@
   padding: 0.5rem;
   margin-right: 1rem;
   outline: none;
+  border: none;
   background-color: #DAAB00;
   border-radius: 2rem;
   font-family: "Syne", sans-serif;
@@ -98,11 +99,6 @@ input[type=radio] {
   color: #FFF2F9;
 }
 
-#tutti:checked + label {
-  background-color: #FF0096;
-  color: #FFF2F9;
-}
-
 .radio-buttons {
   width: 50%;
   gap: 1rem;
@@ -114,8 +110,8 @@ select {
 }
 
 select option {
-  background-color: #fff; /* Imposta il colore di sfondo delle opzioni */
-  color: #333; /* Imposta il colore del testo delle opzioni */
+  background-color: #fff;
+  color: #333;
 }
 
 input[type=number] {
@@ -164,6 +160,29 @@ input[type=number]::placeholder {
 }
 #titolo_classifica span {
   width: 25%;
+}
+
+.profile_pic {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.profile_pic_wrapper {
+  border: 2px solid red;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  overflow: clip;
+}
+
+.img_utente {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 #utenti_wrapper {

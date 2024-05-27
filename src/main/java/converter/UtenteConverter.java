@@ -6,6 +6,8 @@ import spring.web.dto.UtenteClassifica;
 import spring.web.vo.SalvaRegister;
 import spring.web.vo.UserRegister;
 
+import java.util.Base64;
+
 public class UtenteConverter {
 
     public static Utente convert (UserRegister userRegister){
@@ -42,7 +44,12 @@ public class UtenteConverter {
        utenteClassifica.setNome(utente.getNome());
        utenteClassifica.setCognome(utente.getCognome());
        utenteClassifica.setUsername(utente.getUsername());
-       utenteClassifica.setFoto(utente.getImmagine());
+       if(utente.getImmagine()!=null){
+           utenteClassifica.setFoto(Base64.getEncoder().encodeToString(utente.getImmagine()));
+       }
+       else{
+           utenteClassifica.setFoto("src/main/webapp/resources/profile.jpg");
+       }
        if(tipoGioco.equals("giocoBandiere")){
            utenteClassifica.setPunteggio(utente.getRecordBandiere());
        }

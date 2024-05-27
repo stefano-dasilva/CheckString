@@ -53,50 +53,60 @@ public class UtenteDaoImpl extends BaseDaoImpl implements UtenteDao {
         List<Predicate> predicates = new ArrayList<>();
 
         if (filtro.getCategoriaGioco() != null) {
-            System.out.println("c'è la categoria gioco");
+            System.out.println(" categoria gioco " + filtro.getCategoriaGioco());
             if (filtro.getCategoriaGioco().equals("giocoBandiere")) {
-                System.out.println("sono in gioco bandiere");
                 criteriaQuery.orderBy(criteriaBuilder.desc(root.get("recordBandiere")));
             } else if (filtro.getCategoriaGioco().equals("giocoCapitali")) {
                 criteriaQuery.orderBy(criteriaBuilder.desc(root.get("recordCapitali")));
-            } else {
+            } else if( filtro.getCategoriaGioco().equals("giocoPopolazione")) {
                 criteriaQuery.orderBy(criteriaBuilder.desc(root.get("recordPopolazioni")));
+            }
+            else{
+                criteriaQuery.orderBy(criteriaBuilder.desc( criteriaBuilder.sum(
+                        criteriaBuilder.sum(root.get("recordBandiere"), root.get("recordCapitali")),
+                        root.get("recordPopolazioni"))));
+
             }
         }
         if (filtro.getMinimo() != null) {
-            System.out.println("filtro.getMinimo() != null");
-            if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoBandiere")) {
+            System.out.println("getMinimo = " + filtro.getMinimo());
+            if (filtro.getCategoriaGioco().equals("giocoBandiere")) {
                 predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("recordBandiere"), filtro.getMinimo()));
-            } else if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoCapitali")) {
+            } else if ( filtro.getCategoriaGioco().equals("giocoCapitali")) {
                 predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("recordCapitali"), filtro.getMinimo()));
-            } else {
+            } else if(  filtro.getCategoriaGioco().equals("giocoPopolazione")) {
                 predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("recordPopolazioni"), filtro.getMinimo()));
+            }
+            else{
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(( criteriaBuilder.sum(
+                        criteriaBuilder.sum(root.get("recordBandiere"), root.get("recordCapitali")),
+                        root.get("recordPopolazioni"))),filtro.getMinimo()));
             }
         }
 
         if (filtro.getMassimo() != null) {
-            System.out.println("filtro.getMassimo() != null");
+            System.out.println("getMinimo = " + filtro.getMassimo());
 
-            if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoBandiere")) {
+            if ( filtro.getCategoriaGioco().equals("giocoBandiere")) {
                 predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("recordBandiere"), filtro.getMassimo()));
-            } else if (filtro.getCategoriaGioco() != null && filtro.getCategoriaGioco().equals("giocoCapitali")) {
+            } else if (filtro.getCategoriaGioco().equals("giocoCapitali")) {
                 predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("recordCapitali"), filtro.getMassimo()));
-            } else {
+            } else if(filtro.getCategoriaGioco().equals("giocoPopolazione")) {
                 predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("recordPopolazioni"), filtro.getMassimo()));
+            }
+            else{
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(( criteriaBuilder.sum(
+                        criteriaBuilder.sum(root.get("recordBandiere"), root.get("recordCapitali")),
+                        root.get("recordPopolazioni"))),filtro.getMassimo()));
             }
         }
 
         if (filtro.getNazione() != null && filtro.getNazione() != "" ) {
+            System.out.println(filtro.getNazione());
             System.out.println("filtro.getNazione() != null");
             predicates.add(criteriaBuilder.equal(root.get("nazione"), filtro.getNazione()));
         }
-        if(filtro.getCategoriaGioco() == null && filtro.getNazione() == null && filtro.getMassimo() == null && filtro.getMinimo() == null){
-            Expression<Integer> sommaRecord = criteriaBuilder.sum(
-                    root.get("recordBandiere"),
-                    root.get("recordCapitali")
-            );
-            criteriaQuery.orderBy(criteriaBuilder.desc(sommaRecord));
-        }
+
 
         criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));
 

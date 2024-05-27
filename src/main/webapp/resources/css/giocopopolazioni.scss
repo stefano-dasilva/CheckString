@@ -7,7 +7,7 @@
   @include flex-row(space-around);
   gap: 2rem;
   #third_game_card{
-    width: 50%;
+    width: 40%;
     height: 90%;
     background-color: $pink_light;
     border-radius: 2rem;
@@ -16,12 +16,14 @@
     align-items: center;
   }
   #third_game_info{
-    width: 30%;
+    width: 40%;
     height: 90%;
     background-color: $pink_light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 2rem;
 
-    @include flex-column(space-around);
   }
 }
 h3{
@@ -59,8 +61,8 @@ img{
 }
 
 #bottoni_wrapper{
-  width: 50%;
-  height: 10%;
+  width: 60%;
+  height: 15%;
   border-radius: 2rem;
   @include flex-row();
 }
@@ -72,7 +74,11 @@ img{
   color: $pink-light;
   outline: none;
   border: none;
+
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #higher{
@@ -91,4 +97,9 @@ img{
   width: 90%;
   height: 60%;
   @include flex-column(space-around, center);
+}
+
+#first_chart{
+  width: 100%;
+  display: flex;
 }

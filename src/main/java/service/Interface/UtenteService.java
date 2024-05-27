@@ -64,19 +64,19 @@ public interface UtenteService {
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
-    public Utente setRecordBandiere(Utente utente, int num_bandiere);
+    public boolean setRecordBandiere(Utente utente, int num_bandiere);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
-    public Utente setRecordCapitali(Utente utente, int num_capitali);
+    public boolean setRecordCapitali(Utente utente, int num_capitali);
 
     @Transactional(
             rollbackFor = {Throwable.class, Exception.class},
             propagation = Propagation.REQUIRED,
             isolation = Isolation.READ_UNCOMMITTED)
-    public Utente setRecordPopolazione(Utente utente, int num_popolazione);
+    public boolean setRecordPopolazione(Utente utente, int num_popolazione);
 
 
     @Transactional(
