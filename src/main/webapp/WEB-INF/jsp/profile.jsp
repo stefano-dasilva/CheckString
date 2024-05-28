@@ -46,7 +46,7 @@
 
 
 <div id="ben">
-    <h3 class="display-5">Benvenuto Nel Tuo Profilo</h3>
+    <h3 class="display-5">Benvenuto nel tuo profilo</h3>
 </div>
 
 
@@ -68,6 +68,8 @@
                 </form>
             </div>
         </div>
+
+
 
 
         <div id="bottone" class="caricaFoto mt-3">
