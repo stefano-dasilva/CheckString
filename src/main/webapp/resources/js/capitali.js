@@ -19,33 +19,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return response.json();
     }
 
+    var paese1;
+
     function fetchCountries() {
         fetch('randomcountry2')
             .then(response => response.json())
             .then(data => {
-                var paese1 = paesijson.find(paese => paese.cca2 === data.code1);
+                paese1 = paesijson.find(paese => paese.cca2 === data.code1);
                 var paese2 = paesijson.find(paese => paese.cca2 === data.code2);
                 var paese3 = paesijson.find(paese => paese.cca2 === data.code3);
                 var paese4 = paesijson.find(paese => paese.cca2 === data.code4);
-                const AllCaps = [paese1.capital, paese2.capital, paese3.capital, paese4.capital];
-                const caps1 = [paese2.capital, paese3.capital, paese4.capital];
-                const caps2 = [paese1.capital, paese3.capital, paese4.capital];
-                const caps3 = [paese1.capital, paese2.capital, paese4.capital];
-                const caps4 = [paese1.capital, paese2.capital, paese3.capital];
-                const contCaps = [caps1, caps2, caps3, caps4];
 
-                if (!paese1.capital || !paese2.capital || !paese3.capital || !paese4.capital) {
-                    for (let i=0; i<AllCaps.length; i++){
-                        for (let j=0; j<contCaps.length; j++){
-                            for (let z=0; z<contCaps[j]; z++){
-                                if (AllCaps[i] === contCaps[j]){
-                                    fetchCountries();
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                    console.log("Non ho trovato tutte le capitali");
+                if (!paese1 || !paese2 || !paese3 || !paese4 || !paese1.capital || !paese2.capital || !paese3.capital || !paese4.capital) {
                     fetchCountries();
                     return;
                 }
@@ -54,14 +39,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var paese = document.getElementById("paese");
                 paese.textContent = paeseIndovinato;
 
+                var capitaleIndovinata = paese1.capital[0];
+
+                // Assicurarsi che le capitali siano uniche
+                var capitali = [...new Set([paese1.capital[0], paese2.capital[0], paese3.capital[0], paese4.capital[0]])];
+
+                if (capitali.length < 4) {
+                    fetchCountries();
+                    return;
+                }
+
+                // Assegna le capitali casualmente agli elementi
                 var first = document.getElementById("first");
                 var second = document.getElementById("second");
                 var third = document.getElementById("third");
                 var fourth = document.getElementById("fourth");
-
-                var capitaleIndovinata = paese1.capital[0];
-
-                var capitali = [paese1.capital[0], paese2.capital[0], paese3.capital[0], paese4.capital[0]];
 
                 const randomIdx1 = Math.floor(Math.random() * capitali.length);
                 first.textContent = capitali[randomIdx1];
@@ -75,11 +67,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 third.textContent = capitali[randomIdx3];
                 capitali.splice(randomIdx3, 1);
 
-                fourth.textContent = capitali[Math.floor(Math.random() * capitali.length)];
+                fourth.textContent = capitali[0];
 
                 var img = document.getElementById("img");
                 img.src = paese1.flags.png;
-
 
                 first.replaceWith(first.cloneNode(true));
                 second.replaceWith(second.cloneNode(true));
@@ -120,20 +111,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 fetchCountries();
             }, 1000);
         } else {
-            console.log("Risposta sbagliata");
-            var message1 = document.getElementById("rispostaSbagliata");
-            message1.style.display = "inline-flex";
-            setTimeout(function () {
-                message1.style.display = "none";
-                parte2.parentNode.removeChild(parte2);
 
-            }, 1000);
-            setTimeout(function () {
-                var finale = document.getElementById("cont4");
-                var puntiFinali = document.getElementById("punteggioFinale").innerText = punteggio;
-                document.getElementById("container").appendChild(finale);
-                finale.style.display = "inline-flex";
-                },1000);
+            fetch("finiscigioco?gioco=giocoCapitali")
+                .then(response => response.json())
+                .then((data) => {
+
+
+                    console.log(data)
+                    console.log(data.punteggio)
+                    console.log(data.nuovo_record)
+
+                    console.log("Risposta sbagliata");
+                    var message1 = document.getElementById("rispostaSbagliata");
+                    var right = document.getElementById("right").innerText = " " + paese1.capital;
+                    message1.style.display = "inline-flex";
+                    setTimeout(function () {
+                        message1.style.display = "none";
+                        parte2.parentNode.removeChild(parte2);
+                    }, 2000);
+
+                    setTimeout(function () {
+                        var finale = document.getElementById("cont4");
+                        var puntiFinali = document.getElementById("punteggioFinale").innerText =data.punteggio;
+                        document.getElementById("container").appendChild(finale);
+                        finale.style.display = "inline-flex";
+                        punteggio = 0;
+                    }, 2000);
+
+                })
+
 
         }
 

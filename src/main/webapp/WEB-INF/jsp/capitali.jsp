@@ -5,6 +5,9 @@
     <head>
     <title>IndovinaCapitale</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/capitali.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
 
 
     </head>
@@ -52,7 +55,8 @@
 </div>
     <div id="contMess1">
         <div id="rispostaSbagliata">
-            <span>Risposta Sbagliata :(</span>
+            <span id="sbal1">La Risposta Corretta è <span id="right"></span> </span>
+
         </div>
     </div>
 
@@ -74,8 +78,13 @@
 
 </div>
         <div id="cont4">
+
             <div id="mostraPunteggio">
+                <div id="record"><span id="record1">Nuovo Record<span id="recordSpan"></span></span></div>
                 <span>Il Tuo Punteggio è <span id="punteggioFinale"></span></span>
+            </div>
+            <div id="ricomincia">
+                <a id="link" href="http://localhost:8083/CheckString/show_giocoCapitali"><button>Ricomincia</button></a>
             </div>
         </div>
         </div>
