@@ -80,7 +80,7 @@ async function finisciGioco(){
     var bottoni_wrapper = document.getElementById("bottoni_wrapper");
     wrapper_paesi.remove()
     bottoni_wrapper.remove()
-    var third_game_content = document.getElementById("third_game_content")
+    var third_game_content = document.getElementById("third_game_content_card")
 
 
     fetch("finiscigioco?gioco=giocoPopolazione")
