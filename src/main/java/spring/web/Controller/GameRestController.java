@@ -100,12 +100,13 @@ public class GameRestController {
 
     @RequestMapping(
             path={"/checkstring"},
-            method= {RequestMethod.GET},
+            method= {RequestMethod.POST},
             produces  = {MediaType.APPLICATION_JSON_VALUE}
     )
-    public String getCheckString(@RequestParam("input") String input){
+    public String getCheckString(@RequestBody String inpututente){
 
-        String  inputStandard = checkStringService.check(input);
+        System.out.println("inpututente è " + inpututente);
+        String  inputStandard = checkStringService.check(inpututente);
 
         return String.format("{\"inputstandard\":\"%s\"}", inputStandard);
 

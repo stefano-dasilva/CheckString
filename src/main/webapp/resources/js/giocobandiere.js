@@ -48,38 +48,65 @@ function creaCard(){
     img.id = "image";
     img_wrapper.appendChild(img)
 
-    var input_wrapper = document.createElement("div");
+    //var input_wrapper = document.createElement("div");
     var bottoni_wrapper = document.createElement("div");
 
-    input_wrapper.id = "input_wrapper"
+  //  input_wrapper.id = "input_wrapper"
     bottoni_wrapper.id = "bottoni_wrapper"
 
     /*creo semplicemente il tag input per permette allo user di scrivere ed un bottone per inviare il tentativo*/
+    var form = document.createElement("form")
+    form.method = "POST";
+    form.action = "checkstring";
+    form.id = "input_wrapper"
     var inputUtente = document.createElement("input");
     inputUtente.type = "text";
+    inputUtente.name = "inpututente"
     inputUtente.id = "inputUtente";
     inputUtente.placeholder = "Inserisci un tentativo.."
-    input_wrapper.appendChild(inputUtente)
+    form.appendChild(inputUtente)
+    //input_wrapper.appendChild(inputUtente)
     var button = document.createElement("button")
     button.id = "bottone"
     button.textContent = "PROVA";
+    button.type = "submit"
     var skip = document.createElement("button")
     skip.id = "skipbottone"
     skip.textContent = "SKIP";
 
+    form.addEventListener("submit", handleFormSubmit);
+
     /*aggiunto l'evento di click al bottone*/
+    /*
     button.addEventListener("click", function () {
         provaTentativo();
     })
+
+     */
     skip.addEventListener("click", function () {
         saltaBandiera();
     })
-    input_wrapper.appendChild(bottoni_wrapper)
+   // input_wrapper.appendChild(bottoni_wrapper)
+    form.appendChild(bottoni_wrapper)
     bottoni_wrapper.appendChild(button)
     bottoni_wrapper.appendChild(skip)
 
-    card.appendChild(input_wrapper)
+    card.appendChild(form)
 
+}
+
+
+async function handleFormSubmit(event) {
+    console.log("sono qui")
+    event.preventDefault();
+    const my_form = document.getElementById("input_wrapper")
+    const response = await fetch(my_form.action, {
+        method: my_form.method,
+        body: document.getElementById("inputUtente").value
+    })
+    const risultato = await  response.json()
+    console.log(risultato)
+        return provaTentativo(risultato)
 }
 
 async function saltaBandiera(){
@@ -171,7 +198,14 @@ async function iniziaGioco() {
         standard = data
         console.log(paese)
         console.log(data)
+
+        console.log(standard.code)
+        var paese_mappa = document.getElementById(standard.code)
+        if (paese_mappa !== null) {
+            paese_mappa.style.fill = "#F00";
+        }
     })
+
 
 
 
@@ -185,9 +219,20 @@ async function iniziaGioco() {
 
 /*fa una fetch a /randomcountry e restituisce il risultato in json*/
 async function fetchRandomCountry() {
-    const response = await fetch("randomcountry")
+    try {
+        const response = await fetch("randomcountry");
+        const data = await response.json();
+        const paese = paesijson.find(paese => paese.cca2 === data.code);
+        if(paese === undefined || paese === null || paese.flags.png === undefined || paese.flags.png === null){
+            fetchRandomCountry()
+        }
+        else{
+            return data;
+        }
+    } catch (error) {
+        console.error('error su fetchrandomcountry', error);
+    }
 
-    return response.json()
 }
 
 /*fa una fetch a /aumentapunti e restituisce i punti attuali della partita e restituisce in json ( solo per test )*/
@@ -212,6 +257,11 @@ async function cambiaBandiera(){
         standard = data;
         console.log(paese);
         console.log(data);
+        console.log(standard.code)
+        var paese_mappa = document.getElementById(standard.code)
+        if (paese_mappa !== null) {
+            paese_mappa.style.fill = "#F00";
+        }
     });
 
 
@@ -252,17 +302,22 @@ async function finisciGioco(){
 }
 
 /*viene invocato quando schiacci il bottone per inviare il tentativo*/
-async function provaTentativo() {
+async function provaTentativo(data) {
+
+console.log(data)
 
     /*prende il valore inserito dall'utente...*/
+    /*
     var input_utente = document.getElementById("inputUtente");
+
+     */
 
 
 
     try {
 
         /* e lo converte in parola standard tramite fetchCheckString ( è definita sopra )*/
-        const data = await fetchCheckString(input_utente.value);
+      //  const data = await fetchCheckString(input_utente.value);
         /*questo è l'input standardizzato, lo stampo per prova*/
         const inputStandardizzato = data?.inputstandard;
         console.log(inputStandardizzato);
@@ -281,10 +336,7 @@ async function provaTentativo() {
 
         }
 
-        var paese_mappa = document.getElementById(standard.code)
-        if (paese_mappa !== null) {
-            paese_mappa.style.fill = "#F00";
-        }
+
     } catch (error) {
         console.log(error);
     }

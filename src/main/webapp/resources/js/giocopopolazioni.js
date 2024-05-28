@@ -42,8 +42,22 @@ async function restart(){
 }
 
 async function fetchRandomCountry() {
-    const response = await fetch("randomcountry3")
-    return response.json()
+    try {
+        const response = await fetch("randomcountry3");
+        const data = await response.json();
+        const paesesx = paesijson.find(paese => paese.cca2 === data.standard1.code);
+        const paesedx = paesijson.find(paese => paese.cca2 === data.standard2.code);
+
+        if(paesesx === undefined || paesesx === null || paesesx.flags.png === undefined || paesesx.flags.png === null || paesedx === undefined || paesedx === null || paesedx.flags.png === undefined || paesedx.flags.png === null){
+            fetchRandomCountry()
+        }
+        else{
+            return data;
+        }
+    } catch (error) {
+        console.error('error su fetchrandomcountry3', error);
+    }
+
 }
 
 async function iniziaGioco(){

@@ -25,12 +25,12 @@
         <div id="inputgroup">
 
             <div id="sec01">
-                <form:label for="username"  path="username" >Inserisci il tuo username</form:label>
+                <form:label for="username"  path="username"  >Inserisci il tuo username</form:label>
                 <div id="usernameWrap">
                     <i class='bx bxs-user'></i>
                     <form:input type="text" id="username"  path="username" placeholder="Username" cssErrorClass="error_input"/>
                 </div>
-                <span>${errorUsername}</span>
+                <span id="error_login_js">${errorUsername}</span>
                 <form:errors path="username" cssClass="error_message" />
             </div>
 
@@ -41,7 +41,7 @@
                     <i class='bx bx-lock-alt'></i>
                     <form:input type="password" id="password"  path="password" placeholder="Password" cssErrorClass="error_input"  />
                 </div>
-                <span>${errorPass}</span>
+                <span id="error_login_js_pass">${errorPass}</span>
                 <form:errors path="password" cssClass="error_message" />
             </div>
 
