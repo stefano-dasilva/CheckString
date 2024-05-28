@@ -23,8 +23,9 @@
             <h2>Benvenuto !</h2>
             <div id="gamedesc">
 
-            <p>  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo repudiandae nemo nostrum voluptate dignissimos eos blanditiis minus molestias ut vitae tempora saepe doloremque, alias numquam aut voluptatum reiciendis incidunt adipisci vel porro sapiente? Autem dolor tempore pariatur, eaque, illo provident perspiciatis officia blanditiis, sint voluptates a nesciunt laboriosam commodi animi.
-            </p>
+            <p>  Benvenuto in World Prix.<br> Qui potrai metterti alla prova testando le tue conoscenze riguardo ai paesi del mondo.<br>
+                Un modo divertente per imparare le bandiere e le capitali dei paesi e scoprendo curiosità interessanti.<br>
+                Lanciati in questa stimolante sfida e scopri il mondo. <br> Sfida i tuoi amici e scopri chi è il piu forte !!!</p>
             </div>
             <div id="footer_section">
                 <span>INIZIA A GIOCARE</span>

@@ -54,7 +54,7 @@ public class WebConfig implements WebMvcConfigurer{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/show_profile","/show_home","/show_giocopopolazione","/show_giocobandiere","show_giocoCapitali", "/show_classifica","/show_games");
+        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/show_profile","/show_home","/show_giocopopolazione","/show_giocobandiere","show_giocoCapitali", "/show_classifica","/show_games", "/show_giocoCapitali");
     }
 
 

@@ -23,7 +23,11 @@
         <div id="first_game">
             <h2>Indovina le capitali</h2>
             <div class="p_wrapper">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
+            <p>Conosci la capitale della Norvegia? E quella dell'Iran? <br>
+                NO?????<br>
+                Rimedia subito con questo gioco.
+                Avrai l'occasione di rimediare alla tua ignoranza e imparare sempre nuove capitali.<br>
+                Stupisci famigliari, la tua ragazza, i tuoi amici con questa gioco sorprendente.
             </p>
             </div>
             <a id="first_footer" href="show_giocoCapitali">
@@ -47,8 +51,13 @@
         <div id="third_game">
             <h2>Indovina la popolazione</h2>
             <div class="p_wrapper">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
+            <p>Quanti abitanti ha l'Italia? <br>
+                Quanti ne ha il Pakistan?
+                In questo gioco dovrai indovinare quale dei due paesi ha il maggior numero di abitanti.<br>
+                Ogni volta ti verrà mostrato il meteo delle capitali dei due paesi.<br>
+                Corri subito a provarlo.
             </p>
+
             </div>
             <a id="third_footer" href="show_giocopopolazione">
                 <span>GIOCA</span>

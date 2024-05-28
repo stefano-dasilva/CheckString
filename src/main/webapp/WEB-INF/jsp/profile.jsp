@@ -60,7 +60,7 @@
 
         <div id="imgCont">
             <div id="lol">
-            <img id="img1" src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded"  />
+            <img id="img1" src="data:image/jpeg;base64,${immagine}" class="img-fluid rounded"   />
             </div>
             <div id="bin">
                 <form action="rimuoviImg" method="get">
@@ -76,7 +76,7 @@
             <form action="upload" method="post" enctype="multipart/form-data">
                 <div id="lab">
                  <label  for="file" id="fotolabel">Carica</label>
-                    <input  type="file" name="img" id="file">
+                    <input  type="file" name="img" id="file" accept="image/png, image/jpeg">
                   <button id="salva" type="submit">Salva</button>
                 </div>
             </form>
@@ -132,7 +132,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <form:label for="dataNascita" class="form-label" path="dataNascita"   >Data Di Nascita</form:label>
-                            <form:input type="text" class="form-control" id="dataNascita" path="dataNascita"  name="dataNascita" value="${data_nascita}" readonly="true" cssErrorClass="error_input"/>
+                            <form:input type="date" class="form-control" id="dataNascita" path="dataNascita"  name="dataNascita" value="${data_nascita}" readonly="true" cssErrorClass="error_input"/>
                             <small></small>
                             <form:errors path="username" cssClass="error_message" />
                         </div>
