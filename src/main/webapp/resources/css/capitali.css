@@ -106,6 +106,7 @@ body {
     height: 150px;
    justify-content: center;
     flex-direction: row;
+    cursor: pointer;
 
 }
 
@@ -152,13 +153,13 @@ body {
     margin-top: 10px;
 }
 
-#rispostaSbagliata span {
+#rispostaSbagliata #sbal1 {
     border-color: black;
     border-style: solid;
     border-width: medium;
     border-radius: 20px;
-    width: 300px;
-    height: 40px;
+    width: 400px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -166,6 +167,11 @@ body {
     font-size: 20px;
     background-color: red;
     color: white;
+    text-align: center;
+
+    #right {
+        margin-left: 5px;
+    }
 
 }
 
@@ -206,6 +212,7 @@ body {
     justify-content: center;
     align-items: center;
     display: none;
+    flex-direction: column;
 
 
 
@@ -238,10 +245,37 @@ body {
             font-variant: small-caps;
             text-transform: uppercase;
 
-
-
         }
     }
+}
+
+#ricomincia {
+    margin-top: 50px;
+
+    button {
+        background-color: #119C75;
+        color:black;
+        width: 300px;
+        height: 80px;
+        border-radius: 20px;
+        font-size: 25px;
+    }
+
+    button:hover {
+        color:white;
+        background-color: #4ED19F;
+    }
+}
+
+#link {
+    text-decoration: none;
+    color: black;
+
+}
+
+#record  {
+    margin-bottom: 10px;
+    display: none;
 }
 
 
