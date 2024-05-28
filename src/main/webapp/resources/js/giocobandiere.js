@@ -186,6 +186,7 @@ async function iniziaGioco() {
 /*fa una fetch a /randomcountry e restituisce il risultato in json*/
 async function fetchRandomCountry() {
     const response = await fetch("randomcountry")
+
     return response.json()
 }
 
@@ -229,6 +230,7 @@ async function finisciGioco(){
     input_wrapper.remove()
 
     const card = document.getElementById("second_game_card")
+
 
     fetch("finiscigioco?gioco=giocoBandiere")
         .then(response => response.json())

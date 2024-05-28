@@ -10,7 +10,6 @@
     height: 90%;
     background-color: $yellow_light;
     border-radius: 2rem;
-    gap: 0rem;
     @include flex-column(space-around,center);
   }
   #second_game_info{
@@ -41,6 +40,14 @@ h2,h3{
 
 
 
+}
+
+#title{
+  margin-top: 3rem;
+}
+
+#inizia{
+  margin-bottom: 3rem;
 }
 
 #inizia{
@@ -116,6 +123,8 @@ i{
 .nondisponibile{
   color: red;
 }
+
+
 
 .centerbox{
   display: flex;

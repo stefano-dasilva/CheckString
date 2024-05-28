@@ -116,17 +116,37 @@ public class NavigationController {
         public String showGiocoBandiere(HttpSession session) {
         session.setAttribute("skips",3);
 
+        if(session.getAttribute("punteggio")!= null){
+            session.setAttribute("punteggio",0);
+        }
+        else{
+            session.setAttribute("punteggio",0);
+        }
+
         return "giocobandiere";
         }
 
 
     @GetMapping("/show_giocoCapitali")
-    public String showGiocoCapitali() {
+    public String showGiocoCapitali(HttpSession session) {
+
+        if(session.getAttribute("punteggio")!= null){
+            session.setAttribute("punteggio",0);
+        }
+        else{
+            session.setAttribute("punteggio",0);
+        }
         return "capitali";
     }
 
     @GetMapping("/show_giocopopolazione")
-    public String showGiocoPopolazione() {
+    public String showGiocoPopolazione(HttpSession session) {
+        if(session.getAttribute("punteggio")!= null){
+            session.setAttribute("punteggio",0);
+        }
+        else{
+            session.setAttribute("punteggio",0);
+        }
         return "giocopopolazioni";
     }
 

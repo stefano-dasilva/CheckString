@@ -144,7 +144,6 @@ async function provaTentativo(event){
                 nome_paese_sx.style.color = "black"
             aggiornaCard()
             }, 1000);
-
         }
         /* e l'utente ha schiacciato higher */
         else{
@@ -177,11 +176,7 @@ async function provaTentativo(event){
             }, 1000);
         }
     }
-
-
-
 }
-
 
 
 /*fa una fetch a /aumentapunti e restituisce i punti attuali della partita e restituisce in json ( solo per test )*/
@@ -222,8 +217,14 @@ function creaComposizioneCard() {
     document.getElementById("inizia").remove()
     document.getElementById("title").remove()
 
+    const game_card = document.getElementById("third_game_card");
+    const da_cancellare = document.getElementById("third_game_content")
+    da_cancellare.remove()
 
-    const card = document.getElementById("third_game_content")
+
+    const card = document.createElement("div")
+    card.id = "third_game_content_card"
+    game_card.appendChild(card);
 
 
     var wrapper_paesi = document.createElement("div");
@@ -315,7 +316,6 @@ async function fetchWeatherAPI(latlng){
     const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latlng[0]}&longitude=${latlng[1]}&hourly=temperature_2m`)
     return response.json()
 }
-
 
 
 

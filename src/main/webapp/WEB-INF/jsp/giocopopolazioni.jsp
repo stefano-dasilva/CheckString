@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
-    <title>Login</title>
+    <title>IndovinaPopolazione</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/giocopopolazioni.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,7 @@
     <div id="third_game_card">
         <div id="third_game_content">
         <h3 id="title">Indovina il paese più popolato !</h3>
+            <h4 id="game_description">Scegli se il paese sulla destra ha più o meno persone rispetto quello a sinistra</h4>
         <button id="inizia">Inizia ora il gioco</button>
         </div>
     </div>

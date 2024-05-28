@@ -4,7 +4,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Classifica</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/classifica.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
