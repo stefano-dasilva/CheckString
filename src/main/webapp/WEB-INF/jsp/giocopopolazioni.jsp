@@ -26,6 +26,19 @@
         </div>
     </div>
     <div id ="third_game_info">
+        <div id="currencies_info">
+            <span id="info_box"></span>
+            <div id="valute_box">
+                <div id="first_row">
+                    <span id="first_paese"></span>
+                    <span id="first_currency"></span>
+                </div>
+                <div id="second_row">
+                    <span id="second_paese"></span>
+                    <span id="second_currency"></span>
+                </div>
+            </div>
+        </div>
         <div id="first_chart"></div>
 
     </div>

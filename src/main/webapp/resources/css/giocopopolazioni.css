@@ -20,8 +20,7 @@
   height: 90%;
   background-color: #FFF2F9;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   border-radius: 2rem;
 }
 
@@ -123,7 +122,17 @@ img {
 
 #first_chart {
   width: 100%;
+  height: 50%;
   display: flex;
+}
+
+#currencies_info {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #inizia {
@@ -151,6 +160,29 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.bx-money, .bx-sun {
+  color: #FF79C7;
+  font-size: 2.5rem;
+}
+
+#valute_box {
+  font-family: "Syne", sans-serif;
+  color: #FF0096;
+  display: flex;
+  flex-direction: column;
+}
+
+#first_row, #second_row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#first_paese, #second_paese {
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=giocopopolazioni.css.map */

@@ -19,9 +19,7 @@
     width: 40%;
     height: 90%;
     background-color: $pink_light;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-column();
     border-radius: 2rem;
 
   }
@@ -116,7 +114,14 @@ img{
 
 #first_chart{
   width: 100%;
+  height: 50%;
   display: flex;
+}
+
+#currencies_info{
+  height: 50%;
+  width: 100%;
+  @include flex-column(space-around,center)
 }
 
 #inizia{
@@ -144,4 +149,24 @@ img{
 
 #finish_content{
   @include flex-column(null,center);
+}
+
+.bx-money,.bx-sun{
+  color: $pink-medium;
+  font-size: 2.5rem;
+}
+
+#valute_box{
+  font-family: "Syne", sans-serif;
+  color: $pink-strong;
+  @include flex-column();
+}
+#first_row,#second_row{
+  @include flex-row();
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#first_paese,#second_paese{
+  font-weight: bold;
 }

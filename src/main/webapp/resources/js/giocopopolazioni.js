@@ -22,6 +22,8 @@ function aggiornaCardInfo(){
     var chart = document.getElementById("first_chart");
     var third_game_info = document.getElementById("third_game_info");
     chart.remove();
+    const currencies_info = document.getElementById("currencies_info")
+    currencies_info.remove()
 
     var finish_content = document.createElement("div");
     finish_content.id = "finish_content"
@@ -34,6 +36,8 @@ function aggiornaCardInfo(){
     refresh.classList.add('bx', 'bx-refresh');
     refresh.addEventListener('click',restart)
     finish_content.appendChild(refresh)
+    third_game_info.style.justifyContent = 'center';
+    third_game_info.style.alignItems = 'center';
 
 }
 
@@ -65,7 +69,7 @@ async function iniziaGioco(){
     /* crea la composizione della card, rimuovendo i bottoni e creando i vari div p.s la funzione è sotto a questa*/
    creaComposizioneCard()
 
-    await fetchRandomCountry().then(data=>{
+    await fetchRandomCountry().then(data=> {
         /* prende i due paesi corrispondenti dal json locale presi tramite codice casuale*/
         const paesesx = paesijson.find(paese => paese.cca2 === data.standard1.code);
         const paesedx = paesijson.find(paese => paese.cca2 === data.standard2.code);
@@ -80,7 +84,42 @@ async function iniziaGioco(){
         standarddx = data.standard2;
         nome_paesesx.innerText = standardsx.value
         nome_paesedx.innerText = standarddx.value
-        drawTemperatureChart(paesesx.capitalInfo.latlng,paesedx.capitalInfo.latlng)
+        var first_currency = document.getElementById("first_currency")
+        var second_currency = document.getElementById("second_currency")
+        if (paesesx.currencies !== null && paesesx.currencies !== undefined) {
+            const currenciessx = Object.values(paesesx.currencies);
+            const firstcurrency = currenciessx.length > 0 ? currenciessx[0].name : null;
+            console.log(firstcurrency)
+            first_currency.innerText =  " " + firstcurrency
+        } else {
+            console.log("no moneta")
+            first_currency.innerText = "no disponibile"
+        }
+
+        if (paesedx.currencies !== null && paesedx.currencies !== undefined) {
+            const currenciesdx = Object.values(paesedx.currencies)
+            const firstcurrencydx = currenciesdx.length > 0 ? currenciesdx[0].name : null;
+            console.log(firstcurrencydx)
+            second_currency.innerText = " " + firstcurrencydx
+        } else {
+            console.log("no moneta")
+            second_currency.innerText = "no disponibile"
+        }
+
+        var currencies_info = document.getElementById("currencies_info")
+        var info_span = document.getElementById("info_box")
+        var info_icon = document.createElement("i")
+        info_icon.classList.add('bx','bx-money')
+        info_span.appendChild(info_icon)
+
+        var first_paese = document.getElementById("first_paese")
+        var second_paese = document.getElementById("second_paese")
+        first_paese.innerText = standardsx.value + " : ";
+        second_paese.innerText = standarddx.value + " : "
+
+
+
+        drawTemperatureChart(paesesx.capitalInfo.latlng, paesedx.capitalInfo.latlng)
         console.log(paesesx.capitalInfo.latlng);
         console.log(paesedx.capitalInfo.latlng);
     })
@@ -217,8 +256,36 @@ async function  aggiornaCard(){
         nome_paesesx.innerText = standardsx.value
         nome_paesedx.innerText = standarddx.value
         drawTemperatureChart(paesesx.capitalInfo.latlng,paesedx.capitalInfo.latlng)
-        console.log(paesesx);
-        console.log(paesedx);
+        var first_currency = document.getElementById("first_currency")
+        var first_paese = document.getElementById("first_paese")
+        var second_paese = document.getElementById("second_paese")
+
+        var second_currency = document.getElementById("second_currency")
+        if(paesesx.currencies!== null && paesesx.currencies!== undefined){
+            const currenciessx = Object.values(paesesx.currencies);
+            const firstcurrency = currenciessx.length > 0 ? currenciessx[0].name : null;
+            console.log(firstcurrency)
+            first_currency.innerText = " " + firstcurrency
+        }
+        else{
+            first_currency.innerText = "non presente"
+            console.log("no moneta")
+        }
+
+        if(paesedx.currencies!== null && paesedx.currencies!== undefined) {
+            const currenciesdx = Object.values(paesedx.currencies)
+            const firstcurrencydx = currenciesdx.length > 0 ? currenciesdx[0].name : null;
+            second_currency.innerText = " " + firstcurrencydx
+
+            console.log(firstcurrencydx)
+        }
+        else{
+            console.log("no moneta")
+            second_currency.innerText = "no currency"
+        }
+        first_paese.innerText = standardsx.value + " "
+        second_paese.innerText = standarddx.value + " "
+
 
     })
 
@@ -315,7 +382,10 @@ function creaComposizioneCard() {
 
 
 
-
+    const currencies_info = document.getElementById("currencies_info")
+    var i = document.createElement("i")
+    i.classList.add('bx', 'bx-sun')
+    currencies_info.appendChild(i);
     /*e gli aggiungo un event listener di click*/
     lower.addEventListener("click", provaTentativo)
     higher.addEventListener("click", provaTentativo)
