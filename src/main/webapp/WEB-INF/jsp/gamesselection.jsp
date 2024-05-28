@@ -2,7 +2,7 @@
 
 <HTML>
 <HEAD>
-    <title>Login</title>
+    <title>Selezione Giochi</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/gamesselection.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
