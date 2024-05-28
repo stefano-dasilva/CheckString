@@ -96,11 +96,28 @@ img {
 
 #third_game_content {
   width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title {
+  margin-top: 2rem;
+}
+
+#third_game_content_card {
+  width: 90%;
   height: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+
+#inizia {
+  margin-bottom: 2rem;
 }
 
 #first_chart {

@@ -93,9 +93,25 @@ img{
 
 #third_game_content{
   width: 90%;
-  height: 60%;
-  @include flex-column(space-around, center);
+  height: 90%;
+  @include flex-column(space-between, center);
 }
+
+#title{
+  margin-top: 2rem;
+}
+
+#third_game_content_card{
+  width: 90%;
+  height: 60%;
+  @include flex-column(space-between, center);
+}
+
+#inizia{
+  margin-bottom: 2rem;
+}
+
+
 
 #first_chart{
   width: 100%;
