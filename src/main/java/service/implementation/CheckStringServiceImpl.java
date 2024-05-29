@@ -45,7 +45,7 @@ public class CheckStringServiceImpl implements CheckStringService {
             nonTrovata.setInput(nazione);
             System.out.println("sono qui");
             nonTrovataService.inserisciNonTrovata(nonTrovata);
-            return "non trovata";
+            return "Italia";
         }
     }
 
