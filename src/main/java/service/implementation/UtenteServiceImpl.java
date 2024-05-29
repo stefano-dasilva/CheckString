@@ -114,7 +114,7 @@ public class UtenteServiceImpl implements UtenteService {
             utente.setNome(u1.getNome());
             utente.setUsername(u1.getUsername());
             utente.setCognome(u1.getCognome());
-            utente.setNazione(u1.getNazione());
+            utente.setNazione(checkStringService.check(u1.getNazione()));
             utente.setDataNascita(u1.getDataNascita());
             return utenteDao.update(utente);
         }
