@@ -74,6 +74,11 @@ h2 {
   transform: translateX(10px);
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 span {
   cursor: pointer;
 }

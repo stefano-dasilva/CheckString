@@ -20,6 +20,9 @@ public interface CorrispondenzaDao {
     @Transactional
     public List<Corrispondenza> findbyAlgorithm(String algorithm);
 
+ @Transactional
+ public Corrispondenza inputEquals(String input);
+
 
 
 

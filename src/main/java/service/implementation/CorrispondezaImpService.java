@@ -31,6 +31,7 @@ public class CorrispondezaImpService implements CorrispondenzaService {
 
         // se c'è già una corrispondenza
         if(c != null){
+            System.out.println("numero ricerche prima" + c.getNumRicerche());
             c.setNumRicerche(c.getNumRicerche() + 1);
             if(!c.getApprovata()){
                 // gli cambio la corrispondenza solo se non è approvato
@@ -44,6 +45,7 @@ public class CorrispondezaImpService implements CorrispondenzaService {
         }
         else {
             corrispondenza.setNumRicerche(1);
+            System.out.println("numero ricerche nuova corrispondenza " + corrispondenza.getNumRicerche());
             corrispondenzaDao.create(corrispondenza);
         }
         if(!Objects.equals(corrispondenza.getAlgoritmo_usato(), "ManualCheckString")){
@@ -61,6 +63,19 @@ public class CorrispondezaImpService implements CorrispondenzaService {
         }
         }
         return corrispondenza;
+    }
+
+    @Override
+    public Corrispondenza inputEquals(String input) {
+        Corrispondenza corrispondenza = corrispondenzaDao.findByInput(input);
+        if( corrispondenza != null){
+            if(corrispondenza.getApprovata()){
+                return corrispondenza;
+            }
+            else
+                return null;
+        }
+        return null;
     }
 
     @Override

@@ -40,6 +40,11 @@ public class CorrispondenzaDaoImpl extends BaseDaoImpl  implements Corrispondenz
         return q.getResultList();
     }
 
+    @Override
+    public Corrispondenza inputEquals(String input) {
+        return null;
+    }
+
 
     @Override
     public Corrispondenza findByInput(String input) {

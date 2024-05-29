@@ -21,6 +21,12 @@ public interface CorrispondenzaService {
             isolation = Isolation.READ_UNCOMMITTED)
     public Corrispondenza add(Corrispondenza corrispondenza) ;
 
+    @Transactional(
+            rollbackFor = {Throwable.class, Exception.class},
+            propagation = Propagation.REQUIRED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public Corrispondenza inputEquals(String input) ;
+
     @Transactional
     public Corrispondenza findByInput(String input);
 

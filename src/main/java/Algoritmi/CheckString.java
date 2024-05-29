@@ -29,7 +29,7 @@ public abstract class CheckString {
 
                // System.out.println(corrispondenza.getAlgoritmo_usato());
              //   System.out.println(corrispondenza.getStandard().getValue());
-                corrispondenza = factoryUtil.getCorrispondezaService().add(corrispondenza);
+             //corrispondenza = factoryUtil.getCorrispondezaService().add(corrispondenza);
                 return  corrispondenza;
             }
             else {

@@ -30,12 +30,12 @@ public class CheckStringServiceImpl implements CheckStringService {
         CheckString dmeta = new DoubleMetaphoneCheckString();
         CheckString input = new CheckStringInputEquals();
         CheckString tokenizer = new TokenizerCheckString();
+        input.setNext(lev);
         lev.setNext(jacc);
         jacc.setNext(jaro);
         jaro.setNext(dmeta);
-        dmeta.setNext(input);
-        input.setNext(tokenizer);
-        Corrispondenza corrispondenza = lev.check(nazione);
+        dmeta.setNext(tokenizer);
+        Corrispondenza corrispondenza = input.check(nazione);
         if(corrispondenza != null){
             corrispondenzaService.add(corrispondenza);
             return corrispondenza.getStandard().getValue();

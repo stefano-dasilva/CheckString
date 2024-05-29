@@ -27,11 +27,11 @@
                 Un modo divertente per imparare le bandiere e le capitali dei paesi e scoprendo curiosità interessanti.<br>
                 Lanciati in questa stimolante sfida e scopri il mondo. <br> Sfida i tuoi amici e scopri chi è il piu forte !!!</p>
             </div>
-            <div id="footer_section">
+            <a id="footer_section" href="show_games">
                 <span>INIZIA A GIOCARE</span>
                 <i class='bx bx-right-arrow-alt'></i>
 
-            </div>
+            </a>
 
         </div>
         <div id="imageWrapper">
