@@ -24,6 +24,7 @@ body {
         font-weight: bold;
         font-size: 22px;
         font-family: "Dubai Light";
+        cursor: pointer;
 
     }
 
@@ -71,11 +72,15 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: auto;
+
+
 }
 
 #ig {
     display: flex;
    margin-left: 15px;
+    margin-top: 20px;
 
     span {
         font-size: 20px;
@@ -85,6 +90,8 @@ body {
 
     img {
         margin-left: 90px;
+        height: 180px;
+        width: 320px;
     }
 
 
@@ -97,6 +104,8 @@ body {
     background-color: #7DCCB5;
     width: 650px;
     border-radius: 20px;
+    height: auto;
+
 
 }
 
@@ -104,6 +113,8 @@ body {
 #opzioni {
     display: flex;
     height: 150px;
+    margin-top: 30px;
+
    justify-content: center;
     flex-direction: row;
     cursor: pointer;
@@ -137,6 +148,7 @@ body {
     font-size: 20px;
     background-color: #119C75;
     color: white;
+    margin-top: 20px;
 
 }
 
@@ -168,6 +180,7 @@ body {
     background-color: red;
     color: white;
     text-align: center;
+    margin-top: 20px;
 
     #right {
         margin-left: 5px;
@@ -252,6 +265,7 @@ body {
 #ricomincia {
     margin-top: 50px;
 
+
     button {
         background-color: #119C75;
         color:black;
@@ -259,6 +273,7 @@ body {
         height: 80px;
         border-radius: 20px;
         font-size: 25px;
+        cursor: pointer;
     }
 
     button:hover {
