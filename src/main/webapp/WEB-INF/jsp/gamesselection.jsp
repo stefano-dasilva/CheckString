@@ -40,7 +40,7 @@
             <div class="p_wrapper">
 
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero non, cupiditate eaque, labore provident excepturi, voluptatum quos obcaecati dolore minus fuga. Reprehenderit hic dolorum voluptates accusamus unde repudiandae, sed accusantium iure soluta ipsa maiores quia! Quod aliquid laboriosam hic animi fuga numquam quaerat corrupti repellat expedita, est perspiciatis sunt provident?
+            <p> Pensi di conoscere tutte le bandiere del mondo? Mettiti alla prova! Ti mostreremo una bandiera e il tuo compito è indovinare a quale Stato appartiene. Divertiti e scopri quanto sei bravo a riconoscere le bandiere internazionali! Buona fortuna!
             </p>
             </div>
             <a id="second_footer" href="show_giocobandiere">
